@@ -1,0 +1,2127 @@
+Fthicket of,,This page is for brainstorming abilities. All you need here is a name for the abilitiy and a description of what its function is.,,This column is for developing the actual game text of an ability,,,,,,,,,,,,,,,,,,,,,,,,,
+,Category,Ability Name,Ability Description,Rules Text,CP cost,Affinity req,W,U,B,R,G,tot,,R1,R2,R3,R4,R5,R6,R7,R8,R9,R10,,NEW AFFINITY,New Aff: X,New Aff: Di,New Aff: Kyle,New Aff: Gabe
+0,Aura,Drinker of Souls,Automatically absorb energy from dying / recently slain foes,"A dying creature within the aura rolls BOD vs. WIL to resist, failure or tie results in its death. This aura automatically succeeds against a target that has been dead for up to 5 rounds, on 6+ rounds no effect. 
+When a creature's soul is consumed heal 1 stamina, if at full stamina instead heal 1 health, if at full health and stamina instead gain 1 temporary HP. 
+
+A creature's soul can only be so consumed once. If multiple instances of this ability would trigger on a soul, the owner who most recently acted in initiative gets priority, then second most recent, etc.",10,"7B,(9)
+",0,0,6,0,0,6,,10,,,,,,,,,,,"7B,2","R3
+exclusive","R3
+exclusive
+B",,
+0,Aura,Enduring Presence,"Damage dampening, discharge to mitigate one hit","Allies within the aura gain 2 damage dampening. 
+Discharge: one subject of the aura gets 2+(quantity of subjects) damage dampening against one attack. ",30,"12W,(15)",6,,,,,6,,30,,,,,,,,,,,"12GW,3",R5 exclusive?,"R6
+exclusive
+GW",,
+0,Aura,Fear Aura,"This fear aura triggers on any aggressive action. 
+","You may attempt a free intimidation check against all enemies within the aura once per round as part of an attack. The effects of the intimidation check apply after the attack is resolved. As normal, you can only apply one fear effect to a given target once per turn.
+",15,"4R,5(W|B|R),(12)",0,0,6,6,0,6,,15,,,,,,,,,,,"7BR,2",R4 exclusive,"R3
+limited
+BRW,BR,RW",,
+0,Aura,Feedback Aura,Nearby enemies subject to damage when you are wounded,Enemies the aura (CHA/2 *5 ft instead of standard CHA*5) resist (damage you took) as psychic damage with mental soak.,10,"4(W|B),4(W|U|B),(15)",0,4,4,0,0,8,,10,,,,,,,,,,,"7UB,8",R5 limited/exclusive?,"R5
+limited
+B,W,UB",,
+0,Aura,For the Greater Good,Willing allies may take damage to heal the aura user,"During your turn as a nonaction, target willing ally within the aura loses 1 HP or 2 Stam and you gain 1HP or 2 Stam.",10,"4B,(9)",,,6,,,6,,10,,,,,,,,,,,"4B,5",R3 limited,"R3
+limited
+B",,
+0,Aura,Generous Enchancements,Share the effects of one ongoing buff you are subject to with all allies in range of this aura.,"When you trigger a buff you may designate it as being Generously Enhanced. This ability becomes the shared aura effect of Generous Enhancements and does not count for you as a body buff if it was one. As a Extra action you may designate a buff currently on you to become Generously Enhanced, it becomes the aura effect and any current aura effect reverts to its normal buff state. ",80,"12W,12G,(30)",,,,,,,,80,,,,,,,,,,,,,,,
+0,Aura,Glare of the noonday sun,nonlethal damage vs. everything at start of your turn,All creatures within (CHA/2 + RANK) ft (including you) must soak (BOD + 2* RANK) fire damage at the start of your turn. This damage is always nonlethal.,30/40/50,"14(W|R|G),(18)
+16(W|R|G),(21)
+19(W|R|G),(24)
+",12,,,12,12,12,,30,70,120,,,,,,,,,di proposing WRG excl,R6/R7/R8 exclusive,RG,,
+0,Aura,Magic Circle of Heart,"All allies in the aura gain rank X to an element of your choice, chosen on activation.","All allies in the aura gain 2*RANK resist to ELEMENT of your choice, chosen on activation.","20,30,40","3W,(9) per
+",,,,,,,,20,50,90,,,,,,,,,,,,,
+0,Aura,Mana Leech,"Name a color. All drain using abilities except for the named color are subject to 1 higher drain. Whenever such an ability is used, roll 1 die and heal HITS drain. ","Name a color. All abilities with drain used within the aura except for the named color may take +RANK drain. If they don't, roll 2 dice and heal HITS drain and deal HITS drain to the ability user.",20,"7U,7B,(18)",10,,10,,,10,,20,,,,,,,,,,,"14UB,4",R6 Exclusive,"R6
+exclusive
+UB",,
+0,Aura,Menacing Presence,Penalty to enemies trying to attack allies other than you,"Enemies within (CHA*5 feet) take (CHA) penalty to their attack pools if targeting anything but a user of Menacing Presence. If enemies are not aware of you, this aura does not affect them.",10,"4W,5(W|B|G),(12)",6,0,6,0,0,6,,10,,,,,,,,,,,"7WB,2",R4 excl,"R3
+exclusive
+W,WG",,
+0,Aura,Natural Shielding,"Aura, allies gain resistances","All allies within the aura gain +RANK armor, and 2*RANK+2 dice on rolls to resist effects originating from other recipients of this aura.",40/50/60,"4G,(10 per)",,,,,4,10,,40,90,150,,,,,,,,,,,,,
+0,Aura,Never surrender,grants diehard to allies,Allies do not fall unconscious when a damage track is filled. They still die from overflow.,10,"6W,6R,(15)",8,0,0,8,0,8,,10,,,,,,,,,,,"12WR,3",R5 exclusive,"R2
+exclusive
+WR",,
+0,Aura,No Retreat!,Your inspiration prevents enemies from being able to withdraw safely,"Enemies within your zone of control provoke attacks of opportunity from you when using any form of movement even if they would not normally provoke.  At rank 2 all enemies within CHA*5 always provoke attacks of opportunity (from threatening allies) when moving through an allies zone of control. All forms of movement, including instant teleportation, provoke. Allies must also be within this aura to gain these benefits.",10,"4W,5(W|B),(12)
+7W,9(W|B),(21)",6,,6,,,6,,10,20,,,,,,,,,,"7WB,2
+14WB,4",R4/R7 excl,"R3/R6/R9
+limited
+WB",,
+0,Aura,Rallying Spirit,"Your combat prowess brings inspiration to your allies, their morale confers healing",When you make a successful melee attack you may heal an ally within CHA*5 ft RANK*4 meat or RANK*8 stam health. (This healing is subject to normal healing rules.),10,"6W,(12)
+9W,(18)
+12W,(24)
+18W,(30)",8,,,,,8,,10,20,30,40,,,,,,,,"6W,6
+9W,9
+12W,12",R4/6/8 Limited,"R3/R6/R9
+limited
+W",,
+0,Aura,Rally Morale,"Your allies may use your willpower in place of their own, or their willpower + RANK (whichever is higher) when resisting most effects. This does not apply to drain checks.","Your allies may use your willpower in place of their own, or their willpower + RANK (whichever is higher) when resisting most effects. This does not apply to drain checks.",10,"6W,6(W|U|G),(15)",6,0,0,0,0,6,,10,20,30,,,,,,,,,"9W,3",R5 exclusive?,"WU,WG",,
+0,Aura,Rallying Aura,"bonus vs. fear and charm, bonus on combat","Resist fear, resist charm, combat; +1 die per rank
+","15
+30
+45","3W,4(W|R),(9)
+7W,7(W|R),(18)
+10W,11(W|R),(27)",3,0,0,3,0,6,,15,45,90,,,,,,,,,"7W,2
+14W,4
+21W,6","R3/R6/R9
+exclusive",W,,
+0,Aura,Repositioning Aura,When you hit with an attack you may designate an ally within your aura to take a move action.,When you hit with an attack you may designate an ally within your aura to move up to their movement rate.,20,"3W,(15)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Aura,Shielding Aura,"When you make a parry, all allies within the aura gain 1 temp hp","When you succesfully parry block or parry, all allies except you within the aura gain 2 temp hp",40,"7W,(21)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Aura,Skill Teamwork,"Boost allies' skills for skills you have high ranks in
+","Rank 1: up to 2
+Rank 2: up to 4
+Rank 3: up to 6
+Rank 4: up to 8","20,40,60,80","1W,1G,1(W|G),(6) per
+",4,4,0,0,4,4,,20,60,120,200,,,,,,,,"W,U,G,3
+2W,2U,2G,6
+3W,3U,3G,9
+4W,4U,4G,12","R2/R4/R6/R8
+limited",WG,,
+0,Aura,Slow Aura,increase initiative cost of enemy actions,Enemy's actions cost 1+(RANK) more initiative so long as they are within (5*CHA feet) of you. If another effect would inflict a penalty on the initiative cost of actions only the highest penalty applies.,"10
+15
+20","3U,4(W|U),(9)
+7U,7(W|U),(18)
+10U,11(W|U),(27)",6,6,6,0,0,6,,10,25,45,,,,,,,,,"3W,3U,3
+7W,7U,4
+10W,10U,7","R3/R6/R9
+exclusive","U,WU",,
+0,Aura,Warleader,Allies can attack right after you with a bonus.,"The first time you attack each turn all allies within range may take their turn immediately after yours. An ally who chooses to do so may only move or make attacks during that turn. Allies who make use of this ability gain a stacking, refreshing +1 dice to all attack, block, parry rolls until the end of their next turn. The maximum benefit of this bonus is your CHA.",50,"9W,9R,(24)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Buff,All outta Bubblegum,"various grapple, melee roughness bonuses","Body Buff
+
+RANK-1 damage dampening
+ignore RANK points of wound penalty
++RANK vs. knockdown, disarm, trip, resisting grapple
+
+Melee attacks trigger knockdown on hit. Target physical soak vs. the base DV of the attack.
+Enemies that fail to escape your grapples take damage as if you made the grapple attack action against them
+Ignore half an enemy's armor with your grapple attacks
+
+",20/30/40,"4(R|G),(9)
+9(R|G),(18)
+13(R|G),(27)",,,,3,3,6,,20,50,90,,,,,,,,,"4RG,5
+9RG,9
+13RG,14",R3/R6/R9 limited,G,,
+0,Buff,Arcane Conduit,Casting spells ,"Body Buff
+Casting a spell generates a mana charge.
+Charges may be expended as follows
+2-Spent in place of init costs on a spell modifier (per 5)
+2-Spent in place of init costs on counterspelling/redirecting (per 5)
+2-Spent to mitigate a counterspell/redirect attempt against one of your spells (-3 dice to opposed attempt per)
+
+Max charges = 2*RANK 
+
+These charges decay after one minute of not generating nor using charges. If you would overflow your limit on charges take drain equal to the overflow amount. You shed sparking magical light (as a torch) while you have at least 2 charges.
+
+At Rank 2: Centering generates 1 charge, every point of drain you take from spellcasting generates 1 charge.
+
+At Rank 3: All charge generation is increased by +1
+",30/40/80,"4U,4R,(18)
+6U,6R,(24)
+8U,8R,(30)",,7,,7,,14,,30,70,150,,,,,,,,,"9UR,9
+12UR,12
+15UR,15",R6/R8/R10 limited,U,,
+0,Buff,Avatar of Malice,"Empower attacks, lifesteal, ignore full defense","Body buff. 
+All damage you deal is applied as Dark damage post mitigation. 
+You ignore enemies’ full defense. 
+Whenever your melee attack deals damage to one or more targets, heal 1. This healing is exempt from healing drain.
+Weakness 3 to radiant. 
+You treat all incoming dark damage and dark damage you suffer as normal damage. 
+After damage is calculated against you, you may move up to 2 points of it to the delayed track. At the end of the round you suffer all the delayed damage as physical damage. ",100,"24B,(30)
+",,,20,,,20,,100,,,,,,,,,,,"24B,6",??,B,,
+0,Buff,Bastion,"Defensive bonuses, reduced offensive power",half Action. Increase damage dampening by RANK*2. Reduce the starting power of your attacks by RANK*2.,15/20/25,"per: 2W,(9)",6,0,0,0,0,6,,15,35,60,,,,,,,,,"2W,7
+4W,14
+6W,21",R3/R6/R9 open,W,,
+0,Buff,Blessed Light of Dawn,Let there be heals,"Body Buff
+All your healing effects heal for 2 additional points that do not suffer from healing drain
+You may spend 1L in place of any drain you suffer as part of casting a healing effect, this also mitigates all drain for recipients of this healing effect. 
+you may take 3 on all healing rolls
+Excess points of healing generate Reserve dice at a 1:1 ratio for the recipient of your healing effects that last for one minute or until used on any roll. If Reserve dice would be received while there are already existing dice, the new quantity overwrites if it is higher, otherwise it just refreshes the one minute timer. 
+Resist 6 acid, resist 6 fire, resist 6 lightning.
+Gain +6 dice to see through magical effects
+Treat all light conditions as optimal for your vision.
+You may trigger healing effects as an interrupt at (5)",100,"15W,(30)",20,,,,,20,,100,,,,,,,,,,,"24W,6",??,W,,
+0,Buff,Bonemonger,"Successful attacks generate a temp hp shield, can detonate temp hp shield","Successful attacks generate 2 temp hp. You may detonate your temp hp, discharging the buff, as a full action to deal BOD+temp hp DV as an AoE attack (attacking with your weapon skill or spellcasting dicepool). This is a body buff.",40,"7W,7B,(18)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Buff,Brambleward,"Ward against targeted magical effects, discharge for a burst of strength",half action. Gain +3*RANK against targeted magical effects until the end of this round. You may discharge this effect to get +2 STR *RANK on one attempted action.,"10,20,30","4G,(9)
+9G,(18)
+13G,(27)",,,,,6,6,,10,30,60,,,,,,,,,"4G,5
+9G,9
+13G,14",R3/R6/R9 limited,G,,
+0,Buff,Charge Weapon,Hold a spell in a weapon to be discharged upon striking,"You can cast spells into your weapon(s). The spells are discharged upon striking an opponent, one at a time, in the order they were cast in. 
+-Spells that normally target dodge automatically hit with 0 net hits. In the case of AoE effects produced off this (RULING NEEDED)
+-Spells that target mental or physical resolve as normal.
+
+Casting a spell into a weapon is a half action. For every half action spent since the start of your last turn casting spells into your weapon(s) you may cast an additional spell as part of the half action. You may store up to (cast stat) spells at one time and you can only store spells of up to 1+(cast stat / 2) force.
+
+If the weapon leaves your possession for a minute all charges dissipate. Stored charges dissipate an hour after the last charge was added.",20,"3U,3R,(12)",,6,,6,,6,,20,,,,,,,,,,,"4UR,5",R4 limited,UR,,
+0,Buff,Conjure weapon / armor,"Summon personalized weapon / armor, functions while in your keeping but phases out for others","Binding weapons and/or armor is accomplished during one hour of downtime. 
+
+You may summon any or all of the bound weapons/armor as if drawing (half), or dismiss them as if sheathing (half). When an item is dismissed it exists in a pocket dimension and access can be prevented by effects that limit extradimensional travel. Dismissed items count as attended. You may summon bound equipment back to you granted it has been at most one minute since you last made contact with it. If it is attended the attender must be willing. You are aware of the general direction your bound equipment is in if you become separated from it. 
+
+You may bind one set of armor and (two one handed weapons or one two handed weapon) per rank.",5 per,"1W,(6)",4,,,,,4,,5,10,15,20,25,30,35,40,45,50,,"W,5",R2 W open,W,,
+0,Buff,Crisp and Cauterize,"Dealing direct fire damage procs a heal
+Healing procs a firebolt","Body Buff.
+Whenever your attack or ability deals fire damage to a target you may heal an ally within 60ft for up to an equivalent amount of health.
+Whenever you heal an ally you may generate a single target ranged firebolt as per Elemental Blast, at FORCE = (healing spell FORCE) - 2
+This ability cannot trigger itself",40,"9W,9R,(24)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Buff,Displacer,"You occupy two adjacent squares, appearing to flicker between them. 
+
+","Body Buff
+
+Gain +3 on all defensive checks (not mental or physical resist)
+You occupy two adjacent squares.
+You may act from either position that you occupy.
+You may pass through thin obstacles at the cost of 5ft of movement.
+You can pay (5) init to solidify in one spot at any time, or a half action during your turn, stabilizing the effect until you spend a Extra action to resume it. ",20,"3U,4(U|G),(15)",,4,,,4,8,,20,,,,,,,,,,,"7UG,8",R5 limited,UG,,
+0,Buff,Duty's Ward,Move to punish those who threaten your selected ally,This buff links you and one ally (within 60ft on activation) and lasts 24 hours or until one recipient opts to dismiss it as a full action. You are aware of when the linked ally is threatened or hurt. You can sense the rough direction the linked ally is in. Enemies taking actions that target the ally but not you provoke attacks of opportunity. Such a triggering action also grants 10ft of movement if that would allow you to move to threaten the triggering enemy. ,30,"9W,(12)",,,,,,,,30,,,,,,,,,,,,,,,
+0,Buff,Earthward,Generates temp HP and 3 lightning resist,"Body Buff.
+Every minute and when you activate this ability you generate 2 temporary hp up to half your maximum temp hp. You also gain 6 lightning res.
+_________________
+Temporary HP accrues at the start of each round instead of every minute. ","20,30","6G,(12)
+12G,(24)
+",,,,,,,,20,50,,,,,,,,,,,,,,
+0,Buff,Elemental Body (Acid),"Acid: acid retal burst 
+","Gain for the duration Resist Acid: 6*RANK Whenever you are struck by a corporeal attack that does at least 1 point of damage all adjacent creatures must soak (armor soak) acid damage equal to  (BOD + 4*RANK). You may channel the acid into an area attack centered on you (you are unaffected by this attack) with (BOD/2*5 ft radius). DV = (BOD+4* RANK)(resolve as a spellcast or attack as desired). Doing so ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the acid is a full action.",15/25/35,"2(B|G),(9)
+4(B|G),(18)
+6(B|G),(27)",0,0,6,0,0,6,,15,40,75,,,,,,,,,"2BG,7
+4BG,14
+6BG,21",R3/R6/R9 (B/G) limited,"B,G",,
+0,Buff,Elemental Body (Air),"Flight, increased movement speed, deflection, immunity to gases/inhaled poisons, wind blast discharge","You gain the ability to (glide, fly as per flight N, fly as per flight NN), your movement speed increases by 10*RANK, you gain +RANK dice vs. ranged attacks, immunity to gases and inhaled poisons, treat wind based vision penalties as RANK steps lower. As a full action you may discharge this buff to produce a (BOD/2)*5ft cone of rushing air, rolling weapon skill or spellcasting vs. all targets in the cone (eDV = BOD + 4*rank). Targets Resist with Physical Resist and soak with Physical soak. Targets are pushed (unsoaked eDV)/2 *5ft directly away from you.",15/25/35,"
+2(W|U),(9)
+4(W|U),(18)
+6(W|U),(27)",,,,,,,,15,40,75,,,,,,,,,,,,,
+0,Buff,Elemental Body (Cold),"Cold: chilling presence
+","Gain for the duration
+Resist Cold: 6*RANK
+Creatures that start their turn adjacent lose RANK initiative as if suffering damage from a cold effect. Resistance to cold mitigates this at a 1:1 ratio.
+You may channel the chill into an area attack centered on you (you are unaffected by this attack) with (BOD/2*5 ft radius). DV = (BOD+ 4*RANK)(resolve as a spellcast or attack as desired). Doing so ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the cold is a full action.",15/25/35,"2U,(9) per
+",0,6,0,0,0,6,,15,40,75,,,,,,,,,"2U,7
+4U,14
+6U,21",R3/R6/R9 open,U,,
+0,Buff,Elemental Body (Dark),"Ebody dark, resist dark, (active)","Gain for the duration Resist Dark: 6*RANK Whenever you are struck by a corporeal attack that does at least 1 point of damage you produce an obscuring miasma in your square that lasts until the end of the round. You may channel the darkness into an obscuring miasma centered on you, radius = (BOD/2 -1), that lasts until the end of the next round. The miasma blocks all light for everyone except you. Doing so ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the darkness is a full action.",15/25/35,"2(B),(9)
+4(B),(18)
+6(B),(27)",,,,,,,,,,,,,,,,,,,,,,,
+0,Buff,Elemental Body (Earth),Earth: ,"Gain for the duration
+Damage Dampening: 2
+You may channel the strength of earth to mitigate one physical attack. Gaining an additional 4*RANK Damage Dampening. Doing so ends the benefits of Elemental Body after resolving the damage for that attack. This is a body buff. Activating this buff is a half action, channeling the earth is a nonaction.",15/25/35,"2G,(9) per",0,0,0,0,6,6,,15,40,75,,,,,,,,,"2G,7
+4G,14
+6G,21",R3/R6/R9 open?,G,,
+0,Buff,Elemental Body (Fire),"Fire: Burning presence, fire burst
+","Gain for the duration
+Resist Fire: 6*RANK
+Creatures that start their turn adjacent must save or catch fire as if affected by a (BOD+2*RANK) fire attack. At the end of each round adjacent objects save or catch fire.
+You may channel the fire into an area attack centered on you (you are unaffected by this attack) with (BOD/2*5 ft radius). DV = (BOD+ 4*RANK)(resolve as a spellcast or attack as desired). Doing so ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the fire is a full action.",15/25/35,"2R,(9) per",0,0,0,6,0,6,,15,40,75,,,,,,,,,"2R,7
+4R,14
+6R,21",R3/R6/R9 open,R,,
+0,Buff,Elemental Body (Lightning),"Lightning: lightning presence, lightning leap
+","Gain for the duration
+Resist Lightning: 6*RANK
+Creatures that are adjacent to you that take lightning damage take an additional point of lightning damage as if struck by a separate lightning effect. This ability cannot trigger itself.
+You may channel the lightning into a line attack originating from you with up to (BOD*10 ft length). DV = (BOD+ 4*RANK)(resolve as a spellcast or attack as desired). You may teleport to the farthest square of the target area. Using the attack function ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the lightning is a full action. ",15/25/35,"2R,(9) per",0,3,0,3,0,6,,15,40,75,,,,,,,,,"R,U,7
+2R,2U,14
+3R,3U,21",R3/R6/R9 open,"UR,RW",,
+0,Buff,Elemental Body (Radiant),"Ebody radiant, resist radiant, (active)","Gain for the duration Resist Radiant: 6*RANK Whenever you are struck by a corporeal attack that does at least 1 point of damage all adjacent creatures must avoid automatic blinding (until end of round), dodge or physical res vs. (BOD/2+rank-2) automatic hits. You may channel the radiance into an area attack centered on you (you are unaffected by this attack) with ((BOD/2+1)*5 ft radius), resolve as an attack or spellcast as desired. This attack does no damage, may be dodged or physically resisted, and only requires 3 net hits to blind (blinding until end of next round). This a. Doing so ends the benefits of Elemental Body. This is a body buff. Activating this buff is a half action, channeling the acid is a full action.",15/25/35,"2(W),(9)
+4(W),(18)
+6(W),(27)",,,,,,,,,,,,,,,,,,,,,,,
+0,Buff,Envenom Weapons,Poison weapons as weapon buff,"Damage adjusted by -4
+Victim injured by weapon rolls to physical soak venom at end of round, DV = your BOD*2. 
+As usual for poison effects subsequent applications of the poison during the same round raise the end of round DV by 2.",20,"
+7(B|G),(9)",,,,,,,,20,,,,,,,,,,,,???,GB,,
+0,Buff,Fleetfoot Blessing,"1 temp hp, movespeed bonus while this temp hp lasts","grant 2 temp HP, increase your movement speed by 10 for 10 rounds. half action.",5,"3W,3R,(12)
+",4,,,4,,8,,5,,,,,,,,,,,,R4 limited,R,,
+0,Buff,Imbue Weapon (Acid),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4(B|G),(9)",0,0,6,0,6,6,,10,,,,,,,,,,,,R3 Limited,GB,,
+0,Buff,Imbue Weapon (Cold),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4U,(9)",0,6,0,0,0,6,,10,,,,,,,,,,,,R3 Limited,U,,
+0,Buff,Imbue Weapon (Dark),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4B,(9)",0,0,0,6,0,6,,10,,,,,,,,,,,,,,,
+0,Buff,Imbue Weapon (Fire),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4R,(9)",0,0,0,6,0,6,,10,,,,,,,,,,,,R3 Limited,R,,
+0,Buff,Imbue Weapon (Lightning),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4R,(9)",0,3,0,3,0,6,,10,,,,,,,,,,,,R3 Limited,RW,,
+0,Buff,Imbue Weapon (Radiant),"Half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -1","half action to apply element to attended weapons, dismiss as Extra action.
+Changes weapon damage type to element.
+Damage adjusted by -2",10,"4W,(9)",0,0,0,6,0,6,,10,,,,,,,,,,,,,,,
+0,Buff,Martial Spirit,"No aura, two stances, combine maneuvers","Body Buff
+You may not have an aura active
+You may have two stances active
+You may combine two maneuvers as part of one action where both could apply. If they both have initiative costs, you only need to pay the higher one.",75,"9W,9R,(24)",7,,,7,,14,,75,,,,,,,,,,,,R7 exclusive,RW,,
+0,Buff,Press your luck,"Spend (2?3?) points of luck, for the rest of the round all your dice explode","Nonaction. Spend 2 luck, For the rest of the round all your dice explode.",10,"9R,(18)
+",0,0,0,12,0,12,,10,,,,,,,,,,,,R6 limited,R,,
+0,Buff,Purging Bubble,"1 temp hp, 1 purge roll on apply","half action.  Target ally may immediately (re)roll against a temporary negative condition, adding this new roll to their previous roll (short term debuff, not a long lasting curse or similar). There is no penalty for failing this roll. Target gains 1 temp hp ",5,"7W,(9)
+",6,,,,6,6,,5,,,,,,,,,,,,R3 Exclusive,WR,,
+0,Buff,Shadow Partner,Create a fragile clone of yourself with half stats that mirrors your actions,"Extra action, spend 1 L. Create a shadowy clone of yourself in an adjacent square. It acts on your initiative count, has half your dicepool for any roll before modifiers. The clone cannot spend initiative on any actions, nor can it spend luck. The clone has its own health and cannot be healed, taking all damage as lethal. The clone does not suffer wound penalties. You can perceive everything your clone perceives. Outside of these limitations, your clone functions with your abilities. ",60,"8U,8B,8(U|B),(30)
+",,10,10,,,20,,60,,,,,,,,,,,,R10 Exclusive,U,,
+0,Buff,Shared fate,split damage with ally,"full Action. Touch range, targets ally and self. For the duration all damage suffered by either recipient of this buff is split equally (primary target takes higher value in case of odd valued damage). Split damage after all resistances and rolls are concluded.
+",10,"4W,(6)
+",2,0,0,0,2,4,,10,,,,,,,,,,,,R2 exclusive,W,,
+0,Buff,Singe & Cauterize,Dealing direct fire damage triggers a targeted heal on an ally. Healing triggers a targeted fire bolt.,Body Buff. Dealing direct fire damage to an enemy triggers a targeted heal on an ally within (CHA*10 ft) for up to half the damage dealt. Healing an ally triggers a targeted firebolt (DV = 2x heal) attack (spellcasting) at an enemy in range.,30,"5W,5R,(21)",,,2,2,2,3,,30,,,,,,,,,,,,,,,
+0,Buff,Smite,Your next successful attack is more damaging. ,"Extra action, triggering this ability costs 1 drain. Your next successful attack before the end of the round has +4 DV. ",10,"6(W|R|G),(12)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Buff,Soulward,"Spend X health, get 2X temp hp",half Action. Spend X health to gain 2X temp hp.,10,"6B,(12)",0,0,10,0,0,10,,10,,,,,,,,,,,,R4 limited,B,,
+0,Buff,Spellforged Strikes,Gain martial prowess for a short time after casting spells,"Gain +1 dice to weapon attack rolls until the end of your second next turn (next turn after next turn), cumulative and refreshing, when you cast a spell. While you are benefiting from these extra dice you may make an additional attack with a wielded weapon as part of a melee attack, splitting your dicepool as normal.",40,"19(W|U|R),(24)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Buff,Swarmform,Shapeshift into a cohesive swarm of small creatures,"Gain +3 bonus (defense roll only) vs. single target attacks and effects
+Take -5 penalty (defense and soak) vs. area attacks and effects
+Damage taken from single target attacks cannot exceed 10
+You may disperse/condense into a swarm as a half action.",30,"14G,(18)
+",,,,,12,12,,30,,,,,,,,,,,,R6 Exclusive,G,,
+0,Buff,The Quick and The Dead,"boost dodge, take more damage when hit",half Action. Gain RANK free hits on all dodge rolls. Your damage dampening is reduced by (2+4*RANK).,30/40/50,"14(U|B|R),(18)
+",,,6,6,,6,,30,70,120,,,,,,,,,,R6 exclusive,BRU,,
+0,Buff,Titan Armor,"Gain mitigation dice, slow down",half Action. Gain 2 Armor soak per RANK for RANK*10 rounds. Your max speed is reduced by 10. This is a body buff.,5 per,"4G,(6)
+9G,(12)
+14G,(18)
+19G,(24)
+24G,(30)",,,,,4,4,,5,10,15,20,25,,,,,,,,R2 -> exclusive,G,,
+0,Flaw,Blindness,You are blind,Blind,-30,"WURBG,(0)",1,1,1,1,1,1,,-30,,,,,,,,,,,,,,,
+0,Maneuver,All in,Burn initiative for a powerful strike,"Spend the rest of your initiative as part of an attack. Gain +1 free hit for every (10) spent in this way, rounding up.",5,"9R,(12)",0,0,0,10,0,10,,5,,,,,,,,,,,9.6,R4 Exclusive,R,,
+0,Maneuver,Arcane Mark,Put a magic mark on something,"Place an invisible magical mark on an object after 1 minute of casting. The mark is not invisible to you, and up to (cast stat) others of your choice present upon casting. The mark may be viewed normally with Perceive Magic). ",5,"1(W|U),(6)",4,4,,,,4,,5,,,,,,,,,,,,R2 open,,,
+0,Maneuver,Arcane Rush,"Make a charge, if you connect cast a single target spell",Make a charge attack. If the attack deals damage you may cast a single target spell on the charge victim or a single target spell on yourself.,40,"7R,7G,(18)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Maneuver,Assassinate,Combat bonus vs. unaware targets,"Enemies treat your initative as 10 higher for purposes of awareness during surprise rounds
+. Attacks against unaware enemies gain one automatic hit.",15,"7B,(15)",0,0,8,0,0,8,,15,,,,,,,,,,,,R5 limited,"U,B",,
+0,Maneuver,Assisted Escape,"Target an ally, they may move up to their movement speed.  After moving, apply temp hp.","Target ally may move up to their walking speed, after moving they gain 1 temp hp. half action.",5,"2W,(3)
+",2,,,,,2,,5,,,,,,,,,,,,R1 exclusive,"W,U",,
+0,Maneuver,Avalanche of Blades,Flurry of attacks until missing,"(10) Make a melee attack, if this attack doesn't miss make another attack at a -4 penalty to all rolls against the same target, repeat until missing.",25,"16(W|R),(21)",12,,,,,12,,25,,,,,,,,,,,,R7 exclusive,W/R,,
+0,Maneuver,Balance the Scales,Equalize wounds with ally,"(Touch) Equalize wounds with one ally. If there are an odd number of physical and/or nonlethal wounds you choose who receives the odd numbered wound. 
+",10,"9(W|G),(18)",6,0,0,0,6,12,,10,,,,,,,,,,,,R6 limited,WG,,
+0,Maneuver,Blade Barrier,Produce a wall of blades that provide cover and harm those crossing it,Produce a contiguous wall of whirling blades and weapons that fills (AGI/2) 5ft cubes. Creatures that end the round inside or move into the wall are subject to a normal melee attack using the stats of a weapon you are currently wielding. The wall lasts until the end of your next turn. You may spend your Extra action to extend the duration of the wall until the end of your turn. You may only have one Blade Barrier active at a time. The Blade Barrier provides cover.,20,"10W,(21)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Maneuver,Blinding Bulwark,Blocking enemies has a chance to blind them,Spend (5) on block to roll a CHA DV attack with spellcasting or weapon skill vs. attacker's mental resist. Target soaks with mental soak and is blinded for a number of rounds equal to the damage the attack would do.,5,"7W,(9)",6,,,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Blinding Strike,"Attack at a penalty, blinds target","Make an attack, net hits do not contribute to damage. Target rolls passive physical resist vs. half DV. On failure is blinded for net hits turns. ",5,"4W,(6)
+",2,,,,,2,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Blink,Tactical Teleportation,"Extra action, teleport up to your speed to a square within line of sight. The next use of this ability costs 10/1/0 more stamina. The stamina cost of this ability decreases by 1 at the end of the round.",30-45-60,"7U,(15)
+10U,(21)
+13U,(27)
+",,4,,,,4,,30,75,135,,,,,,,,,,R3/R5/R7 exclusive,,,
+0,Maneuver,Blood for Blood,Spend health to boost the damage of a successful hit,"Nonaction. After hitting with a weapon attack but before the defender has rolled soak, you may spend 1 health to increase the (e)DV of the attack by 2. You may only do this once per attack.",20,"9B,(18)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Maneuver,Bloom Field,Spawn and manipulate blooms for battlefield options,"half action: Spawn (BOD) buds on the ground within 50ft in unoccupied spaces. Buds die if you go 100ft from them or one minute passes since a function of this ability is activated.
+
+Extra action: Command one or all buds (same command)
+
+- Spawn bramble patch: Creates 3 5ft boxes centered on the bud. The brambles are 5ft high and cost double movement for enemies. Allies move normally through the brambles. The brambles grant total cover. This causes the bud to expire.The brambles die when buds would die.
+- Ensnare: Bud rolls attack (spellcasting or weapon skill) against enemy (dodge block parry), enemy soaks with physical soak and upon failure cannot move or make attacks of opportunity for eDV duration, or unitl they take a full action to free themselves. Buds use your weapon skill or spellcasting dicepool and have DV of 6+ STR. You can target the same creature with multiple buds, in which case the swarming rules apply (each bud past the first does not generate another attack, instead increasing the dicepool by +3)
+- Teleport: Teleport to a spot adjacent to any bud, you may only do this starting from adjacent to a bud. This does not consume the bud.
+
+half action or (5): Create a bud on your location and teleport as above. 
+",25,"9G,(18)",,,,,12,12,,25,,,,,,,,,,,,R6 limited,,,
+0,Maneuver,Bola Arrow,"Grapple, trip, disarm with arrow","Grapple, trip, disarm with arrow as part of an attack, don't gain net hits on damage.
+",10,"4G,(9)",,,,,6,6,,10,,,,,,,,,,,,R3 Limited,,,
+0,Maneuver,Bolstering Momentum,"After a successful attack, activate a buff as a Extra action.",Extra action. If you successfully hit with an attack this turn you may activate a single buff as a nonaction.,15,"14(W|U|B),(18)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Breathstealing Blow,forces save vs. silence,"Make a melee attack. If successful, net hits do not contribute to damage. Target rolls passive physical res vs. DV. On failure is silenced for net hits turns.",5,"4W,(6)",4,,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Burnout,"Roll an init die twice, lose access to that init die for the following round. 2 round cooldown.","Roll an init die twice, lose acces to that init die for the following round",20,"7R,(9)",,,,6,,6,,20,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,Butterknifing,Improved sunder,(5) as an additional cost on an attack against an inanimate or attended object. Treat the object's barrier rating as 5 lower.,5,"4(R|G),(9)",,,,3,3,6,,5,,,,,,,,,,,,R3 limited,,,
+0,Maneuver,Clarion Call,Grant allies option to take extra action when downing an enemy,"Nonaction after your attack renders an opponent unconscious
+All allies within CHA*5 ft may spend (5) and make a single attack or move up to their speed, this movement does not count towards the round's max movement.",20,"16W,(21)",12,,,,,12,,20,,,,,,,,,,,,R7 exclusive,,,
+0,Maneuver,Commander's Strike,Command an ally to attack,full Action: One ally within 60ft may make an attack.,60,"5W,5R,(21)",,,,,,,,60,,,,,,,,,,,,,,,
+0,Maneuver,Counter Charge,"When an enemy is charging, you may charge to intercept.","(10) when an enemy makes a charge attack, charge the enemy during their movement, attack them, on hit also make an opposed STR check, on success the enemy stops moving and does not get to attack.",5,"4W,(6)",4,,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Counterspell,"(10) as interrupt, attempt to counter a spell","(10) as interrupt, attempt to counter a spell. Roll Cast stat + spellcasting skill + other bonuses vs. the spellcaster's roll in place of a normal resistance check.",5,"7U,(9)",,6,,,,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,Cratering Charge,AoE impact on a charge,"(5) in addition to your charge, make a secondary attack at STR DV against all adjacent targets, full dice pool vs. each target.",10,"7(R|G),(9)",,,,6,6,6,,10,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,Crushing Descent,Bonus for attacks made while falling,"Gain 
++1 die to an attack made while falling or diving per 10 fallen as part of the action. Capped at your BOD",5,"6(W|G),(12)",8,,,8,,8,,5,,,,,,,,,,,,R4 limited,,,
+0,Maneuver,Dancing Weapon,enchant a weapon to float and attack enemies,"half action, or (5) after attacking with a melee weapon. Release one held melee weapon and choose an enemy, the weapon pursues and attacks that enemy until the end of the round. The weapon acts on your turn, has a fly speed of 30' with perfect maneuverability, uses your weapon skill for its attacks (benefits from tradition match but not your agility), and deals damage as if you were wielding it. At the end of the round the weapon moves 30' towards you, dropping where it ends its movement if you do not have an open hand to grab it as a nonaction, or if it fails to reach you. ",40,"12W,(24)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Maneuver,Deflecting Dodge,Redirect attack that missed you to adjacent valid target.,"Spend (5) to redirect an attack that you succesfully dodged to an adjacent valid target. The new target must resist the original attack roll, damage value and any other related effects.",5,"4R,(6)",,,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Desert Tempest,Twirl around the battlefield slicing foes as you move,(10) As part of this manuever move up to your speed. You may make a single melee attack against each enemy you become adjacent to; you may not attack the same foe more than once during this manuever.,20,"16(W|R),(21)",14,,,14,,14,,20,,,,,,,,,,,,R7 exclusive,,,
+0,Maneuver,Desperate Gambit,take off turn action as if previously readied,(20) perform an action as an interrupt as if it were readied.,15,"14R,(18)",,,,12,,12,,15,,,,,,,,,,,,R6 exclusive,,,
+0,Maneuver,Devour Essence,"Absorb some energy from a dying / recently slain foe
+","full action, touch, targets a dead or dying creature. A dying creature rolls BOD vs. WIL to resist, failure or tie results in its death. This maneuver automatically succeeds against a target that has been dead for up to (YOUR BOD) rounds, on more rounds than that no effect. Heal 1 stamina, if at full stamina heal 1 health, if at full health and stamina, gain 1 temporary point of health/stam that is lost first. This point lasts for (Creature's BOD) hours. ",10,"2B,2(B|G),(6)",,,3,,3,6,,10,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,Disperse into Mist,Disperse into mist in response to taking a blow,"Spend (10) as a nonaction after taking damage from an attack. You disperse into mist and are untargetable until the start of your next turn, or the start of the next round (your choice).",30,"5G,(21)",,,,,,,,30,,,,,,,,,,,,,,,
+0,Maneuver,Distant Echoes,"Launch projectile, sense general surroundings near projectile","Extra action - you gain blindsense 10ft around the impact point of the projectile until the end of the turn
+half action - until the end of next round.",15,"6(W|G),(12)",,,,,,,,15,,,,,,,,,,,,R3-4 WG limited,,,
+0,Maneuver,Divert Attention,half action: roll to stealth as if you had moved,half action: you may roll to stealth as if you had moved. This ability does not fulfill any other conditions required for stealthing.,10,"3G,(12)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Drink Their Tears,Gain bonus for enemies that have recently taken damage,"half action
+Gain +1 dice to attack actions for each enemy in LoS that has taken damage in the past round. This lasts until the end of the next round. ",5,"2R,2G,(6)",,,,4,4,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Elemental Discharge,"Discharge weapon buff, boost power of one attack","Discharge a weapon buff as part of an attack action with one or more weapons. All attacks made during this attack action retain the elemental damage type of the discharged buff , have +1DV, and strike adjacent targets at half standard DV. (full action)",25,"WUBRG,(18)",12,12,12,12,12,12,,25,,,,,,,,,,,,R6 global,,,
+0,Maneuver,ethereal Spinerak,"half Action. Until end of encounter, an ally gains the power to fight ethereal andincoporeal creatures.  you may use this maneuver as an interrupt (5); if you do so, you cannot use this ability again for 24-3*WIL hours.","half Action. Until end of encounter, an ally gains the power to fight ethereal, incoporeal,  creatures.  You may use this maneuver as an interrupt (5). Once you trigger this ability it cannot be used again for 24-3*WIL hours.",10,"6G,(12)",,,,,8,8,,10,,,,,,,,,,,,R4 limited,,,
+0,Maneuver,Exposing Smite,Leave a target more vulnerable to radiant damage,(5) Make an attack. If the target fails to fully soak this attack it gains (CAST STAT/2) vulnerability to radiant damage until the end of your next turn.,10,"3W,(15)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Fade Strike,"Make an attack, move after the attack","Make an attack, net hits don't contribute to damage. Shift up to half your speed after the attack.",5,"3U,(12)",,,4,,,4,,5,,,,,,,,,,,,,,,
+0,Maneuver,Feigned opening,"Fake an opening, focusing your reactions upon the riposte to come","As a Extra action you may start to feign an opening. While you are feigning you do not roll your REACTION for passive defense, dodge or block. Add REACTION to all riposte rolls when feigning. ",30,"9W,(12)",6,,,,,6,,30,,,,,,,,,,,,R4 exclusive,,,
+0,Maneuver,Feint,"(5) attack, special roll w/ various other contributing skills, if successful + NET HITS to next attack against target","Make an attack as a half action against a target that is perceiving you and add your sleight of hand to the dice pool. This attack does no damage if successful. Instead, add your net hits (up to AGI) to the dice pool of the next attack you make against the same target before the end of your next turn.",5,"4(W|U),(6)",4,4,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Maneuver,Fiery Rebirth,Rise empowered after dying,"On death, spend all your LUCK. You rise on the start of the next round, healing each of stam/drain/health up to 2x(spent LUCK) if they were below it. For the next 10 rounds you gain 1 temp hp at the start of each round, you have a fly speed equal to your movement speed, you have (CHA*5/2) radius fire damage aura that enemies must soak your (CAST STAT*2) in fire damage at the end  of round. You may do fire damage with your attacks rather than the normal damage type if desired. Lastly, you also have weakness to cold 3 for the duration.",40,"19R,(24)
+",,,,,,,,40,,,,,,,,,,,,,,,
+0,Maneuver,Fight me ,"Allow your actions to provoke from target opponent, they provoke if they attack you, otherwise get a free intimidate vs. them","Extra action: Target opponent within your reach whose reach you are within. The next action you take this turn provokes an opportunity attack from the target. If they make the attack they provoke an opportunity attack from you. If they choose not to make the attack (lacking initiative or otherwise being unable to take such an action, being unaware of you etc doesn't count) you make an intimidate check against them as a nonaction.",5,"7G,(9)",,,,,6,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,FIRE EVERYTHING,FIRE EVERYTHING,"Spend all your initiative. At the end of the round regain as much initiative as you spent on this ability. All initiative costs are reduced by (2) until the end of the round. You may activate this ability at any time as a nonaction, but only once per round.  ",50,"24R,(30)",,,,,,,,50,,,,,,,,,,,,R10 exclusive,,,
+0,Maneuver,Foil,"Spend (10) or 1L in melee, if enemy cannot pay (10) init they lose the action they were attempting.","Spend (10) or 1L in melee, if enemy cannot pay (5) init they lose the action they were attempting. (needs balancing)",40,"9U,(12)",,8,,,,8,,40,,,,,,,,,,,,R4 Exclusive,,,
+0,Maneuver,Folded Time,"1L, pull yourself from the future for 1 round, next round disappear as you are pulled back for a round. ","1L, pull yourself from the future for 1 round, next round disappear as you are pulled back for a round. ",100,"24U,(30)",,20,,,,20,,100,,,,,,,,,,,,R10 Exclusive,,,
+0,Maneuver,Force an opening,"pay (5) on top of your attack, full defense does not apply vs. this attack, enemies may spend (5) to prevent this for themselves",(5) the next attack you make ignores an opponent's Full Defense. enemies may spend (5) to negate this per use.,5,"14(W|R),(18)",6,,,6,,6,,5,,,,,,,,,,,,R6 exclusive,,,
+0,Maneuver,Frenetic Boost,Coinflip init boost,"Flip a coin before rolling initiative. If heads, gain +1 init die this round. If tails, -1 init die this round.",5,"6U,6R,(15)
+",,5,,5,,10,,5,,,,,,,,,,,,R5 exclusive,,,
+0,Maneuver,Get Over Here,Pull an enemy towards you,"Make a melee atttack with 30ft reach, net hits do not contribute to damage. On a successful hit the target is pulled to an adjacent square by the shortest direct path possible.",10,"6B,(12)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Go Home You're Dunked,Make an attack that bypasses armor and knocks wearied foes unconscious. ,"full action. Make a weapon attack, net hits do not contribute to damage. Target soaks with physical soak. If the target is missing half or more of their stamina and they fail to fully soak this attack then this maneuver instead deals stamina damage sufficient to knock the target unconscious. ",15,"7W,(15)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Goad,"Extra action: Target opponent within your reach whose reach you are within. The next action they take this turn that does not include you as a target provokes an opportunity attack from you. If you attack them, you provoke an opportunity attack from them. If they choose not to make the attack (lacking initiative or otherwise being unable to take such an action, being unaware of you etc doesn't count) you make an intimidate check against them as a nonaction.","Extra action: Target opponent within your reach whose reach you are within. The next action they take this turn that does not include you as a target provokes an opportunity attack from you. If you attack them, you provoke an opportunity attack from them. If they choose not to make the attack (lacking initiative or otherwise being unable to take such an action, being unaware of you etc doesn't count) you make an intimidate check against them as a nonaction.",5,"7R,(9)",,,,2,,2,,5,,,,,,,,,,,,,,,
+0,Maneuver,Gouge,Attack that triggers a bleed that hurts on taking actions,"Make an attack, net hits don't contribute to damage. This attack is soaked by physical soak. On a successful hit the target bleeds for NET HITS turns. While bleeding the target takes 2 health damage if they take a move or half action, 4 if they take a full action. Magical healing or a medicine check vs. the remaining turns removes the bleed.",15,"9B,(18)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Ground shifting leap,"Leap to a target, cratering the earth in an aoe around","As a full action make a jump, this is treated as a running jump even if you started from a standstill. Upon landing make a STR*2 check against the ground. 
+if you surpass its barrier rating you break through and create a HITS/4 *5ft radius hole centered on you, otherwise nothing happens.
+Malleable surface: if you fail to surpass the barrier rating (possibly due to the dirt ground being arbitrarily impassable vs. basic attacks for instance) you create a HITS/2 *5ft radius dent that is treated as difficult terrain and force all creatures in the area to make Gymnastics checks against half your STR check or fall prone.",5,"4R,(9)",,,,4,,4,,5,,,,,,,,,,,,3R limited,,,
+0,Maneuver,Guide Fate,Spend (5) to let an adjacent ally explode dice or reroll,"You have one fate reroll that you may trigger for an ally for (5) that functions the same a a reroll generated from spending luck. Whenever you would regain a point of luck, this fate reroll refreshes.",15,"16R,(21)",6,,,6,,6,,15,,,,,,,,,,,,5R exclusive,,,
+0,Maneuver,Headsman,Attacking technique vs. prone targets. Bonus damage,(5) You may attempt to decapitate a prone target with a melee weapon. The dice rolled for this attack explode and you ignore half the target's armor. ,20,"4B,(15)",,,10,,,10,,20,,,,,,,,,,,,5R open,,,
+0,Maneuver,Herding assault,"Hit does reduced damage, force move your target NET HITS
+",Net hits do not contribute to damage. This attack is soaked with physical soak. move your target NET HITS if the attack hits.,5,"4(U|G),(6)",,2,,,2,2,,5,,,,,,,,,,,,2R exclusive,,,
+0,Maneuver,Hit the Deck,"Drop prone, reroll defense vs indirect AoE","(5)You drop prone. Reroll a defense roll you just made against an indirect area attack, ",5,"WUBRG,(6)",4,4,4,4,4,4,,5,,,,,,,,,,,,2R global,,,
+0,Maneuver,Iceblock,Immobilize yourself in protective ice,"(10) Immobilize yourself in a block of ice as an interrupt. The ice has (CAST STAT*2) health and uses your soak pool. The ice disperses when its health reaches zero or you spend a full action to dismiss it. Excess damage beyond the ice's health is dealt as nonlethal to you.
+",20,"10U,(21)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Maneuver,Inspire Perserverance,Give one/some allies an extra roll to end ongoing effects,"1: full action, one ally may make another roll to end an ongoing effect as if rolling against it for the first time
+2: As 1, except as a half action
+3: As 2, except with 3 bonus dice. Also; full action, up to CHA allies may make another roll to end an ongoing effect as if rolling against it for the first time.
+",10 per,"6W,(12)
+",8,,,,,8,,10,20,30,,,,,,,,,,4R limited,,,
+0,Maneuver,Last Ditch Evasion,Dodge an attack at all costs,"Trigger this ability as an interrupt at any time during the resolution of an attack you rolled dodge against, but before damage or other consequences have been applied. (Note: you may trigger this ability after you have rolled soak and know the resulting applied DV, but no later). You are treated as having fully dodged the attack. You may not benefit from active defenses until the end of your next turn. You may take no actions until the end of your next turn.",10,"3R,(15)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Leaping Flame,"Poof, gone in thin air like a magic trick","Trigger: a creature you are aware of within (twice your speed) resolves an attack against you.
+(5) Teleport to a location adjacent to the triggering enemy.",10,"4W,4R,(12)",4,,,4,,8,,10,,,,,,,,,,,,4R exclusive,,,
+0,Maneuver,Lend a Distraction,(5) ally's next action doesn't provoke,"(5) to assist an ally with a Con check, producing a distraction for stealth purposes (hits as a penalty to opponent's dicepool), preventing distracted target from being able to take attacks of opportunity...",5,"7(W|R),(9)",6,,,6,,6,,5,,,,,,,,,,,,3R exclusive,,,
+0,Maneuver,Looming Strike,Enemy takes damage if it moves after being hit,"Make an attack. Net hits do not contribute to damage. When the enemy moves before the start of your next turn it must soak the modified DV including the net hits.
+_______
+The enemy must soak the modified DV each time it moves.","15
+25","6R,6(B|R),(15)
+9R,9(B|R),(24)",,,,,,,,15,40,,,,,,,,,,,,,,
+0,Maneuver,Lunge,"Attacking technique with extra range and added movement. Bonus damage, cannot attempt active defense until start of next turn.","At the start of a lunge you may move up to two squares in a straight line, this movement does not provoke attacks of opportunity. You are treated as charging for this attack (+2 dicepool). After attempting a lunge you may not attempt any active defense until the start of your next turn.",5,"4(B|R),(6)",,,4,4,,4,,5,,,,,,,,,,,,2R exclusive,,,
+0,Maneuver,Make Time for That,"Spend 1 luck, gain 10 init, spend this only on red abilities","Spend 1 luck, gain 10 init, spend this only on red abilities. Nonaction",5,"7R,(9)",,,,6,,6,,5,,,,,,,,,,,,3R exclusive,,,
+0,Maneuver,Mean Green Stompy Machine,+n/+x trample,"Up to cha friendly targets get +6 on all dicepools involving STR or BOD, +6 DV on weapon attacks that scale with STR, ignore enemies' full defense. For each subject this benefit expires at the end of their turn. Extra action (10)",80,"24G,(30)",,,,,,,,80,,,,,,,,,,,,R8-10 G exclusive,,,
+0,Maneuver,Mirrored Edge,Consecutive attacks generate additional attacks,"Make an attack with your weapon(s). Then make another attack for each consecutive turn beyond the first you have used this maneuver this round. (ex: third turn in a row, make three attacks). ",40,"15R,(30)",,,,,,,,40,,,,,,,,,,,,what color was this?,,,
+0,Maneuver,My body as a shield,(5) take a hit meant for an adjacent ally,(5) When an adjacent ally would next be hit by an attack you are hit by that attack instead.,5,"4W,(6)",2,,,,,2,,5,,,,,,,,,,,,2R exclusive,,,
+0,Maneuver,Necropotence,"spend life, boost init","Spend X life and X Drain when rolling initiative, you may reroll all dice of X or lower. Additionally you may pay 4 life and 2 Drain per (5) of the init cost of an action you otherwise do not have initiative for.",30,"14B,(18)",,,12,,,12,,30,,,,,,,,,,,,6R exclusive,,,
+0,Maneuver,Ninjutsu Decoy,"Set up a decoy at your position, turn invisible","full action,make a stealth roll and leave behind a convincing decoy. Decoy fades after sustaining one hit. Enemies may see through the decoy with an (OPPOSED CHECK). (COOLDOWN)",15,"9(U|B),(18)
+",,6,6,,,12,,30,,,,,,,,,,,,6R limited,,,
+0,Maneuver,Noncommital Blow,"if this attack misses, regain a half action","Make an attack, if it misses you regain a half action.",20,R8?,,,,,,,,20,,,,,,,,,,,,,,,
+0,Maneuver,Overreaching Parry,Parry an attack targeting an ally within reach,"(5), roll parry for an attack targeting an ally who is within your reach. The ally uses the larger of your parry roll or their own defensive roll.",10,"7W,(9)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Painful Precision,Take 2 unresisted lethal damage to add one free hit to a roll,"Take 3 unresisted lethal damage to add one free hit to a roll, before dice are rolled.",15,"14B,(18)",,,6,,,6,,15,,,,,,,,,,,,6r exclusive,,,
+0,Maneuver,Phasing,Pass through walls of varying thickness,"As a half action you may fully pass through thin materials and structures up to a few inches thick. Lead and other specific materials cannot be so bypassed. This increases the cost of subsequent phasings by 10 stamina, this cost decays by 1 at the end of each round down to a minimum of 0.
+_____________________________________
+As previous rank, except you may pass through up to a foot in thickness. Cost increase is 8 instead of 10
+_____________________________________
+As previous rank, except you may pass through up to 10'. Cost increase is 6 instead of 8
+_____________________________________
+As previous rank, except the cost increase is 4 instead of 6.
+
+
+With all ranks, if you fail to fully traverse when phasing you are shunted back out to where you started, taking 2 lethal per foot of distance so displaced (rounded up).",20/25/30/35,"6U,(12)
+9U,(18)
+12U,(24)
+15U,(30)
+",,4,,,,4,,20,45,75,110,,,,,,,,,4R/5R/6R/7R limited,,,
+0,Maneuver,Pile On,Trigger: an ally sucessfully attacks an enemy you may spend (5) to make an attack on that enemy ,Trigger: an ally sucessfully attacks an enemy you may spend (5) to make an attack on that enemy ,50,"8W,(24)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Maneuver,Pinning Strike,"Pin target to nearby surface, harder to remove the larger the weapon is.","You may attempt to pin an enemy to a nearby surface. If you hit, do no damage. Instead the enemy is pinned and must roll grapple or AGI + ESCAPE ARTIST vs. TOTAL HITS + (weapon size modifier) to escape. Every successive check gains 1 free hit to escape.
+_____________________________________
+As previous rank, except the target takes damage on hit and on escaping. Net hits do not contribute to damage on the initial attack.
+_____________________________________
+As previous rank, except you may target multiple adjacent enemies, Impaling them together instead of to a surface. Net hits do not contribute to damage on the initial attack. Each victim of the pin must roll to escape separately, their success does not affect the other victims.",5/10/10,"4(R|B),(6) per",,,4,4,,4,,5,15,25,,,,,,,,,,2R/4R/6R exclusive?,,,
+0,Maneuver,Prescient Teleport,Teleport anytime you damn well please,(5) as a nonaction at any time. Resolve one of your teleportation abilities.,40,"19U,(24)",,,,,,,,40,,,,,,,,,,,,R8 exclusive?,,,
+0,Maneuver,Pro X,Grant (+dice) protection from color,Grant (+RANK) protection from color. Color selection is locked upon purchase of this ability. This benefit lasts for one minute or until you conffer Pro X on another target. half Action,10 per,"4W,(6) per",3,,,,,3,,10,20,30,40,50,60,,,,,,,2R per Exclusive?,,,
+0,Maneuver,Rain of Arrows,You can attack an area with arrows,"You can target up to AGI continguous squares with simultaneous ranged attacks, roll one attack roll at -6 dicepool and apply it to each target.",10,"7G,(9)",,,,,6,6,,10,,,,,,,,,,,,3R exclusive?,,,
+0,Maneuver,Rain of Steel,"Spend extra initiative, become a maelstrom of weaponry for one round",full action. (5) All enemies within reach are subject to a melee attack from you at -5 dicepool. All enemies treat the area covered by your reach as difficult terrain. All enemies outside your reach that enter while Rain of Steel continues are subject to a single attack at -5. You are treated as on full parry while Rain of Steel persists. Rain of steel lasts until the end of the round.,30,"6W,8(W|R|G),(18)",8,,,8,8,12,,30,,,,,,,,,,,,6R exclusive,,,
+0,Maneuver,Reactive Block,"You may attempt a free block against enemies you have attacked in melee previously this round
+",Once per round you may attempt a block at (0) against an enemy you have attacked this round.,15,"4W,(9)",6,,,,,6,,15,,,,,,,,,,,,R3 Limited,,,
+0,Maneuver,Rebirth,Touched willing creature is encapsulated in a protective cocoon to prepare for administering amplified healing spells.,"Touched willing creature is encapsulated in a protective cocoon. They can only be targeted by healing effects through the cocoon for the duration, which are at double efficiency. This maneuver may be triggered for a nonaction as part of administering a healing effect.
+When inside the cocoon the creature is unconscious, unaware of its surroundings or the passage of time.
+
+Cocoon duration: 1 minute
+Cocoon barrier rating: 10
+Cocoon Health: 2x CHA",10,"14(W|G),(27)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Reckless Swing,"Take dice pool penalty to improve damage, or shave off enemy's dodge pool","For every -2 penalty you take when attacking with this maneuver add +1 to the damage value of the attack, up to +AGI",15,"9(B|R),(12)",,,6,6,,6,,15,,,,,,,,,,,,R4 exclusive,,,
+0,Maneuver,Red Rover,Group charge,Make a charging attack. Allies can spend (10) to also make a charging attack as an interrupt. If you spend (10) the cost for allies joining the charge becomes (5). Resolve all attacks after you and all allies have moved. ,5,"4W,4R,(12)",4,,,4,,8,,5,,,,,,,,,,,,R4 Exclusive,,,
+0,Maneuver,Redirect,Spend (5) after counterspelling to redirect spell,Spend (5) after counterspelling to redirect spell,5,"7U,(9)",,6,,,,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Maneuver,Retalliatory Strike,Retalliate when struck in melee,"(5) when hit, you may make an attack against the opponent that struck you in melee.",15,"7(W|B),(9)",6,,6,,,6,,15,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Revivify,"Spend luck, restore a recently deceased creature to life.","Spend (2L), heal an ally for CAST STAT*2 without inflicting healing drain. This effect can be used on creatures that have died within the past round, returning them to life if the healing is sufficient to remove excess overflow. This effect requires you to be touching the target.",20,"9W,(18)",12,,,,,12,,20,,,,,,,,,,,,R6 limited,,,
+0,Maneuver,Second Chance,"Spend luck points, rewind turn",Spend 3L as an interrupt. Rewind your turn.,20,"3(U|R),(18)",,12,,12,,12,,20,,,,,,,,,,,,R6 Open,,,
+0,Maneuver,Second Wind,Generate temp hp,half action. Roll BOD + WIL. For every hit you gain 1 temp hp.,5,"4(W|G),(6)",4,,,,4,4,,5,,,,,,,,,,,,R2 Exclusive,,,
+0,Maneuver,Shield Counter,"When an enemy strikes, bash him in the face first",(5) when wielding a shield and an enemy in melee range is making an attack with your shield. The damage from the attack is the Target Number for the physical resist roll the enemy must make. If they fail the physical resist check their attack resolves as a miss.,5,"7W,(9)",6,,,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Shifting Synapse,You may use your physical resist in place of your mental resist at a cost,You may spend an additional (5) when rolling mental resistance to use your physical resistance instead.,30,"8U,8G,(21)",,,,,,,,30,,,,,,,,,,,,,,,
+0,Maneuver,Smothering Grapple,Grapple vs. phys res,"Make a melee attack roll to grapple. 
+Resist: Physical res
+Soak: Physical soak
+eDV = STR
+1+ unsoaked eDV yields grapple",15,"2R,2G,(9)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Spatial Slip,"boost dodge, teleport after dodge roll","spend an additional (5) as part of a dodge. Gain +5 dice, after resolving the dodge you may trigger one of your Extra action teleportation abilities as a nonaction.",10,"9U,(18)
+",,12,,,,12,,5,,,,,,,,,,,,R6 Limited,,,
+0,Maneuver,Spell Reflection,Spend (5?10?) when successfully resisting a spell to redirect it,"Spend (5) when you successfully resist a direct spell to choose a new target for the spell, resolving it as if cast by the original caster.",10,"9(U|R),(12)",,8,,8,,8,,10,,,,,,,,,,,,R4 Exclusive,,,
+0,Maneuver,Spread shot,You may attack multiple opponents as part of a single ranged attack,"Make a ranged attack against however many targets you choose in a 90 degree cone within your first range increment, splitting your dicepool among all targets.
+",5,"2(R|G),(6)",,,,,,,,5,,,,,,,,,,,,,,,
+0,Maneuver,Spring up,Stand up as Extra action,Stand up as Extra action that does not provoke attacks of opportunity. All your jumps are treated as having a running start.,4,"2(R|G),(3)",,,,2,2,2,,4,,,,,,,,,,,,R1 exclusive,,,
+0,Maneuver,Stalwart Vanguard,"You always go last during an initiative pass, gain (armor?)","You may opt to act last in an initiative pass before initiative is rolled. If multiple creatures would act last, tiebreak as usual with actual initiative rolls, then REA and finally LUK. Gain +1 armor soak per rank until the start of the next initiative pass.",30 per,"4G,(6)
+9G,(12)
+14G,(18)
+19G,(24)
+24G,(30)",2,,,,2,2,,30,60,90,120,150,,,,,,,,R1-> exclusive,G,,
+0,Maneuver,Stay death,Target ally (gains + on atk and ignores one lethal blow) until next initiative roll.,"full action. One ally within (CHA*10 ft) gains 1 die on all attack rolls. Negate the damage from the next attack that would reduce the subject's health to or below zero, if this occurs the die bonus ends. 
+1L Trigger this ability as an interrupt.
+These benefits last until the next initiative roll.",10,"7(W|B),(15)",8,,8,,,8,,10,,,,,,,,,,,,R5 limited,,,
+0,Maneuver,Stun Punch,"Make a melee attack, stun chance. Can be used in grapple.","phys soak
+0: no stun
+1: target can either move or take other actions on its next turn, not both
+9: target loses its next turn
+15+: target is stunned until the end of its next turn",15,"10W,(21)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Sunflask,"Prepare (number) heals at dawn, heals WHITE characters for more","Prepare (WIL) flasks at dawn. A character who consumes a flask rolls 4xBOD (or the creator of the sunflask rolls first aid) and heals up to that many hits, taking drain as normal for magical healing. You gain +4 to the check if the recipient is a WHITE character.",10,"4W,(9)
+",6,,,,,6,,10,,,,,,,,,,,,R3 limited,,,
+0,Maneuver,Surge of Resilience,IRON HEART SURGE THE SUN,"(5) or Extra action, make another roll against a debilitating condition (i.e. stun) as if you were resisting it the first time. Success removes the condition.",15,"4(W|G),(9)",8,,,,8,8,,15,,,,,,,,,,,,R3 limited (open?),,,
+0,Maneuver,Tactical Surge,"1L, use a white maneuver immediately as though it was an interrupt.","1L, use a white maneuver immediately as though it was an interrupt.",10,"9W,(12)",8,,,,,8,,10,,,,,,,,,,,,R4 Exclusive,,,
+0,Maneuver,Temporal Extortion,"Spend life, take your next turn","Spend 4 life during your turn (nonaction), you act again after the end of this turn if you have the initiative to do so  ",15,"12B,(15)",,,10,,,10,,15,,,,,,,,,,,,R5 limited (exclusive?),,,
+0,Maneuver,Thunderous Impact,"Can attack multiple opponents at range with thrown heavy weapon. AOE = STR + (3 if weapon is 2h) + rank
+Targeted area becomes difficult terrain if damage threshold is met. (Damage value + rank ≥ threshold)
+","(5) Can attack multiple opponents at range with thrown heavy weapon. AOE = (STR + (3 if weapon is 2h) + rank) ft
+Targeted area becomes difficult terrain if damage threshold is met. (Damage value + rank ≥ threshold)
+",10,"7(R|G),(15)",,,,10,10,10,,10,,,,,,,,,,,,R4-5 limited,,,
+0,Maneuver,Time Dilation,boost later init,"Next round, maximize all your initiative dice. You can spend 1 luck point to trigger this ability as an interrupt in response to the start of a round (before initiative is rolled).",60,"15U,(30)",,20,,,,20,,60,,,,,,,,,,,,R10 exclusive?,,,
+0,Maneuver,Toss,"toss creature, deal damage or enable ally to make attack","1. You must have an enemy grappled or a willing adjacent ally
+2. Make a ranged attack with 1(ranges)
+3. If enemy, base damage = (?body). If ally, your net hits contribute to the dice pool on their attack
+",5,"7R,(9)",,,,6,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Trick shot,"Not bending bullets, but you can shoot around corners n such",At one point during the trajectory of your projectile you may have it take up to one 90 turn.,5,"7(R|G),(9)
+",,,,6,6,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Triumphant Shout,Mass intimidate on knockout/kill,(5) as a nonaction after your attack renders a creature dead or disabled. You may attempt an intimidation check against all opponents that can see both you and the aforementioned victim.,5,"7(R|G),(9)",,,,6,6,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Twin Strike,Hit simultaneously with two weapons,(10) Make two attacks at full dice pool against single target. On one hit apply damage as normal. On two hits apply half the net hits of the lower net hit roll to the higher roll and apply that as damage..,20,"12(W|R),(15)
+",,,,8,,8,,20,,,,,,,,,,,,R5 Exclusive,,,
+0,Maneuver,Twist the Blade,Followup attack if you strike an enemy that was not actively defending.,"Trigger: an enemy takes damage from your light weapon melee attack and was not actively defending. Spend (5) as a nonaction. Make another attack with the same weapon at half base DV, this attack cannot be actively defended against, this attack has 50% armor penetration.  
+",20,"7B,(15)
+",,,,,,,,20,,,,,,,,,,,,,,,
+0,Maneuver,Unsettle,"Startle an enemy out of their action, but they act swiftly afterwards","half action. Target an enemy. The next half or full action they attempt before your next turn triggers an attack from you. This attack does no damage on a successful hit, instead negating their action. On their next turn the enemy gains 15 initiative (regardless of hit or miss).",15,"7(B|G),(15)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Maneuver,Vanguard Strike,"You lead the attack, your allies becoming more effective at helping you focus a target down.","Make a melee attack, net hits don't contributeto damage. The target is marked on hit and all allies attacking the marked target gain +1 hits when attacking the target. You may only have one target marked by vanguard strike at a time, striking a new target changes the target. The target is no longer marked at the end of the next round.",5,"12W,(15)",10,,,,,10,,5,,,,,,,,,,,,R4/5 exclusive?,,,
+0,Maneuver,Vault,Target is enchanted with the powers of flight for the round,half Action. One ally within (RANGE) gains a fly speed equal to their movement speed until the end of the round.,25,"8(U|R|B|W),(9)",,6,,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,War stomp,"Str check vs. balance checks, knock enemies prone in AoE or stagger.",Roll 2 * STR. All enemies within (STR/2) squares must roll higher on AGI + Gymnastics or be knocked prone. ,10,"7G,(9)",,,,,6,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Warden's Strike,Attack reduces victim's initiative. ,Make an attack. Net hits do not contribute to damage. Deal net hits as initiative damage instead. ,10,"6W,6U,(15)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Maneuver,Warning Blow,Target must take active defense if able,"Make an attack with your weapon, the target must actively defend if able.",5,"5(U|R),5(U|G),5(R|G),(21)",,,,,,,,5,,,,,,,,,,,,,,,
+0,Maneuver,Weather the blow,"Spend initiative, gain damage dampening reactively against one hit","(5) as an interrupt, gain damage dampening equal to your BODY against one attack.",10,"7(W|G),(9)",6,,,,6,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Maneuver,Whirlwind attack,Cleave 360,"You may attack any number of enemies in the one attack splitting your full dicepool among them. (Note that reach is an attack modifier and not innate to the dicepool, thus it is added to every attack after the dicepool has been split)
+________________________
+As previous rank, but you also gain the option to spend (10) Attack all enemies within reach.","5, 10","4(W|R|G),(6)
+9(W|R|G),(12)
+",,,,4,,4,,5,15,,,,,,,,,,,"R2,R4 exclusive",,,
+0,Maneuver,zurgo Smash!,attack a random adjacent enemy at increased potency,When threatening two or more enemies make an attack against a randomly determined target at +2 DV.,10,"3R,(12)",,,,,,,,10,,,,,,,,,,,,,,,
+0,"Maneuver
+",Luck of the Hour,spend init in place of luck,"You may spend (10) per (L) for abilities that cost (L)
+ instead of their normal cost",10,"9R,(18)",,,,,,,,10,,,,,,,,,,,,R6 R limited?,,,
+0,Maneuver ,Balance of Body and Soul,"Convert drain into health/stam, roll to purge a condition","half action. You may spend 1 drain to heal 2 stamina or health. Make another roll against an ongoing condition, adding half your WIL or BOD (your choice) to the roll.",20,"3U,3G,(15)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Manuever,Mcguiver,"For better or for worse, things seem to unexplicably break or work when you mess with them",You may attempt to fix or break mechanical and/or magical devices such as locks or crystal balls.  Who knows what will happen!,5,"7(U|R),(9)
+",,6,,6,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Manuever,Revitalize,Remove debuff on ally to trigger buff,"full action. Target ally rolls again against all ongoing debuffs, one at a time, adding the new roll against that debuff to all prior rolls made for resisting that debuff. Roll against one debuff at a time,  stopping if this ability causes a debuff to be removed or if all debuffs are rolled against once. If this ability removes a debuff the target gains +4 dice on the next action they take during their next turn.",20,"5W,5G,(21)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Mark,Bond of Pursuit,"Mark enemy, pursue and punish their ignorance of you in combat.","As a Extra action you may mark a target within (CHA*5)ft with your Bond of Pursuit. This mark persists for 24 hours or until the subject is slain. You may only have one subject marked at a time and cannot mark another while an older mark exists.
+Any mode of movement that takes the subject away from you while the subject is within your reach provokes an intercept at (0) before the movement is resolved. You may shift as a nonaction to follow the subject after it has moved, or teleport as a nonaction if you possess capabilities at least matching that of the subject. ",15,"7(W|R|G),(9)
+",6,,,6,6,6,,15,,,,,,,,,,,,R3 exclusive,,,
+0,Mark,Vendetta,"Declare vendetta target, bonus vs. them, penalties vs. other targets. Delay on new vendetta target if you fail to slay current one.","Nonaction. Spend (1) luck to declare a vendetta against a target within (RANGE). Gain 1 free hit on all attacks against that target while it is subject to your vendetta. It gains 1 free hit on all attacks against you while it is subject to your vendetta. Your vendetta ends when the target falls unconscious, you fall unconscious, or you spend (1) luck to change the target of your vendetta.",10,"7B,7(B|R),(18)
+",0,0,12,12,0,12,,10,,,,,,,,,,,,R6 exclusive,BR,,
+0,Metamagic,Caustic demise,Enemies killed by your acid abilities explode ,Enemies killed by your acid abiilities explode for (initial DV of effect that delivered the killing blow) damage to adjacent enemies,30,"9(B|G),(12)",,,8,,8,8,,30,,,,,,,,,,,,R4 exclusive,,,
+0,Metamagic,Centering Technique,"By spending longer to cast a spell, you reduce the drain that spell has on you.  You gain the ability to cast a spell over multiple rounds.","You may extend the casting duration of a spell by a multiple of its base casting action. For each increment add half your WIL to the drain dicepool for this casting, up to a total of 2*WIL contributed by this ability. For each interval you can increase the FORCE of the spell by up to 1 over the normal maximum FORCE to a cap of 1.5x CAST STAT. Casting at FORCE above your normal maximum causes drain damage to be physical instead of stamina damage.
+
+Possessing this ability removes WIL from your drain soak pool for all spells not cast with centering technique.",0,"WUBRG,(0)",0,0,0,0,0,0,,0,,,,,,,,,,,,R0 global,,,
+0,Metamagic,Contingency,Invest luck into holding spell until chosen trigger,"Spend 1 Luck, you can’t regain this point of luck while you have an active contingency. Cast a spell to be your contingency, noting your current dicepool and other parameters, resisting drain when creating this contingency. Set a condition under which the contingency will trigger...",30,"10U,(21)",,14,,,,14,,30,,,,,,,,,,,,R7 limited,,,
+0,Metamagic,Delayed Enhancement,You may delay the effects of a buff to begin at the start of the next round.,You may delay the effects of a buff to begin at the start of the next round by spending a Extra action as part of the action of activating the buff effect.,5,"9(W|U|G),(12)",,,,,,,,5,,,,,,,,,,,,R4 exclusive,,,
+0,Metamagic,Echoing spell,"Increase spell drain by 3, spell can be recast within one round as a nonaction on your turn","You may Increase a spells drain by 3.  If you do, the spell can be recast as a nonaction on your next turn, drain is not rolled for this recast.",10,"7U,7(W|U),(18)
+",6,12,,,,12,,10,,,,,,,,,,,,R6 exclusive,,,
+0,Metamagic,Fork,Cast a copy of a spell being cast,"Spend (15), cast another copy of the spell",10,"7R,(9)",,,,6,,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Metamagic,Frostborn,Deal 1 damage when your cold effects would reduce an opponent's initiative below zero,"When your Cold effect would reduce an opponent's initiative to a value equal to or below 0 you also deal 2 cold damage, this ability cannot trigger itself. ",15,"3B,3U,(15)",,5,5,,,10,,15,,,,,,,,,,,,R5 limited,,,
+0,Metamagic,Guiding Nimbus,You may imbue your radiant attacks with lingering brilliance that enables allies to better strike the target,Before rolling a radiant damage attack you may decrease your DV by 4. On a successful hit the target is illuminated with a Guiding Nimbus until the end of the round. Allies suffer no vision penalties to strike the target and gain superior ground when attacking targets afflicted with Guiding Nimbus.,10,"9W,(18)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Metamagic,Irresistible Spell,"(5) as a cost when casting spell, this spell cannot be countered","(5) as a cost when casting spell, this spell cannot be countered",10,"4G,(9)",,,,,6,6,,10,,,,,,,,,,,,R3 limited,,,
+0,Metamagic,Lightning Rod,You can choose for your lightning damage to apply a static charge instead of potentially inflicting a stun. Reduce enemies lightning resistance by 1 for each static charge. You can consume charges to increase the DC of a stun you are attempting to inflict. You can consume charges for your lightning damage to chain.,"You can choose for your lightning damage to apply a static charge instead of potentially inflicting a stun. Reduce enemies lightning resistance by 2 for each static charge. You can consume charges to increase the DC of a stun you are attempting to inflict by +1 for each charge. You can consume charges for your lightning damage to chain (3 charges per additional target, targets of the initial effect cannot be targets of the chain).  ",15,"4U,4R,(18)",,6,,6,,12,,15,,,,,,,,,,,,R6 limited,,,
+0,Metamagic,Lingering (SPELL SCHOOL),Sustained spells of chosen school persist for up to RANK rounds after you stop sustaining them,Sustained spells of chosen school persist for up to RANK rounds after you stop sustaining them,30/40/50,"7U,(9)",,6,,,,6,,30,70,120,,,,,,,,,,R3/R6/R9 exclusive,,,
+0,Metamagic,Mass combustion,Enemies you set alight have a chance to set adjacent enemies alight each turn,"For enemies that you cause to burn, at the start of their turn adjacent enemies must resist the current flame intensity with Armor Soak or catch on fire.
+",15,"9R,(12)",,,,8,,8,,15,,,,,,,,,,,,R4 exclusive,,,
+0,Metamagic,Multicast,"Multispelling bonus, limit drain increase, extra dice",You do not suffer increased drain for casting multiple spells in one action. Gain +1 dice to each spellcasting roll when multicasting. Applying this metamagic takes your Extra action.,20,"7(U|R),(15)",,10,,10,,10,,20,,,,,,,,,,,,R5 limited,,,
+0,Metamagic,Permafrost,Initiative damage beyond 0 is applied to enemy's next turn,Initiative damage resulting from your cold effects that would reduce an enemy's initiative below 0 is applied towards their next round's initiative.,5,"9U,(12)",,8,,,,8,,5,,,,,,,,,,,,R4 exclusive,,,
+0,Metamagic,Sculpt Spell,Reshape AoEs. Increase drain by 1.,"For spells with an AOE, you may shape the radial aoe into either a a cylinder (F/4*STAT wide, 3F/4*STAT high), cone (F*STAT ft.), line (4*F*STAT), ball (F/2  * STAT radius), or 4 cubes (F/4 * STAT ft.).",5,"7U,(9)",,4,,2,2,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Metamagic,Spiritual Transferrence,You may pay drain in place of healing drain your ally would take when receiving healing from you.,You may pay drain in place of healing drain your ally would take when receiving healing from you.,15,"3G,(15)",4,,,,,4,,15,,,,,,,,,,,,,,,
+0,Metamagic,Stoke the flames,Increase severity of ignite by hitting a burning target,"If you would apply a burn to an already burning enemy, increase the current burn by 4 instead if the new burn is not already 4 greater.",15,"6R,(12)",,,,8,,8,,15,,,,,,,,,,,,R4 limited,,,
+0,metamagic,Tactical Spell,"Your area spellcasts fold around specified targets, ignoring them","adds +2 drain, any number of subjects that would be subject to the aoe spell being augmented can be designated as ignored by the spell",5,"9U,(18)",,9,,,,,,5,,,,,,,,,,,,,,,
+0,Metamagic ,Reach Spell,You may extend the reach of a spell,Add +2 drain to double the range of the cast spell,20,R,,,,,,,,20,,,,,,,,,,,,,,,
+0,Metamagic ,Selective Spell,You may exclude a number of squares from an AoE targeted effect,Extra action in addition to the action of casting the spell: you may exclude up to (CAST STAT)/2 squares from being affected by the AoE.,20,R,,,,,,,,20,,,,,,,,,,,,,,,
+0,Metamagic ,Spell Siphon,"After successful counterspell, gain strength at arms","After successfully counterspelling, gain +1DV (str scaled weapon) and +1 reach for the next minute or until you make a successful attack that deals damage.",20,"4U,4G,(12)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Absorbing Dispersal,Counterspelling triggers a heal,Whenever you successfully counterspell you may heal target ally within CHA*10ft for 4.,20,"4W,4U,(12)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Acrobat,Move at full speed doing gymnastics at no penalty. Ignore most penalties for having hands full during gymnastics.,move at full speed doing gymnastics at no penalty. Ignore most penalties for having hands full during gymnastics.,5,"4(U|R),(6)",,4,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Adaptive Resistance,Gain dampening/elemental dampening after taking appropriate damage type,"After taking damage, gain RANK*2 damage dampening that only applies to that damage type. This resistance expires after 10*BOD turns, or when this ability is triggered again.",10 per,"7G,(9)
+14G,(18)
+21G,(27)
+",,,,,6,6,,10,20,30,,,,,,,,,,R3 exclusive,,,
+0,Passive,Adrenaline Surge,You are more likely to go first at the start of a round,Treat your initiative as 5 higher for determining the acting order at the start of a round.,10,"6R,(12)",,,,8,,8,,10,,,,,,,,,,,,R4 limited,,,
+0,Passive,Arresting Impact,Dealing damage to an enemy stops its movement,"When you hit an enemy with an AoO or readied attack, it loses all remaining movement for the turn, stopping in place if it was moving. Airborne creatures may fall if they cannot hover.",10,"6(W|B),(12)",8,,8,,,8,,10,,,,,,,,,,,,R4 limited,,,
+0,Passive,Bardic Knowledge,Generally applicable knowledge checks,"For a given topic you may make a Bardic Knowledge roll of (2*RANK + INTUITION or LOGIC as relevant). The general thresholds for recalling useful information are as follows.
+1: Common Knowledge
+3: Uncommon knowledge
+4: Obscure / Hard to come by
+5: Extremely Obscure
+","5
+10
+15
+20","2U,(3) per",,2,,,,2,,5,15,30,50,,,,,,,,,R1.2.3.4 exclusive,,,
+0,Passive,Blandness,"Harder to remember, harder to pick out of a crowd",Apply a -3 penalty to all attempts to notice you in a crowd or remember your features. This bonus does not apply if exotic clothing / gear would make you stand out.,4,"4B,(6)",,,4,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Blindsense,Perceive general location of things,10/30/60/100ft blindsense,"10
+20
+30
+40","7(B|G),(9)
+12(B|G),(15)
+16(B|G),(21)
+21(B|G),(27)",,,6,,6,6,,10,30,60,100,,,,,,,,,R3/5/7/9 exclusive,,,
+0,Passive,Blindsight,Pinpoint awareness of things around you,5/15/30/50ft blindsight,"20
+40
+60
+80","9(W|U|G),(12)
+14(W|U|G),(18)
+19(W|U|G),(24)
+24(W|U|G),(30
+",,,8,,8,8,,20,60,120,200,,,,,,,,,R4/6/8/10 exclusive,,,
+0,Passive,Blinkstrike,"You may teleport as part of your attack action, awareness permitting","You may use a teleport ability as part of an attack action. Use your departure location for determining LoS.
+",20,"6U,10(U|B|R),(21)",,,,,,,,20,,,,,,,,,,,,R7 exclusive,,,
+0,Passive,Blood Magic,"Soak drain with BOD, take drain as health.",Lose all sources of WIL to your drain soak dicepool. Gain BOD to your drain dicepool. You have no drain bar. When you are the recipient of healing the caster must give up health or stamina at a 1:1 rate to heal you. You take all drain damage as health damage.,0,"4B,(6)",,,4,,,4,,0,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Blood Mana,You may take drain as lethal,You may choose to take any amount of drain you would suffer as twice its value in lethal damage.,30,"7B,(15)",,,10,,,10,,30,,,,,,,,,,,,R5 limited,,,
+0,Passive,Blunt the Storm,Shield bonus vs. AoE indirect effects,Your shield bonus applies against area attacks and you can block area attacks.,5,"2W,2U,(6)",4,2,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Burrowing,"various burrow speeds, limited burrow to 100% uptime","
+5ft per round
+___________
+10ft per round
+______
+20ft per round
+________
+Normal Movement speed
+",20 per,6(R/G) +2,,,,6,6,6,,20,40,60,80,,,,,,,,,R3/4/5/6 exclusive,,,
+0,Passive,Camoflague,Hide in plain sight: terrain,"Select a climate region, this ability may be purchased multiple times, once for each such region. When in chosen region you may attempt stealth checks at any time as if unobserved.",15,"7G,(9)",,,,,6,6,,15,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Catlike,"Reduced falling damage, better climbing jumping escape artist","Reduce the effective height of all falls by 20', then halve the distance for purposes of damage sustained.",4,"2(U/B)
+2(U/G)
+2(B/G)",,4,4,,4,6,,4,,,,,,,,,,,,R2/R4/R6? exclusive,,,
+0,Passive,Changeling,"Alter appearance, immitate others","Assume disguises in 12 seconds
++6 on disguise
++4 on mimicry
+Gain Shapeshifter subtype",10,10(U/B),,10,10,,,10,,10,,,,,,,,,,,,PENDING SHAPESHIFT REWORK,,,
+0,Passive,Chaotic Haversack,"Trinkets and objects seem to end up in your backpack, but you didn't put them there.","As a standard action, you may pull out any half non-magical inanimate object (rope, candle, etc).  You may have up to a total of 3 spontaneously generated items at a time; these items may be returned to the sack and exchanged.  Items spontaneously created are entirely mundane items posessing no magical properties.  Should a spontaneously generated item be unreturned to the sack there is a 24 hour period before that use is restored. Ability to pull out various low value items without specifically having them in inventory, representing character's collection of useful odds and ends. Pull out an item based on hits: 1. basic object 2. half item 4. full item 5. exotic substance
+
+Dicepool of LOG+INT+3",5,"4R,3(U|R|G),(9)
+",,4,,8,2,8,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Close and Personal,By closing to CQC you negate enemy's reach when using(smaller) weapons,By entering an opponent's square (check to circumvent being pushed out) you treat that opponent as having no reach for attacks involving you and that opponent so long as you are attacking/defending with light weapons or lighter.,5,"2B,2R,(6)",,,,,,,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Counterbolt,Counterspelling generates a lightning bolt,Whenever you successfully counterspell you may immediately launch a DV = 6+CAST STAT lightning bolt at a single target.,20,"4U,4R,(12)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Cunning Adaptation,Open up another ability of R6 or lower for purchase regardless of the color req.,Pick any single ability of R6 or lower. You may purchase it.,50,"12U,12G,(30)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Passive,Darkvision,"See in pure darkness, monochromatic",30/60/120ft darkvision,"5
+25
+55
+","3(B|G|R),(9) per",,,6,,6,6,,5,30,85,,,,,,,,,,R2/R4/R6 limited,,,
+0,Passive,Deadly Momentum,Combat bonuses for moving each round,"If you move 3 or more squares during your turn your next attack made during that turn has 
+superior ground.",30,"9R,(18)",,,,8,,8,,30,,,,,,,,,,,,R4 exclusive,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,Passive,Delay Potion,Upon drinking a potion you can choose to delay its effects for up to BODY+WILL hours,Upon drinking a potion you can choose to delay its effects for up to BODY+WILL hours,5,"2U
+2G",,2,,,2,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Diehard,Act normally while bleeding out,"You do not fall unconscious when your condition track is filled, you still bleed out as normal.",5,"7(R|G),(9)",,,,6,6,6,,5,,,,,,,,,,,,R3 excl,,,
+0,Passive,Distraction,Flanking benefits,"When outnumbering an enemy in melee, that enemy may not take attacks of opportunity for triggers other than movement.
+",5,4(W/R),4,,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Driven by Pain,"Gain 2 initiative per lethal damage you take, gain 1 initiative per nonlethal damage you take","Gain 1 initiative per lethal damage you take, gain 1 initiative per 2 nonlethal damage you take",20,"6B,6(B|R),(15)
+",,,10,10,,10,,20,,,,,,,,,,,debating making just BR,R5 exclusive,,,
+0,Passive,Durable,"hp +1, overflow hp +1",Increase your maximum health and your overflow health by 1 each.,"4
+8
+12","per: ,(3)",,,,,2,2,,4,12,24,40,60,84,112,144,180,220,"
+",,R1-10,,,
+0,Passive,Elusive combatant,first (Y) squares of movement do not provoke,The first (1/3/*) squares of each movement you make do not provoke attacks of opportunity.,"5
++5
++10","4(U|B),(6)
+9(U|B),(12)
+14(U|B),(18)
+",,4,4,,,4,,5,10,20,,,,,,,,,,R2/R4/R6 exclusive,,,
+0,Passive,Evasion,"Armor encumbrance limitation, avoid area effects","While you are lightly encumbered you may attempt a dodge roll when subjected to an AoE you are aware of. (5) make a gymnastics check and move (X) per hit without provoking. If this places you outside the AoE you are no longer targeted by it. Additionally, double your dodge skill dice on active dodges and full dodges.",10,"7(U|B|R),(9)",,6,6,6,,6,,10,,,,,,,,,,,,R3 Exclusive,,,
+0,Passive,Extraordinary Defender,Guaranteed a minimum of take 4 on parries and blocks,When rolling parry/block treat any value below the take-4 value as the take-4 value,30,16,16,16,16,16,16,16,,30,,,,,,,,,,,,R8 global,,,
+0,Passive,Extraordinary Evasion,Guaranteed a minimum of take 4 on dodge,When rolling dodge treat any roll below the take-4 value as the take-4 value,50,16,16,16,16,16,16,16,,50,,,,,,,,,,,,R8 global,,,
+0,Passive,Extraordinary Resilience,Guaranteed a minimum of take 4 on chosen save,"Choose a resistance (physical, mental). When rolling that resistance treat any roll below the take-4 value as the take-4 value. 
+Rank 2: applies to both resistances","30,40",16,16,16,16,16,16,16,,30,70,,,,,,,,,,,R8 global,,,
+0,Passive,Extraordinary Skill,Guaranteed a minimum of take 4 on chosen skill,Choose a skill (except spellcasting or weapon skill). When rolling that skill treat any roll below the take-4 value as the take-4 value. ,20,16,16,161,16,16,16,16,,20,,,,,,,,,,,,R8 global,,,
+0,Passive,Fan of Knives,You can use manevuers on light thrown weapons as if they were melee weapons.,You may use manevuers for melee weapons when making ranged attacks with light thrown weapons at targets within (AGI/2)*5 ft,5,"9(B|R),(12)",,,,,,,,5,,,,,,,,,,,,,,,
+0,Passive,Fast Talker,No penalty for rushing Con checks. Allow for secondary con roll to avert social blunder.,You no longer take a penalty for rushing a con attempt. You may attempt a con roll to smooth over an unsuccessful negotiation or etiquette roll.,4,"4(B|R),(6)",,,2,2,,2,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Faster movement,Increase base movespeed,5 extra movement speed per rank,4per,"1(R|G),(3) per",,,,2,2,2,,4,8,12,16,20,24,28,32,36,40,,,R1...,,,
+0,Passive,Fate's Bounty,Heal whenever you spend luck,"Whenever you spend a point of LUK, you may heal 2 stamina, drain or health per point of LUK spent.",20,"3G,(15)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Fearsome reputation,bonus on diplomacy / intimidate varying,"Gain +3 dice on intimidation/diplomacy/leadership checks when the subjects of such checks are aware of your reputation. Others so aware of your reputation gain a +3 bonus on checks to recognize you, recall seeing you, etc. so long as you are not adequately disguised.
+",5,"1(B|W),(3)
+",2,,2,,,2,,5,,,,,,,,,,,,R1,,,
+0,Passive,Fed by Fear,Generate expendable offensive dice when you successfully fear an enemy,"Every time your fear effect is not fully resisted/soaked by one or more enemies add 2 dice to your Fearmonger pool. You may expend dice from your fearmonger pool to boost attack rolls, charisma based skill rolls, and rolls that directly produce fear effects. Your fearmonger pool is capped at CHA/2 and expires after a minute of not gaining any dice.",20,"10B,(21)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Fickle sinew,All successful melee attacks against you are subject to a free disarm. Attacker's AGI + SKILL vs. BOD,All successful melee attacks against you are subject to a free disarm. Attacker's AGI + SKILL vs. BOD,5,"4G,(9)",,,,,6,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Passive,Finger Lopper,Deal damage on successful disarm,"Disarming an enemy subjects them to a hit at normal weapon damage, net hits do not contribute to damage.",5,"3W,3B,(9)",3,,3,,,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Passive,Flawless Defense,Any full defense action allows you to defend with any relevant dicepool of your choosing.,Any full defense action allows you to defend with any relevant dicepool of your choosing.,80,"12W,(24)",12,,,,,12,,80,,,,,,,,,,,,R6 exclusive,,,
+0,Passive,Flawless stride,ignore some/all difficult terrain,ignore some/all difficult terrain,5,GR,,,,,,,,5,,,,,,,,,,,,,,,
+0,Passive,Flight,Various degrees of flight,"Ignore falling damage so long as you can manage a glide, glide ratio of 2:1
+_____________________________________
+Fly up to a minute, requiring 10x the amount of rest to recoup your flight capabilities. Very wide turns
+_____________________________________
+Continuous flight, wide turns
+_____________________________________
+Continuous flight, faster, hover
+_____________________________________
+Continuous flight, fastest, hover, turn on a dime",10/30/20/20/20,"9(W|U|R|B),(12)
+12(W|U|R|B),(15)
+14(W|U|R|B),(18)
+16(W|U),(21)
+19(W|U),(24)",8,8,8,8,,8,,10,40,60,80,100,,,,,,,,R4/R5/R6/R7,,,
+0,Passive,Food Taster,"Detect poison, venom resistance","Your past career as a paid food taster has granted you the experience to detect poisoned food.  Additionally you are immune to venom of (idfk how poisons work but I assume it would be like catagories so like snakes vs spiders idk)
+
+Gain +4 on perception checks to notice the presence of poison. In addition you are either immune to one poison of your choosing or have a +2 bonus against all poisons.",5,"1(B|G),(3)",,,2,,2,2,,5,,,,,,,,,,,,R1,,,
+0,Passive,Force of Presence,Increase maximum auras you can sustain,You may sustain two auras at once,100,"12W,12G,(30)",9,,,,9,18,,100,,,,,,,,,,,,R10 exclusive,,,
+0,Passive,Fortunate Fool,"All critical failures become normal failures, all normal failures restore a point of luck","All critical failures restore a point of luck and are reduced to normal failures, subject to DM discretion. Do not apply this to trivial or nondramatic failures. ",5,"7R,(9)
+",,,,6,,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Passive,Freedom of movement,Bonus to resist movement impairing effects,2*RANK to resist movement impairing effects (including grapples),"20
+40
+60","3W
+3(R/G) per
+ +4",3,,,3,3,6,,20,60,120,200,,,,,,,,,R3/R5/R7/R9 limited,,,
+0,Passive,Ghostsense,Perceive general location of things that are ethereal,10/30/60/100ft ghostsense,"10
+20
+30
+40","7(W),(9)
+12(W),(15)
+16(W),(21)
+21(W),(27)",,,6,,6,6,,10,30,60,100,,,,,,,,,,,,
+0,Passive,Glamour,Good looks and a likable presence such that most find it easy to open up to you.,"Unless otherwise on guard, others are more likely to react favorably (one step on impression). When making social rolls you may take 2 drain to cause your dice to explode, though if you do so and fail there are more serious consequences as adjudicated by the GM.
+Everyone succeeds on 4s to remember events involving you.",15,",(21)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Passive,Go the Distance,Improved Athletics,Now a non action to sprint. Enemies do not gain bonus vs you when you sprint Plus something about sprint longer with no exhaustion,4,RW,2,,,2,,2,,5,,,,,,,,,,,,R1,,,
+0,Passive,Hardline Negotiator,Allow second attempts on failed negotiations where there otherwise wouldn’t be one. +3 to negotiation dicepool.,Allow second attempts on failed negotiations where there otherwise wouldn’t be one. ,5,4,4,4,4,4,4,4,,5,,,,,,,,,,,,R2,,,
+0,Passive,Hawk Eyed,Reduce vision penalties by 3,Reduce vision penalties by 3. This includes the penalty for attacking faraway targets.,5,"1G,(6)",,,,,3,3,,5,,,,,,,,,,,,R2,,,
+0,Passive,Heavy Hitter,More likely to knockdown,Reduce the threshold for inflicting knockdown with your melee attacks by 2,15,"4R
+4G",,,,4,4,8,,15,,,,,,,,,,,,R4,,,
+0,Passive,Helping Hand,Ally benefits vs foes you are in melee with,You and your allies gain the benefits of ALLIES IN MELEE COMBAT when making ranged attacks into a melee.,5,(W/G),2,,,,2,2,,5,,,,,,,,,,,,R1,,,
+0,Passive,Hold Breath,Practice and necessity has improved your lung capacity and oxygen usage,Quadruple the time you can hold your breath for without having to roll dice. You gain a +5 bonus against inhalation based poisons.,3,3G,,,,,3,3,,5,,,,,,,,,,,,R2,,,
+0,Passive,Inevitability,Gain attack bonus after missing,"After you miss an attack, gain 2 dice on the next attack you make before the end of the next round.",5,"4R,(6)",,,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,init fixing,"roll 1 extra init die at start, set aside 1 die for next round
+","Roll 1 extra initiative dice at the start of combat and choose one roll to set aside. On subsequent rounds you roll dice as normal, then add this kept die and choose one die among them to set aside for the next round.",30,"9G,(18)
+",,,,,12,12,,30,,,,,,,,,,,,R6 limited,,,
+0,Passive,Init Growth,slowly gain initiative,"At the start of round Y, reroll all initiative dice that are lower than min(Y,1+rank). Round count resets after 5.","20,30,40","7G,(15)
+10G,(21)
+13G,(27)",,,,,12,12,,20,50,90,,,,,,,,,,R5/7/9 limited,,,
+0,Passive,Inspiration,Inspire others to greater acts at key moments,"You gain a pool of CHA inspiration dice. As a Extra action you may give any number of inspiration dice to an ally. A creature that has inspiration dice but does not have this ability may add the inspiration dice on any roll, expending them. This pool refreshes daily, and unspent inspiration expires daily.",15,"3U,(12)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Passive,Invigorate,Recipients of your healing gain +1 die to all checks for a short while,"Recipients of your healing gain +1 die to all checks for a number of rounds equal to half the health restored, rounded up.",10,"12(W|G),(15)",8,,,,8,8,,10,,,,,,,,,,,,R4 exclusive,,,
+0,Passive,It's all in the wrist,"Cheat at games; manipulate dice, cards","You may make a palming check to make games of chance end in your favor.  Gain +4 dice to these checks, you may spend a luck point to ensure a victory.  Additionally, you may spend a point of luck to win a bet limited to gambling such as betting on a fight or race.  May apply circumstance bonuses at the GMs discretion.",5,"4(U|R),(6)",,4,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Killing Hands,Unarmed strikes deal lethal,You can choose for your unarmed strikes to do lethal damage. Your unarmed strike is a 8/2 weapon (medium size).,5,(6),4,4,4,4,4,4,,5,,,,,,,,,,,,R2 global,,,
+0,Passive,Light Sleeper,"You don't take any penalty to perception checks while sleeping, you can act on the turn you wake up","You don't take any penalty to perception checks while sleeping, you can act on the turn you wake up",5,"2(R|G),(3)",,,,2,2,2,,5,,,,,,,,,,,,R1 Exclusive,,,
+0,Passive,Lightning Reflexes,extra initiative dice,(RANK) extra initiative dice,"20
+40
+60","(12)
+(18)
+(24)
+",8,8,8,8,8,8,,20,60,120,,,,,,,,,,R4/6/8 global,,,
+0,Passive,Lingering Aura,The effects of your aura linger after affected individuals leave its zone of effect.,The effects of your auras persist for one round after an affected individual leaves the zone of effect.,20,14,14,14,14,14,14,14,,20,,,,,,,,,,,,R7 global,,,
+0,Passive,Lore Master,Various bonuses granted to combat for identifying enemies,"Once per combat you may attempt to recall relevant information to help combat a type of foe. Make a knowledge roll as a half action using the appropriate skill, for every two hits on this check you add +1 die to all opposed checks against the chosen type until combat ends, to a maximum of half your LOGIC.  ",15,"4U,5(W|U),(12)
+",0,10,0,0,0,10,,15,,,,,,,,,,,,R4 Exclusive,"U,UW",,
+0,Passive,Magic resistance,always on resistance to magic,"Gain RANK dice to resist magical effects. You always roll to resist magical effects and are not considered willing. You can suppress this ability at will, a Extra action in combat. Resuming this ability is also a Extra action.",10 per,"4(G|U),(6)
+9(G|U),(12)
+14(G|U),(18)
+19(G|U),(24)
+24(G|U),(30)
+",,4,,,4,4,,10,20,30,40,50,,,,,,8,19.2,R2/4/6/8/10 exclusive,,,
+0,Passive,magical device affinity / magic sensitive / aura viewing,"Affinity: Notice items are magical with hands on inspection. Glean some idea of the magic item's function
+Sensitive: Notice items are magica after a few moments of observation
+Aura: Notice magical auras in addition to items, discern more specific functionality of items (identify given time)
+","Affinity: Notice items are magical with hands on inspection. Glean some idea of the magic item's function
+Sensitive: Notice items are magica after a few moments of observation
+Aura: Notice magical auras in addition to items, discern more specific functionality of items (identify given time)
+",5/5/10,"(W|U|B),3 per",,2,,,,2,,5,10,20,,,,,,,,,,R2/R6/R10 limited,,,
+0,Passive,Mana Barrier,You may take up to half the damage from every hit as drain.,You may take up to half the damage from every hit as drain.,5,"4(W|B|G),(9)",6,,6,,6,6,,5,,,,,,,,,,,,R3 limited,,,
+0,Passive,Master of Poisons,"Create, identify, use, resist poisons","Gain
+Knowledge of poison crafting
+ability to learn new poison recipes and develop your own
++3 dice vs. poison effects
++3 dice to identify poisons",20,"4(B|G),(6)",,,4,,4,4,,20,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Master smuggler,"Bonuses on sleight of hand, hiding things",Treat unattended objects one size smaller for fitting them through tight spaces,3,"2(U/B)
+2(U/R)
+2(B/R)",,4,4,4,,6,,3,,,,,,,,,,,,R3 Exclusive?,,,
+0,Passive,Mingling,Hide in plain sight: crowds,You can always attempt a stealth check when in crowds even if observed. ,5,"4B,(6)",,,4,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,"Natural weapons, various","Claws, Bite, Tail, blades, spines, etc",You gain a natural weapon. Additional features may be purchased to customize it.,5,4G,,,,,4,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Nothing Personal,Treated as having superior ground during a turn you have teleported.,"After teleporting, you have superior ground until the end of your turn (or end of next turn if you teleported when it wasn't your turn)",10,"7(W|U),(15)",10,10,,,,10,,10,,,,,,,,,,,,R5 limited,,,
+0,Passive,Opportunist,Gain +3 dice on all readied attacks and intercepts  ,Gain +3 dice on all readied attacks and intercepts  ,5,6W,6,,,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Pain Brings Suffering,Victims of your DoTs take a dicepool penalty equal to half the total ongoing damage value.,Victims of your DoTs take a dicepool penalty equal to one quarter the total ongoing damage value.,5,"7B,(9)",,,6,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,Passive,Pain tolerance,Increases number of damage boxes required to acquire wound penalties,"You require 3 + (RANK) boxes per wound penalty, rather than 3.","5
+10
+15
+20","2(W|B|G),(6) per",4,,4,,4,4,,5,15,30,50,75,,,,,,,,R2/R4/R6/R8/R10,,,
+0,Passive,Paragon of Skill,"reroll all 4s for a noncombat skill, can be taken multiple times","reroll all 4s for a noncombat skill, can be taken multiple times",20,"7(U|G),(15)",,8,,,8,8,,20,,,,,,,,,,,,R5?,,,
+0,Passive,Parry and Twist,Attempting a disarm as part of a riposte only costs (5),Attempting a disarm as part of a riposte only costs (5),5,"3W
+3U",3,3,,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Photographic memory,"remember stuff, prompt GM for refreshers of detail","Gain 2 dice on knowledge checks to remember something. You may recall additional relevant details by prompting the GM for a clearer picture of a memory, subject to GM discretion. Rolling memory is now faster (typically a Extra action).",3,"3U,(6)",,4,,,,4,,3,,,,,,,,,,,,R2 limited,,,
+0,Passive,Projectile deflection,Parry some projectiles,"You can parry projectile based attacks from various item size categories
+your size +2 (arrows, daggers)
+your size +1 (thrown weapons, single target dodgeable, blockable spells)
+your size (heavy thrown weapons, powder shot weapons)
+",10,"7(W|U),(9)",6,6,,,,6,,10,,,,,,,,,,,,R3 Exclusive,,,
+0,Passive,Prowess,Every non attack ability used increases your combat prowess,Gain +1 extra dice on all defenses and weapon attacks for each non attack ability used. This bonus stacks and lasts until the end of the round.,25,"3W,3R,3(W|U|R),(18)
+",,,,,,,,25,,,,,,,,,,,,R6 limited,,,
+0,Passive,quickdraw,quickdraw without check // quickdraw large items ,"Items that can be quickdrawn normally require no check and are drawn as a nonaction. Most items that cannot normally be quickdrawn may be attempted as a standard quickdraw (Extra action, roll palming vs. 2)",3,"4R,(6)",,,,4,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Ranger favored enemy,gain bonuses against specific enemy types,Gain (RANK) extra dice for checks pertaining to the chosen (sub)type. ,10x next rank,4(W/G) per,4,,,,4,4,,10,30,60,100,150,,,,,,,,R2/etc exclusive,,,
+0,Passive,Ranger's Guile,"Difficult terrain doesn’t slow your group’s travel.
+Your group can’t become lost except by magical means.
+Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.
+If you are traveling alone, you can move stealthily at a normal pace.
+When you forage, you find twice as much food as you normally would.
+While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.","Difficult terrain slows your travel by one less step.
+Your group can’t become lost except by magical means.
+Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.
+If you are traveling alone, you can move stealthily at a normal pace.
+When you forage, you find twice as much food as you normally would.
+While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.",10,"6G,(12)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Passive,Reactive Dodge,Shift 10ft as part of a dodge,"As part of a dodge or when dodging on full dodge you may move 10 ft.
+",5,"4U,(6)",,4,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Regenerating Fortitude,Restore 1 stamina on dealing damage,Once per turn when you directly cause damage to an enemy you heal 1 point of nonlethal damage.,40,"10(W|B),(21)",6,,6,,,12,,40,,,,,,,,,,,,R5-7? exclusive/limited?,,,
+0,Passive,Regeneration,Converts lethal to nonlethal over time,"Convert 1 lethal to nonlethal every hour, starting with smallest wounds. Regeneration can regrow severed limbs in a day.",15,"12G,(15)",,,,,10,10,,15,,,,,,,,,,,,R5 exclusive,,,
+0,Passive,Reserves of Spirit,Increase drain bar,.+RANK to drain bar,"5
+10
+15
+...","3G,(3)",,,,,2,2,,5,15,30,50,75,105,140,180,225,275,,,R1/etc,,,
+0,Passive,Resist (ELEMENT),"2x RANK dice against (ELEMENT) effects. 
+W: radiant
+U: cold
+B: acid, dark
+R: fire, lightning
+G: cold, acid, fire, lightning",2x RANK dice against (ELEMENT) effects,"3
+6
+9
+...","3G,(6)",4,4,4,4,4,4,,3,9,18,30,45,,,,,,,,R2/R4/etc,,,
+0,Passive,"Resistance, General",RANK dice against elemental effects,"RANK dice against elemental effects (fire,cold,acid,lightning)","5
+10
+15
+...","3G,(6) per
+",,,,,4,4,,5,15,30,50,75,,,,,,,,R2/R4/etc,,,
+0,Passive,Roll with the blows,Gain dodge bonus after being hit,"After you are hit by an attack and suffer damage, gain 1 free hit to the next defense roll you make against an attack.",10,"3W,3R,(9)",4,,4,,,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Runecarving,"Carve magical runes to delay magical effects for use at a desired time
+","You cannot cast spells directly.
+You can scribe up to (CAST STAT)/2 runes per day given sufficient downtime. Runes are typically scribed onto small durable objects that fit in one's hand but nearly any surface can accept runes. 
+The dicepool, force and cast stat parameters of a runic spell are set when it is created. Runic spells are never affected by wound penalties.
+A rune must be attuned before it can be used. A rune can be attuned as part of the action of casting the stored spell. Attuning a rune costs 2 unpreventable point sof drain damage. As a runecaster you may have up to (CAST STAT)/2 runes attuned at once. Non runecasters are limited to 1 rune and may only attune runes as part of the action of casting the stored spell.
+A rune comes with (Your drain pool / 2 / spell drain value ) uses.
+",0,W/U,1,1,,,,1,,0,,,,,,,,,,,,R1 open,,,
+0,Passive,Scent,Detect things by sense of smell,"You can easily distinguish different scents as easily as sounds, shapes and colors. This allows you to be aware of things in the general vicinity (30ft), things that have been in an area you are closely expecting (modified by circumstances).",5,"1G,(3)",,,,,4,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,Shadowmeld,Hide in plain sight: shadows,You can always attempt a stealth check when in dimly lit or dark areas even if observed.,40,"9B,(18)",,,12,,,12,,40,,,,,,,,,,,,R6 limited,,,
+0,Passive,Shield Push,Enemies you hit with your shield are subject to a free push attempt,"Whenever you hit an enemy with your shield (even if they fully soak the damage) you may attempt to push them.
+
+Treat the shield attack's roll as the roll for the shield push, target soaks with physical soak, move them (unsoaked eDV)/4 * 5ft.",15,"6W,(12)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Passive,Shielded mind,bonus vs. mind affecting,Gain +RANK dice against mind affecting,5 per,"3(W|G),(6) per
+",4,,,,4,4,,5,10,15,20,25,,,,,,,,R2/R4/...,,,
+0,Passive,Silent as a shadow,"Climb, swim, and jump extra quietly. Quiet kills","You take no penalty for sneaking at normal speed,. Enemies take -4 to hear most sounds you make in combat",4,"4(U|B),(6)
+",,4,4,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Passive,"Skirmishing Sharpshooter
+",Threaten adjacent spaces with bow,"You may treat ranged weapons as melee weapons for purposes of threatened area and related combat modifiers. 
+",20,10(R/G),,,,10,10,10,,20,,,,,,,,,,,,R5 limited,,,
+0,Passive,Speedloader,Reload weapons more quickly,As a half action you may reload HITS weapons on a Palming roll.,5,",(9)",6,6,6,6,6,6,,5,,,,,,,,,,,,R3 global,,,
+0,Passive,Spell drinking,invigorated by failed spells targeting user,Gain 1 temp hp when you resist a hostile spell.,5,"4U,4G,(12)",,4,,,4,8,,5,,,,,,,,,,,,R4 exclusive,,,
+0,Passive,Spell Siphon,Countering a spell deals 1 drain to the caster and you heal 1 drain,Successfully countering a spell deals 1 drain to the caster and you heal 1 drain,40,"9U,9B,(24)",,,,,,,,40,,,,,,,,,,,,,,,
+0,Passive,Spiderclimb,You can walk on walls as if they were level ground,"You can walk on walls as easily as ground. Climb checks are still required, thresholds are lowered.",10,"9(G|R),(12)",,,,6,6,6,,10,,,,,,,,,,,,R4 exclusive,,,
+0,Passive,Spite the Ignorant,Counterspelling drains the counterspellee,"Whenever you successfully counterspell, the caster you counterspelled takes 1 unresisted drain.",20,"4U,4B,(12)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Passive,Stinging Denial,"Lock enemy out of ability, action you counter","When you successfully counterspell an opponents spell or ability they cannot use that ability until after the end of their next turn. 
+",10,8(W/U),8,8,,,,8,,10,,,,,,,,,,,,R4 exclusive,,,
+0,Passive,Stoneskin,Damage dampening (Y),Gain +1 damage dampening per rank,30 per,6G per,,,,,6,6,,30,60,90,,,,,,,,,,R3/R6/R9 limited,,,
+0,Passive,Supreme Contortionist,fit through unusually small spaces,You can contort and deform your body to fit in/through spaces smaller than normal.,3,"1R,(3)
+",,,,2,,2,,3,,,,,,,,,,,,R1 Open,,,
+0,Passive,Tangential Luck,Various secondary effects that trigger off spending points of luck,"After you spend a point of luck, you gain +1 die to all pools until the end of the current round.",10,"9R.(12)
+",,,,6,,6,,10,,,,,,,,,,,,R4 exclusive/limited?,,,
+0,Passive,Telepathic link,Communicate telepathically ,"Range (LOG*10 ft). This is one way communication in which you can convey words given you and your target share a language.
+_______________________
+You may attune up to LOG targets for two way communication
+_______________________
+Attuned targets can be communicated with out to LOG*100 ft","5,10,15","2(U|B),(9) per",,4,4,,,4,,5,15,30,,,,,,,,,,R2 open,,,
+0,Passive,Time is Mana,Can spend drain to cover init costs for U abilities,Spend 4 drain per (5) of a blue ability,10,"10U,(21)",,,,,,,,10,,,,,,,,,,,,,,,
+0,Passive,Timely Disruption,Readied attacks also inflict their damage as a dice pool penalty to an action they interrupt.,Readied attacks also inflict half their damage as a dice pool penalty to an action they interrupt.,10,6(W/U/B),6,6,6,,,6,,5,,,,,,,,,,,,R3 exclusive,,,
+0,Passive,Tireless,nonlethal hp +1,Increase your maximum nonlethal health by 1.,"5
+10
+15
+...",2/4/...,,,,,2,2,,5,15,30,50,75,105,140,180,225,275,,,R1/...,,,
+0,Passive,Trap finding,"trapfinding, the dangerous ones, not the anime ones","Your passive perception checks do not take the usual penalty to detect traps or other hidden/harmful mechanisms. Additionally you gain 2 dice on all checks to find such things.
+",5,4(U/G),,4,,,4,4,,5,,,,,,,,,,,,R2 exclusive? open?,,,
+0,Passive,Tremorsense,"Pintpoint awareness of things moving in contact with solid objects you are also in contact with, like the ground",15/45/90ft tremorsense,"10
+20
+30","4(R|G),(9)
+9(R|G),(18)
+13(R|G),(27)",,,,,6,6,,10,30,60,,,,,,,,,,R3/6/9 limited,,,
+0,Passive,Uncanny Awareness,"Harder to surprise, bonuses vs. attacks you aren't aware of","You can take an active defense even when surprised, gain +6 dice on surprise checks initiated against you.",10,"4(U|R),4(U|G),4(R|G),(15)",,8,,w,8,12,,10,,,,,,,,,,,,R4/R5/R6? exclusive,,,
+0,Passive,Underworld contact,It's rather easy for you to get into contact with the local criminal underground and more often than not you start out on their good side,"gain 3 dice on checks relating to interactions with or knowledge about black markets/criminal undergrounds/fences etc. You may attempt to ""know a guy"", if the DM permits, spend 1L and you find an underground contact who starts out initially friendly.",3,"1B,(3)
+",,,,,,,,3,,,,,,,,,,,,,,,
+0,Passive,Unmovable,"Resist various debuffs, combat maneuvers","Gain +3 dice against knockdown, disarm, grapple, balance, overrun, and other effects that forcibly move you. ",5,R3/R6/R9/R12 G limited,,,,,3,0,,5,,,,,,,,,,,,R3/R6/R9/R12 G limited,,,
+0,Passive,Untrackable,You cannot be tracked in natural surroundings.,"With your guidance, the party may move through natural terrain using your stealth or survival check to cover up your tracks.  You are always untrackable when moving through natural terrain alone, however the party cannot gain the benefit of your Untrackable ability when this is the case.",5,"1G,(6)",,,,,4,4,,5,,,,,,,,,,,,R2,,,
+0,Passive,Use Magic Device,"ignore racial, class, level restrictions on using a magic item",,,U,,,,,,,,,,,,,,,,,,,,,,,
+0,Passive,Venomous Vitality,succeeding on a roll vs. poison grants you 1 temp hp,"Whenever you succeed on a resistance roll against a poison effect, gain 2 temp hp.",5,"3B,3G,(12)",,,,,,,,5,,,,,,,,,,,,,,,
+0,Passive,Wary Traversal,reduce damage from AoOs,"Halve damage from AoOs after armor, before damage dampening.",20,???,,,,,,,,20,,,,,,,,,,,,R4 ?,,,
+0,Passive,Water Walking,You can walk on water as if it were solid ground,You can walk on water as if it were solid ground,5,"7(U|G),(9)",,4,,,4,4,,5,,,,,,,,,,,,R3 limited/exclusive?,,,
+0,Passive,What goes around comes around,Gain 1 die on your next attack for each damage you take,"For every 2 points of damage you take add one die to your revenge pool. Add your revenge pool to the next attack you make, this sets your revenge pool to 0 afterwards. If you have not added a die to your revenge pool in the last 3 rounds, your revenge pool resets to 0.",5,"3B,3R,(9)
+",,,3,3,,6,,5,,,,,,,,,,,,R3 Exclusive,,,
+0,Ritual,Awaken,Stir sentience in a creature,"24 Hour
+You awaken an animal to humanlike sentience. The creature is initially indifferent to you. Awakened creatures have 3 LOG and are magical beasts. Ritual participants need to pay drain equal to the maximum health of the creature or the ritual fails.",5,"18G,(30)",,,,,12,12,,5,,,,,,,,,,,,R6 limited,,,
+0,Ritual,Foretelling,Determine what fate might result from a given course of action,"1 Minute Ritual. Costs 1 drain.
+
+Answers a question about an action to be taken in the near future (roughly 1 hour)
+Weal (if the action will probably bring good results).
+Woe (for bad results).Weal and woe (for both).
+Nothing (for actions that don’t have especially good or bad results)
+.",10,"4U,(6)",,4,,,,4,,10,,,,,,,,,,,,R2 exclusive,,,
+0,Ritual,Natural Refuge,Produce a temporary refuge for you and a few others out of natural terrain,"10 Minute ritual.
+
+The immediate local terrain reshapes itself to a form more suitable for conealment and quiet rest. This may take the form of a dense thicket wrapping itself around your encapment, a vine obscured cave developing in the earth, or similar as chosen by your GM. The immutable features of the refuge are that it is difficult for others to find (Perception TN 4) and may otherwise be passed off as a natural formation unworthy of note. Furthermore hazards and nuisances are downgraded one step (as per DM choice). Instead of swarming flies there's only a few straggling bloodsuckers, instead of the scorching heat of the desert it is uncomfortable but manageably warm, instead of pouring rain you merely have to deal with damp air and occassional droplets etc. ",15,"9G,(18)",,,,,,,,15,,,,,,,,,,,,,,,
+0,Ritual,Purification,1 hour ritual to remove persistent conditions lesser abilities can't remove,"1 hour ritual. Costs 1 drain from a single participant. Targets 1 individual. Individual can roll to end any of all persistent afflictions it is suffering, gaining a +5 bonus on each roll.",10,"4W,(18)",,,,,,,,10,,,,,,,,,,,,,,,
+1,Spell,Animate Object,Animate an object with varying degrees of control,,15,6(W/U),6,6,,,,6,,15,,,,,,,,,,,,R3 limiited,,,
+0,Spell,Armor,Increase armor by hits,"SUST TRGT(SELF)
+
+Add CAST STAT/2 to armor soak for the duration of this spell.
+Casting this spell is a half action
+
+Overloads
+
+2: AoE, +10ft per
+2: +3 extra armor",15,"4(W|G),(6)",4,,,,4,4,,15,,,,,,,,,,,,R2 exclusive,,,
+0,Spell,Banishment,"Direct, opposed check to banish","INST TRGT TOUCH
+eDV = CS + 5
+Resist = Mental Resist
+Soak = Physical Soak
+
+If the target is not an extraplanar creature this spell has no effect
+
+0: no effect
+1: the target takes -5 to all rolls until the end of the round
+9: the target is banished
+
+Overloads
+
+2: ranged
+2: AoE, +5ft diameter per
+2: +1 eDV
+",10,"9W,(18)",10,,,,,10,,10,,,,,,,,,,,,R4/5 limited,,,
+0,Spell,Call Down the Sky,Drop meteors on target locations,"This spell is cast with three consecutive full actions over three consecutive rounds, resolving asthe third full action is spent.
+
+INST AoE
+DV: CS+13 (FIRE)
+
+Dodge/armor soak
+
+Targets: four 20ft radius regions. A target can only be struck once by each casting of Call Down The Sky.
+
+Overloads
+
+2: +1 DV",50,"15R,(30)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Spell,Cause Fear,Affected enemies flee if able,"INST SINGLE AOE
+eDV = CS + 3
+Resist = mental
+Soak = mental
+
+for every 8 damage this ability would do (round up) the target takes 1 fear stack 
+
+Overloads
+
+2: +1 DV
+2: +5ft AoE",10,"4B,(9)",,,6,,,6,,10,,,,,,,,,,,,R3 limited,,,
+0,Spell,Clairvoyance,"See, hear from nearby location","SUST SELF
+Range = CS*10ft
+
+You create a scrying sensor at a nearby location within RANGE. You can see and hear as if you are at that location. Casting this spell is a half action.
+
+Overloads
+
+2: +CS*10 ft range",5,"4U,(9)
+",,4,,,,4,,5,,,,,,,,,,,,R3. limited,,,
+0,Spell,Confusion,Cause affected targets to behave erratically for duration. PENDING REWORK,"DIRECT SUST SINGLE AOE
+eDV = CS + 5
+Resist = mental
+Soak = mental
+
+0: no effect
+1: Target rolls twice on confusion and picks their choice
+9: target is confused until end of next round
+each 2 beyond: Target is confused for another round
+
+Overloads
+
+2: +1 eDV
+2: +5ft diameter
+
+Confused:
+25% does nothing
+25% runs in a random direction
+25% attacks nearest target
+25% act normally",10,"6R,(12)",,,,6,,6,,10,,,,,,,,,,,,R3-4? limited,,,
+1,Ritual,Control Weather,Control local weather,,20,6U6(G/R),,6,,6,6,12,,20,,,,,,,,,,,,R5-6 limited,,,
+0,Spell,Create Light,Cause object touched to emanate light,"INST SUST
+
+Light diameter 10ft per CS/2
+Casting this spell is a half action
+
+Overloads
+
+1: +5ft diameter",5,"1W,(6)",4,,,,,4,,4,,,,,,,,,,,,R1-2 open,,,
+0,Spell,Curse of Vulnerability,Reduce enemy's damage dampening,"SUST, AOE
+10ft diameter target area
+eDV =  CS + 3
+Resist = Physical
+Soak = Physical
+
+Overloads
+
+2: +1 eDV
+2: +5ft diameter
+
+For every 2 unsoaked eDV this spell inflicts a -1 damage vulnerability.",15,"6B,(12)",,,6,,,6,,15,,,,,,,,,,,,R3-4 limited,,,
+0,Spell,Dampening Field,Reduce magical effects by HITS up to FORCE,"SUST AOE
+10ft diameter
+
+Reduce the DV of magical effects in the area by CS/2
+Casting this spell is a half action
+
+Overloads:
+
+2: +5ft diameter
+2: +1 additional reduction",20,6(W/U),6,6,,,,6,,20,,,,,,,,,,,,R4-5 limited? REWRITE,,,
+0,Spell,Danger Sense,HITS to defensive dice pool up to FORCE/2,"SUST SELF
+
+Add CS/2 to defensive checks (passive and active dodge,parry,block) for duration of spell
+Casting this spell is a half action
+
+Overloads
+
+2: increase the bonus by +1",10,"7(W|U|G),(9)",2,4,,,2,4,,10,,,,,,,,,,,,R3? exclusive?,,,
+0,Spell,Death Blast,Direct damage kill spell,"INST/SUST
+Touch (non provoking), ranged
+DV = CS+7
+Resist = Dodge,Block
+Soak = Armor
+Overloads
+
+2: +1DV
+2: AoE per 5ft diameter, (note that it starts at 5ft effectively) 
+4: Sust
+
+",10,4B,,,4,,,4,,10,,,,,,,,,,,,R2-3 limited,,,
+0,Spell,Detect Hostile Intent,Detect those with hostile intent towards caster,"SELF
+5ft cone
+Casting this spell is a half action
+
+Overloads
+
+2: +5ft radius
+
+Grants you a sixth sense to detect creatures with hostile intent towards you within the range, LoS permitting. Perceive Magic is rolled for this sense, opposed by con.",5,"4(W|B),(9)",2,,2,,,2,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Detect Life,Detect living creatures in a forward facing cone,"SELF
+5ft cone
+Casting this spell is a half action
+
+Overloads
+
+2: +5ft radius
+
+Grants you a sixth sense to detect creatures with hostile intent towards you within the range, LoS permitting. Perceive Magic is rolled for this sense, opposed by stealth.",5,WG,2,,,,2,2,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Detect X,"As Detect Life, only one type of creature, color alignment, etc.","SELF
+5ft cone
+Casting this spell is a half action
+
+Overloads
+
+2: +5ft radius
+
+Grants you a sixth sense to detect creatures with hostile intent towards you within the range, LoS permitting. Perceive Magic is rolled for this sense, opposed by stealth.",5,WBUG,2,2,2,,2,2,,5,,,,,,,,,,,,?,,,
+0,Spell,Dispel Magic,Dispell ongoing magical effects. ,"INST SINGLE/AOE
+
+Spellcasting roll is opposed by the spellcasting roll of the magical effect(s). If the net hits plus 2* CAST STAT is greater than the 2* CAST STAT of the magical effect, the magical effect ends.
+
+Overload
+
+2: +5ft diameter AoE
+2: +1 effective cast stat for dispelling",20,8(W/U/G),8,8,,,8,8,,20,,,,,,,,,,,,R4-5 (only WG) lmited,,,
+0,Spell,Elemental Blast,"F elemental damage, purchased per element type
+W-radiant
+U-Cold
+B-Acid, dark
+R-Lighting, fire
+G-Acid","INST/SUST
+Touch (non provoking), ranged
+DV = CS+5 (ELEMENT)
+Resist = Dodge,Block
+Soak = Armor
+
+Overloads
+
+2: +1DV
+2: AoE per 5ft diameter, (note that it starts at 5ft effectively) 
+4: Sust
+
+This attack does elemental damage of the chosen type, fixed upon purchase of ability.",5,"4*C*,(9)
+",4,4,4,4,4,4,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,End of Days,AoE save or die,"This spell is cast with three consecutive full actions over three consecutive rounds, resolving after the third full action is spent.
+
+INST AoE
+eDV: CS+9
+
+Physical resist/physical soak
+Targets that would take any damge from this ability instead lose 1 LUK, if they cannot lose 1 LUK they instead die.
+
+Targets: 50ft Diameter.
+
+Overloads
+
+2: +1 DV
+2: +10ft diameter",50,"24B,(30)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Spell,Energy Wall,1 point of Armor and Structure rating per hit. Barrier regenerates at start of next turn.,"SUST
+
+CS/2 * 5ft length, 5ft height. CS*2 health. WIL*2 barrier rating. Wall health replenishes end of round.
+Attacks creatures that enter, or are adjacent at end of round, with Spellcasting for CS+9 DV. Wall cannot be cast overlapping creatures.
+
+Overloads
+
+2: +1 DV
+2: +5ft length
+2: +5ft height
+1: +2 hp
+1: +1 barrier rating
+
+",5,WUGRB,4,4,4,4,4,4,,5,,,,,,,,,,,,R4-5 limited?,,,
+1,Spell,Explosive Runes,Create an explosive magical trap that triggers upon being read,,10,8R,,,,8,,8,,10,,,,,,,,,,,,needs balancing,,,
+0,Spell,Eye of the Hurricane,Create a wind effect centered on yourself that knocks others back,"INST AOE SELF
+5ft radius (from self)
+eDV = CS + 9
+
+Physical Resist
+Physical Soak
+
+0: no effect
+1: 5ft pushback
+9: prone
+each 2 beyond, +5ft pushback
+
+Overloads:
+
+2: +1 eDV
+3: +5ft radius
+
+Make an opposed check against adjacent targets' Physical Resist using your spellcasting dicepool. On success, they are driven back. Succeed by 3 or more and they are knocked prone. Succeed by 6 or more and they are sent flying.
+",5,UG,,4,,,4,8,,5,,,,,,,,,,,,R2-3 Limited,,,
+0,Spell,Finger of Death,Single target save or die,"INST
+eDV: CS+3
+
+Dodge or block
+physical soak
+
+Overloads
+
+2: +1 eDV
+
+Targets that would take any damage from this ability instead lose 1 LUK, if they cannot lose 1 LUK they instead die.",30,"12B,(24)",,,,,,,,30,,,,,,,,,,,,,,,
+1,Spell,Fire Conjuring,"Create, manipulate fire",,25,R,,,,,,,,25,,,,,,,,,,,,,,,
+0,Spell,Flash Freeze,Damage init with ice,"INST, DIRECT, AOE (centered on self)
+eDV = CS+7 (5ft radius)
+
+Dodge
+Armor soak
+
+Overloads
+
+2: +1 eDV 
+2: +5ft radius
+
+Flash Freeze does no damage, though it still applies the resulting DV as initiative damage.
+",10,6U,,6,,,,6,,10,,,,,,,,,,,,R3? exclusive?,,,
+0,Spell,Fling,Toss object as if with STR = MAG/2,"INST TRGT
+Throw an object with effective STR = CS-2
+
+When throwing a weapon or other similarly sized item (limited to weapons of your size) you may resolve the fling as an attack roll when directing the object at a specific target. When throwing larger objects the item is treated as a falling object and creatures in the target zone are entitled to a dodge(2) threshold check to avoid it.
+
+Overloads
+
+2: +1 effective STR",5,"3R,(6)",,,,4,,4,,5,,,,,,,,,,,,R2 limited,,,
+0,Spell,Fog,"A dense blanket of fog rolls in clouding vision.  Fog moves into the region.  Everyone inside can only see 10 ft away clearly and 20 ft dimly.  Fog rolls into lower regions in the area.  If on higher elevations, the fog will dissipate faster.  Fog will not sustain in high winds or existing rainstorms.","SUST
+5ft diameter per CS
+
+first 5ft of fog grant moderate concealment, 10ft+ total concealment.
+
+Overloads
+
+3: +5ft diameter
+",5,"4(U|G),(9)",,6,,,6,6,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Glitterdust,"Chance to blind, reveal invis","AOE
+eDV = CS +7
+Resist with mental res. Soak with mental soak. 
+
+final eDV
+0: target is illuminated for a minute
+1: plus target suffers -2 vision penalties and attackers get superior ground against the target until end of next round.
+9: plus target is blinded until the end of the round.
+
+Overloads
+
+2: +1 eDV
+2: +5t diameter",5,"4(W/G),(15)",4,,,,4,4,,5,,,,,,,,,,,,R3-4 limited?,,,
+0,Spell,Gust of Wind,Magical bullrush based off spell force // up to net hits?,"INST AOE
+eDV = CS
+5ft cone
+
+Physical Resist
+Physical Soak
+
+Overloads:
+
+2: +1 eDV
+2: +5ft radius
+
+For every 4 applied eDV push the target 1 square, pushing 3+ squares knocks the target prone.",5,RG,,,,4,4,4,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Haste,5 more speed per 2 HITS up to FORCE HITS,"SUST TRGT(SELF)
+Recipient gains 5 speed per CS/2
+Casting this spell is a half action
+
+Overloads
+
+4: +5ft bonus",5,"3(U|R),(6)",,4,,,,4,,5,,,,,,,,,,,,R2 lmited,,,
+0,Spell,Hush,Applies penalty to those attempting to hear the subject,"SUST SINGLE/AOE TRGT(SELF)
+Inflict CS/2 penalty on audio perception checks attempting to perceive subject 
+Casting this spell is a half action
+
+Overloads:
+
+4: +1 penalty
+4: +5ft radius",5,UB,,4,4,,,4,,5,,,,,,,,,,,,R2-3 limited,,,
+1,Spell,Ice Conjuring,,"INST
+F/2+4
+
+You can conjure ice into any shape that suits your purpose. While it’s possible to make crude coffers, doors, and so forth with this function, fine detail isn’t possible. (10 cubic feet per FORCE). For surfaces you can choose rough (nonslip) or smooth (checks required) ice. Ice has (barrier rating / HP per thickness) . (40 cubic feet per force) of existing ice may be reshaped instead. Ice cannot be conjured into occupied space, cannot exert force in the conjuring process, or be conjured flush with intricate surfaces.
+
+You can form ice with focused detail into an object that suits your purpose. For every (3 FORCE) beyond (F=1) you may create another item as part of the same action. If shaping the item from existing ice, you may instead create one item per (FORCE)
+
+You can flash freeze existing water and liquids. If the objects are attended they are entitled to resist with the owner’s Mental Resistance. You can freeze up to (20 cubic feet per force) of contiguous water or liquid.",25,"7U,(15)",,8,,,,8,,25,,,,,,,,,,,,R5 limited,,,
+0,Spell,Ignite,Set a target on fire,"INST TRGT
+eDV = CS + 9
+
+physical resist
+physical soak
+
+ignites target for unsoaked eDV
+
+Overloads:
+
+2: +1 eDV
+3: +5ft AoE",5,"4R,(9)",,,,6,,6,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Invisibility,drastically reduce chance to be noticed by sight,"SUST SINGLE/AOE TRGT(SELF)
+CS/2 penalty to being perceived visually.
+Casting this spell is a half action.
+
+Overloads:
+
+2: -1 additional penalty
+2: +5ft radius",10,"7(U|B),(9)",,6,6,,,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Spell,Lay on Hands,Heal lethal,"INST DIRECT TRGT(SELF)
+Heals a wound for up to CS/2
+
+Overloads:
+
+2: +1 max heal ",5,"3W,(6)",4,,,,,4,,5,,,,,,,,,,,,R2-3 open,,,
+6,,,,,,,,,,4,,4,,,,,,,,,,,,,,R3 limited?,,,
+0,Spell,Levitate,"Levitate objects, people","SUST TRGT
+Range = 30 ft
+Lift up to 50kg per CS (single object or clump of objects)
+Or up to SPELLCASTING individual objects of negligible weight
+Can only target attended objects if the attendee is willing
+Cannot move objects that are stuck or restrained
+
+Affecting a creature requires an opposed check 
+eDV = F+3
+
+mental/phys
+
+0: no effect
+1+: the target is lifted up and dropped prone if they fail a (2) acrobatics check
+9+ the target is levitated until the end of the round
+
+Overloads
+
+2: +1 eDV
+2: +5ft range
+
+You can move the target at a rate of 5ft per half action, or in the case of multiple small objects, 20ft. As a half action you can also set the object(s) to follow you, but they are limited to traveling at the listed speeds per round and move at the end of the round. Targets can be raised at most 30ft off the ground and if moved to be higher will descend safely at 60ft per round. ",5,"3U,(6)",,4,,,,4,,5,,,,,,,,,,,,R2-3 limited,"Mono U open
+
+- at such low tradition rank thresholds there's little difference for the majority of play between open, limited or even exclusive. The purpose of putting these low TR abilities as open/limited/excl is to suggest what sort of baseline low CP NPC might have.",,
+0,Spell,Life drain,"force save, heal user, etc","INST INDIRECT
+Touch
+CS+4 DV
+
+Dodge, block, parry
+Physical Soak
+
+Heal half damage dealt without suffering healing drain. Damage is dealt as drain damage.",15,"3B,(12)",,,6,,,6,,15,,,,,,,,,,,,R4 limited,Mono B open,,
+0,Spell,Lightning Storm,"Build up an escalating number of bolts, then unleash them all at once.","INST INDIRECT
+CS+5 DV
+
+Casting a new Lightning Storm starts a Storm Pool at 1. Each subsequent casting of Lightning Storm under the same conditions adds 1 more to the storm pool than the previous casting (+2,+3... etc) up to a maximum of WIL+(mainstat) maximum points in your Storm Pool. As an Extra action you may expend all points in your storm pool to designate the target area for this ability, resolving one single target attack per Storm Pool Point split equally among targets.
+
+Overloads:
+
+2: +1 DV",15,"9R,(18)",,,,12,,12,,15,,,,,,,,,,,,R5-7 limited / open?,Mono R limited,,
+0,Spell,Mage Hand,"Hits = STR and AGI of hands, -2 on skills performed with hands","SUST
+Range = 10 ft
+CS-2 = STR and AGI of hand.
+You have mild tactile feedback through the hand but cannot feel temperature
+
+Overloads:
+
+4: +1 effective STR and AGI
+2: +5ft range.",5,"3U,(6)
+",,2,,,,2,,5,,,,,,,,,,,,R2-3 open,mono U open,,
+0,Spell,Mask,Disguises an individual. Hits contribute to disguise up to FORCE as cap.,"SUST TRGT(SELF)
+
+CS/2 bonus to disguise
+
+Overloads:
+
+4: +1 disguise bonus
+2: +5ft radius
+
+Casting this spell is a half action",10,"1U,1B,1(U|B),(6)
+",,4,4,,,4,,10,,,,,,,,,,,,R2-3 Limited,"UB required, limited",,
+0,Spell,Mass Translocation,All willing allies may exchange places with one another,"INST AoE
+CS/2 * 5ft radius
+
+All willing targets within the area may exchange places with one another.
+
+Overloads:
+
+2: +5ft radius",15,"6(W|U),(12)",4,6,,,,6,,15,,,,,,,,,,,,R4-5 lmited,"UW required, limited",,
+0,Spell,Memory Cast,Copy spell you recently saw cast,"Make a Perceive Magic check with a -1 penalty for each (INT+LOG) /3 rounds since the observed spell was cast. If any hits result, you succeed at recalling the spell and cast it within your capabilities. If no net hits result, you fail and the action (typical for spellcasting) is wasted.",10,"9U,(18)",,8,,8,,8,,10,,,,,,,,,,,,R5-6 limited,U limited,,
+0,Spell,Mind Control,Overpower someones mind and be able to order them.,"TRGT SUST
+CS+5 eDV
+Mental Resist
+Mental Soak
+
+0: no effect
+1: target cannot move if it takes an action on its next turn, or cannot take an action if it moves on its next turn.
+9: Target is mind controlled until the end of its next turn
+each  2 beyond: +1 turn MC
+
+(clause for more saves to escape. clause for making it permanent)
+
+Overloads:
+
+2: +1 eDV",40,"10U,(21)",,12,,,,12,,40,,,,,,,,,,,,,,,
+0,Spell,Mindblank,HITS to dice pool against mind affecting and divination up to FORCE/2,"SUST SELF
+CS/2 to dice pool against mind affecting and divination effects.
+Casting this spell is a half action
+
+Overloads
+
+4: +5ft radius
+2: +1 bonus",5,"6(U|B),(12)",,8,4,,,8,,5,,,,,,,,,,,,R4 Limited,UB,,
+0,Spell,Petrify,Petrify target,"INST DIRECT TRGT
+CS +5 eDV
+Target resists with physical resistance
+Target then soaks with mental soak
+
+0: no effect
+1: target may either move or use actions on their next turn but not both.
+9: Target is petrified until the end of the round
+each 4 beyond: Target is petrified for an additional round
+
+overloads:
+
+2: +1 eDV",20,"1B,1G,1(G|B),(12)",,,8,,4,8,,20,,,,,,,,,,,,R4 limited,"GB required, open",,
+0,Spell,Phantasm,Create illusory effects. Individuals directly interacting have chance to disbelieve. Indirect interaction has chance to disbelieve or discern the effect is illusory.,"SUST
+Default: stationary image
+
+Resisted with mental res/mental soak
+eDV = CS + 5 
+0: The subject sees through the illusion
+1+: The target is aware the effect is an illusion, but has difficulty seeing through, treat as partial concelament for things within the illusion.
+9+: The target believes the effect is real until it is otherwise demonstrated to be an illusion.
+
+Overloads:
+
+2: +1 eDV
+2: The phantasm can produce sound
+2: the phantasm can move
+",20,"7U,(9)",,4,,,,4,,20,,,,,,,,,,,,R3 exclusive,,,
+0,Spell,Rageful Treason,This turn an enemy attacks their allies in a blinding fury of rage,"INST TRGT
+CS+5 eDV
+mental res
+mental soak
+
+0: no effect
+1: target must take the attack action on its next turn
+9: target considers enemies as allies and allies as enemies on its next turn
+
+Overloads:
+
+2: +1 eDV
+4: +5ft diameter",15,8R,,,,8,,8,,15,,,,,,,,,,,,R3-4 exclusive,,,
+0,Spell,Rejuvenate,Heal over time,"SUST TRGT(SELF)
+Heals 2 per round up to CS or full health. Healing occurs at the end of the round.
+
+Overloads:
+
+1: +1 max heal",5,"4G,(6)",,,,,4,4,,5,,,,,,,,,,,,R2 limited,,,
+0,Spell,Renew Vitality,Heal lethal,"INST TRGT(SELF)
+Heals for up to CS/2 lethal damage.
+
+Overloads:
+
+1: +1 heal",5,"4G,(9)",,,,,4,4,,5,,,,,,,,,,,,R2 limited,,,
+0,Spell,Seal,"Reinforce lock, door, etc against opening, +1 threshold per hit up to FORCE / 2.
+
+Unseal","SUST TRGT
+
++ CS/2 to door/lock threshold
+_____________________________________
++ CS/2 to lockpicking checks
+
+Casting this spell is a half action
+
+Overloads:
+
+2: +1 bonus to lockpicking
+4: +1 to door/lock threshold",5,"3(W|U|G),(6)",4,4,,,4,4,,5,,,,,,,,,,,,R2 limited,Mono U open,,
+0,Spell,Sending,Send message of X words per hit,"INST
+Send a message of 25 words up to (CS*10) feet to a known recipient.
+
+Overloads:
+
+4: *10 distance
+
+",5,"4U,(9)",,2,,,,2,,5,,,,,,,,,,,,R3 limited,,,
+0,Spell,Shadow,Reduce visibility in an area,"SUST AoE
+Area = 15ft radius, reduce visibility by CS/2
+
+Overloads:
+
+2: +1 visibility reduction
+2: +5ft radius",5,"1B,(6)",,,4,,,4,,5,,,,,,,,,,,,R2 limited,Open,,
+0,Spell,Shatter,Break objects,"DIRECT INST
+DV = CS+7
+Can only target objects. Attended objects are entitled to physical resist and physical soak on top of their hardness.
+
+Overloads:
+
+2: +1 eDV",10,"7(W|R|G),(9)
+",6,,,6,6,6,,10,,,,,,,,,,,,R3 exclusive,,,
+0,Spell,Sheepstick,"The target is turned into a dimminutive animal: squirrel, bunny, sheep (1/1) NOT GOATS, GOATS ARE (0/1)","INST SUST TRGT
+CS+5 eDV
+mental resist
+physical soak
+
+0: no effect
+1: target can't both move and take actions on their next turn
+9: Target is turned into a small harmless creature until the end of the round. This effect ends early if they are targeted by any hostile effects.
+each 4 beyond: Effect persists for another round
+
+Overloads:
+
+2: +1 eDV",30,"10U,(21)",,14,,,,14,,30,,,,,,,,,,,,R7 limited,,,
+0,Spell,Sleep,"Put targets to sleep, damage / other stuff wakes","SUST AOE
+F/2+4
+F/2+4 eDV
+(5ft diameter) +1 (per 5ft)
+Target resists with mental resist
+Target then soaks with mental soak.
+0: no effect
+1: the target can either move or take actions on its next turn, but not both
+5+: the target is put to sleep for eDV-4 turns, waking on damage.
+",10,"6U,(12)",,8,,,,8,,10,,,,,,,,,,,,R4 limited,Mono U limited,,
+0,Spell,Stasis,Remove target from reality for a turn,"INST TRGT
+F/2 + 4
+F/2 +3 eDV
+Target resists with mental resist.
+Target soaks with mental soak. If this spell would do damage the target is instead removed from reality for the rest of the round. When removed from reality the target may not take turns, may not be targeted or interacted with. It does not occupy space, time does not pass for it. It returns at the start of the next round in or as close to where it departed from. 
+",15,"2W,2U,(15)",8,8,,,,8,,15,,,,,,,,,,,,R5 limited,"UW required, open",,
+0,Spell,Suggestion,Implant a compulsion in targets mind,"INST SINGLE/AOE MIND-AFFECTING TRGT
+CS+7 eDV
+Mental resist
+Mental soak
+
+0: no effect
+1: Suggestion lasts for a minute
+9: suggestion lasts for an hour
+each 4 beyond: Double the duration
+
+Overloads:
+
+2: +1 eDV
+2: +5ft diameter",5,"4(U|B),(9)",,6,6,,,6,,5,,,,,,,,,,,,R3 limited,Mono U open,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,??,,,
+0,Spell,Tongues,SUST Comprehend all spoken languages,,,WUBRG,,,,,,,,,,,,,,,,,,,,,,,
+0,Spell,Translocating Eye,Two target creatures swap places,"INST TRGT
+Two target creatures within RANGE swap places. If a target is unwilling, target resists with mental res/phys soak
+eDV = CS
+0: the swap does not occur
+1+: the swap occurs
+
+",15,"6U,(12)",,6,,4,,6,,15,,,,,,,,,,,,R3-4 limited,Mono U limited,,
+0,Spell,True Seeing,"Imbued with visions of the truth, illusions and magical darkness melt from your vision, and all is clear.  Negate up to HITS penalty/bonus from illusions, magical or normal darkness, concealment etc","SUST SELF
+F/2
+Ignore up to CS/2 penalty on visual perception rolls.
+
+Casting this spell is a half action
+
+Overloads:
+
+2: +1 additional penalty ignored",5,4W,4,,,,,4,,5,,,,,,,,,,,,R2 open,,,
+0,Spell,Truelight,"Reduce vision penalties in an area
+","AOE SUST optional:SELF
+F/2 + 1 (5ft)
++1 per additional 5ft
+Casting this spell is a half actionreduce visibility penalties by FORCE.",5,"3(W|U|G),(9)",6,6,,,6,6,,10,,,,,,,,,,,,R3 open,,,
+0,Spell,Unto Nowhere,Progressively delete a target from reality,"DIRECT SUST
+F/2 + 5
+DV = F/2 + 3
+Ranged
+Avoided by Mental Res
+Soaked by Mental Soak
+
+While you sustain this spell the target is paralyzed and immune to all other attacks. On your turn you may spend a full action to repeat the attack, except you also take as much damage as you inflict upon the target. If you do not repeat the attack the spell ends when you take a half or full action on your turn, or delay your turn.",30,"12W,(24)",,,,,,,,30,,,,,,,,,,,,,,,
+0,Spell,Wall of Force,1 point of Armor and Structure rating per hit. Barrier regenerates at start of next turn.,"SUST
+F/2 + 3
+Barrier rating: 5+F/2, barrier hp, 8+F/2. Barrier regenerates at start of next turn.",10,"4W,4U,(18)",8,8,,,,8,,10,,,,,,,,,,,,R4 limited,,,
+0,Spell,Warp World,All allies and enemies in the encounter randomly swap positions,"INST AOE
+F/2+2
+All creatures that fail to save or are willing within F*M*3 ft (round up for squares) randomly swap places. 
+
+Resolution advice: remove all subjects and mark their locations, roll one by one for each subject's reentry to a location after assigning each location a number.",20,"14R,(18)",,6,,12,,12,,20,,,,,,,,,,,,R6 limited,Mono Red Exclusive,,
+0,Spell,Word of Binding,Save or suck no physical actions,"SUST TRGT
+F/2 + 4
+F/2+3 eDV
+Mental Res
+Mental Soak
+
+0: nothing
+1: half movement, lose a half action
+5: Paralyzed 1 turn
+each 2 additiona, paralyzed +1 turn",15,"9W,(18)",12,,,,,12,,15,,,,,,,,,,,,,,,
+0,Stance,1v1 me bro,"Ignore full defense, free parries vs. stuff you are fighting","When your targeted is threatened only by you and you are at most only threatened by your target you ignore that enemy's full defense with melee attacks. After attacking an enemy, the next parry you attempt against that enemy this round costs (0).",20,"6W,6R,(15)",5,,,5,,10,,20,,,,,,,,,,,,R5 exclusive,Is this more RB?,,
+0,Stance,Adroit riposte,bonus vs. enemies who are foiled by your parry // only costs (5) to riposte,When your parry prevents an attack from hitting add (NET HITS) to your next attack against that opponent. It only costs (5) to make a riposte. Enemies do not benefit from reach when you are riposting. ,40,"4W,4U,(15)",5,5,,,,10,,40,,,,,,,,,,,,R4-5 limited,,,
+0,Stance,Analyze Dweomer,High focus detect and analyze magic,"You may make Perceive Magic checks with your spellcasting dicepool, but only for objects you are physically touching or effects you are in contact with.",5,"1U,(3)",,4,,,,4,,5,,,,,,,,,,,,R2 exclusive,,,
+0,Stance,Berserker,full offense,Your dice explode on attack actions. All active defenses cost an additional (5).,30,"12(B|R),(15)
+",,,8,8,,8,,30,,,,,,,,,,,,R5 exclusive. may need rework,BR (both required),,
+0,Stance,Celeritas Dominus,"When casting a spell, extra mobility options become available","When casting a...\nRed: Shift 1; Blue: tele 10ft; RU: choose one
+When casting a... \nRed: Shift 2; Blue: tele 15ft; RU; both",10 per,8(R/U) per,,8,,8,,8,,10,20,,,,,,,,,,,R4 limited,,,
+0,Stance,Center of Attention,Attacks that don't target you provoke,Enemies that take attacks or actions that include your allies but not any creatures with Center of Attention active as target(s) provoke an opportunity attack from you.,20,"3W,3B,(15)",,,,,,,,20,,,,,,,,,,,,,,,
+0,Stance,Counterspell Stance,Counterspelling costs (5),Counterspelling costs (5). You are always making passive perception checks to detect magic within 10* (cast stat) feet of you and are aware of what spell is being cast.,10,"6U,(12)
+",,8,,,,8,,10,,,,,,,,,,,,R4 limited,,,
+0,Stance,dodge stance,Move after dodging,Every time you attempt a dodge you may shift 5ft after resolving the dodge.,10,"9(U|B|R),(12)
+",,6,6,6,,6,,10,,,,,,,,,,,,R4 exclusive,,,
+0,Stance,Horde Culling Stance,"bonuses when fighting multiple opponents, ignore some penalties from being outnumbered",2 extra dice on each attack per target when attacking multiple targets with melee. Opponents do not get bonus dice for outnumbering you in melee.,5,4(W/R),4,,,4,,4,,5,,,,,,,,,,,,R3 lmiited,,,
+0,Stance,Mountain Stance,"Shield bonus is added to armor, full block is now (5)","Add (2* your shield bonus/3) to any calculation that includes your armor. Ex: armor soak, DV threshold.",5,"6W,(12)",4,,,,,4,,5,,,,,,,,,,,,R3-4 limited,,,
+0,Stance,Never Outnumbered,"Bonus to evasion for each enemy in sight, up to X",Gain 1 die on dodge and full dodge for each enemy within 60' (LOS and LOE required) to a maximum of half your tradition rank.,10,"12(W|R|G),(15)",10,,,10,10,10,,10,,,,,,,,,,,,R5 limited OR excl?,,,
+0,Stance,Quickfire Storm,"Whenever you cast a spell that normally deals no damage, you may chuck a firebolt at an opponent","After you resolve a spellcast that was not an INST or DIRECT combat spell, you may fire a DV = 5+ (CAST STAT) ranged single target lightning bolt",20,"7U,7R,(18)",,4,,8,,12,,20,,,,,,,,,,,,R6 exclusive,,,
+0,Stance,Reach Stance,Increases reach,Adds (RANK) Reach,5 per,"3G,(6) per
+",,,,,4,4,,5,10,15,20,,,,,,,,,R2 limited per?,,,
+0,Stance,Rooted Bulwark,"While in this stance, you resist all attempts to be moved against your will.  Additionally, at the end of your turns, vines grow from the ground attempting to root all adjacent enemies in place.  If continuously rooted, enemies will become entangled and eventually engulfed in vines and plants.  This stance is ended if the roots are hacked away and is usable the next day or when your nature is regenerated (lol idk what I'm thinking honestly, feel free to rationalize this a lot)","Gain +4 dice to resist all attempts to be moved against your will. 
+At the end of the round vines grow out from your body attempting to root all adjacent enemes in place (Your weapon skill or spellcasting vs. enemy dodge,parry, grapple // STR eDV, enemy phys soak. Any unsoaked eDV yields success). If an enemy is already rooted, the check is instead to entangle. If already entangled, the check is to engulf and imprison.
+
+The vines can be hacked away (BOD+8 health, BOD*2 barrier rating)",5,"6G,(12)
+",,,,,8,8,,5,,,,,,,,,,,,R4 limited,,,
+0,Stance,Surging Strikes,"Once per turn when you successfully hit with an attack and deal damage, cast a spell",Once per turn when you successfully hit with an attack and deal damage you may cast a spell that has a casting time of no longer than a full action. Casting the spell is done as a nonaction immediately after resolving the triggering attack.,60,"12R,12G,(30)",,,,,,,,60,,,,,,,,,,,,,,,
+0,Stance,The Blood Tells,"Hear and feel all heartbeats within an extended range.  The range increases with blood for the blood god and lust for the lust throne.  Additionally, gain a bonus on active bluff detection against characters with a heartrate.","All heartbeats within (CHA*5 ft) can be heard (DC 2 base). Gain +4 dice on judge intentions rolls against targets that you are aware of, who have a heartbeat.",15,12B,,,12,,,12,,15,,,,,,,,,,,,R5-6? limited or exclusive?,,,
+0,Stance,Thicket of Blades,AoO stance,Attacks of opportunity cost (2/1). ,"20,
+80","12W,(15)
+24W,(30)",8,,,,,8,,20,100,,,,,,,,,,,R4 limited,,,
+0,Stance,Threatening Archer,Opponents that move within (Y) of you provoke,"Treat all squares within (AGI/2)*5 as threatened by your ranged weapon for purposes of opportunity attacks.
+",50,"16(W|G),(21)",,,,,,,,50,,,,,,,,,,,,,,,
+0,Stance,Unyielding Stance,"Ignore wound penalties, falling unconscious as long as you hold your ground, or for one day, WHICHE ER COMES FIRST. If at any point your overflow is filled during this time, you die when this benefit ends. ","Ignore wound penalties, falling unconscious as long as you hold your ground, or for one day, WHICHEVER COMES FIRST. If at any point your overflow is filled during this time, you die when this benefit ends. ",10,12(W/B),12,,12,,,12,,10,,,,,,,,,,,,R6 limited,,,
+0,Stance,Vengeful Bulwark,Bonus vs. targets you block,"Gain your shield bonus to your dice pool on your attack against a target you have successfully blocked in the past round. You may spend (5) to make an attack against a target you have succesfully blocked, this attack is made with your shield. (reach 0, buckler = 2 dv, med shield = 6 dv, heavy shield = 8dv, tower shield = 12dv)",5,"7W,(15)",6,,,,,6,,5,,,,,,,,,,,,R4-5 limited,,,
+0,Stance,Willow stance,"Get +4 on defense after a turn in which you do not attack. If you did not attack last turn you have +4 on your next attack.
+ If you do nothing during your turn you do not lose initiative. ","You have +4 defensive dice if you did not attack since your last turn. If you have not attacked since your last turn you have +4 dice on your next attack. You can pass your turn once per round at zero initiative loss.
+",25,"9W,(12)",8,,,,,8,,25,,,,,,,,,,,,R4 exclusive,,,
+0,Template,Undead,"Become undead, with benefits and drawbacks. Multiple options. Vampire, (necropolitan), mummy, skeleton, death knight?","You permanently become undead, gaining benefits and drawbacks according to the specific type selected.
+
+General:
+An undead's BOD does not contribute to its overflow track. Thus by default an undead dies when its physical wounds equal or exceed its health.
+Undead are immune to poisons, diseases, life drain effects, effects that depend upon physical pain/pleasure/discomfort, and most death effects.
+",40,12B,,,12,,,12,,40,,,,,,,,,,,,????,,,
+3,,,,,,,,2,,,4,4,,,,,,,,,,,,,,,,,
+1,Buff,Shifting Form,Change to a new adaptation each time you roll initiative.,"Body Buff.
+
+Each time you roll initiative roll a 1d6 and gain the following benefit until the end of the round.
+1: Movement speed increased by 50%
+2: gain 2 reach
+3: 2 temp hp
+4: 
+5: 
+6: 
+
+Rank 2: you may roll 1d6 as a Extra action and choose to replace your current buff with the rolled buff.
+
+Rank 3: you roll twice for buffs and can sustain two buffs.",,"3U, 3G, (9) per",,,,,,,,,,,,,,,,,,,,,,,
+1,Buff,Spare a hand?,Grow extra limbs!,Grow 2 extra limbs,10,,,,8,,8,8,,10,,,,,,,,,,,,lol,G,,
+1,Maneuver,Deft Strike,"With only a half action remaining, make an attack with a light weapon",half action. You must have already used one of your half actions this round. Make an attack with a light weapon.,40,,,,,,,,,40,,,,,,,,,,,,,,,
+1,Maneuver,Ethereal  Slip,As spacial slip but turn invisible instead of teleport,,5,W,,,,,,,,5,,,,,,,,,,,,,,,
+1,Maneuver,Last Word,spend init to prevent enemies from reacting to your nonaction,(5) as part of a nonaction ability. No abilities can trigger in response to the activation or resolution of the empowered ability.,40,,,,,,,,,40,,,,,,,,,,,,R7-9 limited?,,,
+1,Maneuver,Linguistics,"After some time, puzzle out any written language","After some time, puzzle out any written language",,UB,,,,,,,,,,,,,,,,,,,,,,,
+1,Maneuver,Nightmare Blade,Stab them in the MIND,"Make a melee attack at -3DV, the target resists with mental save instead of dodge/block/parry.",40,,,,,,,,,40,,,,,,,,,,,,,,,
+1,Maneuver,One with the scene,You may disguise yourself as inanmiate objects,You may attempt a disguise check to appear as an object of roughly your size at no penalty to the check. This check is performed in one round. Targets observing you when you begin this check automatically see through the disguise.,5,,,,,,,,,5,,,,,,,,,,,,,,,
+1,Maneuver,Return to Sender,Force an effect back onto enemy when you save,(5) when you fully soak an attack or ability that carries a status effect rider. The originating creature must soak against the effect as if it had been the original target.,20,,,,,,,,,20,,,,,,,,,,,,,,,
+1,Passive,Bomb making,Create rudimentary explosive devices for battle,,20,2R,,,,2,,2,,20,,,,,,,,,,,,,,,
+1,Passive,Friend of the Less Fortunate,"Something about you, and your background, lets you get along well with the less fortunate.",,5,"1W,(6)",,,,,,,,5,,,,,,,,,,,,,,,
+1,Passive,Keen Eyed Tracker,"Bonus on tracking, negate penalties by using multiple methods to discern concealed tracks",,5,4(W/G),4,,,,4,4,,5,,,,,,,,,,,,,,,
+1,Passive,Man of K'Hull Duade,Ignore impediments and later barriers when you charge,"Ignore most difficult terrain when charging
+_______________
+Ignore all difficult terrain when charging
+_______________
+Can make a check when charging to run through barriers or displace creatures
+_______________
+Check made to bypass barriers and displace creatures is at a bonus
+",5/10/15/20,,,,,,,,,5,15,30,50,,,,,,,,,,,,
+1,Passive,Peerless Tracker,"Track all manner of things, even magical auras",,5,"7G,(9)",,,,,,,,5,,,,,,,,,,,,,,,
+1,Passive,Regional Adaptation,"Pick a region/climate, bonuses for enduring things typical to the area. Knowledge about area, etc",,2,2G,,,,,2,2,,,,,,,,,,,,,,,,,
+1,Passive,Speed Read,You can read at astonishing speed,You can read a full page of text in six seconds getting a general idea of its contents. ,5,,,,,,,,,,,,,,,,,,,,,,,,
+1,Passive,Stifle,You can now counterspell maneuvers and other activated abilities,You can now use counterspell to negate activated abilities and maneuvers. If the given ability does not generate an opposed check normally then the activating creature defends with ,,UG,,,,,,,,,,,,,,,,,,,,,,,
+1,Passive,Unbalancing,Gain (bonus) against enemies you have recently dodged,Superior ground against enemies you dodged since the end of the last round.,,B,,,,,,,,,,,,,,,,,,,,,,,
+1,Passive,Unyielding Focus,"Can't be counterspelled, can't be foiled",Your abilities cannot be countered or interrupted. ,,WG,,,,,,,,,,,,,,,,,,,,,,,
+1,"Passive
+",Restorative Resonance,"Whenever you heal an ally, trigge a heal on another nearby ally","Whenever an effect of yours heals an ally, heal another ally within 30' of one of the original healing recipients for 2. This ability can't trigger itself",,W,,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Alarm,"Sets a ward upon an area that, if it detects things that meet specified conditions, sets off an alarm.",,5,WU,,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Antipathy,Repell types of creatures from an area,RITUAL,,14W,14,,,,,14,,,,,,,,,,,,,,,,,
+1,Spell,Chaosmorph,"The target is turned into a dimminutive animal or a giant beast, as polymorph, or dino/bear/rhino (5/5)","INST SUST TRGT
+F/2+1, F=BOD+SIZEMOD
+On success vs. 2x targets BOD the victim is changed. Flip a coin.
+Heads: (1/1)
+Tails: (5/5)
+",10,,,12,,12,,18,,10,,,,,,,,,,,,,,,
+1,Spell,Detention,"Choose Spells or maneuvers, target can't use the chosen on its next turn.
+","INST TRGT
+F/2+2
+Target opposes with MENTAL
+Need F+net hits > target's WIL *2
+Casting this spell is a half action
+On success choose Maneuvers or Spells. The target cannot use the selected type of ability on its next turn.",,WU,,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Earthshape,Move/reshape the earth,"F/2 + 3
+Shift up to 200kg of earth per net hit, forming it with minimal control over finer details.",,G,,,,,6,6,,10,,,,,,,,,,,,,,,
+1,Spell,Embiggen,Increase size of target ally,"SUST, TRGT(SELF)
+F/2+5
+F1: +1 size
+F5: +2 size
+F9: +3 size",15,,,,,,8,8,,15,,,,,,,,,,,,,,,
+1,Spell,Mirror Image,Create multiple illusiory duplicates ,SUST,,U,,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Resist Energy,Create ward that absorbs energy damage of a type specified at casting,,10,WG,,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Seeping Deluge,"A flash flood hits the area. Water swells, swallowing up the ground.  Creatures must seek saftey among trees, boulders, or rooves.  The deluge may take hours or days to pass depending on how flat the surrounding region is.",,30,6U,,6,,,,6,,30,,,,,,,,,,,,,,,
+1,Spell,Sleetstorm,"Blinding freezing sleet pelts down from the skys. A sleetstorm begins.  If it is summertime, a hailstorm may appear instead.  Hailstorms hurt and break things but dont do anything else.  Sleetstorms make the ground icy and extingquish campfires, torches, etc as well as reducing vision down to 10ft.  Sleetstorms rarely last more than a day, but in harsh winters can remain for a week.",,20,6(U/R),,4,,6,,6,,20,,,,,,,,,,,,,,,
+1,Spell,Time Spiral,All creatures involved in combat reroll initiative,"AoE INST
+F/2+12
+All creatures in the current combat reroll initiative.",,U (R10),,,,,,,,,,,,,,,,,,,,,,,
+1,Spell,Tornado,"The wind whips up, injuring flying creatures and blowing stuff over.  A windstorm picks up in the region blowing sails, grounding flyers, and overall making a ruccus of anything not tied down.  Lasts as long as it takes a high pressure system to dissapate",,20,6(U/G),,4,,,6,6,,20,,,,,,,,,,,,,,,
+1,Spell,Zone of Silence,Silence an area,"F/2 + 4
+Sets a threshold of (F) for casting, opposed by ",,W,,,,,,,,,,,,,,,,,,,,,,,
+2,Buff,Size control,shrink / grow ,,,6(U/G),,6,,,6,6,,,,,,,,,,,,,,,,,
+2,Debuff,Mark,"Mark target, easily track target, bonuses against marked target",,,4G,,,,,4,4,,,,,,,,,,,,,,,,,
+2,Maneuver,Body Diving,meld into flesh,,,B,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Crunching Bullrush,Deal damage when bullrushing something into an obstacle,,,2(G/R/B),,,2,2,2,2,,,,,,,,,,,,,,,,,
+2,Maneuver,Detaining Strike,Attack inflicts dice penalty on enemy's attacks for the rest of the round,,,W,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Devour,Swallow whole enemies much smaller than you,,,BG,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Discorporation,"Avert death, reform later",Spend all your LUK when you would die. If your spent LUK exceeds the damage you died by you discorporate and return next (time of day) at full health at a nearby safe location.,,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Fatespin,"Force an enemy to choose what they will do on their next turn, this locks them into those actions.",,,8B,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Find the Gap,Bypass armor in a moment of opportunity,,,2W,2,,,,,2,,,,,,,,,,,,,,,,,
+2,Maneuver,Grand Bend,"Line attack AoE shot
+",Make a line attack (AoE) with your ranged weapon at -6 dicepool out to the end of your weapon's short range. Take Aim bonuses are doubled for this attack.,,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Invoke Paragon,spend luck (or whatever) immediate action gain temporary immunity from death effects.,,,8W,8,,,,,8,,,,,,,,,,,,,,,,,
+2,Maneuver,Manacleave,Attack removes buff(s),"Make an attack, net hits do not contribute to damage. Target soaks with mental soak. On hit one of the target's buffs (chosen randomly) ends. 
+___________________________
+Half net hits buffs are removed
+___________________________
+Half net hits also contribute to damage",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Puff of Smoke,"Flash powder, smoke bomb, or a magical breath; whatever the source of the distraction, the user has dissapeared","As a half action, or for (5) as part of movement, you may toss the flask to generate a 10' cube of smoke that lasts until the start of your next turn. The smoke applies a -2 vision penalty to see into or through it. (scale cooldown with investment or go with daily charges?)",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Redirecting parry,"cause enemy to hit themselves with their weapon on a successful parry
+",(5) as part of attempting a parry. If your parry is successful the attacker must soak the unmodified DV of their weapon.,,,,,,,,,,,,,,,,,,,,,,R3-5?,,,
+2,Maneuver,Restorative Strike,attack generates temp hp,"Make an attack with your weapon, net hits do not contribute to damage. Generate
+1 / half net hits / net hits temp hp.",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Something,debuff on hit - cannot take bonus actions (or op atks?),,,U,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Spellshank,"Deal reduced damage, possibly steal and cast spell target recently cast",,,UB,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Spiritual Bastion,"Place a rune circle on the ground, you and allies standing within it gain benefits. ","Spend 1 Drain or 10 minutes. Place down a 15ft diameter rune circle. You and allies within gain (CHA/2) dice to all defenses while within the circle. Additionally, effects of mind affecting abilities are suppressed for you and allies within the circle. Extraplanar/some supernatural creatures (as defined by GM) cannot breach the circle.
+
+A creature standing within the circle can spend a half action that provokes opportunity attacks to scuff the circle. A circle that has been scuffed 3 times is destroyed. Additionally a circle fails after 24 hours, or if you spend more than an hour outside of it.",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Surge of Finality,"Make an attack when you would be knocked unconscious, if you kill the target that is knocking you unconscious negate the attack",triggered as a nonaction at interrupt speed when you would be knocked unconscious. Make an attack against the enemy that would be knocking you unconscious. Wound penalties are doubled and become a bonus on this attack. If your attack knocks the enemy unconscious undo the damage their attack did to you.,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Maneuver,Touch of Purity,Purge various effects from ally,,,4W,4,,,,,4,,,,,,,,,,,,,,,,,
+2,Maneuver,Volatilize,"double dice, 1s count as -1s, if 1/4 are 1s auto fail",,,UR,,,,,,,,,,,,,,,,,,,,,,,
+2,Maneuver,Wild Ricochet,Cast a copy of a spell being cast and redirect the targets of the spell being cast,,,8R,,,,8,,8,,,,,,,,,,,,,,,,,
+2,Metamagic,Cloudy Conjuration,Create a fog cloud after casting a conjuration spell,,,2(U/G),,2,,,2,2,,,,,,,,,,,,,,,,,
+2,Passive,Animal companion / familiar,Various levels / access / options,,,2(G/U),,2,,,2,2,,,,,,,,,,,,,,,,,
+2,Passive,Covert Poisoning,Much easier to poison unsuspecting targets,,,B / G,,,,,,,,,,,,,,,,,,,,,,,
+2,Passive,Elemental Charge,"When you make a charge attack while you have an element imbued in your weapons you leave a lingering trail of that element.
+","Prerequisite: an Imbue (element) ability.
+You may spend (5) to activate one of your Imbue(element) buffs as part of a charge.
+When you charge with an imbue(element) buff active you leave behind a lingering trail of the element in all spaces you exit as part of the charge. This trail lasts until the end of the round and automatically hits creatures that enter, cross, or end their turn inside it, dealing (2+STAT??) damage of the appropriate element.
+",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Passive,Find the weakspot,"Various bonuses granted to combat for identifying fighting styles, armor, weapons",,,4(W/U),4,2,,,,4,,,,,,,,,,,,,,,,,
+2,Passive,Personality Cult,"When you resist a charm effect, you may reflect that effect back at the user.",,,B,,,,,,,,,,,,,,,,,,,,,,,
+2,Passive,Think You're Scary?,"Resist fear, retalliate against failed fear effects.",Act as if your fear state was 1 lower. Your max fear state is increased by 1. You passively roll active mental against all fear effects. After succeeding on a mental res vs. a fear effect you may spend (5) as an interrupt to attempt intimidation vs. the source of the triggering fear.,,,,,,,,,,,,,,,,,,,,,,,,,
+2,Passive,Titan Toppler,"Climb enemies much larger than you, benefits, tactics",,,2(R/W),2,,,2,,2,,,,,,,,,,,,,,,,,
+2,Passive,Wise Guesser,"When confronted with a pressing choice, be more likely to choose correctly at random.","Whenever deciding between choices at random in a moment of importance (an idle bit of gambling during downtime is hardly important, but if the same game won a handful of scorpions or the key to freedom it's important!) you are 50% more likely to pick the correct choice. Thus picking between two doors would have a 75% of choosing the correct one for pursuing the thief. Or guessing which leg of the chair is shortest is 37.5% (25%*1.5). The GM resolves such rolls secretly and informs the player of what their guessing aptitude hints at.",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Ritual,Ride the lightning,"Teleport by lightning bolt, dependent on clouds",,,WR,,,,,,,,,,,,,,,,,,,,,,,
+2,Ritual,Scrying,"View location, individual or objects remotely from great distance",,,12U,,12,,,,12,,,,,,,,,,,,,,,,,
+2,Ritual,Sentinel Ward,"ward an area against intruders, alerting you if tresspass occurs.","ward an area against intruders. A (spirit/elemental/etc) observes the area for creatures entering that match your supplied description and can issue verbal warnings and send you and up to N others a mental alarm (max distance?)
+
+upgraded: observer can manifest a guardian to attack trespassers",,,,,,,,,,,,,,,,,,,,,,,,,
+2,Spell,Elemental Trap,Create elemental attack that can be triggered after an arming time,,,8,8,8,8,8,8,8,,,,,,,,,,,,,,,,,
+2,Spell,Fly,"Causes subject(s) to fly, successes influence speed/maneuverability of flight",,,U,,,,,,,,,,,,,,,,,,,,,,,
+2,Spell,Phase Lock,"Target is bound to this dimension, cannot teleport or phase.",,,W?,,,,,,,,,,,,,,,,,,,,,,,
+2,Spell,Phase Lock Field,Region is warded against teleportation and extradimensional access.,,,W?,,,,,,,,,,,,,,,,,,,,,,,
+2,Spell,Thoughtsway,mind affecting to determine target's next attack,,,U,,,,,,,,,,,,,,,,,,,,,,,
+2,Spell,Transmorgriphy Snake,Turn linked chain or rope into a snake.  Can be used to release shackles or rope bonds.  Snake can be venomous if (G).,,,BUG,,,,,,,,,,,,,,,,,,,,,,,
+3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Aura,Stifling Presence,silence?,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Buff,Fusion,"Temporarily merge with target willing ally, forming a fusion of stats and abilities.",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Buff,Overdrive,"costs drain to trigger, various general combat bonuses",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Buff,Primeval Embodiment,,,,20G,,,,,,,,,,,,,,,,,,,,,,,
+3,Buff,Unchained Instinct,,,,20R,,,,,,,,,,,,,,,,,,,,,,,
+3,Craft,Advanced alchemical creation,"Create smoke bombs, flashers, ",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Maneuver,Meld into stone,,,,G,,,,,,,,,,,,,,,,,,,,,,,
+3,Maneuver,Shield Slam,Generate shockwave with shield,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Maneuver,Spellcatching/Spelltheft,Steal and hold spell effect to reuse later,,,4U,,4,,,,4,,,,,,,,,,,,,,,,,
+3,Maneuver,"Turn X (undead, etc)","Repel abhorrent entities of a specific type, varporize weaker entities",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Maneuver,Volley,Fire multiple projectiles as one attack,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Metamagic,Implement Focus,"You cannot cast without your implement. Choose an implement, gain minor benefits from it",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Enduring Fortitude,Temp HP decays slower,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Guild Membership,,(codified tiered access to guild benefit stuff),,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Pactmarked,You have a pact with a powerful entity that grants boons and drawbacks,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Passive,Pain Begets Clarity,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Rite of Eternal Return,"So long as your remains are treated to the proper preparation and one hour ritual, and you've been dead less than a day, you rise in perfect condition next sunrise/sunset/noon/midnight. Upon rising your luk pool becomes 0.",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Sense Heretic,Detect heresy as appropriate for your viewpoint,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Souleater,,,,B,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,Unarmed Master,Improve unarmed attacks,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,,Can pay init for other allies’ actions,,,WG,,,,,,,,,,,,,,,,,,,,,,,
+3,Passive,,Gain bonus vs. wounded enemies,,,BR,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Artillery Usage,"Crew, understand, use ballista, cannon, boardplank",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Astral Readings,"star reading, navigation, cardinal direction, weather events",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Fencing and Smuggling,Abiliity to disguise goods and convince buyers that said goods are not stolen,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Geometric interpolation,"Feel the tectonics in the earth, shape and bend them to your will",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Predict Storm,"With some % of accuracy, predict storms (hurricane, sandstorm, and more)",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Skill,Shot and Blade,"Duel wield, firing a one handed ranged weapon and a one handed sword. May have different targets, no penalties or provokes from shooting ranged",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Spell,Animate Dead,,,,B,,,,,,,,,,,,,,,,,,,,,,,
+3,Spell,Cloud of Knives,Conjure a variable amount of knives that you can fire off individually as an attack,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,Spell,Meteor,,,,R,,,,,,,,,,,,,,,,,,,,,,,
+3,Spell,Scrying Ward,,,,WU,,,,,,,,,,,,,,,,,,,,,,,
+3,Stance,Inner Focus,"Holding focus mechanics, bonuses while holding focus, can be shaken out of focus, increasingly hard to sustain focus",,,,,,,,,,,,,,,,,,,,,,,,,,
+3,,Control Plants,"Command or Rebuke plant creatures
+
+-your WIL vs. ??","As description.  Alternatively, some sort of plant affinity, plant growing, and other naturey things",,,,,,,,,,,,,,,,,,,,,,,,,
+3,,Quake,"Knock prone, damage vs. those on ground",,,R,,,,,,,,,,,,,,,,,,,,,,,
+4,Buff,Conjure personal steed,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Buff,Grace Under Pressure,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Maneuver,Bone Storm,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Maneuver,Unbalancing Blow,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Passive,Duress,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Passive,Familiar,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Passive,Quick healer // regeneration,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Passive,,Allies gain bonus when you are damaged,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Ritual,Imbue Region,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Ritual,Imprison,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Adapt Body,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Blind,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Charm,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Conjure Weapon,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Constricting Field,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,"Creation, Permanent",,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,"Creation, Temporary",,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Discern Alignment,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Earthquake,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Know Nemesis,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Magic Jar,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Poison Burst,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Poison Cloud,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Share Pain,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,X Wall,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Spell,Zone of Truth,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Stance,Sneaky ,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,,,Ignore half target's armor if they don't actively defend,Ignore half target's armor if they don't actively defend,,,,,,,,,,,,,,,,,,,,,,,,,
+4,,,Gain bonuses per X wound boxes,,,RB,,,,,,,,,,,,,,,,,,,,,,,
+5,,HERITAGE TRAITS,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,Passive,Spellstrike,spellcasting for weapon skill,Pay 1 drain. You may use spellcasting in place of weapon skill for a single weapon attack,5,"12GW,(12)",,,,,,,,5,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,metamagic,Subtle Magic,Stealth cast,1 drain. Spell is not perceived except by a successful opposed percieve magic check.,5,"6B,(6)",,,,,,,,5,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
