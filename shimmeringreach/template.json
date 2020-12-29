@@ -1,0 +1,294 @@
+{
+"Actor": {
+    "types": ["character"],
+    "attributes": {
+      "body": {
+        "value": 1,
+        "max": 11
+      },
+      "strength": {
+        "value": 1,
+        "max": 11
+      },
+      "reaction": {
+        "value": 1,
+        "max": 11
+      },
+      "agility": {
+        "value": 1,
+        "max": 11
+      },
+      "intelligence": {
+        "value": 1,
+        "max": 11
+      },
+      "logic": {
+        "value": 1,
+        "max": 11
+      },
+      "charisma": {
+        "value": 1,
+        "max": 11
+      },
+      "luck": {
+        "value": 1,
+        "max": 11
+      }
+    },
+    "skills": {
+        "athletics": {
+            "strongman": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "gymnastics": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "marathoner": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "traversal": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "value": 0,
+            "max": 0,
+            "dicepool": 0
+        },
+        "survival": {
+            "navigation": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "survival": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "medicine": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "animal handling": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "value": 0,
+            "max": 0,
+            "dicepool": 0
+        },
+        "influence": {
+            "con": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "insight": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "intimidation": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "negotiation": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "value": 0,
+            "max": 0,
+            "dicepool": 0
+        },
+        "subterfuge": {
+            "disguise": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "stealth": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "legerdemain": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "thievery": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0,
+            "dicepool": 0
+            },
+            "value": 0,
+            "max": 0
+        },
+        "groupless": {
+            "spellcasting": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "perceive magic": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "weapon skill": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "perception": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "dodge": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            },
+            "perserverence": {
+                "value": 0,
+                "max": 0,
+                "attribute":"",
+                "dicepool": 0
+            }
+        },
+        "knowledge": {
+            "name": "string",
+            "rank": 0,
+            "max": 9
+        }
+    },
+    "resources":{
+        "hp": {
+            "value" : 0,
+            "max" : 0
+        },
+        "stamina":{
+            "value": 0,
+            "max": 0
+        },
+        "mana": {
+            "value": 0,
+            "max": 0
+        }
+    },
+    "defenses": {
+        "soak": {
+            "armor": {
+                "value": 0,
+                "type": ["normal", "light"]
+            },
+            "physical": {
+                "value": 0
+            },
+            "mental": {
+                "value": 0
+            },
+            "drain": {
+                "value": 0
+            }
+        },
+        "avoidance": {
+            "dodge": {
+                "value": 0
+            },
+            "parry": {
+                "value": 0
+            },
+            "block": {
+                "value": 0
+            },
+            "physical": {
+                "value": 0
+            },
+            "mental": {
+                "value": 0
+            },
+            
+        }
+    }
+  },
+  "character": {
+  },
+
+"Item": {
+  "types": ["weapon", "spell", "aura", "buffs", "damage-types", "maneuvers", "metamagics", "passives", "rituals", "spells", "stances", "status-effects"],
+  "templates": {
+    "" : {}
+  },
+  "weapon": {
+      "templates": {
+          "name": "item name",
+          "power": {
+            "value": 0
+          },
+          "dicepool": 0
+      },
+      "light": {
+        "power": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "1-handed": {
+        "power": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "2-handed": {
+        "power": {
+          "min": 0,
+          "max": 0
+        }
+      }
+  },
+  "shield": {
+      "templates": {
+        "shield type": ["none", "buckler", "light", "medium", "heavy", "tower"],
+        "shield bonus": 0
+      }
+  },
+  "spell": {
+    
+  }
+}
+}
