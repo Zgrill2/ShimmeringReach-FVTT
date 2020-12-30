@@ -4,6 +4,8 @@ import { SRActorSheet } from "./actor/actor-sheet.js";
 import { SRItem } from "./item/item.js";
 import { SRItemSheet } from "./item/item-sheet.js";
 
+import { RollDP } from "./dice-roller/roll.js";
+
 Hooks.once('init', async function() {
 
   game.shimmeringreach = {
@@ -11,6 +13,8 @@ Hooks.once('init', async function() {
     SRItem,
     rollItemMacro
   };
+
+  globalThis.RollDP = RollDP
 
   /**
    * Set an initiative formula for the system
