@@ -1,16 +1,16 @@
 // Import Modules
-import { BoilerplateActor } from "./actor/actor.js";
-import { BoilerplateActorSheet } from "./actor/actor-sheet.js";
-import { BoilerplateItem } from "./item/item.js";
-import { BoilerplateItemSheet } from "./item/item-sheet.js";
+import { SRActor } from "./actor/actor.js";
+import { SRActorSheet } from "./actor/actor-sheet.js";
+import { SRItem } from "./item/item.js";
+import { SRItemSheet } from "./item/item-sheet.js";
 
 import { RollDP  } from "./dice-roller/roll.js";
 
 Hooks.once('init', async function() {
 
-  game.boilerplate = {
-    BoilerplateActor,
-    BoilerplateItem,
+  game.shimmeringreach = {
+    SRActor,
+    SRItem,
     rollItemMacro,
     RollDP
   };
@@ -25,14 +25,14 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = BoilerplateActor;
-  CONFIG.Item.entityClass = BoilerplateItem;
+  CONFIG.Actor.entityClass = SRActor;
+  CONFIG.Item.entityClass = SRItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("boilerplate", BoilerplateActorSheet, { makeDefault: true });
+  Actors.registerSheet("shimmeringreach", SRActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("boilerplate", BoilerplateItemSheet, { makeDefault: true });
+  Items.registerSheet("shimmeringreach", SRItemSheet, { makeDefault: true });
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function() {
@@ -52,7 +52,7 @@ Hooks.once('init', async function() {
 
 Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createBoilerplateMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => createSRMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -66,13 +66,13 @@ Hooks.once("ready", async function() {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createBoilerplateMacro(data, slot) {
+async function createSRMacro(data, slot) {
   if (data.type !== "Item") return;
   if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
   const item = data.data;
 
   // Create the macro command
-  const command = `game.boilerplate.rollItemMacro("${item.name}");`;
+  const command = `game.shimmeringreach.rollItemMacro("${item.name}");`;
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -80,7 +80,7 @@ async function createBoilerplateMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "boilerplate.itemMacro": true }
+      flags: { "shimmeringreach.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);

@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "shimmeringreach",
   "title": "Shimmering Reach Fantasy Tabletop",
   "description": "Game system description goes here",
   "version": "0.2.0",
@@ -7,8 +7,8 @@
   "compatibleCoreVersion": "0.5.0S",
   "templateVersion": 2,
   "author": "Ernest Wunder, Dimitri Dolgov, and more",
-  "esmodules": ["module/boilerplate.js"],
-  "styles": ["css/boilerplate.css"],
+  "esmodules": ["module/shimmeringreach.js"],
+  "styles": ["css/shimmeringreach.css"],
   "scripts": [],
   "packs": [],
   "languages": [
