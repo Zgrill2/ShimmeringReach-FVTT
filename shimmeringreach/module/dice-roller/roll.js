@@ -31,7 +31,7 @@ export class RollDP extends Roll {
     }
     
     is_fumble() {
-        if count_failures() > self.dicepool / 2.0 {
+        if count_failures() >= self.dicepool / 2.0 {
             return true;
         }
         return false;
