@@ -4,21 +4,19 @@ export class RollDP extends Roll {
     constructor(formula, data) {
         console.log("initializing dicepool roller");
         super(formula, data);
-        let dicepool = this.terms[0].number; // this needs to be handled pre evaluate() or we will have a potenital race condition
+        let dicepool = this.terms[0].number;
     }
     
     count_result_faces(count_me) {
-        let hits = 0;
+        var hits = 0;
         let i;
         for (i = 0; i < count_me.length; i++) {
-            // todo: fix python syntax into js
             let x;
             for (x = 0; x < this.terms[0].results.length; x++) {
-                if (this.terms[0].results[x] == i) {
+                if (this.terms[0].results[x]["result"] == count_me[i]) {
                     hits += 1
                 }
             }
-            //hits += len([for x in self.data.results if x == i]);
         }
         return hits;
     }
