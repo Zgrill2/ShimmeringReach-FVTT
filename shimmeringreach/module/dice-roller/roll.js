@@ -4,7 +4,7 @@ export class RollDP extends Roll {
     constructor(formula, data) {
         console.log("initializing dicepool roller");
         super(formula, data);
-        let dicepool = this.terms[0].number;
+      //  let dicepool = this.terms[0]["number"];
     }
     
     count_result_faces(count_me) {
@@ -36,7 +36,7 @@ export class RollDP extends Roll {
     }
     
     is_fumble() {
-        if (this.count_failures() > this.dicepool / 2.0) {
+        if (this.count_failures() >= this.terms[0]["number"] / 2.0) {
             return true;
         }
         return false;
