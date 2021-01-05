@@ -83,7 +83,7 @@ export class RollDP extends Roll {
     }
     
     is_fumble() {
-        if (this.count_failures() >= this.terms[0]["number"] / 2.0) {
+        if (this.count_failures() > this.terms[0]["number"] / 2.0) {
             return true;
         }
         return false;
