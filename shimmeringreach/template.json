@@ -4,19 +4,19 @@
     "templates": {
       "base": {
         "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+          "value": 17,
+          "min": -1,
+          "max": 17
         },
         "stamina": {
-          "value": 5,
+          "value": 17,
           "min": 0,
-          "max": 5
+          "max": 17
         },
         "mana": {
-          "value": 5,
+          "value": 17,
           "min": 0,
-          "max": 5
+          "max": 17
         }
       }
     },
@@ -29,23 +29,29 @@
         }
       },
       "abilities": {
+        "bod": {
+          "value": 1
+        },
+        "agi": {
+          "value": 1
+        },
+        "rea": {
+          "value": 1
+        },
         "str": {
-          "value": 10
+          "value": 1
         },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
+        "wil": {
+          "value": 1
         },
         "int": {
-          "value": 10
+          "value": 1
         },
-        "wis": {
-          "value": 10
+        "log": {
+          "value": 1
         },
         "cha": {
-          "value": 10
+          "value": 1
         }
       }
     }
