@@ -13,8 +13,8 @@
           "min": 0,
           "max": 17
         },
-        "drain": {
-          "value": 17,
+        "mana": {
+          "value": 5,
           "min": 0,
           "max": 17
         }

@@ -11,7 +11,8 @@ Hooks.once('init', async function() {
   game.shimmeringreach = {
     SRActor,
     SRItem,
-    rollItemMacro
+    rollItemMacro,
+    RollDP
   };
 
   globalThis.RollDP = RollDP
@@ -21,13 +22,18 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "1d20 + @abilities.dex.mod",
+    formula: "1d20",
     decimals: 2
   };
 
   // Define custom Entity classes
   CONFIG.Actor.entityClass = SRActor;
   CONFIG.Item.entityClass = SRItem;
+  //CONFIG.Roll.entityClass = RollDP;
+  
+  
+  //Roll.CHAT_TEMPLATE = "templates/dice/roll.html";
+  //RollDP.CHAT_TEMPLATE = "templates/dice/roll.html";
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
