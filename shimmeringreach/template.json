@@ -8,7 +8,12 @@
           "min": 0,
           "max": 10
         },
-        "power": {
+        "stamina": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        },
+        "mana": {
           "value": 5,
           "min": 0,
           "max": 5
