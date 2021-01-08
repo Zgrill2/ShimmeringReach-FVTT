@@ -53,11 +53,61 @@
         "cha": {
           "value": 1
         }
+      },
+	  "skills": {
+        "athletics": {
+          "value": 1,
+		  "group": true
+        },
+		"strongman": {
+          "value": 1,
+		  "attr": "str",
+		  "grouped": "athletics"
+        },
+		"gymnastics": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "athletics"
+        },
+		"marathoner": {
+          "value": 1,
+		  "attr": "bod",
+		  "grouped": "athletics"
+        },
+		"traversal": {
+          "value": 1,
+		  "attr": "rea",
+		  "grouped": "athletics"
+        },
+		"exploration": {
+          "value": 1,
+		  "group": true
+        },
+		"navigation": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration"
+        },
+		"survival": {
+          "value": 1,
+		  "attr": "wil",
+		  "grouped": "exploration"
+        },
+		"medicine": {
+          "value": 1,
+		  "attr": "log",
+		  "grouped": "exploration"
+        },
+		"animal handling": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration"
+        }
       }
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "feature", "spell", "stats"],
     "templates": {
       "base": {
         "description": ""
@@ -69,6 +119,9 @@
       "weight": 0
     },
     "feature": {
+      "templates": ["base"]
+    },
+	"stats": {
       "templates": ["base"]
     },
     "spell": {

@@ -37,17 +37,6 @@
                   </div>
               </div>
           </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-4col">
-            {{#each data.abilities as |ability key|}}
-              <div class="ability flexrow flex-group-center">
-                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
-                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              </div>
-            {{/each}}
-          </div>
         </div>
     </header>
 
@@ -55,6 +44,7 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="items">Items</a>
+        <a class="item" data-tab="stats">Stats</a>
         <a class="item" data-tab="features">Features</a>
         <a class="item" data-tab="spells">Spells</a>
     </nav>
@@ -90,7 +80,38 @@
             </ol>
         </div>
 
-        {{!-- Owned Features Tab --}}
+        {{!-- Owned Stats Tab --}}
+        <div class="tab stats" data-group="primary" data-tab="stats">
+            {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  --}}
+          <div class="abilities grid grid-4col">
+            {{#each data.abilities as |ability key|}}
+              <div class="ability flexrow flex-group-center">
+                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
+                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              </div>
+            {{/each}}
+          </div>
+		 
+		  <div class="skills grid grid">
+            {{#each data.skills as |skill key|}}
+              <div class="skill flexrow flex-group-left">
+                <label for="data.skills.{{key}}.value" class="resource-label">{{key}}</label>
+                <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+              </div>
+            {{/each}}
+          </div> 
+		  
+		  	  
+		  
+		  
+		  
+		  
+		  
+        </div>
+		
+		{{!-- Owned Features Tab --}}
         <div class="tab features" data-group="primary" data-tab="features">
             <ol class="items-list">
                 <li class="item flexrow item-header">
@@ -111,6 +132,8 @@
                 </li>
             {{/each}}
             </ol>
+					
+			
         </div>
 
         {{!-- Owned Spells Tab --}}
