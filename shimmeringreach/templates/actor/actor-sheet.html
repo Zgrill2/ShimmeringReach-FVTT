@@ -129,17 +129,34 @@
               </div>
             {{/each}}
           </div>
-		 
-		  <div class="skills grid grid">
+		  <ol class="skills-list">
+                <li class="skill flexrow flex-group-center">
+                  <div class="skill-name"><label class="resource-label">Skill</label></div>
+				  <div class="skill-rank"><label class="resource-label">Rank</label></div>				  
+                  <div class="skill-attribute"><label class="resource-label">Attribute</label></div>      
+                  <div class="skill-dicepool"><label class="resource-label">Dicepool</label></div>              
+                </li>
             {{#each data.skills as |skill key|}}
-              <div class="skill flexrow flex-group-left">
-                <label for="data.skills.{{key}}.value" class="resource-label">{{key}}</label>
-                <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
-              </div>
+                <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
+					
+					<div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{key}}</label></div>
+					<div class="skill-rank">
+						<input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+					</div>
+					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
+					<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
+                </li>
             {{/each}}
-          </div> 
+            </ol>
 		  
-		  	  
+
+			  
+			  
+			  
+			  
+			  
+			  
+			  
 		  
 		  
 		  

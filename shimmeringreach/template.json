@@ -62,46 +62,55 @@
 		"strongman": {
           "value": 1,
 		  "attr": "str",
-		  "grouped": "athletics"
+		  "grouped": "athletics",
+		  "dicepool": 2
         },
 		"gymnastics": {
           "value": 1,
 		  "attr": "agi",
-		  "grouped": "athletics"
+		  "grouped": "athletics",
+		  "dicepool": 2
         },
 		"marathoner": {
           "value": 1,
 		  "attr": "bod",
-		  "grouped": "athletics"
+		  "grouped": "athletics",
+		  "dicepool": 2
         },
 		"traversal": {
           "value": 1,
 		  "attr": "rea",
-		  "grouped": "athletics"
+		  "grouped": "athletics",
+		  "dicepool": 2
         },
 		"exploration": {
           "value": 1,
-		  "group": true
+		  "group": true,
+		  "dicepool": 2
         },
 		"navigation": {
           "value": 1,
 		  "attr": "int",
-		  "grouped": "exploration"
+		  "grouped": "exploration",
+		  "dicepool": 2
         },
 		"survival": {
           "value": 1,
 		  "attr": "wil",
-		  "grouped": "exploration"
+		  "grouped": "exploration",
+		  "dicepool": 2
         },
 		"medicine": {
           "value": 1,
 		  "attr": "log",
-		  "grouped": "exploration"
+		  "grouped": "exploration",
+		  "dicepool": 2
         },
 		"animal handling": {
           "value": 1,
 		  "attr": "int",
-		  "grouped": "exploration"
+		  "grouped": "exploration",
+		  "dicepool": 2
         }
       }
     }
