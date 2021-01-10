@@ -28,10 +28,20 @@ export class SRActor extends Actor {
     // Make modifications to data here. For example:
 
     // Loop through ability scores, and add their modifiers to our sheet output.
-   /* for (let [key, ability] of Object.entries(data.abilities)) {
+    let abilitybox = {};
+	for (let [key, ability] of Object.entries(data.abilities)){
+		abilitybox[key] = ability;
+	}
+	
+	
+	
+	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }*/
+	  if (skill.attr != "none") {
+		skill.dicepool = skill.value + abilitybox[skill.attr].value;
+	  }
+    }
+	//console.log(abilitybox);
   }
 
 }
