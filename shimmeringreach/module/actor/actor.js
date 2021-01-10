@@ -70,6 +70,7 @@ export class SRActor extends Actor {
 		}
 	}
 	
+
 	
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
