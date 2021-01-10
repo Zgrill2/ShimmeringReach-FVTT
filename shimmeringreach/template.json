@@ -4,14 +4,19 @@
     "templates": {
       "base": {
         "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+          "value": 17,
+          "min": -1,
+          "max": 17
         },
-        "power": {
-          "value": 5,
+        "stamina": {
+          "value": 17,
           "min": 0,
-          "max": 5
+          "max": 17
+        },
+        "drain": {
+          "value": 17,
+          "min": 0,
+          "max": 17
         }
       }
     },
@@ -24,29 +29,94 @@
         }
       },
       "abilities": {
+        "bod": {
+          "value": 1
+        },
+        "agi": {
+          "value": 1
+        },
+        "rea": {
+          "value": 1
+        },
         "str": {
-          "value": 10
+          "value": 1
         },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
+        "wil": {
+          "value": 1
         },
         "int": {
-          "value": 10
+          "value": 1
         },
-        "wis": {
-          "value": 10
+        "log": {
+          "value": 1
         },
         "cha": {
-          "value": 10
+          "value": 1
+        }
+      },
+	  "skills": {
+        "athletics": {
+          "value": 1,
+		  "group": true
+        },
+		"strongman": {
+          "value": 1,
+		  "attr": "str",
+		  "grouped": "athletics",
+		  "dicepool": 2
+        },
+		"gymnastics": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "athletics",
+		  "dicepool": 2
+        },
+		"marathoner": {
+          "value": 1,
+		  "attr": "bod",
+		  "grouped": "athletics",
+		  "dicepool": 2
+        },
+		"traversal": {
+          "value": 1,
+		  "attr": "rea",
+		  "grouped": "athletics",
+		  "dicepool": 2
+        },
+		"exploration": {
+          "value": 1,
+		  "group": true,
+		  "dicepool": 2
+        },
+		"navigation": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"survival": {
+          "value": 1,
+		  "attr": "wil",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"medicine": {
+          "value": 1,
+		  "attr": "log",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"animal handling": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
         }
       }
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "feature", "spell", "stats"],
     "templates": {
       "base": {
         "description": ""
@@ -58,6 +128,9 @@
       "weight": 0
     },
     "feature": {
+      "templates": ["base"]
+    },
+	"stats": {
       "templates": ["base"]
     },
     "spell": {

@@ -8,7 +8,7 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns.  --}}
-            <div class="resources grid grid-2col">
+            <div class="resources grid grid-3col">
               {{!-- "flex-group-center" is also defined in the _grid.scss file
               and it will add a small amount of padding, a border, and will
               center all of its child elements content and text. --}}
@@ -21,25 +21,21 @@
                   </div>
               </div>
               <div class="resource flex-group-center">
-                  <label for="data.power.value" class="resource-label">Power</label>
+                  <label for="data.stamina.value" class="resource-label">Stamina</label>
                   <div class="resource-content flexrow flex-center flex-between">
-                    <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
+                    <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+                    <input type="text" name="data.stamina.max" value="{{data.stamina.max}}" data-dtype="Number"/>
                   </div>
               </div>
-          </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-3col">
-            {{#each data.abilities as |ability key|}}
-              <div class="ability flexrow flex-group-center">
-                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
-                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-                <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{key}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+			  <div class="resource flex-group-center">
+                  <label for="data.drain.value" class="resource-label">Drain</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+                    <input type="text" name="data.drain.value" value="{{data.drain.value}}" data-dtype="Number"/>
+                    <span> / </span>
+                    <input type="text" name="data.drain.max" value="{{data.drain.max}}" data-dtype="Number"/>
+                  </div>
               </div>
-            {{/each}}
           </div>
         </div>
     </header>
@@ -48,6 +44,7 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="items">Items</a>
+        <a class="item" data-tab="stats">Stats</a>
         <a class="item" data-tab="features">Features</a>
         <a class="item" data-tab="spells">Spells</a>
     </nav>
@@ -83,7 +80,55 @@
             </ol>
         </div>
 
-        {{!-- Owned Features Tab --}}
+        {{!-- Owned Stats Tab --}}
+        <div class="tab stats" data-group="primary" data-tab="stats">
+            {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  --}}
+          <div class="abilities grid grid-4col">
+            {{#each data.abilities as |ability key|}}
+              <div class="ability flexrow flex-group-center">
+                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
+                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              </div>
+            {{/each}}
+          </div>
+		  <ol class="skills-list">
+                <li class="skill flexrow flex-group-center">
+                  <div class="skill-name"><label class="resource-label">Skill</label></div>
+				  <div class="skill-rank"><label class="resource-label">Rank</label></div>				  
+                  <div class="skill-attribute"><label class="resource-label">Attribute</label></div>      
+                  <div class="skill-dicepool"><label class="resource-label">Dicepool</label></div>              
+                </li>
+            {{#each data.skills as |skill key|}}
+                <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
+					
+					<div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{key}}</label></div>
+					<div class="skill-rank">
+						<input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+					</div>
+					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
+					<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
+                </li>
+            {{/each}}
+            </ol>
+		  
+
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+		  
+		  
+		  
+		  
+		  
+        </div>
+		
+		{{!-- Owned Features Tab --}}
         <div class="tab features" data-group="primary" data-tab="features">
             <ol class="items-list">
                 <li class="item flexrow item-header">
@@ -104,6 +149,8 @@
                 </li>
             {{/each}}
             </ol>
+					
+			
         </div>
 
         {{!-- Owned Spells Tab --}}
