@@ -55,11 +55,7 @@
         }
       },
 	  "skills": {
-        "athletics": {
-          "value": 1,
-		  "group": true
-        },
-		"strongman": {
+        "strongman": {
           "value": 1,
 		  "attr": "str",
 		  "grouped": "athletics",
@@ -83,11 +79,6 @@
 		  "grouped": "athletics",
 		  "dicepool": 2
         },
-		"exploration": {
-          "value": 1,
-		  "group": true,
-		  "dicepool": 2
-        },
 		"navigation": {
           "value": 1,
 		  "attr": "int",
@@ -106,11 +97,117 @@
 		  "grouped": "exploration",
 		  "dicepool": 2
         },
-		"animal handling": {
+		"animal_handling": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "exploration",
 		  "dicepool": 2
+        },
+		"con": {
+          "value": 1,
+		  "attr": "cha",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"insight": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"intimidation": {
+          "value": 1,
+		  "attr": "cha",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"negotiation": {
+          "value": 1,
+		  "attr": "cha",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"disguise": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"stealth": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"legerdemain": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"thievery": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"spellcasting": {
+          "value": 1,
+		  "attr": "log",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"perceive_magic": {
+          "value": 1,
+		  "attr": "log",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"weapon_skill": {
+          "value": 1,
+		  "attr": "agi",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"perception": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"dodge": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        },
+		"perserverence": {
+          "value": 1,
+		  "attr": "int",
+		  "grouped": "exploration",
+		  "dicepool": 2
+        }
+      },
+      "skill_groups" : {
+        "athletics": {
+          "value": 1,
+		  "isgroup": true,
+          "members": ["strongman", "gymnastics", "marathoner", "traversal"]
+        },
+        "exploration": {
+          "value": 1,
+		  "isgroup": true,
+          "members": ["navigation", "survival", "medicine", "animal_handling"]
+        },
+        "influence": {
+          "value": 1,
+		  "isgroup": true,
+          "members": ["con", "insight", "intimidation", "negotiation"]
+        },
+        "subterfuge": {
+          "value": 1,
+		  "isgroup": true,
+          "members": ["disguise", "stealth", "legerdemain", "thievery"]
         }
       }
     }
