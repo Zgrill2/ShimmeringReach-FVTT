@@ -27,12 +27,48 @@ export class SRActor extends Actor {
 
     // Make modifications to data here. For example:
 
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    let abilitybox = {};
+
+
+	//Populate attribute values for reference
+	let abilitybox = {};
 	for (let [key, ability] of Object.entries(data.abilities)){
 		abilitybox[key] = ability;
 	}
+	let skillbox = {};
+	for (let [key, skill] of Object.entries(data.skills)){
+		skillbox[key] = skill;
+	}
+	//Calculate bars. Will probably add some extra calls that boost these further
+	data.health.max = data.abilities.bod.value + 16;
+	data.drain.max = data.abilities.int.value + 16;
+	data.stamina.max = data.abilities.wil.value + 16;
 	
+	//Calculate soaks via JSON defined formulas of attribute weighting
+	var i;
+	for (let [key, soak] of Object.entries(data.soaks)) {
+		soak.value = 0;
+		for (i = 0; i <soak.attr.length; i++)
+		{
+			soak.value += abilitybox[soak.attr[i]].value * soak.weights[i];
+		}
+		soak.value = Math.ceil((soak.value) / soak.attr.length );
+	}
+	
+	
+	for (let [key, def] of Object.entries(data.defenses)) {
+		
+		def.passive = 0;
+		for (i = 0; i <def.attr.length; i++)
+		{
+			def.passive += abilitybox[def.attr[i]].value;
+		}
+		def.active = def.passive + skillbox[def.skill].value;
+		
+		if (!def.allowpassive)
+		{
+			def.passive = 0;
+		}
+	}
 	
 	
 	for (let [key, skill] of Object.entries(data.skills)) {

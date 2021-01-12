@@ -17,7 +17,7 @@
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+					<label>{{data.health.max}}</label>
                   </div>
               </div>
               <div class="resource flex-group-center">
@@ -25,7 +25,7 @@
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.stamina.max" value="{{data.stamina.max}}" data-dtype="Number"/>
+					<label>{{data.stamina.max}}</label>
                   </div>
               </div>
               <div class="resource flex-group-center">
@@ -33,7 +33,7 @@
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.mana.max" value="{{data.mana.max}}" data-dtype="Number"/>
+					<label>{{data.mana.max}}</label>
                   </div>
               </div>
           </div>
@@ -51,7 +51,27 @@
           </div>
         </div>
     </header>
-
+	
+	<!--
+		<div class="soaks grid grid-3col">
+            {{#each data.soaks as |soak key|}}
+              <div class="soak flexrow flex-group-center">
+                <label for="data.soaks.{{key}}.value" class="resource-label">{{key}}</label>
+				<label class="resource-label">{{soak.value}}</label>
+              </div>
+            {{/each}}
+        </div>
+		
+		
+		<div class="defenses grid grid-5col">
+            {{#each data.defenses as |def key|}}
+              <div class="soak flexrow flex-group-center">
+                <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
+				<label class="resource-label">{{def.value}}</label>
+              </div>
+            {{/each}}
+        </div>
+-->
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
@@ -121,7 +141,62 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-4col">
+          
+		  <div class="soaks grid grid-3col">
+            {{#each data.soaks as |soak key|}}
+			
+		<!--	
+              <div class="resource-content flexrow flex-center flex-between">
+                <label for="data.soaks.{{key}}.value" class="resource-label">{{key}}</label>
+				<label class="resource-label">{{soak.value}}</label>
+              </div>
+			  
+			  -->
+			  <div class="resource flex-group-center">
+                  <label for="data.soak.value" class="resource-label">{{key}}</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					<span>{{soak.value}}</span>
+                  </div>
+              </div>
+			  
+			  
+			  
+			  
+            {{/each}}
+        </div>
+		
+		
+			
+		
+		
+		
+		
+		<div class="defenses grid grid-5col">
+            {{#each data.defenses as |def key|}}
+			
+			<!--
+              <div class="soak flexrow flex-group-center">
+                <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
+				<label class="resource-label">{{def.value}}</label>
+              </div>
+			  -->
+			  
+			  
+			  
+			  
+			  <div class="resource flex-group-center">
+                  <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					<label>{{def.passive}}</label>
+                    <span> / </span>
+					<label>{{def.active}}</label>
+                  </div>
+              </div>
+            {{/each}}
+        </div>
+		  
+		  
+		  <div class="abilities grid grid-4col">
             {{#each data.abilities as |ability key|}}
               <div class="ability flexrow flex-group-center">
                 <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
