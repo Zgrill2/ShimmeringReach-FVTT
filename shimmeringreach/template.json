@@ -151,7 +151,7 @@
 		  "grouped": "exploration",
 		  "dicepool": 2
         },
-		"animal_handling": {
+		"animal handling": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "exploration",
@@ -160,31 +160,31 @@
 		"con": {
           "value": 1,
 		  "attr": "cha",
-		  "grouped": "exploration",
+		  "grouped": "influence",
 		  "dicepool": 2
         },
 		"insight": {
           "value": 1,
 		  "attr": "int",
-		  "grouped": "exploration",
+		  "grouped": "influence",
 		  "dicepool": 2
         },
 		"intimidation": {
           "value": 1,
 		  "attr": "cha",
-		  "grouped": "exploration",
+		  "grouped": "influence",
 		  "dicepool": 2
         },
 		"negotiation": {
           "value": 1,
 		  "attr": "cha",
-		  "grouped": "exploration",
+		  "grouped": "influence",
 		  "dicepool": 2
         },
 		"disguise": {
           "value": 1,
 		  "attr": "int",
-		  "grouped": "exploration",
+		  "grouped": "subterfuge",
 		  "dicepool": 2
         },
 		"con": {

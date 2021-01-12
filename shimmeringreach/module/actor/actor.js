@@ -42,6 +42,7 @@ export class SRActor extends Actor {
 	data.health.max = data.abilities.bod.value + 16;
 	data.drain.max = data.abilities.int.value + 16;
 	data.stamina.max = data.abilities.wil.value + 16;
+
 	
 	//Calculate soaks via JSON defined formulas of attribute weighting
 	var i;
@@ -55,6 +56,7 @@ export class SRActor extends Actor {
 	}
 	
 	
+
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
 		def.passive = 0;
