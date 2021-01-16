@@ -55,17 +55,17 @@
         }
       },
 	  "soaks": {
-        "armor soak": {
+        "armor": {
           "value": 1,
 		  "attr": ["bod","str","log"],
 		  "weights": [0.666666,1.333333,0.666666]
         },
-		"physical soak": {
+		"physical": {
           "value": 1,
 		  "attr": ["agi","bod","str"],
 		  "weights": [0.666666,1.333333,0.666666]
         },
-		"mental soak": {
+		"mental": {
           "value": 1,
 		  "attr": ["log","wil","cha"],
 		  "weights": [0.666666,1.333333,0.666666]
