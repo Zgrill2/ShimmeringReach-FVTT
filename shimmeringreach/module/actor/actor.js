@@ -63,6 +63,8 @@ export class SRActor extends Actor {
 		{
 			def.passive += abilitybox[def.attr[i]].value;
 		}
+		console.log(skillbox[def.skill].value);
+		console.log(def.passive);
 		def.active = def.passive + skillbox[def.skill].value;
 		
 		if (!def.allowpassive)
@@ -75,7 +77,7 @@ export class SRActor extends Actor {
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
 	  if (skill.attr != "none") {
-		skill.dicepool = skill.value + abilitybox[skill.attr].value;
+		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2));
 	  }
     }
 	//console.log(abilitybox);

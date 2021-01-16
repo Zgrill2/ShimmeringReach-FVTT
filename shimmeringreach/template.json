@@ -28,6 +28,11 @@
           "value": 1
         }
       },
+	  "tradition": {
+        "rank": {
+          "value": 1
+        }
+      },
       "abilities": {
         "bod": {
           "value": 1
@@ -58,17 +63,20 @@
         "armor": {
           "value": 1,
 		  "attr": ["bod","str","log"],
-		  "weights": [0.666666,1.333333,0.666666]
+		  "weights": [0.666666,1.333333,0.666666],
+		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 1,
 		  "attr": ["agi","bod","str"],
-		  "weights": [0.666666,1.333333,0.666666]
+		  "weights": [0.666666,1.333333,0.666666],
+		  "name": "Physical Soak"
         },
 		"mental": {
           "value": 1,
 		  "attr": ["log","wil","cha"],
-		  "weights": [0.666666,1.333333,0.666666]
+		  "weights": [0.666666,1.333333,0.666666],
+		  "name": "Mental Soak"
         }
       },
 	  "defenses": {
@@ -77,35 +85,40 @@
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
-		  "skill": "dodge"
+		  "skill": "dodge",
+		  "name": "Dodge"
         },
 		"block": {
           "passive": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
-		  "skill": "weapon skill"
+		  "skill": "weapon_skill",
+		  "name": "Block"
         },
 		"parry": {
           "passive": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
-		  "skill": "weapon skill"
+		  "skill": "weapon_skill",
+		  "name": "Parry"
         },
 		"mental": {
           "passive": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
-		  "skill": "perserverence"
+		  "skill": "perserverence",
+		  "name": "Mental Resist"
         },
 		"physical": {
           "passive": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["bod","agi"],
-		  "skill": "perserverence"
+		  "skill": "perserverence",
+		  "name": "Physical Resist"
         }
       },
 	  "skills": {
@@ -113,133 +126,155 @@
           "value": 1,
 		  "attr": "str",
 		  "grouped": "athletics",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Strongman"
         },
 		"gymnastics": {
           "value": 1,
 		  "attr": "agi",
 		  "grouped": "athletics",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Gynmnastics"
         },
 		"marathoner": {
           "value": 1,
 		  "attr": "bod",
 		  "grouped": "athletics",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Marathoner"
         },
 		"traversal": {
           "value": 1,
 		  "attr": "rea",
 		  "grouped": "athletics",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Traversal"
         },
 		"navigation": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "exploration",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Navigation"
         },
 		"survival": {
           "value": 1,
 		  "attr": "wil",
 		  "grouped": "exploration",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Survival"
         },
 		"medicine": {
           "value": 1,
 		  "attr": "log",
 		  "grouped": "exploration",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Medicine"
         },
-		"animal handling": {
+		"animal_handling": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "exploration",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Animal Handling"
         },
 		"con": {
           "value": 1,
 		  "attr": "cha",
 		  "grouped": "influence",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Con"
         },
 		"insight": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "influence",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Insight"
         },
 		"intimidation": {
           "value": 1,
 		  "attr": "cha",
 		  "grouped": "influence",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Intimidation"
         },
 		"negotiation": {
           "value": 1,
 		  "attr": "cha",
 		  "grouped": "influence",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Negoatiation"
         },
 		"disguise": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "subterfuge",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Disguise"
         },
 		"stealth": {
           "value": 1,
 		  "attr": "agi",
 		  "grouped": "subterfuge",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Stealth"
         },
 		"legerdemain": {
           "value": 1,
 		  "attr": "agi",
 		  "grouped": "subterfuge",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Legerdemain"
         },
 		"thievery": {
           "value": 1,
 		  "attr": "agi",
 		  "grouped": "subterfuge",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Thievery"
         },
 		"spellcasting": {
           "value": 1,
 		  "attr": "log",
 		  "grouped": "none",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Spellcasting"
         },
-		"perceive magic": {
+		"perceive_magic": {
           "value": 1,
 		  "attr": "log",
 		  "grouped": "none",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Perceive Magic"
         },
-		"weapon skill": {
+		"weapon_skill": {
           "value": 1,
 		  "attr": "agi",
 		  "grouped": "none",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Weapon Skill"
         },
 		"perception": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "none",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Perception"
         },
 		"dodge": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "hide_dicepool",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Dodge"
         },
 		"perserverence": {
           "value": 1,
 		  "attr": "int",
 		  "grouped": "hide_dicepool",
-		  "dicepool": 2
+		  "dicepool": 2,
+		  "name": "Perserverence"
         }
       },
       "skill_groups" : {
@@ -251,7 +286,7 @@
         "exploration": {
           "value": 1,
 		  "isgroup": true,
-          "members": ["navigation", "survival", "medicine", "animal handling"]
+          "members": ["navigation", "survival", "medicine", "animal_handling"]
         },
         "influence": {
           "value": 1,
