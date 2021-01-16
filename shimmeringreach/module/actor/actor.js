@@ -40,7 +40,8 @@ export class SRActor extends Actor {
 	}
 	//Calculate bars. Will probably add some extra calls that boost these further
 	data.health.max = data.abilities.bod.value + 16;
-	data.drain.max = data.abilities.int.value + 16;
+	data.mana.max = data.abilities.int.value + 16;
+
 	data.stamina.max = data.abilities.wil.value + 16;
 	
 	//Calculate soaks via JSON defined formulas of attribute weighting
