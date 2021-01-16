@@ -38,6 +38,7 @@
                   </div>
               </div>
           </div>
+<<<<<<< HEAD
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
@@ -49,29 +50,11 @@
                 <span class="ability-mod rollable" data-roll="{{ability.value}}d6" data-label="{{key}}">{{numberFormat ability.value decimals=0 sign=true}}</span>
               </div>
           </div>
+=======
+>>>>>>> implemented clickable chat roll buttons in character sheets
         </div>
     </header>
 	
-	<!--
-		<div class="soaks grid grid-3col">
-            {{#each data.soaks as |soak key|}}
-              <div class="soak flexrow flex-group-center">
-                <label for="data.soaks.{{key}}.value" class="resource-label">{{key}}</label>
-				<label class="resource-label">{{soak.value}}</label>
-              </div>
-            {{/each}}
-        </div>
-		
-		
-		<div class="defenses grid grid-5col">
-            {{#each data.defenses as |def key|}}
-              <div class="soak flexrow flex-group-center">
-                <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
-				<label class="resource-label">{{def.value}}</label>
-              </div>
-            {{/each}}
-        </div>
--->
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
@@ -145,13 +128,6 @@
 		  <div class="soaks grid grid-3col">
             {{#each data.soaks as |soak key|}}
 			
-		<!--	
-              <div class="resource-content flexrow flex-center flex-between">
-                <label for="data.soaks.{{key}}.value" class="resource-label">{{key}}</label>
-				<label class="resource-label">{{soak.value}}</label>
-              </div>
-			  
-			  -->
 			  <div class="resource flex-group-center">
                   <label for="data.soak.value" class="resource-label">{{key}}</label>
                   <div class="resource-content flexrow flex-center flex-between">
@@ -159,37 +135,17 @@
                   </div>
               </div>
 			  
-			  
-			  
-			  
             {{/each}}
         </div>
 		
-		
-			
-		
-		
-		
-		
 		<div class="defenses grid grid-5col">
             {{#each data.defenses as |def key|}}
-			
-			<!--
-              <div class="soak flexrow flex-group-center">
-                <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
-				<label class="resource-label">{{def.value}}</label>
-              </div>
-			  -->
-			  
-			  
-			  
-			  
 			  <div class="resource flex-group-center">
                   <label for="data.defenses.{{key}}.value" class="resource-label">{{key}}</label>
                   <div class="resource-content flexrow flex-center flex-between">
-					<label>{{def.passive}}</label>
+                    <span class="defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}">{{numberFormat def.passive decimals=0 sign=true}}</span>
                     <span> / </span>
-					<label>{{def.active}}</label>
+                    <span class="defense-active-dicepool rollable" data-roll="{{def.active}}d6" data-label="{{key}}">{{numberFormat def.active decimals=0 sign=true}}</span>
                   </div>
               </div>
             {{/each}}
@@ -201,6 +157,7 @@
               <div class="ability flexrow flex-group-center">
                 <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
                 <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+                <span class="ability-mod rollable" data-roll="{{ability.value}}d6" data-label="{{key}}">{{numberFormat ability.value decimals=0 sign=true}}</span>
               </div>
             {{/each}}
           </div>
@@ -220,24 +177,13 @@
 					</div>
 					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
 					<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
+                    <span class="skill-dicepool rollable" data-roll="{{skill.value}}d6" data-label="{{key}}">{{numberFormat skill.value decimals=0 sign=true}}</span>
+
                 </li>
             {{/each}}
             </ol>
 		  
 
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-
-		  
-		  
-		  
-		  
-		  
         </div>
 		
 		{{!-- Owned Features Tab --}}
