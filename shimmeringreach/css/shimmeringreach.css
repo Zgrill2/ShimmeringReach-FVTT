@@ -246,3 +246,13 @@
   flex: 0 0 86px;
   text-align: right;
 }
+
+.dicepool:first-letter {
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.skill-group {
+  border-style: solid;
+  border-width: 1px;
+}
