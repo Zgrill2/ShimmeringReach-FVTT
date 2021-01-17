@@ -123,93 +123,93 @@
       },
 	  "skills": {
         "strongman": {
-          "value": 1,
+          "value": 0,
 		  "attr": "str",
-		  "grouped": "athletics",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Strongman"
         },
 		"gymnastics": {
-          "value": 1,
+          "value": 0,
 		  "attr": "agi",
-		  "grouped": "athletics",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Gynmnastics"
         },
 		"marathoner": {
-          "value": 1,
+          "value": 0,
 		  "attr": "bod",
-		  "grouped": "athletics",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Marathoner"
         },
 		"traversal": {
-          "value": 1,
+          "value": 0,
 		  "attr": "rea",
-		  "grouped": "athletics",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Traversal"
         },
 		"navigation": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "exploration",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Navigation"
         },
 		"survival": {
-          "value": 1,
+          "value": 0,
 		  "attr": "wil",
-		  "grouped": "exploration",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Survival"
         },
 		"medicine": {
-          "value": 1,
+          "value": 0,
 		  "attr": "log",
-		  "grouped": "exploration",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Medicine"
         },
 		"animal_handling": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "exploration",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Animal Handling"
         },
 		"con": {
-          "value": 1,
+          "value": 0,
 		  "attr": "cha",
-		  "grouped": "influence",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Con"
         },
 		"insight": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "influence",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Insight"
         },
 		"intimidation": {
-          "value": 1,
+          "value": 0,
 		  "attr": "cha",
-		  "grouped": "influence",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Intimidation"
         },
 		"negotiation": {
-          "value": 1,
+          "value": 0,
 		  "attr": "cha",
-		  "grouped": "influence",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Negoatiation"
         },
 		"disguise": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "subterfuge",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Disguise"
         },
@@ -244,89 +244,96 @@
 		  "dicepool": 2
         },
 		"stealth": {
-          "value": 1,
+          "value": 0,
 		  "attr": "agi",
-		  "grouped": "subterfuge",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Stealth"
         },
 		"legerdemain": {
-          "value": 1,
+          "value": 0,
 		  "attr": "agi",
-		  "grouped": "subterfuge",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Legerdemain"
         },
 		"thievery": {
-          "value": 1,
+          "value": 0,
 		  "attr": "agi",
-		  "grouped": "subterfuge",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Thievery"
         },
 		"spellcasting": {
-          "value": 1,
+          "value": 0,
 		  "attr": "log",
-		  "grouped": "none",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Spellcasting"
         },
 		"perceive_magic": {
-          "value": 1,
+          "value": 0,
 		  "attr": "log",
-		  "grouped": "none",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Perceive Magic"
         },
 		"weapon_skill": {
-          "value": 1,
+          "value": 0,
 		  "attr": "agi",
-		  "grouped": "none",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Weapon Skill"
         },
 		"perception": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "none",
+		  "isGroupRanked": false,
 		  "dicepool": 2,
 		  "name": "Perception"
         },
 		"dodge": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "hide_dicepool",
+		  "isGroupRanked": false,
+          "hide_dicepool": true,
 		  "dicepool": 2,
 		  "name": "Dodge"
         },
 		"perserverence": {
-          "value": 1,
+          "value": 0,
 		  "attr": "int",
-		  "grouped": "hide_dicepool",
+		  "isGroupRanked": false,
+          "hide_dicepool": true,
 		  "dicepool": 2,
 		  "name": "Perserverence"
         }
       },
       "skill_groups" : {
         "athletics": {
-          "value": 1,
+          "value": 0,
 		  "isgroup": true,
           "members": ["strongman", "gymnastics", "marathoner", "traversal"]
         },
         "exploration": {
-          "value": 1,
+          "value": 0,
 		  "isgroup": true,
           "members": ["navigation", "survival", "medicine", "animal_handling"]
         },
         "influence": {
-          "value": 1,
+          "value": 0,
 		  "isgroup": true,
           "members": ["con", "insight", "intimidation", "negotiation"]
         },
         "subterfuge": {
-          "value": 1,
+          "value": 0,
 		  "isgroup": true,
           "members": ["disguise", "stealth", "legerdemain", "thievery"]
+        },
+        "ungrouped": {
+          "value": 0,
+		  "isgroup": false,
+          "members": ["spellcasting", "perceive_magic", "weapon_skill", "perception", "dodge", "perserverence"]
         }
       }
     }

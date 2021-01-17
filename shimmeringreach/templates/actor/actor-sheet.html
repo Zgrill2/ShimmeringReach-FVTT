@@ -148,7 +148,7 @@
 			  <div class="resource flex-group-center">
                   <label for="data.defenses.{{key}}.value" class="resource-label">{{def.name}}</label>
                   <div class="resource-content flexrow flex-center flex-between">
-                    <span class="defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
                     <span> / </span>
                     <span class="defense-active-dicepool rollable" data-roll="{{def.active}}d6" data-label="{{key}}">{{numberFormat def.active decimals=0 sign=true}}</span>
                   </div>
@@ -167,12 +167,46 @@
             {{/each}}
           </div>
 		  <ol class="skills-list">
-                <li class="skill flexrow flex-group-center">
+                <li class="skill flexrow grid-4col">
                   <div class="skill-name"><label class="resource-label">Skill</label></div>
 				  <div class="skill-rank"><label class="resource-label">Rank</label></div>				  
                   <div class="skill-attribute"><label class="resource-label">Attribute</label></div>      
                   <div class="skill-dicepool"><label class="resource-label">Dicepool</label></div>              
                 </li>
+            {{#each data.skill_groups as |sg k|}}
+                <ol class="skill-group skills-list">
+                    <li class="skill flexrow flex-group-center" data-skill-id="{{sg._id}}">
+                        <div class="skill-name"><label for="data.skill_groups.{{k}}.value" class="resource-label">{{k}}
+                            {{#if sg.isgroup}}
+                                <div class="skill-rank">
+                                    <input type="text" name="data.skill_groups.{{k}}.value" value="{{sg.value}}" data-dtype="Number"/>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </li>
+                    {{#each ../data.skills as |skill key|}}
+                        {{#if (isInSkillGroup sg.members key)}}
+                            <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
+                                <div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{skill.name}}</label></div>
+                                    <div class="skill-rank">
+                                        {{#if skill.isGroupRanked}}
+                                            <div class="skill-attribute"><label class="resource-label">{{skill.value}}</label></div>
+                                        {{else}}
+                                            <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                                        {{/if}}
+                                    </div>
+                                <div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
+                                {{#if hide_dicepool}}                                
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em"></div>
+                                {{else}}
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
+                                {{/if}}
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ol>
+            {{/each}}
+            <!--
             {{#each data.skills as |skill key|}}
                 <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
 					
@@ -181,11 +215,11 @@
 						<input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
 					</div>
 					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
-		<!--			<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div> -->
-                    <div class="skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
+		<!--			<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
+                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:10em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
 
                 </li>
-            {{/each}}
+            {{/each}} -->
             </ol>
 		  
 
