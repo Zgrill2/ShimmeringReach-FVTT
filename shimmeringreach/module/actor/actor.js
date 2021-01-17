@@ -73,7 +73,23 @@ export class SRActor extends Actor {
 		}
 	}
 	
-	
+    //let update_skill_val = {}
+	for (let [key, skill_group] of Object.entries(data.skill_groups)) {
+        Object.entries(data.skills).forEach(k => {
+            let [key, val] = k
+            if (skill_group.members.includes(key)) {
+              if (skill_group.value > 0) {
+                val.value = skill_group.value;
+                val.isGroupRanked = true;
+              }
+              else {
+                val.isGroupRanked = false;
+              }
+            }
+            //Object.entries(data.skills)[k].value = skill_group.value;
+            //update_skill_val[k] = skill_group.value
+        });
+    }
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
 	  if (skill.attr != "none") {

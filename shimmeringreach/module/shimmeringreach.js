@@ -40,6 +40,10 @@ Hooks.once('init', async function() {
   Actors.registerSheet("shimmeringreach", SRActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("shimmeringreach", SRItemSheet, { makeDefault: true });
+  
+  Handlebars.registerHelper('isInSkillGroup', function(skill_group_members, skill_name) {
+      return skill_group_members.includes(skill_name);
+  });
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function() {
