@@ -305,7 +305,10 @@
 		  "isgroup": false,
           "members": ["spellcasting", "perceive_magic", "weapon_skill", "perception", "dodge", "perserverence"]
         }
-      }
+      },
+	  "initiative": {
+		"dice": 1
+	  }
     }
   },
   "Item": {
