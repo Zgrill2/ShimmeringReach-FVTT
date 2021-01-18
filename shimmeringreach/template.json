@@ -112,7 +112,10 @@
 		  "grouped": "exploration",
 		  "dicepool": 2
         }
-      }
+      },
+	  "initiative": {
+		"dice": 1
+	  }
     }
   },
   "Item": {
