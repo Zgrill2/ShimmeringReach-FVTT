@@ -11,7 +11,8 @@ Hooks.once('init', async function() {
   game.shimmeringreach = {
     SRActor,
     SRItem,
-    rollItemMacro
+    rollItemMacro,
+    RollDP
   };
 
   globalThis.RollDP = RollDP
@@ -21,6 +22,7 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
+
     formula: "@initiative.dice d6 + @abilities.rea.value",
     decimals: 2
   };
@@ -28,12 +30,21 @@ Hooks.once('init', async function() {
   // Define custom Entity classes
   CONFIG.Actor.entityClass = SRActor;
   CONFIG.Item.entityClass = SRItem;
+  //CONFIG.Roll.entityClass = RollDP;
+  
+  
+  //Roll.CHAT_TEMPLATE = "templates/dice/roll.html";
+  //RollDP.CHAT_TEMPLATE = "templates/dice/roll.html";
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("shimmeringreach", SRActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("shimmeringreach", SRItemSheet, { makeDefault: true });
+  
+  Handlebars.registerHelper('isInSkillGroup', function(skill_group_members, skill_name) {
+      return skill_group_members.includes(skill_name);
+  });
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function() {

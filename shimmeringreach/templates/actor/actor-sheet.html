@@ -17,32 +17,33 @@
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+					<label>{{data.health.max}}</label>
                   </div>
               </div>
               <div class="resource flex-group-center">
-                  <label for="data.stamina.value" class="resource-label">Stamina</label>
+                  <label for="data.stamina.value" class="resource-label">stamina</label>
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.stamina.max" value="{{data.stamina.max}}" data-dtype="Number"/>
+					<label>{{data.stamina.max}}</label>
                   </div>
               </div>
-			  <div class="resource flex-group-center">
-                  <label for="data.drain.value" class="resource-label">Drain</label>
+              <div class="resource flex-group-center">
+                  <label for="data.mana.value" class="resource-label">mana</label>
                   <div class="resource-content flexrow flex-center flex-between">
-                    <input type="text" name="data.drain.value" value="{{data.drain.value}}" data-dtype="Number"/>
+                    <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number"/>
                     <span> / </span>
-                    <input type="text" name="data.drain.max" value="{{data.drain.max}}" data-dtype="Number"/>
+					<label>{{data.mana.max}}</label>
                   </div>
               </div>
           </div>
         </div>
     </header>
-
+	
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="skills">Skills</a>
         <a class="item" data-tab="items">Items</a>
         <a class="item" data-tab="stats">Stats</a>
         <a class="item" data-tab="features">Features</a>
@@ -56,7 +57,30 @@
         <div class="tab biography" data-group="primary" data-tab="description">
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
-
+        
+        {{!-- Owned Items Tab --}}
+        <div class="tab skills" data-group="primary" data-tab="skills">
+            <ol class="items-list">
+                <li class="item flexrow item-header">
+                  <div class="item-image"></div>
+                  <div class="item-name">Name</div>
+                  <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+                  </div>
+                </li>
+            {{#each actor.gear as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/each}}
+            </ol>
+        </div>
+        
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="items-list">
@@ -85,46 +109,107 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-4col">
+          
+		  
+		  <div class="resource flex-group-center">
+                  <label for="data.tradition.rank.value" class="resource-label">Tradition Rank</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					
+                <input type="text" name="data.tradition.rank.value" value="{{data.tradition.rank.value}}" data-dtype="Number"/> </div>
+				</div>
+		  
+		  <div class="soaks grid grid-3col">
+            {{#each data.soaks as |soak key|}}
+			
+			  <div class="resource flex-group-center">
+                  <label for="data.soak.value" class="resource-label">{{soak.name}}</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					<span>{{soak.value}}</span>
+                  </div>
+              </div>
+			 
+            {{/each}}
+        </div>
+		
+		<div class="defenses grid grid-5col">
+            {{#each data.defenses as |def key|}}
+			  <div class="resource flex-group-center">
+                  <label for="data.defenses.{{key}}.value" class="resource-label">{{def.name}}</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+                    <span class="dicepool defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
+                    <span> / </span>
+                    <span class="dicepool defense-active-dicepool rollable" data-roll="{{def.active}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.active decimals=0 sign=false}}</span>
+
+                  </div>
+              </div>
+            {{/each}}
+        </div>
+		  
+		  
+		  <div class="abilities grid grid-4col">
             {{#each data.abilities as |ability key|}}
               <div class="ability flexrow flex-group-center">
                 <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
                 <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+          <!--      <span class="ability-mod rollable" data-roll="{{ability.value}}d6" data-label="{{key}}">{{numberFormat ability.value decimals=0 sign=false}}</span> -->
               </div>
             {{/each}}
           </div>
 		  <ol class="skills-list">
-                <li class="skill flexrow flex-group-center">
+                <li class="skill flexrow grid-4col">
                   <div class="skill-name"><label class="resource-label">Skill</label></div>
 				  <div class="skill-rank"><label class="resource-label">Rank</label></div>				  
                   <div class="skill-attribute"><label class="resource-label">Attribute</label></div>      
                   <div class="skill-dicepool"><label class="resource-label">Dicepool</label></div>              
                 </li>
+            {{#each data.skill_groups as |sg k|}}
+                <ol class="skill-group skills-list">
+                    <li class="skill flexrow flex-group-center" data-skill-id="{{sg._id}}">
+                        <div class="skill-name"><label for="data.skill_groups.{{k}}.value" class="resource-label">{{k}}
+                            {{#if sg.isgroup}}
+                                <div class="skill-rank">
+                                    <input type="text" name="data.skill_groups.{{k}}.value" value="{{sg.value}}" data-dtype="Number"/>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </li>
+                    {{#each ../data.skills as |skill key|}}
+                        {{#if (isInSkillGroup sg.members key)}}
+                            <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
+                                <div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{skill.name}}</label></div>
+                                    <div class="skill-rank">
+                                        {{#if skill.isGroupRanked}}
+                                            <div class="skill-attribute"><label class="resource-label">{{skill.value}}</label></div>
+                                        {{else}}
+                                            <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                                        {{/if}}
+                                    </div>
+                                <div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
+                                {{#if hide_dicepool}}                                
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em"></div>
+                                {{else}}
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
+                                {{/if}}
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ol>
+            {{/each}}
+            <!--
             {{#each data.skills as |skill key|}}
                 <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
 					
-					<div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{key}}</label></div>
+					<div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{skill.name}}</label></div>
 					<div class="skill-rank">
 						<input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
 					</div>
 					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
-					<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
-                </li>
-            {{/each}}
-            </ol>
-		  
+		<!--			<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
+                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:10em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
 
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-		  
-		  
-		  
-		  
+                </li>
+            {{/each}} -->
+            </ol>
 		  
         </div>
 		

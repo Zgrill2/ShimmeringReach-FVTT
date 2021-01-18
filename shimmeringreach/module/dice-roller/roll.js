@@ -1,10 +1,57 @@
+/**
+ * An error that occurs during the rolling of dice.
+ */
+export class DiceError extends Error {
+    constructor(message) {
+        super(message);
+    }
+}
+
 // import Roll
 
 export class RollDP extends Roll {
-    constructor(formula, data) {
-        console.log("initializing dicepool roller");
-        super(formula, data);
-      //  let dicepool = this.terms[0]["number"];
+
+    constructor(formula, limit = -1, explode = false) {
+        console.log("initializing dicepool roller$$$");
+        super(formula);
+        this._limit = limit;
+        this._explode = explode;
+        this.dicepool = this.terms[0]["number"];
+    }
+
+    roll() {
+        //const result = super.roll(this.formula);
+        //console.log(result);
+        //Object.assign(this, result);
+        let formula = this.formula;//`${count}d6`;
+        formula += `cs>=5`;
+        let r = new Roll(formula)
+        console.log(formula);
+        console.log(r);
+        return r;
+    }
+
+    /*async render(chatOptions) {
+        return await super.render(chatOptions);
+    }*/
+    
+    toMessage(args){
+        console.log("Testing toMessage inheritence");
+        return super.toMessage(args);
+    }
+    
+    // Override render inheritence
+    render(chatOptions) {
+        return super.render(chatOptions);
+    }
+    
+    // Override tooltip inheritence
+    getTooltip() {
+        return super.getTooltip();
+    }
+    // Override render inheritence
+    render() {
+        return super.render();
     }
     
     count_result_faces(count_me) {
