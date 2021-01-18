@@ -23,6 +23,31 @@
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             {{!-- As you add new fields, add them in here! --}}
+            <ol class="buff-list">
+                <li class="skill flexrow grid-3col">
+                  <div class="skill-name"><label class="resource-label">Category</label></div>
+				  <div class="skill-rank"><label class="resource-label">Selection</label></div>				  
+                  <div class="skill-attribute"><label class="resource-label">Bonus</label></div>
+                </li>
+                <li class="skill flexrow grid-3col">
+                    
+                    <select name="cat" id="cat">
+                        {{#each data.category_map as |cat key|}}
+                            <option value="{{../data.category}}">{{../data.category}}</option>
+                        {{/each}}
+                    </select>
+                    <select name="seln" id="sel" value="{{selection}}">
+                        {{#each data.category_map}}
+                            {{#each this}}
+                                <option value="{{../../selection}}">{{this}}</option>
+                            {{/each}}
+                        {{/each}}
+                    </select>
+                    {{#with data.bonus}}
+                        <input type="text" name="data.bonus" value="{{this}}" data-dtype="Number"/>
+                    {{/with}}
+                </li>
+            </ol>
         </div>
     </section>
 </form>

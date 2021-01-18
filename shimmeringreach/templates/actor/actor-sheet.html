@@ -148,7 +148,7 @@
 			  <div class="resource flex-group-center">
                   <label for="data.defenses.{{key}}.value" class="resource-label">{{def.name}}</label>
                   <div class="resource-content flexrow flex-center flex-between">
-                    <span class="dicepool defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-passive-dicepool rollable" data-roll="{{def.value}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.value decimals=0 sign=false}}</span>
                     <span> / </span>
                     <span class="defense-active-dicepool rollable" data-roll="{{def.active}}d6" data-label="{{key}}">{{numberFormat def.active decimals=0 sign=true}}</span>
                   </div>
@@ -206,20 +206,6 @@
                     {{/each}}
                 </ol>
             {{/each}}
-            <!--
-            {{#each data.skills as |skill key|}}
-                <li class="skill flexrow flex-group-center" data-skill-id="{{skill._id}}">
-					
-					<div class="skill-name"><label for="data.skills.{{key}}.value" class="resource-label">{{skill.name}}</label></div>
-					<div class="skill-rank">
-						<input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
-					</div>
-					<div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
-		<!--			<div class="skill-dicepool"><label class="resource-label">{{skill.dicepool}}</label></div>
-                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:10em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
-
-                </li>
-            {{/each}} -->
             </ol>
 		  
 

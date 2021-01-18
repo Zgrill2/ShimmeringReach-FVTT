@@ -81,7 +81,7 @@
       },
 	  "defenses": {
 		"dodge": {
-          "passive": 1,
+          "value": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
@@ -89,7 +89,7 @@
 		  "name": "Dodge"
         },
 		"block": {
-          "passive": 1,
+          "value": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
@@ -97,7 +97,7 @@
 		  "name": "Block"
         },
 		"parry": {
-          "passive": 1,
+          "value": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
@@ -105,7 +105,7 @@
 		  "name": "Parry"
         },
 		"mental": {
-          "passive": 1,
+          "value": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
@@ -113,7 +113,7 @@
 		  "name": "Mental Resist"
         },
 		"physical": {
-          "passive": 1,
+          "value": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["bod","agi"],
@@ -351,7 +351,15 @@
       "weight": 0
     },
     "feature": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "category_map": {
+        "defenses" : ["", "dodge", "block", "parry", "physical", "mental"],
+        "soaks": ["", "armor", "physical", "mental"],
+        "skills": ["", "strongman", "gymnastics", "marathoner", "traversal", "navigation", "survival", "medicine", "animal_handling", "con", "insight", "intimidation", "negotiation", "disguise", "stealth", "legerdemain", "thievery"]
+      },
+      "category": "",
+      "selection": "",
+      "bonus": 0
     },
 	"stats": {
       "templates": ["base"]

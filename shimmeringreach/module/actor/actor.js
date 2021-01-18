@@ -38,6 +38,8 @@ export class SRActor extends Actor {
 	for (let [key, skill] of Object.entries(data.skills)){
 		skillbox[key] = skill;
 	}
+    
+    // isnt this going to add 16 to people's hp everytime something changes on their character sheet?
 	//Calculate bars. Will probably add some extra calls that boost these further
 	data.health.max = data.abilities.bod.value + 16;
 	data.mana.max = data.abilities.int.value + 16;
@@ -59,18 +61,18 @@ export class SRActor extends Actor {
 
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
-		def.passive = 0;
+		def.value = 0;
 		for (i = 0; i <def.attr.length; i++)
 		{
-			def.passive += abilitybox[def.attr[i]].value;
+			def.value += abilitybox[def.attr[i]].value;
 		}
-		console.log(skillbox[def.skill].value);
-		console.log(def.passive);
-		def.active = def.passive + skillbox[def.skill].value;
+		//console.log(skillbox[def.skill].value);
+		//console.log(def.passive);
+		def.active = def.value + skillbox[def.skill].value;
 		
 		if (!def.allowpassive)
 		{
-			def.passive = 0;
+			def.value = 0;
 		}
 	}
 	

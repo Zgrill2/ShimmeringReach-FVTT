@@ -13,6 +13,33 @@ export class SRItem extends Item {
     const itemData = this.data;
     const actorData = this.actor ? this.actor.data : {};
     const data = itemData.data;
+    
+    if (itemData.type === 'feature') this._prepareFeatureData(actorData.data, data);
+
+  }
+  
+  _prepareFeatureData(actorData, itemData) {
+    //console.log(actorData);
+    //console.log(itemData.selection);
+
+    const adata = actorData;
+    const idata = itemData;
+    
+            console.log(idata.category);
+            
+            console.log(idata.selection);
+    if (idata.category in adata) {
+        if (itemData.selection in adata[idata.category]){
+            adata[idata.category][idata.selection].value += idata.bonus
+            console.log(adata[idata.category])
+            console.log(adata[idata.category][idata.selection])
+            console.log(adata[idata.category][idata.selection].value);
+            
+            console.log(idata.category);
+            
+            console.log(idata.selection);
+        }
+    }
   }
 
   /**
