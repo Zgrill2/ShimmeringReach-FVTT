@@ -24,22 +24,17 @@ export class SRItem extends Item {
 
     const adata = actorData;
     const idata = itemData;
+    let [category, selection] = itemData.category.split(".")
+	console.log("IN PREP FEATURE");
     
-            console.log(idata.category);
-            
-            console.log(idata.selection);
-    if (idata.category in adata) {
-        if (itemData.selection in adata[idata.category]){
-            adata[idata.category][idata.selection].value += idata.bonus
-            console.log(adata[idata.category])
-            console.log(adata[idata.category][idata.selection])
-            console.log(adata[idata.category][idata.selection].value);
-            
-            console.log(idata.category);
-            
-            console.log(idata.selection);
+    if (!(selection == null)) {
+        for (let [key, ob] of Object.entries(adata)) {
+            if (key == category && ob.hasOwnProperty(selection)) {
+                ob[selection].value += idata.bonus;
+            }
         }
     }
+    
   }
 
   /**

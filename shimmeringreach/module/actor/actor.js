@@ -13,7 +13,6 @@ export class SRActor extends Actor {
     const actorData = this.data;
     const data = actorData.data;
     const flags = actorData.flags;
-
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
     if (actorData.type === 'character') this._prepareCharacterData(actorData);
@@ -26,7 +25,6 @@ export class SRActor extends Actor {
     const data = actorData.data;
 
     // Make modifications to data here. For example:
-
 
 
 	//Populate attribute values for reference
@@ -49,7 +47,7 @@ export class SRActor extends Actor {
 	//Calculate soaks via JSON defined formulas of attribute weighting
 	var i;
 	for (let [key, soak] of Object.entries(data.soaks)) {
-		soak.value = 0;
+		//soak.value = 0;
 		for (i = 0; i <soak.attr.length; i++)
 		{
 			soak.value += abilitybox[soak.attr[i]].value * soak.weights[i];
@@ -61,13 +59,15 @@ export class SRActor extends Actor {
 
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
-		def.value = 0;
+		//def.value = 0;
 		for (i = 0; i <def.attr.length; i++)
 		{
 			def.value += abilitybox[def.attr[i]].value;
 		}
 		//console.log(skillbox[def.skill].value);
-		//console.log(def.passive);
+        //console.log("IN DEFENSES ACTOR");
+
+		//console.log(def.value);
 		def.active = def.value + skillbox[def.skill].value;
 		
 		if (!def.allowpassive)

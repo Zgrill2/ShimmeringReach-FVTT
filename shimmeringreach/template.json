@@ -353,9 +353,9 @@
     "feature": {
       "templates": ["base"],
       "category_map": {
-        "defenses" : ["", "dodge", "block", "parry", "physical", "mental"],
-        "soaks": ["", "armor", "physical", "mental"],
-        "skills": ["", "strongman", "gymnastics", "marathoner", "traversal", "navigation", "survival", "medicine", "animal_handling", "con", "insight", "intimidation", "negotiation", "disguise", "stealth", "legerdemain", "thievery"]
+        "defenses" : ["dodge", "block", "parry", "physical", "mental"],
+        "soaks": ["armor", "physical", "mental"],
+        "skills": ["strongman", "gymnastics", "marathoner", "traversal", "navigation", "survival", "medicine", "animal_handling", "con", "insight", "intimidation", "negotiation", "disguise", "stealth", "legerdemain", "thievery"]
       },
       "category": "",
       "selection": "",

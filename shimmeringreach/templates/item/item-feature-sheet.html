@@ -31,18 +31,7 @@
                 </li>
                 <li class="skill flexrow grid-3col">
                     
-                    <select name="cat" id="cat">
-                        {{#each data.category_map as |cat key|}}
-                            <option value="{{../data.category}}">{{../data.category}}</option>
-                        {{/each}}
-                    </select>
-                    <select name="seln" id="sel" value="{{selection}}">
-                        {{#each data.category_map}}
-                            {{#each this}}
-                                <option value="{{../../selection}}">{{this}}</option>
-                            {{/each}}
-                        {{/each}}
-                    </select>
+                    <input type="text" name="data.category" value="{{data.category}}" data-dtype="String"/>
                     {{#with data.bonus}}
                         <input type="text" name="data.bonus" value="{{this}}" data-dtype="Number"/>
                     {{/with}}
