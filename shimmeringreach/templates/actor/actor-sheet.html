@@ -21,7 +21,6 @@
                   </div>
               </div>
               <div class="resource flex-group-center">
-
                   <label for="data.stamina.value" class="resource-label">stamina</label>
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
@@ -36,17 +35,6 @@
                     <span> / </span>
 					<label>{{data.mana.max}}</label>
                   </div>
-              </div>
-          </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-4col">
-            {{#each data.abilities as |ability key|}}
-              <div class="ability flexrow flex-group-center">
-                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
-                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-                <span class="ability-mod rollable" data-roll="{{ability.value}}d6" data-label="{{key}}">{{numberFormat ability.value decimals=0 sign=true}}</span>
               </div>
           </div>
         </div>

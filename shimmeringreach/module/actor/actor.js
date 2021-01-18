@@ -92,7 +92,7 @@ export class SRActor extends Actor {
             //Object.entries(data.skills)[k].value = skill_group.value;
             //update_skill_val[k] = skill_group.value
         });
-    }s
+    }
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
 	  if (skill.attr != "none") {
