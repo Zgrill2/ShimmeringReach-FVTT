@@ -14,26 +14,23 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-
-        {{!-- Description Tab --}}
-        <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
-        </div>
-
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             {{!-- As you add new fields, add them in here! --}}
             <ol class="buff-list">
                 <li class="skill flexrow grid-3col">
                   <div class="skill-name"><label class="resource-label">Category</label></div>
-				  <div class="skill-rank"><label class="resource-label">Selection</label></div>				  
                   <div class="skill-attribute"><label class="resource-label">Bonus</label></div>
+                  <div class="skill-attribute"><label class="resource-label">Active</label></div>
                 </li>
                 <li class="skill flexrow grid-3col">
                     
                     <input type="text" name="data.category" value="{{data.category}}" data-dtype="String"/>
                     {{#with data.bonus}}
                         <input type="text" name="data.bonus" value="{{this}}" data-dtype="Number"/>
+                    {{/with}}
+                    {{#with data.active}}
+                        <input type="checkbox" name="data.active" checked="{{this}}" value="{{this}}"/>
                     {{/with}}
                 </li>
             </ol>

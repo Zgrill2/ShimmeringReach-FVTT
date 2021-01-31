@@ -359,6 +359,7 @@
       },
       "category": "",
       "selection": "",
+      "active": true,
       "bonus": 0
     },
 	"stats": {
