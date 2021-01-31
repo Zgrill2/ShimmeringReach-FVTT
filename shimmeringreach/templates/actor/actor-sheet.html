@@ -118,7 +118,7 @@
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
           
-		  <div class="resources grid grid-2col">
+		  <div class="resources grid grid-3col">
 			<div class="resource flex-group-center">
                   <label for="data.tradition.rank.value" class="resource-label">Tradition Rank</label>
                   <div class="resource-content flexrow flex-center flex-between">
@@ -131,6 +131,12 @@
 					
                 <input type="text" name="data.luck.max.value" value="{{data.luck.max.value}}" data-dtype="Number"/> </div>
 				</div>	
+			<div class="resource flex-group-center">
+                  <label for="data.initiative.dice" class="resource-label">Init Dice</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					
+                <input type="text" name="data.initiative.dice" value="{{data.initiative.dice}}" data-dtype="Number"/> </div>
+				</div>
 				
 		  </div>
 		  <div class="soaks grid grid-3col">
