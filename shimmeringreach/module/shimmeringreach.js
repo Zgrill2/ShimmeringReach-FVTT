@@ -6,13 +6,15 @@ import { SRItemSheet } from "./item/item-sheet.js";
 
 import { RollDP } from "./dice-roller/roll.js";
 
+import { SRCombat } from "./srcombat/srcombat.js";
 Hooks.once('init', async function() {
 
   game.shimmeringreach = {
     SRActor,
     SRItem,
     rollItemMacro,
-    RollDP
+    RollDP,
+	SRCombat
   };
 
   globalThis.RollDP = RollDP
@@ -21,15 +23,17 @@ Hooks.once('init', async function() {
    * Set an initiative formula for the system
    * @type {String}
    */
+  
+  //  formula: "@initiative.dice d6 + @abilities.rea.value",
   CONFIG.Combat.initiative = {
-
-    formula: "@initiative.dice d6 + @abilities.rea.value",
+    formula: "5 +@abilities.rea.value",
     decimals: 2
   };
 
   // Define custom Entity classes
   CONFIG.Actor.entityClass = SRActor;
   CONFIG.Item.entityClass = SRItem;
+  CONFIG.Combat.entityClass = SRCombat;
   //CONFIG.Roll.entityClass = RollDP;
   
   

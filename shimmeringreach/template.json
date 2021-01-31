@@ -33,6 +33,14 @@
           "value": 1
         }
       },
+	  "luck": {
+        "current": {
+          "value": 1
+        },
+		"max": {
+		  "value": 1
+		}
+      },
       "abilities": {
         "bod": {
           "value": 1
@@ -63,19 +71,19 @@
         "armor": {
           "value": 1,
 		  "attr": ["bod","str","log"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 1,
 		  "attr": ["agi","bod","str"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
 		"mental": {
           "value": 1,
 		  "attr": ["log","wil","cha"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "weights": [0.5,1,0.5],
 		  "name": "Mental Soak"
         }
       },
