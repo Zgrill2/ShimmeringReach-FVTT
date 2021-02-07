@@ -1,28 +1,5 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-<script>
-function toggleDropdown() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} 
-
-function changeCS(newCS) {
-	data.tradition.cast_stat.value = newCS;
-}
-
-</script>
     {{!-- Sheet Header --}}
     <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
@@ -160,7 +137,7 @@ function changeCS(newCS) {
 					
                 <input type="text" name="data.initiative.dice" value="{{data.initiative.dice}}" data-dtype="Number"/> </div>
 				</div>
-			
+			<!--
 			<div class="resource flex-group-center">
                   <label for="data.tradition.cast_stat.value" class="resource-label">Cast Stat</label>
 				  
@@ -168,15 +145,29 @@ function changeCS(newCS) {
 					<div class="dropdown">
 						<button onclick="toggleDropdown()" class="dropbtn">{{data.tradition.cast_stat.value}}</button>
 						<div id="myDropdown" class="dropdown-content">
-							<button onclick="changeCS()">INT</button>
+							<button onclick="changeCS(actor,int)">INT</button>
 							<button onclick="changeCS()">LOG</button>
 							<button onclick="changeCS()">CHA</button>
 						</div>
 					</div>
 				</div>
 			</div> 
-				
-				
+			-->
+			
+			<div class="resource flex-group-center">
+                  <label for="data.tradition.cast_stat.value" class="resource-label">Cast Stat</label>
+				  
+                  <div class="resource-content flexrow flex-center flex-between">
+					<div class="form-group"></div>
+						<select name="data.tradition.cast_stat.value">
+							<option value="int">INT</option>
+							<option value="log">LOG</option>
+							<option value="cha">CHA</option>
+						</select>
+						
+				</div>
+			</div> 
+			
 		  </div>
 		  <div class="soaks grid grid-3col">
             {{#each data.soaks as |soak key|}}
