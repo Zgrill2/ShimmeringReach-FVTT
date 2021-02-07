@@ -52,7 +52,7 @@ export class SRActor extends Actor {
 		{
 			soak.value += abilitybox[soak.attr[i]].value * soak.weights[i];
 		}
-		soak.value = Math.ceil((soak.value) / soak.attr.length );
+		soak.value = Math.ceil(soak.value);
 	}
 	
 	
@@ -63,9 +63,7 @@ export class SRActor extends Actor {
 		{
 			def.passive += abilitybox[def.attr[i]].value;
 		}
-		console.log(skillbox[def.skill].value);
-		console.log(def.passive);
-		def.active = def.passive + skillbox[def.skill].value;
+		def.active = def.passive + skillbox[def.skill].value + Math.min(skillbox[def.skill].value,Math.ceil(data.tradition.rank.value / 2));
 		
 		if (!def.allowpassive)
 		{
@@ -93,7 +91,7 @@ export class SRActor extends Actor {
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
 	  if (skill.attr != "none") {
-		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2));
+		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2)) -1 * (skill.value == 0);
 	  }
     }
 	//console.log(abilitybox);

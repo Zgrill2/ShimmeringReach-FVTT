@@ -31,7 +31,10 @@
 	  "tradition": {
         "rank": {
           "value": 1
-        }
+        },
+		"cast_stat": {
+		  "value": "int"
+		}
       },
 	  "luck": {
         "current": {
@@ -70,13 +73,13 @@
 	  "soaks": {
         "armor": {
           "value": 1,
-		  "attr": ["bod","str","log"],
+		  "attr": ["str","bod","log"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 1,
-		  "attr": ["agi","bod","str"],
+		  "attr": ["agi","str","bod"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
