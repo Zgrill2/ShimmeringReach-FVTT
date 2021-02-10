@@ -190,10 +190,10 @@
                   <div class="resource-content flexrow flex-center flex-between">
 				  
                     {{#if def.allowpassive}}
-                    <span class="dicepool defense-passive-dicepool rollable" data-roll="{{def.passive}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-passive-dicepool rollable" data-roll={{def.passive}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
                     <span> / </span>
                     {{/if}}
-                    <span class="dicepool defense-active-dicepool rollable" data-roll="{{def.active}}d6" data-label="{{key}}" style="font-size:20px">&#9861;{{numberFormat def.active decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-active-dicepool rollable" data-roll={{def.active}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.active decimals=0 sign=false}}</span>
 
                   </div>
               </div>
@@ -240,9 +240,9 @@
                                     </div>
                                 <div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
                                 {{#if hide_dicepool}}                                
-                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em"></div>
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em"></div>
                                 {{else}}
-                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}d6" data-label="{{key}}" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
+                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
                                 {{/if}}
                             </li>
                         {{/if}}
@@ -250,6 +250,53 @@
                 </ol>
             {{/each}}
             </ol>
+		  
+		  <div class="weapon grid grid-4col">
+			
+			  <div class="resource flex-group-center">
+                  <label for="data.equipped_weapon.power" class="resource-label">Power</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					<input type="text" name="data.equipped_weapon.power" value="{{data.equipped_weapon.power}}" data-dtype="Number"/>
+                  </div>
+              </div>
+			 <div class="resource flex-group-center">
+                  <label for="data.equipped_weapon.reach" class="resource-label">Reach</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+					<input type="text" name="data.equipped_weapon.reach" value="{{data.equipped_weapon.reach}}" data-dtype="Number"/>
+                  </div>
+              </div>
+			  <div class="resource flex-group-center">
+                  <label for="data.equipped_weapon.handedness" class="resource-label">Size</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+				  <select class="display" name="data.equipped_weapon.handedness">
+							{{#select data.equipped_weapon.handedness}}
+							<option value="0">Light</option>
+							<option value="1">One Handed</option>
+							<option value="2">Two Handed</option>
+							{{/select}}
+						</select>
+                  </div>
+              </div>
+			  <div class="resource flex-group-center">
+                  <label for="data.equipped_weapon.handedness" class="resource-label">Shield</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+						<select class="display" name="data.equipped_weapon.shield">
+							{{#select data.equipped_weapon.shield}}
+							<option value="0">None</option>
+							<option value="1">Buckler</option>
+							<option value="2">Medium</option>
+							<option value="3">Heavy</option>
+							<option value="4">Tower</option>
+							{{/select}}
+						</select>
+						
+                  </div>
+              </div>
+        </div>
+		  
+		  
+		  
+		  
 		  
         </div>
 		

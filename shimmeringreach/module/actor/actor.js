@@ -26,8 +26,8 @@ export class SRActor extends Actor {
     const data = actorData.data;
 
     // Make modifications to data here. For example:
-
-
+	
+	
 
 	//Populate attribute values for reference
 	let abilitybox = {};
@@ -41,8 +41,14 @@ export class SRActor extends Actor {
 	//Calculate bars. Will probably add some extra calls that boost these further
 	data.health.max = data.abilities.bod.value + 16;
 	data.mana.max = data.abilities.int.value + 16;
-
 	data.stamina.max = data.abilities.wil.value + 16;
+	
+	//declaring various dicepool penalties
+	let shield_bonuses = [0,1,4,5,7];
+	let shield_penalty = [0,0,0,0,-2];
+	console.log(data);
+	console.log(Math.floor((data.health.max - data.health.value)/6));
+	data.wound_penalty.value = Math.floor((data.health.max - data.health.value)/6) +  Math.floor((data.stamina.max - data.stamina.value)/6) +  Math.floor((data.mana.max - data.mana.value)/6);
 	
 	//Calculate soaks via JSON defined formulas of attribute weighting
 	var i;
@@ -70,6 +76,15 @@ export class SRActor extends Actor {
 			def.passive = 0;
 		}
 	}
+	
+	
+	
+	
+	// block shield bonus
+	data.defenses.block.active += shield_bonuses[data.equipped_weapon.shield];
+	
+	// parry weapon reach bonus
+	data.defenses.parry.active += data.equipped_weapon.reach;
 	
     //let update_skill_val = {}
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {

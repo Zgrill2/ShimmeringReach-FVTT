@@ -316,6 +316,15 @@
       },
 	  "initiative": {
 		"dice": 1
+	  },
+	  "equipped_weapon": {
+		"power": 6,
+		"reach": 1,
+		"handedness": 0,
+		"shield": 0
+	  },
+	  "wound_penalty": {
+		"value": 0
 	  }
     }
   },
