@@ -70,13 +70,13 @@
 	  "soaks": {
         "armor": {
           "value": 1,
-		  "attr": ["bod","str","log"],
+		  "attr": ["str","bod","log"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 1,
-		  "attr": ["agi","bod","str"],
+		  "attr": ["agi","str","bod"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
@@ -316,6 +316,15 @@
       },
 	  "initiative": {
 		"dice": 1
+	  },
+	  "equipped_weapon": {
+		"power": 6,
+		"reach": 1,
+		"handedness": 0,
+		"shield": 0
+	  },
+	  "wound_penalty": {
+		"value": 0
 	  }
     }
   },

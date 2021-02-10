@@ -164,13 +164,20 @@ export class SRActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     if (dataset.roll) {
-      let roll = new RollDP(dataset.roll, this.actor.data.data);
+      let roll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
+	  console.log("onRoll event");
+	  console.log(dataset.explode);
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
       });
     }
   }
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+
 
 }

@@ -26,8 +26,8 @@ export class SRActor extends Actor {
     const data = actorData.data;
 
     // Make modifications to data here. For example:
-
-
+	
+	
 
 	//Populate attribute values for reference
 	let abilitybox = {};
@@ -41,8 +41,14 @@ export class SRActor extends Actor {
 	//Calculate bars. Will probably add some extra calls that boost these further
 	data.health.max = data.abilities.bod.value + 16;
 	data.mana.max = data.abilities.int.value + 16;
-
 	data.stamina.max = data.abilities.wil.value + 16;
+	
+	//declaring various dicepool penalties
+	let shield_bonuses = [0,1,4,5,7];
+	let shield_penalty = [0,0,0,0,-2];
+	console.log(data);
+	console.log(Math.floor((data.health.max - data.health.value)/6));
+	data.wound_penalty.value = Math.floor((data.health.max - data.health.value)/6) +  Math.floor((data.stamina.max - data.stamina.value)/6) +  Math.floor((data.mana.max - data.mana.value)/6);
 	
 	//Calculate soaks via JSON defined formulas of attribute weighting
 	var i;
@@ -52,7 +58,7 @@ export class SRActor extends Actor {
 		{
 			soak.value += abilitybox[soak.attr[i]].value * soak.weights[i];
 		}
-		soak.value = Math.ceil((soak.value) / soak.attr.length );
+		soak.value = Math.ceil(soak.value);
 	}
 	
 	
@@ -63,15 +69,22 @@ export class SRActor extends Actor {
 		{
 			def.passive += abilitybox[def.attr[i]].value;
 		}
-		console.log(skillbox[def.skill].value);
-		console.log(def.passive);
-		def.active = def.passive + skillbox[def.skill].value;
+		def.active = def.passive + skillbox[def.skill].value + Math.min(skillbox[def.skill].value,Math.ceil(data.tradition.rank.value / 2));
 		
 		if (!def.allowpassive)
 		{
 			def.passive = 0;
 		}
 	}
+	
+	
+	
+	
+	// block shield bonus
+	data.defenses.block.active += shield_bonuses[data.equipped_weapon.shield];
+	
+	// parry weapon reach bonus
+	data.defenses.parry.active += data.equipped_weapon.reach;
 	
     //let update_skill_val = {}
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {
@@ -93,7 +106,7 @@ export class SRActor extends Actor {
 	for (let [key, skill] of Object.entries(data.skills)) {
       // Calculate the modifier using d20 rules.
 	  if (skill.attr != "none") {
-		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2));
+		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2)) -1 * (skill.value == 0);
 	  }
     }
 	//console.log(abilitybox);
