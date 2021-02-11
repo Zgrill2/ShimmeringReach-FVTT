@@ -109,6 +109,9 @@ export class SRActor extends Actor {
 		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2)) -1 * (skill.value == 0);
 	  }
     }
+	
+	data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
+	
 	//console.log(abilitybox);
   }
 
