@@ -46,8 +46,6 @@ export class SRActor extends Actor {
 	//declaring various dicepool penalties
 	let shield_bonuses = [0,1,4,5,7];
 	let shield_penalty = [0,0,0,0,-2];
-	console.log(data);
-	console.log(Math.floor((data.health.max - data.health.value)/6));
 	data.wound_penalty.value = Math.floor((data.health.max - data.health.value)/6) +  Math.floor((data.stamina.max - data.stamina.value)/6) +  Math.floor((data.mana.max - data.mana.value)/6);
 	
 	//Calculate soaks via JSON defined formulas of attribute weighting
@@ -85,6 +83,8 @@ export class SRActor extends Actor {
 	
 	// parry weapon reach bonus
 	data.defenses.parry.active += data.equipped_weapon.reach;
+	
+	data.equipped_weapon.dv = data.equipped_weapon.power + data.abilities.str.value;
 	
     //let update_skill_val = {}
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {

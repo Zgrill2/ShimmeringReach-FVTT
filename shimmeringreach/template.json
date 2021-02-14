@@ -322,7 +322,8 @@
 		"reach": 1,
 		"handedness": 0,
 		"shield": 0,
-		"dicepool":0
+		"dicepool":0,
+		"dv":6
 	  },
 	  "wound_penalty": {
 		"value": 0
