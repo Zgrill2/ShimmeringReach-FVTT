@@ -125,13 +125,23 @@ export class SRCombat extends Combat {
 	await this.rollAll();
 	await this.assignOrder();
 	// not triggering correctly. Is this because it's an async call?
+	console.log(this);
+	
 	return this.update({round: this.round+1, turn: turn}, {advanceTime});
 	
 	
 	
   }
 	
-	
+	async resetAll() {
+    const updates = this.data.combatants.map(c => { return {
+      _id: c._id,
+      initiative: null,
+	  order: 0
+    }});
+    await this.updateEmbeddedEntity("Combatant", updates);
+    return this.update({turn: 0});
+  }
 
 	_prepareCombatant(c, scene, players, settings={}) {
 

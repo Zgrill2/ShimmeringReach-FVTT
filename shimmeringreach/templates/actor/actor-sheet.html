@@ -251,7 +251,7 @@
             {{/each}}
             </ol>
 		  
-		  <div class="weapon grid grid-5col">
+		  <div class="weapon grid grid-6col">
 			
 			  <div class="resource flex-group-center">
                   <label for="data.equipped_weapon.power" class="resource-label">Power</label>
@@ -297,6 +297,16 @@
 			  <div class="dicepool skill-dicepool rollable" data-roll="{{data.equipped_weapon.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat data.equipped_weapon.dicepool decimals=0 sign=false}}</div>
 			  
               </div>
+			  
+			  
+			  <div class="resource flex-group-center">
+                  <label for="data.stamina.value" class="resource-label">DV</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+                    <label>{{data.equipped_weapon.dv}}</label>
+                  </div>
+              </div>
+			  
+			  
         </div>
 		  
 		  
