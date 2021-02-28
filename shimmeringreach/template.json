@@ -116,7 +116,7 @@
           "passive": 1,
           "active": 1,
 		  "allowpassive": true,
-		  "attr": ["rea","int"],
+		  "attr": ["wil","cha"],
 		  "skill": "perserverence",
 		  "name": "Mental Resist"
         },
