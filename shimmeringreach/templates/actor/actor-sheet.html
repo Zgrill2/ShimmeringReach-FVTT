@@ -260,46 +260,31 @@
 		  <div class="weapon grid grid-6col">
 			
 			  <div class="resource flex-group-center">
-                  <label for="data.equipped_weapon.power" class="resource-label">Power</label>
+                  <label for="data.equipped_weapon.name" class="resource-label">Name</label>
                   <div class="resource-content flexrow flex-center flex-between">
-					<input type="text" name="data.equipped_weapon.power" value="{{data.equipped_weapon.power}}" data-dtype="Number"/>
+                    <label>{{data.equipped_weapon.name}}</label>
                   </div>
               </div>
 			 <div class="resource flex-group-center">
                   <label for="data.equipped_weapon.reach" class="resource-label">Reach</label>
                   <div class="resource-content flexrow flex-center flex-between">
-					<input type="text" name="data.equipped_weapon.reach" value="{{data.equipped_weapon.reach}}" data-dtype="Number"/>
+                    <label>{{data.equipped_weapon.reach}}</label>
                   </div>
               </div>
 			  <div class="resource flex-group-center">
                   <label for="data.equipped_weapon.handedness" class="resource-label">Size</label>
                   <div class="resource-content flexrow flex-center flex-between">
-				  <select class="display" name="data.equipped_weapon.handedness">
-							{{#select data.equipped_weapon.handedness}}
-							<option value="0">Light</option>
-							<option value="1">One Handed</option>
-							<option value="2">Two Handed</option>
-							{{/select}}
-						</select>
-                  </div>
+                    <label>{{data.equipped_weapon.handedness}}</label>
+				  </div>
               </div>
 			  <div class="resource flex-group-center">
-                  <label for="data.equipped_weapon.handedness" class="resource-label">Shield</label>
+                  <label for="data.equipped_weapon.shield" class="resource-label">Shield</label>
                   <div class="resource-content flexrow flex-center flex-between">
-						<select class="display" name="data.equipped_weapon.shield">
-							{{#select data.equipped_weapon.shield}}
-							<option value="0">None</option>
-							<option value="1">Buckler</option>
-							<option value="2">Medium</option>
-							<option value="3">Heavy</option>
-							<option value="4">Tower</option>
-							{{/select}}
-						</select>
-						
+                    <label>{{data.equipped_weapon.shield}}</label>
                   </div>
               </div>
 			   <div class="resource flex-group-center">
-                  <label for="data.equipped_weapon.handedness" class="resource-label">Dicepool</label>
+                  <label for="data.equipped_weapon.dicepool" class="resource-label">Dicepool</label>
 			  <div class="dicepool skill-dicepool rollable" data-roll="{{data.equipped_weapon.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat data.equipped_weapon.dicepool decimals=0 sign=false}}</div>
 			  
               </div>
@@ -320,7 +305,6 @@
 			  
         </div> -->
 		  
-		  
 		  <ol class="items-list">
                 <li class="item flexrow item-header">
                   <div class="item-image"></div>
@@ -336,9 +320,9 @@
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
                     <h4 class="item-name">{{item.name}}</h4>
-					<h4 class="item-name">{{item.data.dv}}</h4>
+					<h4 class="item-dv">{{item.data.dv}}</h4>
 					<div class="dicepool skill-dicepool rollable" data-roll="{{item.data.dicepool}}" data-label="{{item.name}} Attack" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat item.data.dicepool decimals=0 sign=false}}</div>
-					<h4 class="item-name"></h4>
+					<h4 class="item-active">{{item.data.active}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
