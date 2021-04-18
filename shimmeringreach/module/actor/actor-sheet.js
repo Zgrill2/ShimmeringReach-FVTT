@@ -46,6 +46,7 @@ export class SRActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const features = [];
+	const weapons = [];
     const spells = {
       0: [],
       1: [],
@@ -68,6 +69,10 @@ export class SRActorSheet extends ActorSheet {
       if (i.type === 'item') {
         gear.push(i);
       }
+	  // Append to weapons.
+      if (i.type === 'weapon') {
+        weapons.push(i);
+      }
       // Append to features.
       else if (i.type === 'feature') {
         features.push(i);
@@ -84,6 +89,7 @@ export class SRActorSheet extends ActorSheet {
     actorData.gear = gear;
     actorData.features = features;
     actorData.spells = spells;
+	actorData.weapons =  weapons;
   }
 
   /* -------------------------------------------- */
@@ -164,7 +170,7 @@ export class SRActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     if (dataset.roll) {
-      let roll = new RollDP(dataset.roll, this.actor.data.data);
+      let roll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -172,5 +178,10 @@ export class SRActorSheet extends ActorSheet {
       });
     }
   }
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+
 
 }

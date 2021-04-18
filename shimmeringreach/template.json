@@ -33,6 +33,17 @@
           "value": 1
         }
       },
+	  "luck": {
+        "current": {
+          "value": 1
+        },
+		"max": {
+		  "value": 1
+		}
+      },
+	  "drainres": {
+		  "value": 1
+      },
       "abilities": {
         "bod": {
           "value": 1
@@ -62,26 +73,26 @@
 	  "soaks": {
         "armor": {
           "value": 1,
-		  "attr": ["bod","str","log"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "attr": ["str","bod","log"],
+		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 1,
-		  "attr": ["agi","bod","str"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "attr": ["agi","str","bod"],
+		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
 		"mental": {
           "value": 1,
 		  "attr": ["log","wil","cha"],
-		  "weights": [0.666666,1.333333,0.666666],
+		  "weights": [0.5,1,0.5],
 		  "name": "Mental Soak"
         }
       },
 	  "defenses": {
 		"dodge": {
-          "value": 1,
+          "passive": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
@@ -89,7 +100,7 @@
 		  "name": "Dodge"
         },
 		"block": {
-          "value": 1,
+          "passive": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
@@ -97,7 +108,7 @@
 		  "name": "Block"
         },
 		"parry": {
-          "value": 1,
+          "passive": 1,
           "active": 1,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
@@ -105,15 +116,15 @@
 		  "name": "Parry"
         },
 		"mental": {
-          "value": 1,
+          "passive": 1,
           "active": 1,
 		  "allowpassive": true,
-		  "attr": ["rea","int"],
+		  "attr": ["wil","cha"],
 		  "skill": "perserverence",
 		  "name": "Mental Resist"
         },
 		"physical": {
-          "value": 1,
+          "passive": 1,
           "active": 1,
 		  "allowpassive": true,
 		  "attr": ["bod","agi"],
@@ -213,36 +224,6 @@
 		  "dicepool": 2,
 		  "name": "Disguise"
         },
-		"con": {
-          "value": 1,
-		  "attr": "cha",
-		  "grouped": "influence",
-		  "dicepool": 2
-        },
-		"insight": {
-          "value": 1,
-		  "attr": "int",
-		  "grouped": "influence",
-		  "dicepool": 2
-        },
-		"intimidation": {
-          "value": 1,
-		  "attr": "cha",
-		  "grouped": "influence",
-		  "dicepool": 2
-        },
-		"negotiation": {
-          "value": 1,
-		  "attr": "cha",
-		  "grouped": "influence",
-		  "dicepool": 2
-        },
-		"disguise": {
-          "value": 1,
-		  "attr": "int",
-		  "grouped": "subterfuge",
-		  "dicepool": 2
-        },
 		"stealth": {
           "value": 0,
 		  "attr": "agi",
@@ -335,11 +316,25 @@
 		  "isgroup": false,
           "members": ["spellcasting", "perceive_magic", "weapon_skill", "perception", "dodge", "perserverence"]
         }
-      }
+      },
+	  "initiative": {
+		"dice": 1
+	  },
+	  "equipped_weapon": {
+		"power": 6,
+		"reach": 1,
+		"handedness": 0,
+		"shield": 0,
+		"dicepool":0,
+		"dv":6
+	  },
+	  "wound_penalty": {
+		"value": 0
+	  }
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "stats"],
+    "types": ["item", "feature", "spell", "weapon", "stats"],
     "templates": {
       "base": {
         "description": ""
@@ -351,19 +346,17 @@
       "weight": 0
     },
     "feature": {
-      "templates": ["base"],
-      "category_map": {
-        "defenses" : ["dodge", "block", "parry", "physical", "mental"],
-        "soaks": ["armor", "physical", "mental"],
-        "skills": ["strongman", "gymnastics", "marathoner", "traversal", "navigation", "survival", "medicine", "animal_handling", "con", "insight", "intimidation", "negotiation", "disguise", "stealth", "legerdemain", "thievery"]
-      },
-      "category": "",
-      "selection": "",
-      "active": true,
-      "bonus": 0
-    },
-	"stats": {
       "templates": ["base"]
+    },
+	"weapon": {
+      "templates": ["base"],
+	  "reach": 1,
+	  "power": 6,
+	  "handedness": 0,
+	  "shield": 0,
+	  "dicepool": 0,
+	  "dv": 6,
+	  "active": false
     },
     "spell": {
       "templates": ["base"],

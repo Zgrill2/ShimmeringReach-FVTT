@@ -11,36 +11,82 @@ export class DiceError extends Error {
 
 export class RollDP extends Roll {
 
-    constructor(formula, limit = -1, explode = false) {
-        console.log("initializing dicepool roller$$$");
-        super(formula);
-        this._limit = limit;
+    constructor(formula =0, actor = -1, explode = false, applyWounds = false) {
+    //    console.log("initializing dicepool roller$$$");
+        
+		//console.log(formula);
+		if (applyWounds){
+			formula -= actor.wound_penalty.value;
+		}
+		formula = formula.toString();
+		formula += "d6";
+		if (explode){
+			formula += "x=6";
+		}
+		formula +="cf=1cs>=5";
+		//console.log(explode);
+		//console.log(formula);
+		
+		super(formula);
+		
+		this._formula = formula;
+        this._actor = actor;
         this._explode = explode;
+		this._applyWounds = applyWounds;
         this.dicepool = this.terms[0]["number"];
+		if (applyWounds){
+			this.dicepool -= actor.wound_penalty.value;
+		}
+		//console.log(this);
     }
 
     roll() {
         //const result = super.roll(this.formula);
         //console.log(result);
         //Object.assign(this, result);
-        let formula = this.formula;//`${count}d6`;
-        formula += `cs>=5`;
-        let r = new Roll(formula)
-        console.log(formula);
-        console.log(r);
+//        let formula = this.dicepool;//`${count}d6`;
+//        formula += `d6cf=1cs>=5`;
+       let r = new Roll(this._formula)
+        //console.log(formula);
+        //console.log(r);
         return r;
+		//super();
     }
+/*
+    async render(chatOptions = {}) {
+		console.log("ding");
+    chatOptions = mergeObject({
+      user: game.user._id,
+      flavor: null,
+      template: this.constructor.CHAT_TEMPLATE,
+      blind: false
+    }, chatOptions);
+    const isPrivate = chatOptions.isPrivate;
 
-    /*async render(chatOptions) {
-        return await super.render(chatOptions);
+    // Execute the roll, if needed
+    if (!this._rolled) this.roll();
+
+    // Define chat data
+    const chatData = {
+    //  formula: isPrivate ? "???" : this._formula,
+	  formula: "Blah",
+      flavor: isPrivate ? null : chatOptions.flavor,
+      user: chatOptions.user,
+      tooltip: isPrivate ? "" : await this.getTooltip(),
+      total: isPrivate ? "?" : Math.round(this.total * 100) / 100
+    };
+
+    // Render the roll display template
+    return renderTemplate(chatOptions.template, chatData);
+  }
+    
+    toMessage(...args){
+        console.log("Testing toMessage inheritence");
+        return super.toMessage(...args);
     }*/
     
-    toMessage(args){
-        console.log("Testing toMessage inheritence");
-        return super.toMessage(args);
-    }
-    
     // Override render inheritence
+	
     render(chatOptions) {
         return super.render(chatOptions);
     }
@@ -83,17 +129,11 @@ export class RollDP extends Roll {
     }
     
     is_fumble() {
-        if (this.count_failures() > this.terms[0]["number"] / 2.0) {
-            return true;
-        }
-        return false;
+        return (this.count_failures() > this.terms[0]["number"] / 2.0);
     }
     
     is_critical_fumble(){
-        if (this.is_fumble() && this.count_sucesses() == 0) {
-            return true;
-        }
-        return false;
+        return (this.is_fumble() && this.count_sucesses() == 0);
     }
     
 }
