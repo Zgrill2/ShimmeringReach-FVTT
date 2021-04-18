@@ -29,9 +29,13 @@
                     {{#with data.bonus}}
                         <input type="text" name="data.bonus" value="{{this}}" data-dtype="Number"/>
                     {{/with}}
-                    <select name="data.selection" value="{{data.selection}}">
+                    <!-- <select name="data.selection" value="{{data.selection}}">
                         {{selectOptions data.toggle selected=data.selection localize=true}}
-                    </select>
+                    </select> -->
+                    <div class="resource">
+					<input type="checkbox" class="checkbox"  name="data.active" {{checked data.active}}></h4>
+                    </div>
+
                 </li>
             </ol>
         </div>

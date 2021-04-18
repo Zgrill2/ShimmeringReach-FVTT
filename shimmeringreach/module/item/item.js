@@ -24,8 +24,9 @@ export class SRItem extends Item {
 
     const adata = actorData;
     const idata = itemData;
+    if (itemData.active != true){ return; }
     let [category, selection] = itemData.category.split(".")
-	console.log("IN PREP FEATURE");
+	console.log(itemData);
     
     if (!(selection == null)) {
         for (let [key, ob] of Object.entries(adata)) {
