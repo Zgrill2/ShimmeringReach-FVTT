@@ -83,9 +83,6 @@ export class SRActor extends Actor {
 	
 	
 	
-	
-	
-	
 	/*
 	// block shield bonus
 	data.defenses.block.active += shield_bonuses[data.equipped_weapon.shield];
@@ -95,7 +92,6 @@ export class SRActor extends Actor {
 	
 	data.equipped_weapon.dv = data.equipped_weapon.power + data.abilities.str.value;
 	*/
-	
 	
     //let update_skill_val = {}
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {
@@ -123,6 +119,7 @@ export class SRActor extends Actor {
 	
 	data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
 	
+
 	// Prepare weapon DV and dicepool
 	
 	
@@ -144,7 +141,6 @@ export class SRActor extends Actor {
 		}
 		
 	});
-	
 	
   }
 
