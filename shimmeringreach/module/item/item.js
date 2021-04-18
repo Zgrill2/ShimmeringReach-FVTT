@@ -30,7 +30,9 @@ export class SRItem extends Item {
     if (!(selection == null)) {
         for (let [key, ob] of Object.entries(adata)) {
             if (key == category && ob.hasOwnProperty(selection)) {
-                ob[selection].value += idata.bonus;
+                if (itemData.selection == 0) {
+                    ob[selection].value += idata.bonus;
+                }
             }
         }
     }

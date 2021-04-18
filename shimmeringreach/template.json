@@ -348,10 +348,12 @@
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0
+      "weight": 0,
+      "active": 0
     },
     "feature": {
       "templates": ["base"],
+      "toggle": ["on","off"],
       "category_map": {
         "defenses" : ["dodge", "block", "parry", "physical", "mental"],
         "soaks": ["armor", "physical", "mental"],
