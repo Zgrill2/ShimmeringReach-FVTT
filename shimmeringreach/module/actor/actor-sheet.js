@@ -176,6 +176,8 @@ export class SRActorSheet extends ActorSheet {
     if (dataset.roll) {
       let roll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
+	  console.log("onRoll event");
+	  console.log(dataset.explode);
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
@@ -183,6 +185,7 @@ export class SRActorSheet extends ActorSheet {
     }
   }
 
+<<<<<<< HEAD
 
    _groupToggle(event) {
 	event.preventDefault();
@@ -237,6 +240,10 @@ export class SRActorSheet extends ActorSheet {
 		this.updateWeapons(a);
   }
 
+=======
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+>>>>>>> a0a490f1c101ac817bb13ead106fda41e6c24fad
 
 	async updateWeapons(weapons)
 	{
