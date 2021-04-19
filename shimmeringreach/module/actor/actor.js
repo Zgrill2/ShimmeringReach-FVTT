@@ -29,6 +29,7 @@ export class SRActor extends Actor {
     // Make modifications to data here. For example:
 	
 	
+
 	//Populate attribute values for reference
 	let abilitybox = {};
 	for (let [key, ability] of Object.entries(data.abilities)){
@@ -118,7 +119,7 @@ export class SRActor extends Actor {
     }
 	
 	data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
-	
+
 
 	// Prepare weapon DV and dicepool
 	
@@ -141,7 +142,7 @@ export class SRActor extends Actor {
 		}
 		
 	});
-	
+
   }
 
 }

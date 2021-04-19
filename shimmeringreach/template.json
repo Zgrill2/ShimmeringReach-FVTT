@@ -44,6 +44,7 @@
 	  "drainres": {
 		  "value": 1
       },
+
       "abilities": {
         "bod": {
           "value": 1
@@ -201,6 +202,7 @@
 		  "attr": "int",
 		  "isGroupRanked": false,
 		  "dicepool": 2,
+
 		  "name": "Insight"
         },
 		"intimidation": {

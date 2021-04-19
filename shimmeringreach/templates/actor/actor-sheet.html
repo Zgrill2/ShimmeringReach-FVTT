@@ -171,6 +171,7 @@
 			
 		  </div>
 		  <div class="soaks grid grid-4col">
+
             {{#each data.soaks as |soak key|}}
 			
 			  <div class="resource flex-group-center">
@@ -187,6 +188,7 @@
 					<span class="dicepool drain-res rollable" data-roll={{data.drainres.value}} data-label="Drain Soak" data-applywounds="false"  style="font-size:20px">&#9861;{{numberFormat data.drainres.value decimals=0 sign=false}}</span>
                   </div>
               </div>
+
         </div>
 		
 		<div class="defenses grid grid-5col">
@@ -263,17 +265,21 @@
                   <label for="data.equipped_weapon.name" class="resource-label">Name</label>
                   <div class="resource-content flexrow flex-center flex-between">
                     <label>{{data.equipped_weapon.name}}</label>
+
                   </div>
               </div>
 			 <div class="resource flex-group-center">
                   <label for="data.equipped_weapon.reach" class="resource-label">Reach</label>
                   <div class="resource-content flexrow flex-center flex-between">
+
                     <label>{{data.equipped_weapon.reach}}</label>
+
                   </div>
               </div>
 			  <div class="resource flex-group-center">
                   <label for="data.equipped_weapon.handedness" class="resource-label">Size</label>
                   <div class="resource-content flexrow flex-center flex-between">
+
                     <label>{{data.equipped_weapon.handedness}}</label>
 				  </div>
               </div>
@@ -305,12 +311,21 @@
                   <div class="resource-content flexrow flex-center flex-between">
                     <label>{{data.equipped_weapon.dv}}</label>
                   </div>
+
               </div>
 			  
 			  
+			  <div class="resource flex-group-center">
+                  <label for="data.stamina.value" class="resource-label">DV</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+                    <label>{{data.equipped_weapon.dv}}</label>
+                  </div>
+              </div>
 			  
 			  
+
         </div> -->
+
 		  
 		  <ol class="items-list">
                 <li class="item flexrow item-header">
