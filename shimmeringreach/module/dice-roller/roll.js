@@ -14,7 +14,7 @@ export class RollDP extends Roll {
     constructor(formula =0, actor = -1, explode = false, applyWounds = false) {
     //    console.log("initializing dicepool roller$$$");
         
-		console.log(formula);
+
 		if (applyWounds){
 			formula -= actor.wound_penalty.value;
 		}
@@ -24,8 +24,7 @@ export class RollDP extends Roll {
 			formula += "x=6";
 		}
 		formula +="cf=1cs>=5";
-		console.log(explode);
-		console.log(formula);
+
 		
 		super(formula);
 		
@@ -37,7 +36,7 @@ export class RollDP extends Roll {
 		if (applyWounds){
 			this.dicepool -= actor.wound_penalty.value;
 		}
-		console.log(this);
+
     }
 
     roll() {

@@ -125,7 +125,7 @@ export class SRCombat extends Combat {
 	await this.rollAll();
 	await this.assignOrder();
 	// not triggering correctly. Is this because it's an async call?
-	console.log(this);
+
 	
 	return this.update({round: this.round+1, turn: turn}, {advanceTime});
 	

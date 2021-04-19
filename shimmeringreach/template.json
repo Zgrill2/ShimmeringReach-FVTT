@@ -41,6 +41,10 @@
 		  "value": 1
 		}
       },
+	  "drainres": {
+		  "value": 1
+      },
+
       "abilities": {
         "bod": {
           "value": 1
@@ -198,6 +202,7 @@
 		  "attr": "int",
 		  "isGroupRanked": false,
 		  "dicepool": 2,
+
 		  "name": "Insight"
         },
 		"intimidation": {
@@ -331,7 +336,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "stats"],
+    "types": ["item", "feature", "spell", "weapon", "stats"],
     "templates": {
       "base": {
         "description": ""
@@ -345,8 +350,15 @@
     "feature": {
       "templates": ["base"]
     },
-	"stats": {
-      "templates": ["base"]
+	"weapon": {
+      "templates": ["base"],
+	  "reach": 1,
+	  "power": 6,
+	  "handedness": 0,
+	  "shield": 0,
+	  "dicepool": 0,
+	  "dv": 6,
+	  "active": false
     },
     "spell": {
       "templates": ["base"],

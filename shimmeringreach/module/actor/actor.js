@@ -13,6 +13,7 @@ export class SRActor extends Actor {
     const actorData = this.data;
     const data = actorData.data;
     const flags = actorData.flags;
+	
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
@@ -38,11 +39,15 @@ export class SRActor extends Actor {
 	for (let [key, skill] of Object.entries(data.skills)){
 		skillbox[key] = skill;
 	}
-	//Calculate bars. Will probably add some extra calls that boost these further
-	data.health.max = data.abilities.bod.value + 16;
-	data.mana.max = data.abilities.int.value + 16;
-	data.stamina.max = data.abilities.wil.value + 16;
 	
+	//assigning cast stat to perceive magic
+	data.skills.perceive_magic.attr = data.skills.spellcasting.attr;
+	
+	//Calculate bars. Will probably add some extra calls that boost these further
+	
+	data.health.max = data.abilities.bod.value + 16;
+	data.mana.max = data.abilities[data.skills.spellcasting.attr].value + 16;
+	data.stamina.max = data.abilities.wil.value + 16;
 	//declaring various dicepool penalties
 	let shield_bonuses = [0,1,4,5,7];
 	let shield_penalty = [0,0,0,0,-2];
@@ -59,6 +64,8 @@ export class SRActor extends Actor {
 		soak.value = Math.ceil(soak.value);
 	}
 	
+	//drain soak
+	data.drainres.value = data.abilities.wil.value * 2;
 	
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
@@ -77,7 +84,7 @@ export class SRActor extends Actor {
 	
 	
 	
-	
+	/*
 	// block shield bonus
 	data.defenses.block.active += shield_bonuses[data.equipped_weapon.shield];
 	
@@ -85,6 +92,7 @@ export class SRActor extends Actor {
 	data.defenses.parry.active += data.equipped_weapon.reach;
 	
 	data.equipped_weapon.dv = data.equipped_weapon.power + data.abilities.str.value;
+	*/
 	
     //let update_skill_val = {}
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {
@@ -111,8 +119,30 @@ export class SRActor extends Actor {
     }
 	
 	data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
+
+
+	// Prepare weapon DV and dicepool
 	
-	//console.log(abilitybox);
+	
+	const weapons = actorData.items;
+	//console.log(weapons);
+	
+	Object.entries(weapons).forEach(weapon => {
+		if (weapon.type = 'weapon')
+		{
+			weapon[1].data.dv = weapon[1].data.power + data.abilities.str.value;
+			weapon[1].data.dicepool = weapon[1].data.reach + data.skills.weapon_skill.dicepool;
+			//console.log(weapon);
+		}
+		if (weapon[1].data.active)
+		{
+			data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
+			data.defenses.parry.active += weapon[1].data.reach;
+			//console.log(weapon);
+		}
+		
+	});
+
   }
 
 }
