@@ -322,7 +322,7 @@
                     <h4 class="item-name">{{item.name}}</h4>
 					<h4 class="item-dv">{{item.data.dv}}</h4>
 					<div class="dicepool skill-dicepool rollable" data-roll="{{item.data.dicepool}}" data-label="{{item.name}} Attack" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat item.data.dicepool decimals=0 sign=false}}</div>
-					<h4 class="item-active">{{item.data.active}}</h4>
+					<div class="item toggle-item group-toggle" data-weapon="{{item._id}}"> {{item.data.active}}</div>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>

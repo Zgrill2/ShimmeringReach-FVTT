@@ -121,6 +121,10 @@ export class SRActorSheet extends ActorSheet {
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
 
+	// high level item checkboxes
+	
+	html.find('.group-toggle').click(this._groupToggle.bind(this));
+
     // Drag events for macros.
     if (this.actor.owner) {
       let handler = ev => this._onDragStart(ev);
@@ -180,8 +184,71 @@ export class SRActorSheet extends ActorSheet {
   }
 
 
+   _groupToggle(event) {
+	event.preventDefault();
+	const element = event.currentTarget;
+	const dataset = element.dataset;
+	
+	let id = dataset.weapon;
+	
+	let weapons = this.actor.items;
+	
+	let newweapon = null;
+	console.log(weapons);
+	console.log(id);
+	let a = [];
+	weapons.forEach(weapon => {
+	//console.log(weapon.data._id);
+		//console.log(weapon);
+		if (weapon.data.type === 'weapon'){
+			//console.log(weapon);
+						
+			if(weapon.data._id === id)
+			{
+				//console.log('flipping weapon');
+				weapon.data.data.active = !weapon.data.data.active;
+				const newdata = weapon.data;
+				//console.log(newdata);
+				a.push(newdata);
+				//this.actor.updateEmbeddedEntity("OwnedItem", newdata);
+				//this.actor.updateOwnedItem(weapon.data);
+				
+				//console.log('flipped weapon');
+				
+			}
+			else if(weapon.data.data.active === true)
+			{
+				//console.log('unequipping weapon');
+				weapon.data.data.active = false;
+				
+				const newdata = weapon.data;
+				
+				a.push(newdata);
+				//console.log(newdata);
+				
+				//this.actor.updateEmbeddedEntity("OwnedItem",newdata);
+				//console.log('unequipped weapon');
+				
+			}
+			
+		}
+	});
+	
+		this.updateWeapons(a);
+  }
 
 
+	async updateWeapons(weapons)
+	{
+		//console.log(weapons);
+		let i = 0;
+		weapons.forEach(weapon => {
+			setTimeout(function(){this.actor.updateEmbeddedEntity("OwnedItem",weapon)}.bind(this),i*50);
+			console.log(weapon);
+			//await this.actor.updateEmbeddedEntity("OwnedItem",weapon);
+			i +=1;
+		});
+	}
 
 
 }

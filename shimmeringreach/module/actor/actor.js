@@ -140,11 +140,10 @@ export class SRActor extends Actor {
 		{
 			data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
 			data.defenses.parry.active += weapon[1].data.reach;
-			console.log(weapon);
+			//console.log(weapon);
 		}
 		
 	});
-	
 	
   }
 
