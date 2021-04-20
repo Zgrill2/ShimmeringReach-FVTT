@@ -1,5 +1,5 @@
 # ShimmeringReach-FVTT
-A Foundry Virtual Tabletop implementation of the Shimmering Reach Tabletop system
+A [Foundry](https://foundryvtt.com/) Virtual Tabletop implementation of the Shimmering Reach Tabletop system
 
 ## What is complete?
 * Dicepools roll as a d6 system counting 5s and 6s as successes
