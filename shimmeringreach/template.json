@@ -345,9 +345,23 @@
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0
+      "weight": 0,
+      "active": 0
     },
     "feature": {
+      "templates": ["base"],
+      "toggle": ["on","off"],
+      "category_map": {
+        "defenses" : ["dodge", "block", "parry", "physical", "mental"],
+        "soaks": ["armor", "physical", "mental"],
+        "skills": ["strongman", "gymnastics", "marathoner", "traversal", "navigation", "survival", "medicine", "animal_handling", "con", "insight", "intimidation", "negotiation", "disguise", "stealth", "legerdemain", "thievery"]
+      },
+      "category": "",
+      "selection": "",
+      "active": true,
+      "bonus": 0
+    },
+	"stats": {
       "templates": ["base"]
     },
 	"weapon": {
