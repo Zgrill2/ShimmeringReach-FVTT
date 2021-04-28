@@ -65,7 +65,7 @@ export class SRActor extends Actor {
 	}
 	
 	//drain soak
-	data.drainres.value = data.abilities.wil.value * 2;
+//	data.drainres.value = data.abilities.wil.value * 2;
 	
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
@@ -142,7 +142,12 @@ export class SRActor extends Actor {
 		}
 		
 	});
-
+	console.log(data);
+	if (data.drainres == undefined) {
+		var ddd = {};
+		ddd.drainres = {value: 1};
+		Object.assign(data,ddd);
+	}
   }
 
 }
