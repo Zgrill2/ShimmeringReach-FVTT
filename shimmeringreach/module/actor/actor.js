@@ -45,18 +45,23 @@ export class SRActor extends Actor {
 	
 	//Calculate bars. Will probably add some extra calls that boost these further
 	
-	data.health.max = data.abilities.bod.value + 16;
-	data.mana.max = data.abilities[data.skills.spellcasting.attr].value + 16;
-	data.stamina.max = data.abilities.wil.value + 16;
+	data.health.max += data.abilities.bod.value;
+	data.mana.max += data.abilities[data.skills.spellcasting.attr].value;
+	data.stamina.max += data.abilities.wil.value;
 	//declaring various dicepool penalties
 	let shield_bonuses = [0,1,4,5,7];
 	let shield_penalty = [0,0,0,0,-2];
-	data.wound_penalty.value = Math.floor((data.health.max - data.health.value)/6) +  Math.floor((data.stamina.max - data.stamina.value)/6) +  Math.floor((data.mana.max - data.mana.value)/6);
-	
+	data.wound_penalty.value = Math.ceil(Math.floor((data.health.max - data.health.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.stamina.max - data.stamina.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.mana.max - data.mana.value)/(data.wound_penalty.resilient_wounds+6))-data.wound_penalty.ignore_wounds,0);
+	// reso;oemt_wounds ignore_wounds
 	//Calculate soaks via JSON defined formulas of attribute weighting
 	var i;
 	for (let [key, soak] of Object.entries(data.soaks)) {
-		soak.value = 0;
+		
+		///Fixing old JSON
+		var fff = soak;
+		fff['value'] = 0;
+		Object.assign(data,fff);
+		
 		for (i = 0; i <soak.attr.length; i++)
 		{
 			soak.value += abilitybox[soak.attr[i]].value * soak.weights[i];
@@ -65,36 +70,35 @@ export class SRActor extends Actor {
 	}
 	
 	//drain soak
-//	data.drainres.value = data.abilities.wil.value * 2;
+	data.drainres.value = data.abilities.wil.value * 2;
 	
+	
+	//defense pools
 	for (let [key, def] of Object.entries(data.defenses)) {
 		
-		def.passive = 0;
+		
+		
+		
+		//def.passive = 0;
 		for (i = 0; i <def.attr.length; i++)
 		{
 			def.passive += abilitybox[def.attr[i]].value;
 		}
 		def.active = def.passive + skillbox[def.skill].value + Math.min(skillbox[def.skill].value,Math.ceil(data.tradition.rank.value / 2));
-		
-		if (!def.allowpassive)
+		/*console.log(key);
+		console.log(def.passive);
+		console.log(def.active);*/
+		/*if (!def.allowpassive)
 		{
 			def.passive = 0;
-		}
+		}*/
 	}
+	//console.log(data.defenses);
 	
 	
+
 	
-	/*
-	// block shield bonus
-	data.defenses.block.active += shield_bonuses[data.equipped_weapon.shield];
-	
-	// parry weapon reach bonus
-	data.defenses.parry.active += data.equipped_weapon.reach;
-	
-	data.equipped_weapon.dv = data.equipped_weapon.power + data.abilities.str.value;
-	*/
-	
-    //let update_skill_val = {}
+    //Updating skills
 	for (let [key, skill_group] of Object.entries(data.skill_groups)) {
         Object.entries(data.skills).forEach(k => {
             let [key, val] = k
@@ -107,14 +111,15 @@ export class SRActor extends Actor {
                 val.isGroupRanked = false;
               }
             }
-            //Object.entries(data.skills)[k].value = skill_group.value;
-            //update_skill_val[k] = skill_group.value
         });
     }
 	for (let [key, skill] of Object.entries(data.skills)) {
-      // Calculate the modifier using d20 rules.
+		
+		
+		
+		
 	  if (skill.attr != "none") {
-		skill.dicepool = skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2)) -1 * (skill.value == 0);
+		skill.dicepool += skill.value + abilitybox[skill.attr].value + Math.min(skill.value,Math.ceil(data.tradition.rank.value / 2)) -1 * (skill.value == 0);
 	  }
     }
 	
@@ -128,26 +133,28 @@ export class SRActor extends Actor {
 	//console.log(weapons);
 	
 	Object.entries(weapons).forEach(weapon => {
-		if (weapon.type = 'weapon')
+		//weapon[1].data.type == 'weapon'
+		if (weapon[1].type == 'weapon')
 		{
+			
 			weapon[1].data.dv = weapon[1].data.power + data.abilities.str.value;
 			weapon[1].data.dicepool = weapon[1].data.reach + data.skills.weapon_skill.dicepool;
 			//console.log(weapon);
-		}
-		if (weapon[1].data.active)
-		{
-			data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
-			data.defenses.parry.active += weapon[1].data.reach;
-			//console.log(weapon);
+		
+			if (weapon[1].data.active)
+			{
+				data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
+				data.defenses.parry.active += weapon[1].data.reach;
+				//console.log(weapon);
+			}
 		}
 		
 	});
-	console.log(data);
-	if (data.drainres == undefined) {
-		var ddd = {};
-		ddd.drainres = {value: 1};
-		Object.assign(data,ddd);
-	}
+	
+	
+	
+	
+	
   }
 
 }

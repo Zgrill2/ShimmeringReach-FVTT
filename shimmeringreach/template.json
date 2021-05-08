@@ -4,19 +4,19 @@
     "templates": {
       "base": {
         "health": {
-          "value": 17,
-          "min": -1,
-          "max": 17
+          "value": 16,
+          "min": 0,
+          "max": 16
         },
         "stamina": {
-          "value": 17,
+          "value": 16,
           "min": 0,
-          "max": 17
+          "max": 16
         },
         "mana": {
-          "value": 17,
+          "value": 16,
           "min": 0,
-          "max": 17
+          "max": 16
         }
       }
     },
@@ -42,7 +42,7 @@
 		}
       },
 	  "drainres": {
-		  "value": 1
+		  "value": 0
       },
 
       "abilities": {
@@ -73,19 +73,19 @@
       },
 	  "soaks": {
         "armor": {
-          "value": 1,
+          "value": 0,
 		  "attr": ["str","bod","log"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
-          "value": 1,
+          "value": 0,
 		  "attr": ["agi","str","bod"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
 		"mental": {
-          "value": 1,
+          "value": 0,
 		  "attr": ["log","wil","cha"],
 		  "weights": [0.5,1,0.5],
 		  "name": "Mental Soak"
@@ -93,40 +93,40 @@
       },
 	  "defenses": {
 		"dodge": {
-          "passive": 1,
-          "active": 1,
+          "passive": 0,
+          "active": 0,
 		  "allowpassive": true,
 		  "attr": ["rea","int"],
 		  "skill": "dodge",
 		  "name": "Dodge"
         },
 		"block": {
-          "passive": 1,
-          "active": 1,
+          "passive": 0,
+          "active": 0,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
 		  "skill": "weapon_skill",
 		  "name": "Block"
         },
 		"parry": {
-          "passive": 1,
-          "active": 1,
+          "passive": 0,
+          "active": 0,
 		  "allowpassive": false,
 		  "attr": ["rea","int"],
 		  "skill": "weapon_skill",
 		  "name": "Parry"
         },
 		"mental": {
-          "passive": 1,
-          "active": 1,
+          "passive": 0,
+          "active": 0,
 		  "allowpassive": true,
 		  "attr": ["wil","cha"],
 		  "skill": "perserverence",
 		  "name": "Mental Resist"
         },
 		"physical": {
-          "passive": 1,
-          "active": 1,
+          "passive": 0,
+          "active": 0,
 		  "allowpassive": true,
 		  "attr": ["bod","agi"],
 		  "skill": "perserverence",
@@ -138,70 +138,70 @@
           "value": 0,
 		  "attr": "str",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Strongman"
         },
 		"gymnastics": {
           "value": 0,
 		  "attr": "agi",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Gynmnastics"
         },
 		"marathoner": {
           "value": 0,
 		  "attr": "bod",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Marathoner"
         },
 		"traversal": {
           "value": 0,
 		  "attr": "rea",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Traversal"
         },
 		"navigation": {
           "value": 0,
 		  "attr": "int",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Navigation"
         },
 		"survival": {
           "value": 0,
 		  "attr": "wil",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Survival"
         },
 		"medicine": {
           "value": 0,
 		  "attr": "log",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Medicine"
         },
 		"animal_handling": {
           "value": 0,
 		  "attr": "int",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Animal Handling"
         },
 		"con": {
           "value": 0,
 		  "attr": "cha",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Con"
         },
 		"insight": {
           "value": 0,
 		  "attr": "int",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 
 		  "name": "Insight"
         },
@@ -209,70 +209,70 @@
           "value": 0,
 		  "attr": "cha",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Intimidation"
         },
 		"negotiation": {
           "value": 0,
 		  "attr": "cha",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Negoatiation"
         },
 		"disguise": {
           "value": 0,
 		  "attr": "int",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Disguise"
         },
 		"stealth": {
           "value": 0,
 		  "attr": "agi",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Stealth"
         },
 		"legerdemain": {
           "value": 0,
 		  "attr": "agi",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Legerdemain"
         },
 		"thievery": {
           "value": 0,
 		  "attr": "agi",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Thievery"
         },
 		"spellcasting": {
           "value": 0,
 		  "attr": "log",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Spellcasting"
         },
 		"perceive_magic": {
           "value": 0,
 		  "attr": "log",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Perceive Magic"
         },
 		"weapon_skill": {
           "value": 0,
 		  "attr": "agi",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Weapon Skill"
         },
 		"perception": {
           "value": 0,
 		  "attr": "int",
 		  "isGroupRanked": false,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Perception"
         },
 		"dodge": {
@@ -280,7 +280,7 @@
 		  "attr": "int",
 		  "isGroupRanked": false,
           "hide_dicepool": true,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Dodge"
         },
 		"perserverence": {
@@ -288,7 +288,7 @@
 		  "attr": "int",
 		  "isGroupRanked": false,
           "hide_dicepool": true,
-		  "dicepool": 2,
+		  "dicepool": 0,
 		  "name": "Perserverence"
         }
       },
@@ -331,7 +331,9 @@
 		"dv":6
 	  },
 	  "wound_penalty": {
-		"value": 0
+		"value": 0,
+		"ignore_wounds": 0,
+		"resilient_wounds":0
 	  }
     }
   },

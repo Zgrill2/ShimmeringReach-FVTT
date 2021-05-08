@@ -11,7 +11,7 @@ export class SRActorSheet extends ActorSheet {
       template: "systems/shimmeringreach/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
     });
   }
 
@@ -177,7 +177,7 @@ export class SRActorSheet extends ActorSheet {
       let roll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
 	  console.log("onRoll event");
-	  console.log(dataset.explode);
+	  //console.log(dataset.explode);
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
