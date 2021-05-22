@@ -57,10 +57,6 @@ export class SRActor extends Actor {
 	var i;
 	for (let [key, soak] of Object.entries(data.soaks)) {
 		
-		///Fixing old JSON
-		var fff = soak;
-		fff['value'] = 0;
-		Object.assign(data,fff);
 		
 		for (i = 0; i <soak.attr.length; i++)
 		{

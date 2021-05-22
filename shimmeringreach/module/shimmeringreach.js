@@ -7,6 +7,8 @@ import { SRItemSheet } from "./item/item-sheet.js";
 import { RollDP } from "./dice-roller/roll.js";
 
 import { SRCombat } from "./srcombat/srcombat.js";
+
+import {measureDistances } from "./canvas/canvas.js";
 Hooks.once('init', async function() {
 
   game.shimmeringreach = {
@@ -14,7 +16,7 @@ Hooks.once('init', async function() {
     SRItem,
     rollItemMacro,
     RollDP,
-	SRCombat
+	SRCombat,
   };
 
   globalThis.RollDP = RollDP
@@ -29,6 +31,7 @@ Hooks.once('init', async function() {
     formula: "@initiative.dice d6 + @abilities.rea.value",
     decimals: 2
   };
+
 
   // Define custom Entity classes
   CONFIG.Actor.entityClass = SRActor;
@@ -70,6 +73,16 @@ Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createSRMacro(data, slot));
 });
+
+// diagonal movement
+Hooks.on("canvasInit", function() {
+
+  // Extend Diagonal Measurement
+  SquareGrid.prototype.measureDistances = measureDistances;
+});
+
+
+
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

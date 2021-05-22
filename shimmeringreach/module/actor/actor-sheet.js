@@ -124,6 +124,8 @@ export class SRActorSheet extends ActorSheet {
 	// high level item checkboxes
 	
 	html.find('.group-toggle').click(this._groupToggle.bind(this));
+	html.find('.buff-toggle').click(this._buffToggle.bind(this));
+	
 
     // Drag events for macros.
     if (this.actor.owner) {
@@ -186,6 +188,32 @@ export class SRActorSheet extends ActorSheet {
   }
 
 
+   _buffToggle(event) {
+	   event.preventDefault();
+	   
+	   const element = event.currentTarget;
+	   const dataset = element.dataset;
+	   
+	   let buffs = this.actor.items;
+	   
+	   let id = dataset.buff;
+	   
+	   buffs.forEach(buff =>{
+		  if (buff.data.type === 'feature'){
+			if (buff.data._id === id)
+			{
+				buff.data.data.active = !buff.data.data.active;
+				const newdata = buff.data;
+				
+				
+				
+				this.actor.updateEmbeddedEntity("OwnedItem",newdata);
+			}
+		  }			  
+	   });
+	   
+   }
+
    _groupToggle(event) {
 	event.preventDefault();
 	const element = event.currentTarget;
@@ -194,10 +222,8 @@ export class SRActorSheet extends ActorSheet {
 	let id = dataset.weapon;
 	
 	let weapons = this.actor.items;
-	
-	let newweapon = null;
-	console.log(weapons);
-	console.log(id);
+	//console.log(weapons);
+	//console.log(id);
 	let a = [];
 	weapons.forEach(weapon => {
 	//console.log(weapon.data._id);
@@ -245,7 +271,7 @@ export class SRActorSheet extends ActorSheet {
 		let i = 0;
 		weapons.forEach(weapon => {
 			setTimeout(function(){this.actor.updateEmbeddedEntity("OwnedItem",weapon)}.bind(this),i*50);
-			console.log(weapon);
+			//console.log(weapon);
 			//await this.actor.updateEmbeddedEntity("OwnedItem",weapon);
 			i +=1;
 		});
