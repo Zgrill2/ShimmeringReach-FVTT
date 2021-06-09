@@ -135,7 +135,6 @@ export class SRActor extends Actor {
 			
 			weapon[1].data.dv = weapon[1].data.power + data.abilities.str.value;
 			weapon[1].data.dicepool = weapon[1].data.reach + data.skills.weapon_skill.dicepool;
-			//console.log(weapon);
 		
 			if (weapon[1].data.active)
 			{

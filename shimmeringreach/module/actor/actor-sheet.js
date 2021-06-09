@@ -2,6 +2,11 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
+ 
+ import {attackChatMessage} from '../chat/chat.js';
+ 
+ 
+ 
 export class SRActorSheet extends ActorSheet {
 
   /** @override */
@@ -125,6 +130,7 @@ export class SRActorSheet extends ActorSheet {
 	
 	html.find('.group-toggle').click(this._groupToggle.bind(this));
 	html.find('.buff-toggle').click(this._buffToggle.bind(this));
+	html.find('.attack-message').click(this._attackMessage.bind(this));
 	
 
     // Drag events for macros.
@@ -188,6 +194,52 @@ export class SRActorSheet extends ActorSheet {
   }
 
 
+  /**  Generates a chat message attack  **/
+  
+   _attackMessage(event) {
+		event.preventDefault();
+	   
+	   
+		const element = event.currentTarget;
+		const dataset = element.dataset;
+		
+		let diceroll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds).evaluate();
+		let label = dataset.label ? `Rolling ${dataset.label}` : '';
+		console.log("diceroll",diceroll);
+		
+		console.log("dataset",dataset);
+		let attack_item = "";
+		Object.entries(this.actor.data.items).forEach(weapn => {
+			if (dataset.weapon == weapn[1]._id){
+				attack_item = weapn;
+			}
+		});
+		
+		const weapon = dataset.weapon;
+		const CMO = {
+			
+			actor: this.actor,
+			attack: attack_item[1],
+			roll_result: diceroll
+		   
+		};
+	   console.log("cmo",CMO);
+	   
+	   attackChatMessage(CMO);
+	   
+	 
+   }
+
+
+
+
+
+
+
+
+
+
+/** Toggles a buff **/
    _buffToggle(event) {
 	   event.preventDefault();
 	   

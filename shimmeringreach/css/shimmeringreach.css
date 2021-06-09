@@ -20,6 +20,15 @@
   padding: 0;
 }
 
+.grid-2col-tight {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0px;
+  margin: 0px 0;
+  padding: 0;
+}
+
 .grid-3col {
   grid-column: span 3 / span 3;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -113,6 +122,76 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
+
+/*row column for chat card*/
+
+.row {
+	display: flex;
+}
+
+.column {
+	flex: 50%;
+	padding: 10px;
+}
+
+/*dice for chat card*/
+
+.roll-card-header {
+            padding: 0.0em 0.0em;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+}
+
+.dice-roll-content {
+            padding: 0.0em 0.0em;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+}
+
+
+.dice-roll {
+                background-image: url(/icons/svg/d6-grey.svg);
+                background-size: 24px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                width: 24px;
+                line-height: 24px;
+				display: none;
+
+}
+
+.dice-roll-red {
+                background-image: url(/icons/svg/d6-grey.svg);
+                background-size: 24px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                width: 24px;
+                line-height: 24px;
+                color: #aa0200;
+                filter: sepia(0.5) hue-rotate(-60deg);
+				display: none;
+}
+.dice-roll-green {
+                background-image: url(/icons/svg/d6-grey.svg);
+                background-size: 24px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                width: 24px;
+                line-height: 24px;
+                color: #18520b;
+                filter: sepia(0.5) hue-rotate(60deg);
+				display: none;
+}
+
+
+
+
 
 /* Styles limited to boilerplate sheets */
 .shimmeringreach .item-form {
@@ -256,3 +335,4 @@
   border-style: solid;
   border-width: 1px;
 }
+
