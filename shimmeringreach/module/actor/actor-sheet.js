@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {attackChatMessage} from '../chat/chat.js';
+ import {attackChatMessage,customAttackDialog} from '../roll-cards/render.js';
  
  
  
@@ -132,6 +132,7 @@ export class SRActorSheet extends ActorSheet {
 	html.find('.buff-toggle').click(this._buffToggle.bind(this));
 	html.find('.attack-message').click(this._attackMessage.bind(this));
 	
+	
 
     // Drag events for macros.
     if (this.actor.owner) {
@@ -200,38 +201,49 @@ export class SRActorSheet extends ActorSheet {
 		event.preventDefault();
 	   
 	   
-		const element = event.currentTarget;
-		const dataset = element.dataset;
-		
-		let diceroll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds).evaluate();
-		let label = dataset.label ? `Rolling ${dataset.label}` : '';
-		console.log("diceroll",diceroll);
-		
-		console.log("dataset",dataset);
-		let attack_item = "";
-		Object.entries(this.actor.data.items).forEach(weapn => {
-			if (dataset.weapon == weapn[1]._id){
-				attack_item = weapn;
-			}
-		});
-		
-		const weapon = dataset.weapon;
-		const CMO = {
+			const element = event.currentTarget;
+			const dataset = element.dataset;
+			const CMO = {
+				
+				
+				attack_item: dataset.weapon,
+				actor: this.actor
+			   
+			};
 			
-			actor: this.actor,
-			attack: attack_item[1],
-			roll_result: diceroll
-		   
-		};
-	   console.log("cmo",CMO);
-	   
-	   attackChatMessage(CMO);
-	   
-	 
-   }
+			if (!event.shiftKey){
+				attackChatMessage(CMO);
+			}
+			else{
+				customAttackDialog(CMO);
+			}
+		}
 
-
-
+	async customAttackMessage() {
+		 const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
+			let options = "";
+			let d = new Dialog({
+			title: "Custom Attack Roll",
+			content: await renderTemplate(template,options),
+			buttons: {
+			one: {
+			icon: '<i class="fas fa-check"></i>',
+			label: "Roll",
+			callback: () => console.log("Chose One")
+			},
+			two: {
+			icon: '<i class="fas fa-times"></i>',
+			label: "Cancel",
+			callback: () => console.log("Chose Two")
+			}
+			},
+			default: "two",
+			render: html => console.log("Register interactivity in the rendered dialog"),
+			close: html => console.log("This always is logged no matter which option is chosen")
+			});
+			d.render(true);
+		
+	}
 
 
 

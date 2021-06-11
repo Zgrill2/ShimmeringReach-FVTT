@@ -128,11 +128,22 @@
 
 .row {
 	display: flex;
+	justify-content: center;
 }
 
 .column {
-	flex: 50%;
-	padding: 10px;
+	justify-content: center;
+}
+
+.column-left {
+	flex: 40%;
+	padding: 0px;
+	justify-content: center;
+}
+.column-right {
+	flex: 60%;
+	padding: 0px;
+	justify-content: center;
 }
 
 /*dice for chat card*/
@@ -142,6 +153,7 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
+            font-size: 24px;
 }
 
 .dice-roll-content {
@@ -149,6 +161,78 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
+}
+
+.defense-block {
+				background-image: url(/icons/svg/d6-grey.svg);
+                background-size: 36px 36px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                width: 36px;
+                line-height: 36px;
+				filter:brightness(90%)sepia(0.5) hue-rotate(-50deg);
+	
+}
+
+.defense-block-active {
+				background-image: url(/icons/svg/d6-grey.svg);
+                background-size: 36px 36px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                width: 36px;
+                line-height: 36px;
+				filter:brightness(90%)sepia(0.5) hue-rotate(150deg);
+	
+}
+
+.dice-target-block {
+				background-image: url(/icons/svg/dice-target.svg);
+                background-size: 24px 24px;
+				font-size: 13px;
+                font-weight: bold;
+                text-align: center;
+                width: 24px;
+                line-height: 24px;
+				filter:brightness(55%)sepia(0.8) hue-rotate(270deg);
+	
+}
+
+.dv-block-small {
+				background-image: url(/icons/svg/combat.svg);
+                background-size: 24px 24px;
+				font-size: 13px;
+                font-weight: bold;
+                text-align: center;
+                width: 25px;
+                line-height: 24px;
+				filter:brightness(55%)sepia(0.8) hue-rotate(270deg);
+	
+}
+
+.dv-block {
+				background-image: url(/icons/svg/combat.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                width: 42px;
+                line-height: 40px;
+				filter:brightness(60%)sepia(0.5) hue-rotate(150deg);
+	
+}
+
+.hits-block {
+				background-image: url(/icons/svg/target.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+				filter:brightness(60%)sepia(0.5) hue-rotate(150deg);
+
 }
 
 
@@ -288,9 +372,10 @@
 
 .shimmeringreach .items-list {
   list-style: none;
-  margin: 7px 0;
+  margin: 0px 0;
   padding: 0;
   overflow-y: auto;
+
 }
 
 .shimmeringreach .items-list .item-header {
