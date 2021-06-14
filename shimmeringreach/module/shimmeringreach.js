@@ -9,6 +9,9 @@ import { RollDP } from "./dice-roller/roll.js";
 import { SRCombat } from "./srcombat/srcombat.js";
 
 import {measureDistances } from "./canvas/canvas.js";
+
+import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
+import {srChatMessage, customCombatDialog} from './roll-cards/render.js';
 Hooks.once('init', async function() {
 
 	var phrase = `Loading Shimmering Reach System                                                       
@@ -95,19 +98,98 @@ Hooks.on("canvasInit", function() {
 });
 
 Hooks.on("init", function() {
-	$(document).on('click','.roll-card', (event)	=> { 
-	event.preventDefault();
-	console.log(event.currentTarget);
-	console.log($(event.currentTarget));
-	console.log($(event.currentTarget).children('.dice-roll-content'));
-	console.log($($(event.currentTarget).children('.dice-roll-content')[0]));
-	console.log($($(event.currentTarget).children('.dice-roll-content')[0]).children('.dice-roll'));
-	$($(event.currentTarget).children('.dice-roll-content')[0]).children('.dice-roll').toggle();
-	$($(event.currentTarget).children('.dice-roll-content')[0]).children('.dice-roll-red').toggle();
-	$($(event.currentTarget).children('.dice-roll-content')[0]).children('.dice-roll-green').toggle();
-	
+	$(document).on('click','.hits-block', (event)	=> { 
+		event.preventDefault();
+		
+		let target = $(event.currentTarget).parentsUntil('.message-content').find('.dice-roll-content')[0];
+		
+			
+		if(target.style.display =="flex"){
+			target.style.display = "none";
+		}
+		else {
+			target.style.display = "flex";
+		}
 	});
 	
+	$(document).on('click','.defense-block', (event) => {
+		event.preventDefault();
+		let dataset = event.currentTarget.dataset;
+		const attacker_data = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId).data.flags.data;
+		/*
+		console.log("_________");
+		console.log("game",game);
+		console.log("current user", game.users.current.data);
+		console.log("tokens selected",canvas.tokens.controlled);*/
+				
+		let actor_list = [];
+		
+		if(canvas.tokens.controlled.length == 0 && game.users.current.data.character)
+		{
+			let result = game.actors.map(x => x).filter(actor => {
+				return actor.data._id == game.users.current.data.character;
+			})
+			actor_list.push(result);
+		}
+		else if(canvas.tokens.controlled.length > 0)
+		{
+			
+			//fix this for tokens that are NOT linked to actors
+			Object.entries(canvas.tokens.controlled).forEach(token => {
+				actor_list.push(token[1].actor);
+			});
+			
+			console.log("Selecting at least one token",);
+		}
+		else{
+			ui.notifications.warn("Select a token to use this function.");
+			return
+		}
+		
+		//console.log("all the actors",actor_list);
+		/*
+		Object.entries(actor_list).forEach(actor => {
+			console.log(actor[1]);
+			console.log("before",actor[1].data.data.health.value);
+			actor[1].update({'data.health.value': (actor[1].data.data.health.value -1)});
+			console.log("after",actor[1].data.data.health.value);
+		});*/
+		
+		const CMO = {
+				
+				defense_type: dataset.defense,
+				defense_state: dataset.state,
+				actor_list: actor_list,
+				type: "defense",
+				attacker_data: attacker_data
+			   
+			};
+			
+			if (!event.shiftKey){
+				srChatMessage(CMO);
+			}
+			else{
+				customCombatDialog(CMO);
+			}
+		
+		
+		
+		
+		//defenseChatMessage(actor_list,attacker_data,event.currentTarget.dataset.defense,event.currentTarget.dataset.state);
+		
+		
+		//console.log("_________");
+		/*
+		console.log("attacker data",attacker_data);
+		console.log(event.currentTarget.dataset.defense,event.currentTarget.dataset.state,event.currentTarget.title);
+		*/
+		
+	});
+	
+	$(document).on('click','.defense-block-active', (event) => {
+		event.preventDefault();
+		
+	});
 });
 
 /*

@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {attackChatMessage,customAttackDialog} from '../roll-cards/render.js';
+ import {srChatMessage,customCombatDialog} from '../roll-cards/render.js';
  
  
  
@@ -207,18 +207,19 @@ export class SRActorSheet extends ActorSheet {
 				
 				
 				attack_item: dataset.weapon,
-				actor: this.actor
+				actor: this.actor,
+				type: "attack"
 			   
 			};
 			
 			if (!event.shiftKey){
-				attackChatMessage(CMO);
+				srChatMessage(CMO);
 			}
 			else{
-				customAttackDialog(CMO);
+				customCombatDialog(CMO);
 			}
 		}
-
+/*
 	async customAttackMessage() {
 		 const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
 			let options = "";
@@ -243,7 +244,7 @@ export class SRActorSheet extends ActorSheet {
 			});
 			d.render(true);
 		
-	}
+	}*/
 
 
 

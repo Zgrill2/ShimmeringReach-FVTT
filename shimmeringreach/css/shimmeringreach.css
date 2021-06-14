@@ -161,6 +161,7 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
+			display: none;
 }
 
 .defense-block {
@@ -175,6 +176,12 @@
 	
 }
 
+.defense-block:hover, .defense-block:focus{
+  color: #000;
+  text-shadow: 0 0 10px yellow;
+  cursor: pointer;
+}
+
 .defense-block-active {
 				background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 36px 36px;
@@ -186,6 +193,14 @@
 				filter:brightness(90%)sepia(0.5) hue-rotate(150deg);
 	
 }
+
+.defense-block-active:hover, .defense-block-active:focus{
+  color: #000;
+  text-shadow: 0 0 10px orange;
+  cursor: pointer;
+}
+
+
 
 .dice-target-block {
 				background-image: url(/icons/svg/dice-target.svg);
@@ -236,7 +251,7 @@
 }
 
 
-.dice-roll {
+.dice-roll-box {
                 background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 24px 24px;
                 font-size: 16px;
@@ -244,11 +259,10 @@
                 text-align: center;
                 width: 24px;
                 line-height: 24px;
-				display: none;
 
 }
 
-.dice-roll-red {
+.dice-roll-box-red {
                 background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 24px 24px;
                 font-size: 16px;
@@ -258,9 +272,8 @@
                 line-height: 24px;
                 color: #aa0200;
                 filter: sepia(0.5) hue-rotate(-60deg);
-				display: none;
 }
-.dice-roll-green {
+.dice-roll-box-green {
                 background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 24px 24px;
                 font-size: 16px;
@@ -270,7 +283,6 @@
                 line-height: 24px;
                 color: #18520b;
                 filter: sepia(0.5) hue-rotate(60deg);
-				display: none;
 }
 
 
