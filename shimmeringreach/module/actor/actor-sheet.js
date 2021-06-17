@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {srChatMessage,customCombatDialog} from '../roll-cards/render.js';
+ import {srChatMessage} from '../roll-cards/render.js';
  
  
  
@@ -197,28 +197,18 @@ export class SRActorSheet extends ActorSheet {
 
   /**  Generates a chat message attack  **/
   
+//event.currentTarget.dataset.weapon  
+  
    _attackMessage(event) {
-		event.preventDefault();
-	   
-	   
-			const element = event.currentTarget;
-			const dataset = element.dataset;
-			const CMO = {
-				
-				
-				attack_item: dataset.weapon,
-				actor: this.actor,
-				type: "attack"
-			   
-			};
-			
-			if (!event.shiftKey){
-				srChatMessage(CMO);
-			}
-			else{
-				customCombatDialog(CMO);
-			}
-		}
+	event.preventDefault();
+		const CMO = {
+			weapon_id: event.currentTarget.dataset.weapon,
+			actor: this.actor,
+			type: "attack",
+			shift: event.shiftKey
+		};
+		srChatMessage(CMO);
+	}
 /*
 	async customAttackMessage() {
 		 const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";

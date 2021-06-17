@@ -322,14 +322,6 @@
 	  "initiative": {
 		"dice": 1
 	  },
-	  "equipped_weapon": {
-		"power": 6,
-		"reach": 1,
-		"handedness": 0,
-		"shield": 0,
-		"dicepool":0,
-		"dv":6
-	  },
 	  "wound_penalty": {
 		"value": 0,
 		"ignore_wounds": 0,
@@ -376,7 +368,8 @@
 	  "dv": 6,
 	  "active": false,
 	  "attr": "str",
-	  "skill": "weapon_skill"
+	  "skill": "weapon_skill",
+	  "soak": "armor"
     },
     "spell": {
       "templates": ["base"],

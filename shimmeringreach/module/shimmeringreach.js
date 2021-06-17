@@ -11,7 +11,7 @@ import { SRCombat } from "./srcombat/srcombat.js";
 import {measureDistances } from "./canvas/canvas.js";
 
 import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
-import {srChatMessage, customCombatDialog} from './roll-cards/render.js';
+import {srChatMessage} from './roll-cards/render.js';
 Hooks.once('init', async function() {
 
 	var phrase = `Loading Shimmering Reach System                                                       
@@ -101,8 +101,8 @@ Hooks.on("init", function() {
 	$(document).on('click','.hits-block', (event)	=> { 
 		event.preventDefault();
 		
-		let target = $(event.currentTarget).parentsUntil('.message-content').find('.dice-roll-content')[0];
-		
+		let target = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content')[0];
+		console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
 			
 		if(target.style.display =="flex"){
 			target.style.display = "none";
@@ -121,56 +121,20 @@ Hooks.on("init", function() {
 		console.log("game",game);
 		console.log("current user", game.users.current.data);
 		console.log("tokens selected",canvas.tokens.controlled);*/
-				
-		let actor_list = [];
-		
-		if(canvas.tokens.controlled.length == 0 && game.users.current.data.character)
-		{
-			let result = game.actors.map(x => x).filter(actor => {
-				return actor.data._id == game.users.current.data.character;
-			})
-			actor_list.push(result);
-		}
-		else if(canvas.tokens.controlled.length > 0)
-		{
-			
-			//fix this for tokens that are NOT linked to actors
-			Object.entries(canvas.tokens.controlled).forEach(token => {
-				actor_list.push(token[1].actor);
-			});
-			
-			console.log("Selecting at least one token",);
-		}
-		else{
-			ui.notifications.warn("Select a token to use this function.");
-			return
-		}
-		
-		//console.log("all the actors",actor_list);
-		/*
-		Object.entries(actor_list).forEach(actor => {
-			console.log(actor[1]);
-			console.log("before",actor[1].data.data.health.value);
-			actor[1].update({'data.health.value': (actor[1].data.data.health.value -1)});
-			console.log("after",actor[1].data.data.health.value);
-		});*/
+		let msgdata = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+		console.log("Message data",msgdata);
 		
 		const CMO = {
 				
 				defense_type: dataset.defense,
 				defense_state: dataset.state,
-				actor_list: actor_list,
 				type: "defense",
-				attacker_data: attacker_data
+				message: msgdata
 			   
 			};
 			
-			if (!event.shiftKey){
-				srChatMessage(CMO);
-			}
-			else{
-				customCombatDialog(CMO);
-			}
+		srChatMessage(CMO);
+			
 		
 		
 		

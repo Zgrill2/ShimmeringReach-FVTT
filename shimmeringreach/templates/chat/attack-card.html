@@ -1,0 +1,89 @@
+<div
+    class="shimmeringreach roll-card"
+	
+>	<div class="block">
+	<div class="row">
+	  <div class="column-left">
+			<div class="roll-card-header">
+				<img src="{{attacker.actor.img}}" class="entity-selectable" title="{{attacker.actor.name}}" width="40" height="40"/> 
+				<img src="{{attacker.weapon.img}}" class="entity-selectable" title="{{attacker.weapon.name}}" width="40" height="40"/>
+			</div>
+		
+			<div class="roll-card-header">
+				<div class="dv-block" title="DV">{{attacker.display_dv}}</div>
+				<div class="hits-block" title="Hits">{{attacker.display_hits}}</div>
+			</div>
+	  </div>
+	  <div class="column-right">
+			<div class="row">
+				<div class="defense-block roll-button" title="Passive Dodge" data-defense="dodge" data-state="passive">d</div>
+				<div class="defense-block-active roll-button" title="Active Dodge" data-defense="dodge" data-state="active">D</div>
+				<div class="defense-block-active roll-button" title="Block" data-defense="block" data-state="active">B</div>
+				<div class="defense-block-active roll-button" title="Parry" data-defense="parry" data-state="active">R</div>
+			</div>
+			<div class="row">
+				<div class="defense-block roll-button" title="Passive Physical Res" data-defense="physical" data-state="passive">p</div>
+				<div class="defense-block-active roll-button" title="Active Physical Res" data-defense="physical" data-state="active">P</div>
+				<div class="defense-block roll-button" title="Passive Mental Res" data-defense="mental" data-state="passive">m</div>
+				<div class="defense-block-active roll-button" title="Active Mental Res" data-defense="mental" data-state="active">M</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="roll dice-roll-content">
+		    {{#each attacker.diceroll.terms as |term|}}
+            {{#each term.results as |results|}}
+			{{#if results.success}}
+			
+			<div class="dice-roll-box-green">{{results.result}}</div>
+			{{else}}
+				{{#if results.failure}}
+				<div class="dice-roll-box-red">{{results.result}}</div>
+				{{else}}
+				<div class="dice-roll-box">{{results.result}}</div>
+				{{/if}}
+			{{/if}}
+			{{/each}}
+			{{/each}}
+		</div>
+	</div>
+	{{#each defenders as |defender|}}
+	<div class="block">
+		<div class="row">
+			<div class="column-left">
+				<div class="roll-card-header">
+					<img src="{{defender.actor.img}}" class="entity-selectable" title="{{defender.actor.name}}" width="40" height="40">
+					<div class="hits-block" title="Hits">{{defender.display_hits}}</div>
+				</div>
+			</div>
+			<div class="column-right">
+				<div class="roll-card-header">
+					
+					<div class="net-hits-block" title="Net Hits">{{defender.net_hits}}</div>
+					<div class="incoming-damage-block" title="Incoming Damage">{{defender.damage}}</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div class="roll dice-roll-content">
+		    {{#each defender.diceroll.terms as |term|}}
+            {{#each term.results as |results|}}
+			{{#if results.success}}
+			
+			<div class="dice-roll-box-green">{{results.result}}</div>
+			{{else}}
+				{{#if results.failure}}
+				<div class="dice-roll-box-red">{{results.result}}</div>
+				{{else}}
+				<div class="dice-roll-box">{{results.result}}</div>
+				{{/if}}
+			{{/if}}
+			{{/each}}
+			{{/each}}
+		</div>
+	</div>
+	{{/each}}
+	
+	
+</div>

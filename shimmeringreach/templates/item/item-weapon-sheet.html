@@ -65,12 +65,25 @@
               </div>
 			  
 			  <div class="resource">
-                  <label for="data.attr" class="resource-label">Attribute</label>
+                  <label for="data.skill" class="resource-label">Skill</label>
                   <div class="resource-content flexrow flex-center flex-between">
 				  <select class="display" name="data.skill">
 							{{#select data.skill}}
 							<option value="weapon_skill">Weapon Skill</option>
 							<option value="spellcasting">Spellcasting</option>
+							{{/select}}
+						</select>
+                  </div>
+              </div>
+			  
+			  <div class="resource">
+                  <label for="data.soak" class="resource-label">Soak</label>
+                  <div class="resource-content flexrow flex-center flex-between">
+				  <select class="display" name="data.soak">
+							{{#select data.soak}}
+							<option value="armor">Armor Soak</option>
+							<option value="physical">Physical Soak</option>
+							<option value="mental">Mental Soak</option>
 							{{/select}}
 						</select>
                   </div>
