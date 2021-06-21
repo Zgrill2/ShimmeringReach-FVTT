@@ -11,7 +11,7 @@ import { SRCombat } from "./srcombat/srcombat.js";
 import {measureDistances } from "./canvas/canvas.js";
 
 import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
-import {srChatMessage} from './roll-cards/render.js';
+import {deleteDefenderMessage,toggleDicerollDisplay,rerollCombatant,addDefenseMessages,customDefenseDialog} from './roll-cards/render.js';
 Hooks.once('init', async function() {
 
 	var phrase = `Loading Shimmering Reach System                                                       
@@ -101,52 +101,30 @@ Hooks.on("init", function() {
 	$(document).on('click','.hits-block', (event)	=> { 
 		event.preventDefault();
 		
-		let target = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content')[0];
-		console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
-			
-		if(target.style.display =="flex"){
-			target.style.display = "none";
+		if (event.shiftKey){
+			rerollCombatant(event);
 		}
 		else {
-			target.style.display = "flex";
+			toggleDicerollDisplay(event);
+			console.log(game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId));
 		}
 	});
 	
-	$(document).on('click','.defense-block', (event) => {
+	$(document).on('click','.delete-defender', (event) => {
 		event.preventDefault();
-		let dataset = event.currentTarget.dataset;
-		const attacker_data = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId).data.flags.data;
-		/*
-		console.log("_________");
-		console.log("game",game);
-		console.log("current user", game.users.current.data);
-		console.log("tokens selected",canvas.tokens.controlled);*/
-		let msgdata = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
-		console.log("Message data",msgdata);
+		deleteDefenderMessage(event);
 		
-		const CMO = {
-				
-				defense_type: dataset.defense,
-				defense_state: dataset.state,
-				type: "defense",
-				message: msgdata
-			   
-			};
-			
-		srChatMessage(CMO);
-			
+	});
+	
+	$(document).on('click','.defense-block', (event) => {
 		
-		
-		
-		
-		//defenseChatMessage(actor_list,attacker_data,event.currentTarget.dataset.defense,event.currentTarget.dataset.state);
-		
-		
-		//console.log("_________");
-		/*
-		console.log("attacker data",attacker_data);
-		console.log(event.currentTarget.dataset.defense,event.currentTarget.dataset.state,event.currentTarget.title);
-		*/
+		event.preventDefault();
+		if (!event.shiftKey){
+			addDefenseMessages(event, {});
+		}
+		else {
+			customDefenseDialog(event,{});
+		}
 		
 	});
 	

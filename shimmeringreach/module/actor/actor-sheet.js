@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {srChatMessage} from '../roll-cards/render.js';
+ import {renderAttackChatData,customAttackDialog} from '../roll-cards/render.js';
  
  
  
@@ -201,13 +201,21 @@ export class SRActorSheet extends ActorSheet {
   
    _attackMessage(event) {
 	event.preventDefault();
-		const CMO = {
+		/*const CMO = {
 			weapon_id: event.currentTarget.dataset.weapon,
 			actor: this.actor,
 			type: "attack",
 			shift: event.shiftKey
 		};
-		srChatMessage(CMO);
+		srChatMessage(CMO);*/
+		if (!event.shiftKey){
+			renderAttackChatData(event,this.actor, {});
+		}
+		else {
+			customAttackDialog(event,this.actor,{});
+		}
+		
+		
 	}
 /*
 	async customAttackMessage() {
