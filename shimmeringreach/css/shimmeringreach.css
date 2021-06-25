@@ -124,6 +124,33 @@
 }
 
 
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
 /*row column for chat card*/
 
 
@@ -169,40 +196,34 @@
 
 
 .defense-block {
-				background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 36px 36px;
                 font-size: 20px;
                 font-weight: bold;
                 text-align: center;
                 width: 36px;
                 line-height: 36px;
-				filter:brightness(90%)sepia(0.5) hue-rotate(-50deg);
+				filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
+				border-style: none;
 	
 }
 
-.defense-block:hover, .defense-block:focus{
+.roll-button:hover, .roill-button:focus{
   color: #000;
   text-shadow: 0 0 10px yellow;
   cursor: pointer;
 }
 
 .defense-block-active {
-				background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 36px 36px;
                 font-size: 20px;
                 font-weight: bold;
                 text-align: center;
                 width: 36px;
                 line-height: 36px;
-				filter:brightness(90%)sepia(0.5) hue-rotate(150deg);
-	
+				filter:brightness(50%)sepia(0.5) hue-rotate(150deg);
+				border-style: none;
 }
 
-.defense-block-active:hover, .defense-block-active:focus{
-  color: #000;
-  text-shadow: 0 0 10px orange;
-  cursor: pointer;
-}
 
 
 
@@ -257,6 +278,9 @@
 
 }
 
+
+
+
 .spacer-40 {
 				font-size: 24px;
 				padding: 0.0em 0.0em;
@@ -306,6 +330,19 @@
 
 }
 
+.display-damage-block {
+				background-image: url(/icons/svg/explosion.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+				filter:brightness(60%)sepia(0.5) hue-rotate(-50deg);
+
+}
+
 .dice-roll-box {
                 background-image: url(/icons/svg/d6-grey.svg);
                 background-size: 24px 24px;
@@ -338,6 +375,58 @@
                 line-height: 24px;
                 color: #18520b;
                 filter: sepia(0.5) hue-rotate(60deg);
+}
+
+
+.block-red {
+                background-image: url(/modules/game-icons-net/whitetransparent/plain-square.svg);
+                background-size: 40px 40px;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+                color: #aa0200;
+				filter:brightness(70%)sepia(0.5) hue-rotate(-50deg);
+}
+.block-green {
+                background-image: url(/modules/game-icons-net/whitetransparent/plain-square.svg);
+                background-size: 40px 40px;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+                color: #18520b;
+				filter:brightness(70%)sepia(0.5) hue-rotate(60deg);
+}
+
+.heart-red-block {
+				background-image: url(/modules/game-icons-net/whitetransparent/hearts.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+                color: #aa0200;
+				filter:brightness(70%)sepia(0.5) hue-rotate(-50deg);
+
+}
+
+.heart-green-block {
+				background-image: url(/modules/game-icons-net/whitetransparent/hearts.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+                color: #18520b;
+				filter:brightness(70%)sepia(0.5) hue-rotate(60deg);
+
 }
 
 

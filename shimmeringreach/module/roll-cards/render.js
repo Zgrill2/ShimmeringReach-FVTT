@@ -111,7 +111,161 @@ export async function customDefenseDialog(event,options) {
 				}
 				
 				console.log(options);
-				//renderAttackChatData(event,actor,options);
+				addDefenseMessages(event,options);
+			}
+		}
+	},
+	{width: 300});
+	d.render(true);
+	
+}
+
+export async function customSoakDialog(event) {
+	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
+	
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	console.log("dataset",dataset);
+	
+	console.log(event);
+	let actor = {};
+	
+	if (dataset.token_id == ""){
+		actor = game.actors.get(dataset.actor_id);
+	}
+	else {
+		actor = game.actors.tokens[dataset.token_id];
+	}
+	let actor_info = {
+		dv: dataset.dv,
+		armor: actor.data.data.abilities.bod,
+		hp: actor.data.data.health,
+		stam: actor.data.data.stamina,
+		reswound: actor.data.data.wound_penalty.resilient_wounds
+	}
+	
+	let options = {};
+	let stammiss = (actor_info.stam.max - actor_info.stam.value)%(6+actor_info.reswound);
+	let hpmiss = (actor_info.hp.max - actor_info.hp.value)%(6+actor_info.reswound);
+	console.log("stuff",stammiss,hpmiss);
+	let optimalhp = 0;
+	let optimalwounds = 99;
+	let currwound = 0;
+	for (let i = parseInt(actor_info.dv); i>= dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1); i--){
+		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
+		console.log("currwound",i,currwound);
+		if (currwound <= optimalwounds){
+			optimalwounds = currwound;
+			optimalhp = i;
+		}
+	}
+	console.log("optimal hp",optimalhp);
+	console.log("ainfo",actor_info.armor);
+	console.log("dv",parseInt(dataset.dv));
+	console.log("min",parseInt(dataset.dv) - actor_info.armor.value);
+	
+	let slide = {
+		max: dataset.dv,
+		min: Math.max(0,parseInt(dataset.dv) - Math.min(actor_info.armor.value, actor_info.stam.value)),
+		value: optimalhp
+	}
+	
+	actor_info.newstam = actor_info.stam.value - (dataset.dv - optimalhp);
+	actor_info.newhp = actor_info.hp.value - optimalhp;
+	
+	let disp = {
+		red: - optimalhp,
+		green: -dataset.dv + optimalhp
+	}
+	
+	
+	let local_data = {
+		actor: actor,
+		slide: slide,
+		disp: disp,
+		actor_info: actor_info
+	}
+	
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+		
+	let confirmed = false;
+	let d = new Dialog({
+		title: "Custom Soak",
+		content: await renderTemplate(template, local_data),
+		buttons: {
+		rollbutton: {
+		icon: '<i class="fas fa-check"></i>',
+		label: "Apply",
+		callback: () => confirmed = true
+		},
+		abortbutton: {
+		icon: '<i class="fas fa-times"></i>',
+		label: "Cancel",
+		callback: () => confirmed = false
+		}
+		},
+		default: "abortbutton",
+		render: html => {
+			let red = document.getElementById("myRed");
+			let green = document.getElementById("myGreen");
+			let slider = document.getElementById("mySlider");
+			let soakmod = document.getElementById("soakMod");
+			let newhp = document.getElementById("newhp");
+			let newstam = document.getElementById("newstam");
+			
+			
+			let mydv = document.getElementById("myDv");
+			slider.oninput = function() {
+				red.innerHTML = -parseInt(this.value);
+				green.innerHTML = - parseInt(slider.max) + parseInt(this.value);
+				
+				
+				
+				newhp.innerHTML = actor_info.hp.value - parseInt(this.value);
+				newstam.innerHTML = actor_info.stam.value -parseInt(this.max) + parseInt(this.value);
+			}
+			
+			soakmod.oninput = function() {
+				mydv.innerHTML = actor_info.dv - parseInt(this.value);
+				slider.max = Math.max(0,actor_info.dv - parseInt(this.value));
+				slider.min = slider.max - Math.min(actor_info.armor.value,actor_info.stam.value);
+				console.log(slider);
+				
+				
+				let optimalhp = 0;
+				let optimalwounds = 99;
+				let currwound = 0;
+				for (let i = parseInt(actor_info.dv) - parseInt(this.value); i>= Math.max(0,dataset.dv - parseInt(this.value) - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
+					currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
+					console.log("currwound",i,currwound);
+					if (currwound <= optimalwounds){
+						optimalwounds = currwound;
+						optimalhp = i;
+					}
+				}
+				
+				slider.value = optimalhp;
+				red.innerHTML = - parseInt(slider.value);
+				green.innerHTML = -parseInt(slider.max) + parseInt(slider.value);
+				
+				newhp.innerHTML = actor_info.hp.value - parseInt(slider.value);
+				newstam.innerHTML = actor_info.stam.value -parseInt(slider.max) + parseInt(slider.value);
+				
+				
+				
+				
+			}
+			
+			
+		},
+		close: html =>{
+
+			console.log("This always is logged no matter which option is chosen")
+			
+			if(confirmed) {
+				options.hp = parseInt(document.getElementById("mySlider").value);
+				options.stam = actor_info.dv - options.hp;
+				console.log(options);
+				//addDefenseMessages(event,options);
 			}
 		}
 	},
@@ -172,7 +326,7 @@ export async function renderAttackChatData(event, actor, options){
 		//console.log("atk item",options.weapon);
 		
 		let newdp = (weapon.data.dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
-		let diceroll = new RollDP( newdp, actor.data.data, options.explode, options.wounds).evaluate();
+		let diceroll = new RollDP( newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
 		
 		let q = diceroll.terms[0].results;
 		q.sort((a, b) => {
@@ -212,7 +366,6 @@ export async function addDefenseMessages(event,options){
 	let tokens = {...canvas.tokens.controlled};
 	
 	
-	
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
 		
 	let old_defenders = (message.getFlag("shimmeringreach","defenders") ? message.getFlag("shimmeringreach","defenders") : {});
@@ -249,7 +402,7 @@ export async function addDefenseMessages(event,options){
 			
 			let defenseDP = actor[1].data.data.defenses[defense_type][defense_state];
 			
-			let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, options.explode, options.wounds).evaluate();
+			let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
 			
 			let q = diceroll.terms[0].results;
 			q.sort((a, b) => {
@@ -411,16 +564,17 @@ export async function deleteDefenderMessage(event){
 	//console.log(event.currentTarget.dataset);
 	//console.log($(event.currentTarget));
 	
-	let dataset = event.currentTarget.dataset;
+	
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
 	//console.log(message);
 	
 	let defenders = [];
 	const old_defenders = message.getFlag("shimmeringreach","defenders");
-	
+	console.log("dataset",dataset);
 	Object.entries(old_defenders).forEach(defender => {
-		//console.log(defender[1]);
+		console.log(defender[1]);
 		
 			//console.log(defender[1].hasOwnProperty('token_id'));
 		
@@ -462,7 +616,7 @@ export async function rerollCombatant(event){
 	
 	//console.log(event.currentTarget.dataset);
 	
-	let dataset = event.currentTarget.dataset;
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
 	let defenders = message.getFlag("shimmeringreach","defenders");

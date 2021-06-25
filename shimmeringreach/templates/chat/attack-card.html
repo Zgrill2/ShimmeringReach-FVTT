@@ -16,16 +16,16 @@
 	  </div>
 	  <div class="column-right">
 			<div class="row">
-				<div class="defense-block roll-button" title="Passive Dodge" data-defense="dodge" data-state="passive">d</div>
-				<div class="defense-block-active roll-button" title="Active Dodge" data-defense="dodge" data-state="active">D</div>
-				<div class="defense-block-active roll-button" title="Block" data-defense="block" data-state="active">B</div>
-				<div class="defense-block-active roll-button" title="Parry" data-defense="parry" data-state="active">R</div>
+				<img src="/modules/game-icons-net/whitetransparent/dodging.svg" class="defense-block roll-button" title="Passive Dodge" data-defense="dodge" data-state="passive"/>
+				<img src="/modules/game-icons-net/whitetransparent/dodging.svg" class="defense-block-active roll-button" title="Active Dodge" data-defense="dodge" data-state="active"/>
+				<img src="/modules/game-icons-net/whitetransparent/attached-shield.svg" class="defense-block-active roll-button" title="Block" data-defense="block" data-state="active"/>
+				<img src="/modules/game-icons-net/whitetransparent/sword-clash.svg" class="defense-block-active roll-button" title="Parry" data-defense="parry" data-state="active"/>
 			</div>
 			<div class="row">
-				<div class="defense-block roll-button" title="Passive Physical Res" data-defense="physical" data-state="passive">p</div>
-				<div class="defense-block-active roll-button" title="Active Physical Res" data-defense="physical" data-state="active">P</div>
-				<div class="defense-block roll-button" title="Passive Mental Res" data-defense="mental" data-state="passive">m</div>
-				<div class="defense-block-active roll-button" title="Active Mental Res" data-defense="mental" data-state="active">M</div>
+				<img src="/modules/game-icons-net/whitetransparent/abdominal-armor.svg" class="defense-block roll-button" title="Passive Physical" data-defense="physical" data-state="passive"/>
+				<img src="/modules/game-icons-net/whitetransparent/abdominal-armor.svg" class="defense-block-active roll-button" title="Active Physical" data-defense="physical" data-state="active"/>
+				<img src="/modules/game-icons-net/whitetransparent/brain.svg" class="defense-block roll-button" title="Passive Mental" data-defense="mental" data-state="passive"/>
+				<img src="/modules/game-icons-net/whitetransparent/brain.svg" class="defense-block-active roll-button" title="Active Mental" data-defense="mental" data-state="active"/>
 			</div>
 		</div>
 	</div>
@@ -67,12 +67,12 @@
 		</div>
 	</div>
 	{{#each defenders as |defender|}}
-	<div class="block">
+	<div class="block" data-token_id="{{defender.token_id}}" data-actor_id="{{defender.actor._id}}" data-dv="{{defender.damage}}">
 		<div class="row">
 			<div class="column-left">
 				<div class="roll-card-header">
 					<img src="{{defender.actor.img}}" class="entity-selectable" title="{{defender.actor.name}}" width="40" height="40">
-					<div class="hits-block" title="Hits" data-token_id="{{defender.token_id}}" data-actor_id="{{defender.actor._id}}">{{defender.display_hits}}</div>
+					<div class="hits-block" title="Hits" >{{defender.display_hits}}</div>
 				</div>
 			</div>
 			<div class="column-right">
@@ -85,7 +85,7 @@
 					<div class="net-hits-block" title="Net Hits">{{defender.net_hits}}</div>
 					<div class="incoming-damage-block" title="Incoming Damage">{{defender.damage}}</div>
 					{{/if}}
-					<div class="fas fa-times spacer-40 delete-defender" width="40" height="40" data-token_id="{{defender.token_id}}" data-actor_id="{{defender.actor._id}}"></div>
+					<div class="fas fa-times spacer-40 delete-defender" width="40" height="40" data-token-id="{{defender.token_id}}" data-actor-id="{{defender.actor._id}}"></div>
 				</div>
 			</div>
 			
