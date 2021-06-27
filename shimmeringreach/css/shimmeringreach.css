@@ -411,7 +411,7 @@
                 width: 40px;
                 line-height: 40px;
                 color: #aa0200;
-				filter:brightness(70%)sepia(0.5) hue-rotate(-50deg);
+				filter:brightness(67%)sepia(0.5) hue-rotate(-50deg);
 
 }
 
@@ -425,9 +425,65 @@
                 width: 40px;
                 line-height: 40px;
                 color: #18520b;
-				filter:brightness(70%)sepia(0.5) hue-rotate(60deg);
+				filter:brightness(67%)sepia(0.5) hue-rotate(60deg);
 
 }
+
+
+.stamina-bar {
+	background: #aec4a7;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+}
+
+.stamina-bar-loss {
+	background: repeating-linear-gradient(
+	  45deg,
+	  #aec4a7,
+	  #94a78e 10px,
+	  #aec4a7 10px,
+	  #94a78e 20px
+	);
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+}
+
+.resource-bar-empty {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+	
+}
+
+.hp-bar {
+	background: #d7b6b7;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+	
+}
+
+.hp-bar-loss {
+	
+	background: repeating-linear-gradient(
+	  45deg,
+	  #d7b6b7,
+	  #b79b9b 10px,
+	  #d7b6b7 10px,
+	  #b79b9b 20px
+	);
+	text-align: center;
+	font-weight: bold;
+	font-size: 16;
+}
+
+
+
+
+
+
 
 
 

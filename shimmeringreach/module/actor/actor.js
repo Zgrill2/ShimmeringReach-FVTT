@@ -119,8 +119,9 @@ export class SRActor extends Actor {
 	  }
     }
 	
-	data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
-
+	if (data.equipped_weapon != undefined){
+		data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
+	}
 
 	// Prepare weapon DV and dicepool
 	

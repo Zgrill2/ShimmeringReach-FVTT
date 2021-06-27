@@ -217,36 +217,6 @@ export class SRActorSheet extends ActorSheet {
 		
 		
 	}
-/*
-	async customAttackMessage() {
-		 const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
-			let options = "";
-			let d = new Dialog({
-			title: "Custom Attack Roll",
-			content: await renderTemplate(template,options),
-			buttons: {
-			one: {
-			icon: '<i class="fas fa-check"></i>',
-			label: "Roll",
-			callback: () => console.log("Chose One")
-			},
-			two: {
-			icon: '<i class="fas fa-times"></i>',
-			label: "Cancel",
-			callback: () => console.log("Chose Two")
-			}
-			},
-			default: "two",
-			render: html => console.log("Register interactivity in the rendered dialog"),
-			close: html => console.log("This always is logged no matter which option is chosen")
-			});
-			d.render(true);
-		
-	}*/
-
-
-
-
 
 
 
