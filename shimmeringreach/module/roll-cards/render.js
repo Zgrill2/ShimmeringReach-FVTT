@@ -150,7 +150,7 @@ export async function customSoakDialog(event) {
 	let optimalhp = 0;
 	let optimalwounds = 99;
 	let currwound = 0;
-	for (let i = parseInt(actor_info.dv); i>= dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1); i--){
+	for (let i = parseInt(actor_info.dv); i>= Math.max(0,dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
 		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
 		console.log("currwound",i,currwound);
 		if (currwound <= optimalwounds){
@@ -182,6 +182,24 @@ export async function customSoakDialog(event) {
 		redwidth2: (actor_info.hp.value - actor_info.newhp) / actor_info.hp.max * 100
 	}
 	
+	let redwounds = [];
+	let greenwounds = [];
+	
+	let fgw = actor_info.stam.max % (6+actor_info.reswound);
+	let frw = actor_info.hp.max % (6+actor_info.reswound);
+	
+	greenwounds[0] = fgw;
+	redwounds[0] = frw;
+	
+	for( let i = 1; i*(6+actor_info.reswound) + fgw <= actor_info.stam.max; i++){
+		greenwounds[i] = (6+actor_info.reswound)
+	}
+	for( let i = 1; i*(6+actor_info.reswound) + fgw <= actor_info.hp.max; i++){
+		redwounds[i] = (6+actor_info.reswound)
+	}
+	
+	
+	
 	disp.greenwidth3 = 100 - disp.greenwidth1 - disp.greenwidth2;
 	disp.redwidth3 = 100 - disp.redwidth1 - disp.redwidth2;
 	console.log("disp",disp);
@@ -190,7 +208,9 @@ export async function customSoakDialog(event) {
 		actor: actor,
 		slide: slide,
 		disp: disp,
-		actor_info: actor_info
+		actor_info: actor_info,
+		redwounds: redwounds,
+		greenwounds: greenwounds
 	}
 	
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
@@ -232,10 +252,10 @@ export async function customSoakDialog(event) {
 			
 			let mydv = document.getElementById("myDv");
 			slider.oninput = function() {
-				red2.innerHTML = parseInt(this.value);
+				red2.innerHTML = ( parseInt(this.value) != 0 ? parseInt(this.value) : "");
 				red2.style.width = (parseInt(this.value) / actor_info.hp.max)*100 +"%";
-				green2.innerHTML =  parseInt(slider.max) - parseInt(this.value);
-				green2.style.width = (parseInt(slider.max) - parseInt(this.value))*100 / actor_info.stam.max + "%";
+				green2.innerHTML =  ( parseInt(this.max) - parseInt(this.value) != 0 ? parseInt(this.max) - parseInt(this.value) : "");
+				green2.style.width = (parseInt(this.max) - parseInt(this.value))*100 / actor_info.stam.max + "%";
 				
 				
 				red1.innerHTML = actor_info.hp.value - parseInt(this.value);
@@ -269,9 +289,9 @@ export async function customSoakDialog(event) {
 				
 				slider.value = optimalhp;
 				
-				red2.innerHTML = parseInt(slider.value);
+				red2.innerHTML = ( parseInt(slider.value) != 0 ? parseInt(slider.value) : "");
 				red2.style.width = (parseInt(slider.value) / actor_info.hp.max)*100 +"%";
-				green2.innerHTML =  parseInt(slider.max) - parseInt(slider.value);
+				green2.innerHTML =  ( parseInt(slider.max) - parseInt(slider.value) != 0 ? parseInt(slider.max) - parseInt(slider.value) : "");
 				green2.style.width = (parseInt(slider.max) - parseInt(slider.value))*100 / actor_info.stam.max + "%";
 				
 				
@@ -280,7 +300,6 @@ export async function customSoakDialog(event) {
 				
 				green1.innerHTML = actor_info.stam.value -parseInt(slider.max) + parseInt(slider.value);
 				green1.style.width = (actor_info.stam.value -parseInt(slider.max) + parseInt(slider.value))/actor_info.stam.max * 100 + "%";
-				
 			}
 		},
 		close: html =>{
@@ -435,6 +454,41 @@ export async function renderAttackChatData(event, actor, options){
 			user: game.user._id,
 			content: await renderTemplate(template,combatInfo),
 			flags:{ "shimmeringreach": combatInfo}
+		}
+		
+		let msg = ChatMessage.create(chatData);
+		//console.log("msg",msg);
+}
+
+export async function renderSkillChatData(event, actor, options){
+		
+		const template = "systems/shimmeringreach/templates/chat/skill-card.html";
+
+		console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
+		console.log(event.currentTarget.dataset);
+
+		
+		let newdp = (actor.data.data.skills[event.currentTarget.dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
+		let diceroll = new RollDP( newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
+		
+		let q = diceroll.terms[0].results;
+		q.sort((a, b) => {
+			return (b.result - a.result);
+		});
+		//console.log("actor",options.actor);
+		let content = {
+			actor: actor.data,
+			skillname: event.currentTarget.dataset.label,
+			displayname: actor.data.data.skills[event.currentTarget.dataset.label].name,
+			diceroll: diceroll,
+			dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
+			display_hits: diceroll._total 
+		}
+			
+		let chatData = {
+			user: game.user._id,
+			content: await renderTemplate(template,content),
+			flags:{ "shimmeringreach": content}
 		}
 		
 		let msg = ChatMessage.create(chatData);
@@ -712,10 +766,21 @@ export async function deleteDefenderMessage(event){
 	}
 }
 
-export async function rerollCombatant(event){
+export async function rerollChatCard(event){
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
-	//console.log(event.currentTarget.dataset);
+	if(message.getFlag("shimmeringreach","attacker")){
+		rerollCombatCard(event);
+	}
+	else if(message.getFlag("shimmeringreach","skillname")){
+		rerollSkillCard(event);
+	}
+}
 	
+	
+async function rerollCombatCard(event){
+
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
@@ -806,3 +871,53 @@ export async function rerollCombatant(event){
 	//await updateCombatContent(message);
 	//console.log(message);
 }
+
+
+
+async function rerollSkillCard(event){
+	const template = "systems/shimmeringreach/templates/chat/skill-card.html";
+
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	
+	
+	
+	
+	console.log(dataset);
+	console.log(message.data.flags.shimmeringreach);
+	
+	let old_content = message.data.flags.shimmeringreach;
+	
+	if (!old_content.hasOwnProperty('reroll')){
+		let dicepool = old_content.diceroll.terms[0].number - old_content.diceroll.total;
+		let reroll = new RollDP( dicepool, old_content.actor, false, false).evaluate();
+		
+		let q = reroll.terms[0].results;
+			q.sort((a, b) => {
+			return (b.result - a.result);
+		});
+		
+		const fullreroll = {
+			class: "RollDP",
+			dice: [],
+			formula: reroll._formula,
+			total: reroll._total,
+			results: reroll.results,
+			terms: [{...reroll.terms[0]}]
+		};
+		
+		old_content.reroll = fullreroll;
+		
+		old_content.display_hits = old_content.diceroll.total + fullreroll.total;
+		
+		await message.update({"flags.shimmeringreach": old_content});
+		await message.update({"content": await renderTemplate(template,old_content)});
+		
+	}
+	else {
+		ui.notifications.warn("This reroll has already been used.");
+	}
+	
+}
+

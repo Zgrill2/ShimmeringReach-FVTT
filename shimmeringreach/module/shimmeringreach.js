@@ -11,7 +11,7 @@ import { SRCombat } from "./srcombat/srcombat.js";
 import {measureDistances } from "./canvas/canvas.js";
 
 import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
-import {deleteDefenderMessage,toggleDicerollDisplay,rerollCombatant,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak} from './roll-cards/render.js';
+import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak} from './roll-cards/render.js';
 Hooks.once('init', async function() {
 
 	var phrase = `Loading Shimmering Reach System                                                       
@@ -102,7 +102,7 @@ Hooks.on("init", function() {
 		event.preventDefault();
 		
 		if (event.shiftKey){
-			rerollCombatant(event);
+			rerollChatCard(event);
 		}
 		else {
 			toggleDicerollDisplay(event);

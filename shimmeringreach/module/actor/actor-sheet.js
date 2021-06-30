@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {renderAttackChatData,customAttackDialog} from '../roll-cards/render.js';
+ import {renderAttackChatData,customAttackDialog,renderSkillChatData} from '../roll-cards/render.js';
  
  
  
@@ -124,7 +124,8 @@ export class SRActorSheet extends ActorSheet {
     });
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    html.find('.bland-roll').click(this._onRoll.bind(this));
+	html.find('.skill-roll').click(this._skillRoll.bind(this));
 
 	// high level item checkboxes
 	
@@ -193,6 +194,12 @@ export class SRActorSheet extends ActorSheet {
       });
     }
   }
+	
+	_skillRoll(event) {
+		event.preventDefault();
+		renderSkillChatData(event,this.actor,{});
+	}
+
 
 
   /**  Generates a chat message attack  **/

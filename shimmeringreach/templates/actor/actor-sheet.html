@@ -154,7 +154,7 @@
 			<div class="resource flex-group-center">
                   <label for="data.soak.value" class="resource-label">Drain Soak</label>
                   <div class="resource-content flexrow flex-center flex-between">
-					<span class="dicepool drain-res rollable" data-roll={{data.drainres.value}} data-label="Drain Soak" data-applywounds="false"  style="font-size:20px">&#9861;{{numberFormat data.drainres.value decimals=0 sign=false}}</span>
+					<span class="dicepool drain-res rollable bland-roll" data-roll={{data.drainres.value}} data-label="Drain Soak" data-applywounds="false"  style="font-size:20px">&#9861;{{numberFormat data.drainres.value decimals=0 sign=false}}</span>
                   </div>
               </div>
 
@@ -167,10 +167,10 @@
                   <div class="resource-content flexrow flex-center flex-between">
 				  
                     {{#if def.allowpassive}}
-                    <span class="dicepool defense-passive-dicepool rollable" data-roll={{def.passive}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-passive-dicepool rollable bland-roll" data-roll={{def.passive}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.passive decimals=0 sign=false}}</span>
                     <span> / </span>
                     {{/if}}
-                    <span class="dicepool defense-active-dicepool rollable" data-roll={{def.active}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.active decimals=0 sign=false}}</span>
+                    <span class="dicepool defense-active-dicepool rollable bland-roll" data-roll={{def.active}} data-label="{{key}}" data-applywounds="true"  style="font-size:20px">&#9861;{{numberFormat def.active decimals=0 sign=false}}</span>
 
                   </div>
               </div>
@@ -217,9 +217,9 @@
                                     </div>
                                 <div class="skill-attribute"><label class="resource-label">{{skill.attr}}</label></div>
                                 {{#if hide_dicepool}}                                
-                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em"></div>
+                                    <div class="dicepool skill-dicepool skill-roll rollable" data-label="{{key}}" data-applywounds="true" style="font-size:1em"></div>
                                 {{else}}
-                                    <div class="dicepool skill-dicepool rollable" data-roll="{{skill.dicepool}}" data-label="{{key}}" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
+                                    <div class="dicepool skill-dicepool skill-roll rollable" data-label="{{key}}" data-applywounds="true" style="font-size:1em">&#9861;{{numberFormat skill.dicepool decimals=0 sign=false}}</div>
                                 {{/if}}
                             </li>
                         {{/if}}
