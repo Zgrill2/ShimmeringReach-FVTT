@@ -2,6 +2,11 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
+ 
+ import {renderAttackChatData,customAttackDialog,renderSkillChatData} from '../roll-cards/render.js';
+ 
+ 
+ 
 export class SRActorSheet extends ActorSheet {
 
   /** @override */
@@ -119,12 +124,15 @@ export class SRActorSheet extends ActorSheet {
     });
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    html.find('.bland-roll').click(this._onRoll.bind(this));
+	html.find('.skill-roll').click(this._skillRoll.bind(this));
 
 	// high level item checkboxes
 	
 	html.find('.group-toggle').click(this._groupToggle.bind(this));
 	html.find('.buff-toggle').click(this._buffToggle.bind(this));
+	html.find('.attack-message').click(this._attackMessage.bind(this));
+	
 	
 
     // Drag events for macros.
@@ -186,8 +194,40 @@ export class SRActorSheet extends ActorSheet {
       });
     }
   }
+	
+	_skillRoll(event) {
+		event.preventDefault();
+		renderSkillChatData(event,this.actor,{});
+	}
 
 
+
+  /**  Generates a chat message attack  **/
+  
+//event.currentTarget.dataset.weapon  
+  
+   _attackMessage(event) {
+	event.preventDefault();
+		/*const CMO = {
+			weapon_id: event.currentTarget.dataset.weapon,
+			actor: this.actor,
+			type: "attack",
+			shift: event.shiftKey
+		};
+		srChatMessage(CMO);*/
+		if (!event.shiftKey){
+			renderAttackChatData(event,this.actor, {});
+		}
+		else {
+			customAttackDialog(event,this.actor,{});
+		}
+		
+		
+	}
+
+
+
+/** Toggles a buff **/
    _buffToggle(event) {
 	   event.preventDefault();
 	   

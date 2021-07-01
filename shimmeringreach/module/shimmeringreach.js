@@ -9,7 +9,22 @@ import { RollDP } from "./dice-roller/roll.js";
 import { SRCombat } from "./srcombat/srcombat.js";
 
 import {measureDistances } from "./canvas/canvas.js";
+
+import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
+import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak} from './roll-cards/render.js';
 Hooks.once('init', async function() {
+
+	var phrase = `Loading Shimmering Reach System                                                       
+   _____  __     _                                    _                  ____                      __   
+  / ___/ / /_   (_)____ ___   ____ ___   ___   _____ (_)____   ____ _   / __ \\ ___   ____ _ _____ / /_  
+  \\__ \\ / __ \\ / // __ '__ \\ / __ '__ \\ / _ \\ / ___// // __ \\ / __  /  / /_/ // _ \\ / __ '// ___// __ \\ 
+ ___/ // / / // // / / / / // / / / / //  __// /   / // / / // /_/ /  / _, _//  __// /_/ // /__ / / / / 
+/____//_/ /_//_//_/ /_/ /_//_/ /_/ /_/ \\___//_/   /_//_/ /_/ \\__, /  /_/ |_| \\___/ \\__,_/ \\___//_/ /_/  
+                                                            /____/                                      
+	`;
+
+	console.log(phrase);
+
 
   game.shimmeringreach = {
     SRActor,
@@ -69,6 +84,7 @@ Hooks.once('init', async function() {
   });
 });
 
+
 Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createSRMacro(data, slot));
@@ -80,6 +96,79 @@ Hooks.on("canvasInit", function() {
   // Extend Diagonal Measurement
   SquareGrid.prototype.measureDistances = measureDistances;
 });
+
+Hooks.on("init", function() {
+	$(document).on('click','.hits-block', (event)	=> { 
+		event.preventDefault();
+		
+		if (event.shiftKey){
+			rerollChatCard(event);
+		}
+		else {
+			toggleDicerollDisplay(event);
+			console.log(game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId));
+		}
+	});
+	
+	$(document).on('click','.delete-defender', (event) => {
+		event.preventDefault();
+		deleteDefenderMessage(event);
+		
+	});
+	
+	$(document).on('click','.defense-block', (event) => {
+		
+		event.preventDefault();
+		if (!event.shiftKey){
+			addDefenseMessages(event, {});
+		}
+		else {
+			customDefenseDialog(event,{});
+		}
+		
+	});
+	
+	$(document).on('click','.defense-block-active', (event) => {
+		event.preventDefault();
+		if (!event.shiftKey){
+			addDefenseMessages(event, {});
+		}
+		else {
+			customDefenseDialog(event,{});
+		}
+	});
+	
+	$(document).on('click','.incoming-damage-block', (event) => {
+		event.preventDefault();
+		if (!event.shiftKey) {
+			simpleSoak(event);
+		}
+		else {
+			customSoakDialog(event);
+		}
+	});
+});
+
+/*
+Hooks.on("renderChatMessage", (message,data,html) => {
+        // NOTE: This depends on the exact card template HTML structure.
+		
+		html.on('click', '.dice-roll-content', event => {
+			event.preventDefault();
+		
+		
+		console.log("html",html);
+		console.log("data",data);
+		console.log("message",message);
+		});
+		
+	
+	
+	
+});*/
+
+
+
 
 
 
