@@ -95,6 +95,7 @@ export class SRActorSheet extends ActorSheet {
     actorData.features = features;
     actorData.spells = spells;
 	actorData.weapons =  weapons;
+	console.log("redraw");
   }
 
   /* -------------------------------------------- */
@@ -132,7 +133,7 @@ export class SRActorSheet extends ActorSheet {
 	html.find('.group-toggle').click(this._groupToggle.bind(this));
 	html.find('.buff-toggle').click(this._buffToggle.bind(this));
 	html.find('.attack-message').click(this._attackMessage.bind(this));
-	
+	html.find('.page-edit-toggle').click(this._editToggle.bind(this));
 	
 
     // Drag events for macros.
@@ -224,6 +225,27 @@ export class SRActorSheet extends ActorSheet {
 		
 		
 	}
+
+	_editToggle(event){/*
+		event.preventDefault();
+		
+	   const element = event.currentTarget;
+	   const dataset = element.dataset;
+			
+			
+			
+	let message = $(event.currentTarget).parentsUntil('.sheet-body');
+		console.log(event);
+		console.log(this);
+		console.log(document);
+		
+			let red3 = document.getElementsByClassName("page-edit-toggle");
+			console.log(red3);
+			//red3[0].hidden = true;
+			console.log(red3);*/
+	}
+
+
 
 
 

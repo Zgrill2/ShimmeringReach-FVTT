@@ -224,6 +224,29 @@
 				border-style: none;
 }
 
+.dummy-defense-block {
+                background-size: 36px 36px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                width: 36px;
+                line-height: 36px;
+				filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
+				border-style: none;
+	
+}
+
+.dummy-defense-block-active{
+                background-size: 36px 36px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                width: 36px;
+                line-height: 36px;
+				filter:brightness(50%)sepia(0.5) hue-rotate(150deg);
+				border-style: none;
+	
+}
 
 
 
@@ -429,6 +452,14 @@
 
 }
 
+.page-edit-toggle {
+	background-image: url(/modules/game-icons-net/blacktransparent/scroll-quill.svg);
+	background-size: 40px 40px;
+	width: 40px;
+	height: 40px;
+}
+
+
 
 .stamina-bar {
 	background: #aec4a7;
@@ -497,7 +528,6 @@
 .shimmeringreach .sheet-header {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 210px;
-  flex: 0 0 210px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -631,5 +661,6 @@
 .skill-group {
   border-style: solid;
   border-width: 1px;
+  margin: 0 0;
 }
 
