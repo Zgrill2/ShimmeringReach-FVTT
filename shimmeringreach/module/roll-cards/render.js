@@ -7,7 +7,7 @@ export async function customAttackDialog(event,actor,options) {
 	const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
 	
 	
-	console.log(options);
+	//console.log(options);
 	let weapon_id = event.currentTarget.dataset.weapon;
 	let weapon = findWeaponByID(weapon_id,actor);
 	
@@ -32,16 +32,16 @@ export async function customAttackDialog(event,actor,options) {
 		}
 		},
 		default: "abort",
-		render: html => console.log("Register interactivity in the rendered dialog"),
+		//render: html => console.log("Register interactivity in the rendered dialog"),
 		close: html =>{
 
-			console.log("This always is logged no matter which option is chosen")
+			//console.log("This always is logged no matter which option is chosen")
 			
 			if(confirmed) {
 				options.dvMod = parseInt(html.find('[name=dvMod]')[0].value);
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
-				console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
+				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
 				{
 					options.wounds = true;
@@ -51,7 +51,7 @@ export async function customAttackDialog(event,actor,options) {
 					options.explode = true;
 				}
 				
-				console.log(options);
+				//console.log(options);
 				renderAttackChatData(event,actor,options);
 			}
 		}
@@ -65,7 +65,7 @@ export async function customDefenseDialog(event,options) {
 	const template = "systems/shimmeringreach/templates/dialog/defense-dialog.html";
 	
 	
-	console.log(options);
+	//console.log(options);
 	
 	
 	let dataset = event.currentTarget.dataset;
@@ -92,15 +92,15 @@ export async function customDefenseDialog(event,options) {
 		}
 		},
 		default: "abortbutton",
-		render: html => console.log("Register interactivity in the rendered dialog"),
+		//render: html => console.log("Register interactivity in the rendered dialog"),
 		close: html =>{
 
-			console.log("This always is logged no matter which option is chosen")
+			//console.log("This always is logged no matter which option is chosen")
 			
 			if(confirmed) {
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
-				console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
+				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
 				{
 					options.wounds = true;
@@ -110,7 +110,7 @@ export async function customDefenseDialog(event,options) {
 					options.explode = true;
 				}
 				
-				console.log(options);
+				//console.log(options);
 				addDefenseMessages(event,options);
 			}
 		}
@@ -124,9 +124,9 @@ export async function customSoakDialog(event) {
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
 	
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
-	console.log("dataset",dataset);
+	//console.log("dataset",dataset);
 	
-	console.log(event);
+	//console.log(event);
 	let actor = {};
 	
 	if (dataset.token_id == ""){
@@ -146,23 +146,23 @@ export async function customSoakDialog(event) {
 	let options = {};
 	let stammiss = (actor_info.stam.max - actor_info.stam.value)%(6+actor_info.reswound);
 	let hpmiss = (actor_info.hp.max - actor_info.hp.value)%(6+actor_info.reswound);
-	console.log("stuff",stammiss,hpmiss);
+	//console.log("stuff",stammiss,hpmiss);
 	let optimalhp = 0;
 	let optimalwounds = 99;
 	let currwound = 0;
 	for (let i = parseInt(actor_info.dv); i>= Math.max(0,dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
 		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
-		console.log("currwound",i,currwound);
+		//console.log("currwound",i,currwound);
 		if (currwound <= optimalwounds){
 			optimalwounds = currwound;
 			optimalhp = i;
 		}
 	}
 	/*
-	console.log("optimal hp",optimalhp);
-	console.log("ainfo",actor_info.armor);
-	console.log("dv",parseInt(dataset.dv));
-	console.log("min",parseInt(dataset.dv) - actor_info.armor.value);*/
+	//console.log("optimal hp",optimalhp);
+	//console.log("ainfo",actor_info.armor);
+	//console.log("dv",parseInt(dataset.dv));
+	//console.log("min",parseInt(dataset.dv) - actor_info.armor.value);*/
 	
 	let slide = {
 		max: dataset.dv,
@@ -202,7 +202,7 @@ export async function customSoakDialog(event) {
 	
 	disp.greenwidth3 = 100 - disp.greenwidth1 - disp.greenwidth2;
 	disp.redwidth3 = 100 - disp.redwidth1 - disp.redwidth2;
-	console.log("disp",disp);
+	//console.log("disp",disp);
 	
 	let local_data = {
 		actor: actor,
@@ -272,7 +272,7 @@ export async function customSoakDialog(event) {
 				mydv.innerHTML = actor_info.dv - parseInt(this.value);
 				slider.max = Math.max(0,actor_info.dv - parseInt(this.value));
 				slider.min = slider.max - Math.min(actor_info.armor.value,actor_info.stam.value);
-				console.log(slider);
+				//console.log(slider);
 				
 				
 				let optimalhp = 0;
@@ -280,7 +280,7 @@ export async function customSoakDialog(event) {
 				let currwound = 0;
 				for (let i = parseInt(actor_info.dv) - parseInt(this.value); i>= Math.max(0,dataset.dv - parseInt(this.value) - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
 					currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
-					//console.log("currwound",i,currwound);
+					////console.log("currwound",i,currwound);
 					if (currwound <= optimalwounds){
 						optimalwounds = currwound;
 						optimalhp = i;
@@ -304,18 +304,69 @@ export async function customSoakDialog(event) {
 		},
 		close: html =>{
 
-			console.log("This always is logged no matter which option is chosen")
+			//console.log("This always is logged no matter which option is chosen")
 			
 			if(confirmed) {
 				options.hp = parseInt(document.getElementById("red2").innerHTML);
 				options.stam = parseInt(document.getElementById("green2").innerHTML);
-				console.log(options);
-				console.log(actor);
+				//console.log(options);
+				//console.log(actor);
 				actor.update({"data.health.value" : actor_info.hp.value - options.hp});
 				actor.update({"data.stamina.value" : actor_info.stam.value - options.stam});
-				console.log(actor_info.hp.value - options.hp);
-				console.log(actor_info.stam.value - options.stam);
-				console.log(actor);
+				//console.log(actor_info.hp.value - options.hp);
+				//console.log(actor_info.stam.value - options.stam);
+				//console.log(actor);
+			}
+		}
+	},
+	{width: 300});
+	d.render(true);
+	
+}
+
+export async function customSkillDialog(event,actor,options) {
+	const template = "systems/shimmeringreach/templates/dialog/skill-dialog.html";
+	
+	
+	
+		
+	let title = "Custom " + actor.data.data.skills[event.currentTarget.dataset.label].name + " Roll";
+	let confirmed = false;
+	let d = new Dialog({
+		title: title,
+		content: await renderTemplate(template,{"actor": actor}),
+		buttons: {
+		rollbutton: {
+		icon: '<i class="fas fa-check"></i>',
+		label: "Roll",
+		callback: () => confirmed = true
+		},
+		abortbutton: {
+		icon: '<i class="fas fa-times"></i>',
+		label: "Cancel",
+		callback: () => confirmed = false
+		}
+		},
+		default: "abortbutton",
+		//render: html => console.log("Register interactivity in the rendered dialog"),
+		close: html =>{
+
+			
+			if(confirmed) {
+				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
+				
+				////console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
+				if(html.find('[name=chk-wounds]')[0].checked)
+				{
+					options.wounds = true;
+				}
+				if(html.find('[name=chk-explode]')[0].checked)
+				{
+					options.explode = true;
+				}
+				
+				////console.log(options);
+				renderSkillChatData(event,actor,options);
 			}
 		}
 	},
@@ -382,15 +433,15 @@ function findWeaponByID(stringID, actor) {
 	
 	let weapon = "";
 	Object.entries(actor.data.items).forEach(weapn => {
-		//console.log(weapn);
-		//console.log(stringID);
+		////console.log(weapn);
+		////console.log(stringID);
 		if (stringID == weapn[1]._id){
-			console.log("bloop");
+			////console.log("bloop");
 			weapon = weapn[1];
-			console.log(weapn[1]);
+			////console.log(weapn[1]);
 		}
 	});
-	//console.log(weapon);
+	////console.log(weapon);
 	return weapon;
 }
 
@@ -411,8 +462,8 @@ function getSelectedActors() {
 			Object.entries({...canvas.tokens.controlled}).forEach(token => {
 				actor_list.push(token[1].actor);
 			});
-			//console.log("actor list",actor_list);
-			//console.log("Selecting at least one token",);
+			////console.log("actor list",actor_list);
+			////console.log("Selecting at least one token",);
 		}
 		else{
 			ui.notifications.warn("Select a token to use this function.");
@@ -427,7 +478,7 @@ export async function renderAttackChatData(event, actor, options){
 		
 		
 		const template = "systems/shimmeringreach/templates/chat/attack-card.html";
-		//console.log("atk item",options.weapon);
+		////console.log("atk item",options.weapon);
 		
 		let newdp = (weapon.data.dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
 		let diceroll = new RollDP( newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
@@ -436,7 +487,7 @@ export async function renderAttackChatData(event, actor, options){
 		q.sort((a, b) => {
 			return (b.result - a.result);
 		});
-		//console.log("actor",options.actor);
+		////console.log("actor",options.actor);
 		let attacker_info = {
 			actor: actor.data,
 			weapon: weapon,
@@ -457,15 +508,15 @@ export async function renderAttackChatData(event, actor, options){
 		}
 		
 		let msg = ChatMessage.create(chatData);
-		//console.log("msg",msg);
+		////console.log("msg",msg);
 }
 
 export async function renderSkillChatData(event, actor, options){
 		
 		const template = "systems/shimmeringreach/templates/chat/skill-card.html";
 
-		console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
-		console.log(event.currentTarget.dataset);
+		////console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
+		////console.log(event.currentTarget.dataset);
 
 		
 		let newdp = (actor.data.data.skills[event.currentTarget.dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
@@ -475,7 +526,7 @@ export async function renderSkillChatData(event, actor, options){
 		q.sort((a, b) => {
 			return (b.result - a.result);
 		});
-		//console.log("actor",options.actor);
+		////console.log("actor",options.actor);
 		let content = {
 			actor: actor.data,
 			skillname: event.currentTarget.dataset.label,
@@ -492,7 +543,7 @@ export async function renderSkillChatData(event, actor, options){
 		}
 		
 		let msg = ChatMessage.create(chatData);
-		//console.log("msg",msg);
+		////console.log("msg",msg);
 }
 
 export async function addDefenseMessages(event,options){
@@ -502,7 +553,7 @@ export async function addDefenseMessages(event,options){
 	let defender_list = getSelectedActors();
 	let tokens = {...canvas.tokens.controlled};
 	
-	console.log(event.currentTarget.src);
+	////console.log(event.currentTarget.src);
 	
 	let spl =  "/modules" + event.currentTarget.src.split("modules")[1];
 
@@ -532,10 +583,10 @@ export async function addDefenseMessages(event,options){
 		
 		
 		let present = false;
-		//console.log(old_defenders);
+		////console.log(old_defenders);
 		Object.entries(old_defenders).forEach(old_actor => {
-			//console.log(old_actor);
-			//console.log(actor);
+			////console.log(old_actor);
+			////console.log(actor);
 			if (actor[1].token && actor[1].token.data._id == old_actor[1].token_id){
 				//Found token, skipping
 				present = true;
@@ -566,7 +617,7 @@ export async function addDefenseMessages(event,options){
 				icon: spl,
 				hue: hue
 			};
-			//console.log("this is what diceroll looks like",diceroll);
+			////console.log("this is what diceroll looks like",diceroll);
 			
 			if(actor[1].token){
 				defenderOptions.token_id = actor[1].token.data._id;
@@ -588,14 +639,14 @@ export async function addDefenseMessages(event,options){
 		
 	});
 	
-	//console.log("new defenders",new_defenders);
+	////console.log("new defenders",new_defenders);
 	
 	await message.setFlag("shimmeringreach","defenders",new_defenders);
 	
 	await updateCombatantFlags(message);
 	
 	//await updateCombatContent(options.message);
-	//console.log(options.message);
+	////console.log(options.message);
 }
 
 async function updateCombatContent(message){
@@ -610,12 +661,12 @@ async function updateCombatContent(message){
 
 
 async function updateCombatantFlags(message) {
-	//console.log("UCF message",message);
+	////console.log("UCF message",message);
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
 	let attacker = message.getFlag("shimmeringreach","attacker");
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	
-	//console.log("UPDATE FLAGS",attacker);
+	////console.log("UPDATE FLAGS",attacker);
 	
 	const display_dv = attacker.weapon.data.dv + attacker.dvMod;
 	const display_hits = attacker.diceroll.total + (attacker.reroll ? attacker.reroll.total : 0); //Future proofing for when abilities can add free hits
@@ -623,7 +674,7 @@ async function updateCombatantFlags(message) {
 	attacker.display_dv = display_dv;
 	attacker.display_hits = display_hits;
 	
-	//console.log("defenders befpre",defenders);
+	////console.log("defenders befpre",defenders);
 	
 	let defender_holder = [];
 	
@@ -636,8 +687,8 @@ async function updateCombatantFlags(message) {
 		Object.entries(defenders).forEach(defender => {
 			const d_display_hits = defender[1].diceroll._total + (defender[1].reroll ? defender[1].reroll.total : 0); //Future proofing for when abilities can add free hits
 			defender[1].display_hits = d_display_hits;
-			//console.log("defender", defender[0], defender[1]);
-			//console.log("ddisplay hits",d_display_hits);
+			////console.log("defender", defender[0], defender[1]);
+			////console.log("ddisplay hits",d_display_hits);
 			
 			if ( display_hits > d_display_hits) {
 				
@@ -645,10 +696,10 @@ async function updateCombatantFlags(message) {
 				//defender[1].update({"avoided" : false});
 				defender[1].avoided = false;
 				defender[1].net_hits = display_hits - d_display_hits;
-				////console.log("attacker weapon",attacker.weapon.data.soak);
-				////console.log("indexing",defender[1].actor.data.soaks);
+				//////console.log("attacker weapon",attacker.weapon.data.soak);
+				//////console.log("indexing",defender[1].actor.data.soaks);
 				const damage = display_hits - d_display_hits + display_dv - defender[1].actor.data.soaks[attacker.weapon.data.soak].value;
-				////console.log("damage",damage);
+				//////console.log("damage",damage);
 				if ( damage > 0){
 					defender[1].damage = damage;
 				}
@@ -671,7 +722,7 @@ async function updateCombatantFlags(message) {
 			i++;
 			
 		});
-		//console.log("latest new defenders",new_defenders);
+		////console.log("latest new defenders",new_defenders);
 		await message.setFlag("shimmeringreach","defenders",null);
 		await message.setFlag("shimmeringreach","defenders",new_defenders);
 	}
@@ -696,7 +747,7 @@ export function toggleDicerollDisplay(event){
 	
 	
 		let targets = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content');
-		//console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
+		////console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
 		
 		Object.entries(targets).forEach(target => {
 			if (!isNaN(target[0])){
@@ -711,23 +762,23 @@ export function toggleDicerollDisplay(event){
 }
 
 export async function deleteDefenderMessage(event){
-	//console.log(event);
-	//console.log(event.currentTarget.dataset);
-	//console.log($(event.currentTarget));
+	////console.log(event);
+	////console.log(event.currentTarget.dataset);
+	////console.log($(event.currentTarget));
 	
 	if(game.users.current.data.role == 4){
 		let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
 		let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 		
-		//console.log(message);
+		////console.log(message);
 		
 		let defenders = [];
 		const old_defenders = message.getFlag("shimmeringreach","defenders");
-		console.log("dataset",dataset);
+		////console.log("dataset",dataset);
 		Object.entries(old_defenders).forEach(defender => {
-			console.log(defender[1]);
+			////console.log(defender[1]);
 			
-				//console.log(defender[1].hasOwnProperty('token_id'));
+				////console.log(defender[1].hasOwnProperty('token_id'));
 			
 			if (defender[1].hasOwnProperty('token_id')){
 				if (defender[1].token_id != dataset.token_id){
@@ -789,7 +840,7 @@ async function rerollCombatCard(event){
 	
 	
 	
-	console.log(dataset);
+	////console.log(dataset);
 	let new_defenders = [];
 	let i = 0;
 	if(dataset.hasOwnProperty('attacker')){
@@ -824,11 +875,11 @@ async function rerollCombatCard(event){
 			if ((defender[1].token_id == null && defender[1].actor._id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
 					
 				if (!defender[1].hasOwnProperty('reroll')){
-					//console.log('rerolling defender');
+					////console.log('rerolling defender');
 					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total
 					
-					////console.log(defender);
-					////console.log(dicepool);
+					//////console.log(defender);
+					//////console.log(dicepool);
 					
 					let reroll = new RollDP( dicepool, defender[1].actor, false, false).evaluate();
 					
@@ -848,9 +899,9 @@ async function rerollCombatCard(event){
 					defender[1].reroll= fullreroll;
 					
 					let str = "data.flags.shimmeringreach.defenders." + i + ".reroll";
-					////console.log(message);
-					////console.log("full reroll",fullreroll);
-					////console.log("blooperd");
+					//////console.log(message);
+					//////console.log("full reroll",fullreroll);
+					//////console.log("blooperd");
 					//await message.update({str : fullreroll});
 				}
 				else {
@@ -860,7 +911,7 @@ async function rerollCombatCard(event){
 			i++;
 		});
 		
-		////console.log("defenders",defenders);
+		//////console.log("defenders",defenders);
 		
 	await message.setFlag("shimmeringreach","defenders",null);
 	
@@ -869,7 +920,7 @@ async function rerollCombatCard(event){
 	}
 	await updateCombatantFlags(message);
 	//await updateCombatContent(message);
-	//console.log(message);
+	////console.log(message);
 }
 
 
@@ -884,8 +935,8 @@ async function rerollSkillCard(event){
 	
 	
 	
-	console.log(dataset);
-	console.log(message.data.flags.shimmeringreach);
+	////console.log(dataset);
+	////console.log(message.data.flags.shimmeringreach);
 	
 	let old_content = message.data.flags.shimmeringreach;
 	

@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
  
- import {renderAttackChatData,customAttackDialog,renderSkillChatData} from '../roll-cards/render.js';
+ import {renderAttackChatData,customAttackDialog,renderSkillChatData,customSkillDialog} from '../roll-cards/render.js';
  
  
  
@@ -198,7 +198,13 @@ export class SRActorSheet extends ActorSheet {
 	
 	_skillRoll(event) {
 		event.preventDefault();
-		renderSkillChatData(event,this.actor,{});
+		
+		if (!event.shiftKey){
+			renderSkillChatData(event,this.actor,{});
+		}
+		else {
+			customSkillDialog(event,this.actor,{});
+		}
 	}
 
 
