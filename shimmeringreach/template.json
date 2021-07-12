@@ -326,6 +326,9 @@
 		"value": 0,
 		"ignore_wounds": 0,
 		"resilient_wounds":0
+	  },
+	  "edit_stats": {
+		  "enable": false
 	  }
     }
   },

@@ -106,7 +106,6 @@ Hooks.on("init", function() {
 		}
 		else {
 			toggleDicerollDisplay(event);
-			console.log(game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId));
 		}
 	});
 	
