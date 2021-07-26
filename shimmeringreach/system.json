@@ -22,6 +22,7 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "stamina",
+  "socket": true,
   "url": "",
   "manifest": "",
   "download": "",
