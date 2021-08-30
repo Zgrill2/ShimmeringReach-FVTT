@@ -64,6 +64,7 @@ export class SRActorSheet extends ActorSheet {
       8: [],
       9: []
     };
+	const know_skills = [];
 
     // Iterate through items, allocating to containers
     // let totalWeight = 0;
@@ -88,6 +89,9 @@ export class SRActorSheet extends ActorSheet {
           spells[i.data.spellLevel].push(i);
         }
       }
+	  else if (i.type === 'skill') {
+        know_skills.push(i);
+      }
     }
 
     // Assign and return
@@ -95,7 +99,7 @@ export class SRActorSheet extends ActorSheet {
     actorData.features = features;
     actorData.spells = spells;
 	actorData.weapons =  weapons;
-	console.log("redraw");
+	actorData.know_skills = know_skills;
   }
 
   /* -------------------------------------------- */

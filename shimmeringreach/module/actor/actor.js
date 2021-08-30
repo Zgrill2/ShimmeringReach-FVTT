@@ -126,14 +126,14 @@ export class SRActor extends Actor {
 	// Prepare weapon DV and dicepool
 	
 	
-	const weapons = actorData.items;
+	const item_set = actorData.items;
 	//console.log(weapons);
 	
-	Object.entries(weapons).forEach(weapon => {
+	Object.entries(item_set).forEach(weapon => {
 		//weapon[1].data.type == 'weapon'
 		if (weapon[1].type == 'weapon')
 		{
-			console.log(weapon[1].data.attr);
+			//console.log(weapon[1].data.attr);
 			if (weapon[1].data.attr != "none"){
 				weapon[1].data.dv = weapon[1].data.power + data.abilities[weapon[1].data.attr].value;
 			}
@@ -152,7 +152,19 @@ export class SRActor extends Actor {
 		
 	});
 	
-	
+	Object.entries(item_set).forEach(knowskill => {
+		if (knowskill[1].type == 'skill')
+		{
+			//console.log(knowskill[1].data.attr);
+			
+			knowskill[1].data.dicepool = knowskill[1].data.rank  + Math.min(knowskill[1].data.rank,Math.ceil(data.tradition.rank.value / 2));
+			if(knowskill[1].data.attr != "none"){
+				knowskill[1].data.dicepool +=abilitybox[knowskill[1].data.attr].value;
+			}
+			
+		}
+		
+	});
 	
 	
 	

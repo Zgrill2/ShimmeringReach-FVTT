@@ -548,9 +548,24 @@ export async function renderSkillChatData(event, actor, options){
 
 		////console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
 		////console.log(event.currentTarget.dataset);
-
 		
-		let newdp = (actor.data.data.skills[event.currentTarget.dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
+		let newdp = 0;
+		let displayname = "";
+		let skillname = "";
+		
+		if (event.currentTarget.dataset.itemskill){
+			
+			newdp = (parseInt(event.currentTarget.dataset.dicepool) + (options.dicepoolMod ? options.dicepoolMod : 0));
+			displayname = event.currentTarget.dataset.label;
+			console.log(newdp);
+			skillname = $(displayname).replaceAll(' ', '_');
+		}
+		else {
+			newdp = (actor.data.data.skills[event.currentTarget.dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0));
+			displayname = actor.data.data.skills[event.currentTarget.dataset.label].name;
+			skillname = event.currentTarget.dataset.label;
+		}
+		
 		let diceroll = new RollDP( newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
 		
 		let q = diceroll.terms[0].results;
@@ -561,7 +576,7 @@ export async function renderSkillChatData(event, actor, options){
 		let content = {
 			actor: actor.data,
 			skillname: event.currentTarget.dataset.label,
-			displayname: actor.data.data.skills[event.currentTarget.dataset.label].name,
+			displayname: displayname,
 			diceroll: diceroll,
 			dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
 			display_hits: diceroll._total 
