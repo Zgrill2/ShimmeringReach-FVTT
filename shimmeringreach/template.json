@@ -333,7 +333,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "weapon", "stats"],
+    "types": ["item", "feature", "spell", "weapon", "stats","skill"],
     "templates": {
       "base": {
         "description": ""
@@ -373,6 +373,12 @@
 	  "attr": "str",
 	  "skill": "weapon_skill",
 	  "soak": "armor"
+    },
+	"skill": {
+      "templates": ["base"],
+	  "attr": "none",
+	  "rank": 0,
+	  "dicepool": 0
     },
     "spell": {
       "templates": ["base"],
