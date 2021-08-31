@@ -360,7 +360,16 @@ export async function customSkillDialog(event,actor,options) {
 	
 	
 		
-	let title = "Custom " + actor.data.data.skills[event.currentTarget.dataset.label].name + " Roll";
+	let title = "";
+	
+	if (event.currentTarget.dataset.itemskill){
+		title = "Custom " + event.currentTarget.dataset.label + " Roll";	
+	}
+
+	else {
+		title = "Custom " + actor.data.data.skills[event.currentTarget.dataset.label].name + " Roll";
+	}
+	
 	let confirmed = false;
 	let d = new Dialog({
 		title: title,
