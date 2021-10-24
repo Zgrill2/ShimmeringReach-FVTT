@@ -11,7 +11,7 @@ import { SRCombat } from "./srcombat/srcombat.js";
 import {measureDistances } from "./canvas/canvas.js";
 
 import {findMessageRelatives} from "./jsquery/jsquery-helpers.js";
-import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit} from './roll-cards/render.js';
+import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain} from './roll-cards/render.js';
 Hooks.once('init', async function() {
 
 	var phrase = `Loading Shimmering Reach System                                                       
@@ -83,6 +83,12 @@ Hooks.once('init', async function() {
     return str.toLowerCase();
   });
   
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+  });
+  
+  
+  
   registerRenderSocket();
 });
 
@@ -147,6 +153,11 @@ Hooks.on("init", function() {
 		else {
 			customSoakDialog(event);
 		}
+	});
+	
+	$(document).on('click','.incoming-drain-block', (event) => {
+		event.preventDefault();
+		simpleDrain(event);
 	});
 });
 

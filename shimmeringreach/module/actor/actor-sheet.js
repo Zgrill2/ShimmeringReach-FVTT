@@ -277,7 +277,7 @@ export class SRActorSheet extends ActorSheet {
 				buff.data.data.active = !buff.data.data.active;
 				const newdata = buff.data;
 				
-				
+				console.log("blip");
 				
 				this.actor.updateEmbeddedEntity("OwnedItem",newdata);
 			}

@@ -70,6 +70,13 @@ export async function customAttackDialog(event,actor,options) {
 			if(confirmed) {
 				options.dvMod = parseInt(html.find('[name=dvMod]')[0].value);
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
+				let overload = parseInt(html.find('[name=overload]')[0].value);
+				let overload_soak = parseInt(html.find('[name=overload_soak]')[0].value);
+				let overload_explode = html.find('[name=chk-explode-soak]')[0].checked;
+				if (overload >0){
+					renderOverload(actor,overload,overload_soak, overload_explode);
+				}
+				
 				
 				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
@@ -428,14 +435,7 @@ export async function simpleSoak(event) {
 	else {
 		actor = game.actors.tokens[dataset.token_id];
 	}
-	
-	let data = {
-		one: "one",
-		two: "two",
-		three: "three"
-	}
-	
-	
+		
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
 	
@@ -461,6 +461,51 @@ export async function simpleSoak(event) {
 		
 		actor.update({"data.health.value" : actor_info.hp.value - hpdmg});
 		actor.update({"data.stamina.value" : actor_info.stam.value - stamdmg});
+	}
+	else {
+		ui.notifications.warn("You do not have permission to soak for this actor.");
+	}
+			
+}
+
+export async function simpleDrain(event) {
+	
+	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
+	console.log(event.currentTarget);
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	console.log(dataset);
+	let actor = {};
+	
+	if (dataset.token_id == "" || !(dataset.token_id)){
+		actor = game.actors.get(dataset.actor_id);
+		console.log("blip");
+	}
+	else {
+		actor = game.actors.tokens[dataset.token_id];
+		console.log("bloop");
+	}
+	
+	console.log(actor);
+	
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	
+	
+	if (actor.permission == 3) {
+		
+	
+		let dv = dataset.drain;
+		let hp = actor.data.data.health.value;
+		let mp = actor.data.data.mana.value;
+		
+		let newmp = Math.max(0,mp-dv);
+		let newhp = hp - Math.max(0,dv-mp);
+		
+		console.log(dv,hp,mp,newmp,newhp);
+		
+		
+		actor.update({"data.health.value" : newhp});
+		actor.update({"data.mana.value" : newmp});
 	}
 	else {
 		ui.notifications.warn("You do not have permission to soak for this actor.");
@@ -510,6 +555,45 @@ function getSelectedActors() {
 		return actor_list;
 }
 
+
+async function renderOverload(actor, overload, overload_soak, overload_explode){
+	const template = "systems/shimmeringreach/templates/chat/drain-card.html";
+	
+	let newdp = (actor.data.data.drainres.value + (overload_soak ? overload_soak : 0));
+	let displayname = "Drain Soak";
+	let skillname = "Drain Soak";
+	
+	let diceroll = new RollDP( newdp, actor.data.data, overload_explode, true).evaluate();
+	
+	let q = diceroll.terms[0].results;
+	q.sort((a, b) => {
+		return (b.result - a.result);
+	});
+	////console.log("actor",options.actor);
+	let content = {
+		actor: actor.data,
+		displayname: displayname,
+		diceroll: diceroll,
+		dicepoolMod: overload_soak,
+		display_hits: diceroll._total,
+		overload: overload,
+		overload_applied: Math.max(overload - diceroll._total,0)
+	}
+	
+	if(actor.token){
+		content.token_id = actor.token.data._id;
+	}
+	
+	let chatData = {
+		user: game.user._id,
+		content: await renderTemplate(template,content),
+		flags:{ "shimmeringreach": content}
+	}
+	
+	let msg = ChatMessage.create(chatData);
+	////console.log("msg",msg);
+	
+}
 
 export async function renderAttackChatData(event, actor, options){
 		
@@ -920,6 +1004,10 @@ export async function rerollChatCard(event){
 	else if(message.getFlag("shimmeringreach","skillname")){
 		rerollSkillCard(event);
 	}
+	else if(message.getFlag("shimmeringreach","overload")){
+		rerollDrainCard(event);
+	}
+	
 }
 
 async function rerollCombatCard(event){
@@ -1107,3 +1195,50 @@ async function rerollSkillCard(event){
 	
 }
 
+async function rerollDrainCard(event){
+	const template = "systems/shimmeringreach/templates/chat/drain-card.html";
+
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	
+	
+	
+	
+	////console.log(dataset);
+	////console.log(message.data.flags.shimmeringreach);
+	
+	let old_content = message.data.flags.shimmeringreach;
+	
+	if (!old_content.hasOwnProperty('reroll')){
+		let dicepool = old_content.diceroll.terms[0].number - old_content.diceroll.total;
+		let reroll = new RollDP( dicepool, old_content.actor, false, false).evaluate();
+		
+		let q = reroll.terms[0].results;
+			q.sort((a, b) => {
+			return (b.result - a.result);
+		});
+		
+		const fullreroll = {
+			class: "RollDP",
+			dice: [],
+			formula: reroll._formula,
+			total: reroll._total,
+			results: reroll.results,
+			terms: [{...reroll.terms[0]}]
+		};
+		
+		old_content.reroll = fullreroll;
+		
+		old_content.display_hits = old_content.diceroll.total + fullreroll.total;
+		old_content.overload_applied = Math.max(old_content.overload_applied - fullreroll.total,0);
+		
+		await message.update({"flags.shimmeringreach": old_content});
+		await message.update({"content": await renderTemplate(template,old_content)});
+		
+	}
+	else {
+		ui.notifications.warn("This reroll has already been used.");
+	}
+	
+}

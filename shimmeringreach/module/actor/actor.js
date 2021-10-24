@@ -128,11 +128,12 @@ export class SRActor extends Actor {
 	
 	const item_set = actorData.items;
 	//console.log(weapons);
-	
+	//console.log(item_set);
 	Object.entries(item_set).forEach(weapon => {
 		//weapon[1].data.type == 'weapon'
 		if (weapon[1].type == 'weapon')
 		{
+			//console.log(weapon);
 			//console.log(weapon[1].data.attr);
 			if (weapon[1].data.attr != "none"){
 				weapon[1].data.dv = weapon[1].data.power + data.abilities[weapon[1].data.attr].value;
@@ -140,7 +141,7 @@ export class SRActor extends Actor {
 			else {
 				weapon[1].data.dv = weapon[1].data.power;
 			}
-			weapon[1].data.dicepool = weapon[1].data.reach + data.skills.weapon_skill.dicepool;
+			weapon[1].data.dicepool = weapon[1].data.reach + data.skills[weapon[1].data.skill].dicepool;
 		
 			if (weapon[1].data.active)
 			{
@@ -148,6 +149,7 @@ export class SRActor extends Actor {
 				data.defenses.parry.active += weapon[1].data.reach;
 				//console.log(weapon);
 			}
+			
 		}
 		
 	});
