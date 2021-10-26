@@ -1,10 +1,5 @@
 
 async function handleSocket(data){
-	console.log("Successful receive");
-	console.log(data.type);
-	console.log(data.dataset);
-	console.log(data.messageId);
-	console.log(data.actors);
 	
 	if (data.type == "addDefenseMessages" && game.users.current.data.role == 4){
 		gmAddDefenseMessages(data.dataset,data.actors,data.messageId,data.options);
@@ -19,15 +14,11 @@ async function handleSocket(data){
 }
 
 export function registerRenderSocket(){
-	console.log("Registering render.js socket access");
 	game.socket.on('system.shimmeringreach',  handleSocket);
-	//console.log(a);
 }
 
 export async function testEmit(){
-	console.log("testing emit");
 	game.socket.emit('system.shimmeringreach', "test");
-	//console.log(a);
 }
 
 
@@ -38,8 +29,6 @@ export async function testEmit(){
 export async function customAttackDialog(event,actor,options) {
 	const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
 	
-	
-	//console.log(options);
 	let weapon_id = event.currentTarget.dataset.weapon;
 	let weapon = findWeaponByID(weapon_id,actor);
 	
@@ -67,13 +56,16 @@ export async function customAttackDialog(event,actor,options) {
 		//render: html => console.log("Register interactivity in the rendered dialog"),
 		close: html =>{
 
-			//console.log("This always is logged no matter which option is chosen")
-			
 			if(confirmed) {
 				options.dvMod = parseInt(html.find('[name=dvMod]')[0].value);
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
+				let overload = parseInt(html.find('[name=overload]')[0].value);
+				let overload_soak = parseInt(html.find('[name=overload_soak]')[0].value);
+				let overload_explode = html.find('[name=chk-explode-soak]')[0].checked;
+				if (overload > 0){
+					renderOverload(actor,overload,overload_soak, overload_explode);
+				}
 				
-				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
 				{
 					options.wounds = true;
@@ -82,8 +74,6 @@ export async function customAttackDialog(event,actor,options) {
 				{
 					options.explode = true;
 				}
-				
-				//console.log(options);
 				renderAttackChatData(event,actor,options);
 			}
 		}
@@ -95,10 +85,6 @@ export async function customAttackDialog(event,actor,options) {
 
 export async function customDefenseDialog(event,options) {
 	const template = "systems/shimmeringreach/templates/dialog/defense-dialog.html";
-	
-	
-	//console.log(options);
-	
 	
 	let dataset = event.currentTarget.dataset;
 	let defense_type = dataset.defense;
@@ -127,12 +113,10 @@ export async function customDefenseDialog(event,options) {
 		//render: html => console.log("Register interactivity in the rendered dialog"),
 		close: html =>{
 
-			//console.log("This always is logged no matter which option is chosen")
 			
 			if(confirmed) {
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
-				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
 				{
 					options.wounds = true;
@@ -142,7 +126,6 @@ export async function customDefenseDialog(event,options) {
 					options.explode = true;
 				}
 				
-				//console.log(options);
 				addDefenseMessages(event,options);
 			}
 		}
@@ -156,9 +139,7 @@ export async function customSoakDialog(event) {
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
 	
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
-	//console.log("dataset",dataset);
-	
-	//console.log(event);
+
 	let actor = {};
 	
 	if (dataset.token_id == ""){
@@ -178,23 +159,16 @@ export async function customSoakDialog(event) {
 	let options = {};
 	let stammiss = (actor_info.stam.max - actor_info.stam.value)%(6+actor_info.reswound);
 	let hpmiss = (actor_info.hp.max - actor_info.hp.value)%(6+actor_info.reswound);
-	//console.log("stuff",stammiss,hpmiss);
 	let optimalhp = 0;
 	let optimalwounds = 99;
 	let currwound = 0;
 	for (let i = parseInt(actor_info.dv); i>= Math.max(0,dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
 		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
-		//console.log("currwound",i,currwound);
 		if (currwound <= optimalwounds){
 			optimalwounds = currwound;
 			optimalhp = i;
 		}
 	}
-	/*
-	//console.log("optimal hp",optimalhp);
-	//console.log("ainfo",actor_info.armor);
-	//console.log("dv",parseInt(dataset.dv));
-	//console.log("min",parseInt(dataset.dv) - actor_info.armor.value);*/
 	
 	let slide = {
 		max: dataset.dv,
@@ -234,7 +208,6 @@ export async function customSoakDialog(event) {
 	
 	disp.greenwidth3 = 100 - disp.greenwidth1 - disp.greenwidth2;
 	disp.redwidth3 = 100 - disp.redwidth1 - disp.redwidth2;
-	//console.log("disp",disp);
 	
 	let local_data = {
 		actor: actor,
@@ -304,15 +277,12 @@ export async function customSoakDialog(event) {
 				mydv.innerHTML = actor_info.dv - parseInt(this.value);
 				slider.max = Math.max(0,actor_info.dv - parseInt(this.value));
 				slider.min = slider.max - Math.min(actor_info.armor.value,actor_info.stam.value);
-				//console.log(slider);
-				
-				
+
 				let optimalhp = 0;
 				let optimalwounds = 99;
 				let currwound = 0;
 				for (let i = parseInt(actor_info.dv) - parseInt(this.value); i>= Math.max(0,dataset.dv - parseInt(this.value) - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
 					currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
-					////console.log("currwound",i,currwound);
 					if (currwound <= optimalwounds){
 						optimalwounds = currwound;
 						optimalhp = i;
@@ -334,20 +304,12 @@ export async function customSoakDialog(event) {
 				green1.style.width = (actor_info.stam.value -parseInt(slider.max) + parseInt(slider.value))/actor_info.stam.max * 100 + "%";
 			}
 		},
-		close: html =>{
-
-			//console.log("This always is logged no matter which option is chosen")
-			
+		close: html =>{			
 			if(confirmed) {
 				options.hp = parseInt(document.getElementById("red2").innerHTML);
 				options.stam = parseInt(document.getElementById("green2").innerHTML);
-				//console.log(options);
-				//console.log(actor);
 				actor.update({"data.health.value" : actor_info.hp.value - options.hp});
 				actor.update({"data.stamina.value" : actor_info.stam.value - options.stam});
-				//console.log(actor_info.hp.value - options.hp);
-				//console.log(actor_info.stam.value - options.stam);
-				//console.log(actor);
 			}
 		}
 	},
@@ -396,7 +358,6 @@ export async function customSkillDialog(event,actor,options) {
 			if(confirmed) {
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
-				////console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				if(html.find('[name=chk-wounds]')[0].checked)
 				{
 					options.wounds = true;
@@ -406,7 +367,6 @@ export async function customSkillDialog(event,actor,options) {
 					options.explode = true;
 				}
 				
-				////console.log(options);
 				renderSkillChatData(event,actor,options);
 			}
 		}
@@ -430,14 +390,7 @@ export async function simpleSoak(event) {
 	else {
 		actor = game.actors.tokens[dataset.token_id];
 	}
-	
-	let data = {
-		one: "one",
-		two: "two",
-		three: "three"
-	}
-	
-	
+		
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
 	
@@ -470,19 +423,54 @@ export async function simpleSoak(event) {
 			
 }
 
+export async function simpleDrain(event) {
+	
+	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let actor = {};
+	
+	if (dataset.token_id == "" || !(dataset.token_id)){
+		actor = game.actors.get(dataset.actor_id);
+	}
+	else {
+		actor = game.actors.tokens[dataset.token_id];
+	}
+		
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	
+	
+	if (actor.permission == 3) {
+		
+	
+		let dv = dataset.drain;
+		let hp = actor.data.data.health.value;
+		let mp = actor.data.data.mana.value;
+		
+		let newmp = Math.max(0,mp-dv);
+		let newhp = hp - Math.max(0,dv-mp);
+		
+		console.log(dv,hp,mp,newmp,newhp);
+		
+		
+		actor.update({"data.health.value" : newhp});
+		actor.update({"data.mana.value" : newmp});
+	}
+	else {
+		ui.notifications.warn("You do not have permission to soak for this actor.");
+	}
+			
+}
+
 function findWeaponByID(stringID, actor) {
 	
 	let weapon = "";
 	Object.entries(actor.data.items).forEach(weapn => {
-		////console.log(weapn);
-		////console.log(stringID);
+
 		if (stringID == weapn[1]._id){
-			////console.log("bloop");
 			weapon = weapn[1];
-			////console.log(weapn[1]);
 		}
 	});
-	////console.log(weapon);
 	return weapon;
 }
 
@@ -512,6 +500,45 @@ function getSelectedActors() {
 		return actor_list;
 }
 
+
+async function renderOverload(actor, overload, overload_soak, overload_explode){
+	const template = "systems/shimmeringreach/templates/chat/drain-card.html";
+	
+	let newdp = (actor.data.data.drainres.value + (overload_soak ? overload_soak : 0));
+	let displayname = "Drain Soak";
+	let skillname = "Drain Soak";
+	
+	let diceroll = new RollDP( newdp, actor.data.data, overload_explode, true).evaluate();
+	
+	let q = diceroll.terms[0].results;
+	q.sort((a, b) => {
+		return (b.result - a.result);
+	});
+	////console.log("actor",options.actor);
+	let content = {
+		actor: actor.data,
+		displayname: displayname,
+		diceroll: diceroll,
+		dicepoolMod: overload_soak,
+		display_hits: diceroll._total,
+		overload: overload,
+		overload_applied: Math.max(overload - diceroll._total,0)
+	}
+	
+	if(actor.token){
+		content.token_id = actor.token.data._id;
+	}
+	
+	let chatData = {
+		user: game.user._id,
+		content: await renderTemplate(template,content),
+		flags:{ "shimmeringreach": content}
+	}
+	
+	let msg = ChatMessage.create(chatData);
+	////console.log("msg",msg);
+	
+}
 
 export async function renderAttackChatData(event, actor, options){
 		
@@ -817,7 +844,6 @@ async function updateCombatantFlags(message) {
 			i++;
 			
 		});
-		////console.log("latest new defenders",new_defenders);
 		await message.setFlag("shimmeringreach","defenders",null);
 		await message.setFlag("shimmeringreach","defenders",new_defenders);
 	}
@@ -842,9 +868,7 @@ export function toggleDicerollDisplay(event){
 	
 	
 		let targets = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content');
-		//console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
-		//console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent());
-		
+
 		Object.entries(targets).forEach(target => {
 			if (!isNaN(target[0])){
 				if(target[1].style.display == "flex"){
@@ -855,7 +879,6 @@ export function toggleDicerollDisplay(event){
 				}
 			}
 		});
-		//console.log(game.users);
 }
 
 
@@ -948,6 +971,10 @@ export async function rerollChatCard(event){
 	else if(message.getFlag("shimmeringreach","skillname")){
 		rerollSkillCard(event);
 	}
+	else if(message.getFlag("shimmeringreach","overload")){
+		rerollDrainCard(event);
+	}
+	
 }
 
 async function rerollCombatCard(event){
@@ -959,7 +986,6 @@ async function rerollCombatCard(event){
 	
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let attacker = message.getFlag("shimmeringreach","attacker");
-	//console.log(dataset);
 	if (game.users.current.data.role != 4){
 		if (!(game.actors.get(dataset.actor_id).permission == 3)){
 			ui.notifications.warn("You do not have permission to reroll this actor.");
@@ -1001,9 +1027,6 @@ async function gmRerollCombatCard(dataset,messageId){
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let attacker = message.getFlag("shimmeringreach","attacker");
 	
-	
-	
-	////console.log(dataset);
 	let new_defenders = [];
 	let i = 0;
 	if(dataset.hasOwnProperty('attacker')){
@@ -1038,11 +1061,7 @@ async function gmRerollCombatCard(dataset,messageId){
 			if ((defender[1].token_id == null && defender[1].actor._id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
 					
 				if (!defender[1].hasOwnProperty('reroll')){
-					////console.log('rerolling defender');
 					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total
-					
-					//////console.log(defender);
-					//////console.log(dicepool);
 					
 					let reroll = new RollDP( dicepool, defender[1].actor, false, false).evaluate();
 					
@@ -1062,9 +1081,6 @@ async function gmRerollCombatCard(dataset,messageId){
 					defender[1].reroll= fullreroll;
 					
 					let str = "data.flags.shimmeringreach.defenders." + i + ".reroll";
-					//////console.log(message);
-					//////console.log("full reroll",fullreroll);
-					//////console.log("blooperd");
 					//await message.update({str : fullreroll});
 				}
 				else {
@@ -1074,8 +1090,6 @@ async function gmRerollCombatCard(dataset,messageId){
 			i++;
 		});
 		
-		//////console.log("defenders",defenders);
-		
 	await message.setFlag("shimmeringreach","defenders",null);
 	
 	await message.setFlag("shimmeringreach","defenders",defenders);
@@ -1083,7 +1097,6 @@ async function gmRerollCombatCard(dataset,messageId){
 	}
 	await updateCombatantFlags(message);
 	//await updateCombatContent(message);
-	////console.log(message);
 }
 
 
@@ -1093,13 +1106,6 @@ async function rerollSkillCard(event){
 
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
-	
-	
-	
-	
-	
-	////console.log(dataset);
-	////console.log(message.data.flags.shimmeringreach);
 	
 	let old_content = message.data.flags.shimmeringreach;
 	
@@ -1135,3 +1141,43 @@ async function rerollSkillCard(event){
 	
 }
 
+async function rerollDrainCard(event){
+	const template = "systems/shimmeringreach/templates/chat/drain-card.html";
+
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	let old_content = message.data.flags.shimmeringreach;
+	
+	if (!old_content.hasOwnProperty('reroll')){
+		let dicepool = old_content.diceroll.terms[0].number - old_content.diceroll.total;
+		let reroll = new RollDP( dicepool, old_content.actor, false, false).evaluate();
+		
+		let q = reroll.terms[0].results;
+			q.sort((a, b) => {
+			return (b.result - a.result);
+		});
+		
+		const fullreroll = {
+			class: "RollDP",
+			dice: [],
+			formula: reroll._formula,
+			total: reroll._total,
+			results: reroll.results,
+			terms: [{...reroll.terms[0]}]
+		};
+		
+		old_content.reroll = fullreroll;
+		
+		old_content.display_hits = old_content.diceroll.total + fullreroll.total;
+		old_content.overload_applied = Math.max(old_content.overload_applied - fullreroll.total,0);
+		
+		await message.update({"flags.shimmeringreach": old_content});
+		await message.update({"content": await renderTemplate(template,old_content)});
+		
+	}
+	else {
+		ui.notifications.warn("This reroll has already been used.");
+	}
+	
+}

@@ -8,11 +8,13 @@
                 <label class="resource-label">Power</label>
                   <input type="text" name="data.power" value="{{data.power}}" data-dtype="Number"/>
               </div>
+			  
+			 {{#ifEquals data.skill "weapon_skill"}}
+			  
               <div class="resource">
                 <label class="resource-label">Reach</label>
                   <input type="text" name="data.reach" value="{{data.reach}}" data-dtype="Number"/>
               </div>
-			  
 			  
 			  <div class="resource">
                   <label for="data.handedness" class="resource-label">Size</label>
@@ -26,7 +28,6 @@
 						</select>
                   </div>
               </div>
-			  
 			  <div class="resource">
                   <label for="data.Shield" class="resource-label">Shield</label>
                   <div class="resource-content flexrow flex-center flex-between">
@@ -43,6 +44,7 @@
                   </div>
               </div>
 			  
+			  {{/ifEquals}}
 				
 			  
 			  <div class="resource">

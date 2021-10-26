@@ -191,8 +191,6 @@ export class SRActorSheet extends ActorSheet {
     if (dataset.roll) {
       let roll = new RollDP(dataset.roll, this.actor.data.data, dataset.explode, dataset.applywounds);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
-	  console.log("onRoll event");
-	  //console.log(dataset.explode);
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
@@ -276,9 +274,6 @@ export class SRActorSheet extends ActorSheet {
 			{
 				buff.data.data.active = !buff.data.data.active;
 				const newdata = buff.data;
-				
-				
-				
 				this.actor.updateEmbeddedEntity("OwnedItem",newdata);
 			}
 		  }			  
@@ -294,40 +289,30 @@ export class SRActorSheet extends ActorSheet {
 	let id = dataset.weapon;
 	
 	let weapons = this.actor.items;
-	//console.log(weapons);
-	//console.log(id);
+
 	let a = [];
 	weapons.forEach(weapon => {
-	//console.log(weapon.data._id);
-		//console.log(weapon);
 		if (weapon.data.type === 'weapon'){
-			//console.log(weapon);
 						
 			if(weapon.data._id === id)
 			{
-				//console.log('flipping weapon');
 				weapon.data.data.active = !weapon.data.data.active;
 				const newdata = weapon.data;
-				//console.log(newdata);
 				a.push(newdata);
 				//this.actor.updateEmbeddedEntity("OwnedItem", newdata);
 				//this.actor.updateOwnedItem(weapon.data);
 				
-				//console.log('flipped weapon');
 				
 			}
 			else if(weapon.data.data.active === true)
 			{
-				//console.log('unequipping weapon');
 				weapon.data.data.active = false;
 				
 				const newdata = weapon.data;
 				
 				a.push(newdata);
-				//console.log(newdata);
 				
 				//this.actor.updateEmbeddedEntity("OwnedItem",newdata);
-				//console.log('unequipped weapon');
 				
 			}
 			
@@ -339,11 +324,9 @@ export class SRActorSheet extends ActorSheet {
 
 	async updateWeapons(weapons)
 	{
-		//console.log(weapons);
 		let i = 0;
 		weapons.forEach(weapon => {
 			setTimeout(function(){this.actor.updateEmbeddedEntity("OwnedItem",weapon)}.bind(this),i*50);
-			//console.log(weapon);
 			//await this.actor.updateEmbeddedEntity("OwnedItem",weapon);
 			i +=1;
 		});
