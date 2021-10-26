@@ -81,15 +81,12 @@ export class SRActor extends Actor {
 			def.passive += abilitybox[def.attr[i]].value;
 		}
 		def.active = def.passive + skillbox[def.skill].value + Math.min(skillbox[def.skill].value,Math.ceil(data.tradition.rank.value / 2));
-		/*console.log(key);
-		console.log(def.passive);
-		console.log(def.active);*/
+
 		/*if (!def.allowpassive)
 		{
 			def.passive = 0;
 		}*/
 	}
-	//console.log(data.defenses);
 	
 	
 
@@ -127,14 +124,12 @@ export class SRActor extends Actor {
 	
 	
 	const item_set = actorData.items;
-	//console.log(weapons);
-	//console.log(item_set);
+
 	Object.entries(item_set).forEach(weapon => {
 		//weapon[1].data.type == 'weapon'
 		if (weapon[1].type == 'weapon')
 		{
-			//console.log(weapon);
-			//console.log(weapon[1].data.attr);
+
 			if (weapon[1].data.attr != "none"){
 				weapon[1].data.dv = weapon[1].data.power + data.abilities[weapon[1].data.attr].value;
 			}
@@ -147,7 +142,6 @@ export class SRActor extends Actor {
 			{
 				data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
 				data.defenses.parry.active += weapon[1].data.reach;
-				//console.log(weapon);
 			}
 			
 		}
@@ -157,7 +151,6 @@ export class SRActor extends Actor {
 	Object.entries(item_set).forEach(knowskill => {
 		if (knowskill[1].type == 'skill')
 		{
-			//console.log(knowskill[1].data.attr);
 			
 			knowskill[1].data.dicepool = knowskill[1].data.rank  + Math.min(knowskill[1].data.rank,Math.ceil(data.tradition.rank.value / 2));
 			if(knowskill[1].data.attr != "none"){
