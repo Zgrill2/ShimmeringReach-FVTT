@@ -161,6 +161,17 @@ Hooks.on("init", function() {
 	});
 });
 
+Hooks.on("renderChatMessage", (event, html, messageData) => {
+	Object.entries($(html).find('.delete-defender')).forEach(target => {
+		if (target[0] != "length" && target[0] != "prevObject"){
+			if (game.actors.get(target[1].dataset.actorId).permission != 3){
+				target[1].style.display = "none";
+			}
+		}
+	});
+});
+
+
 /*
 Hooks.on("renderChatMessage", (message,data,html) => {
         // NOTE: This depends on the exact card template HTML structure.

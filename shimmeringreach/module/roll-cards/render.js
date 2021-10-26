@@ -2,12 +2,14 @@
 async function handleSocket(data){
 	
 	if (data.type == "addDefenseMessages" && game.users.current.data.role == 4){
-		gmAddDefenseMessages(data.dataset,data.actors,data.messageId,data.options)
+		gmAddDefenseMessages(data.dataset,data.actors,data.messageId,data.options);
 	}
 	if (data.type == "rerollCombatCard" && game.users.current.data.role == 4){
-		gmRerollCombatCard(data.dataset,data.messageId)
+		gmRerollCombatCard(data.dataset,data.messageId);
 	}
-	
+	if (data.type == "deleteDefenderMessage" && game.users.current.data.role == 4){
+		gmDeleteDefenderMessage(data.dataset,data.messageId);
+	}
 	
 }
 
@@ -632,6 +634,7 @@ export async function addDefenseMessages(event,options){
 	
 	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
 	let dataset = target.dataset;
+	console.log(dataset);
 	let spl =  "/modules" + target.src.split("modules")[1];
 	dataset.icon = spl;
 	let messageId = target.closest('[data-message-id]').dataset.messageId;
@@ -878,15 +881,52 @@ export function toggleDicerollDisplay(event){
 		});
 }
 
+
+
+
+
+
+
+
+
+
 export async function deleteDefenderMessage(event){
-	if(game.users.current.data.role == 4){
-		let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
-		let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+	
+	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let messageId = target.closest('[data-message-id]').dataset.messageId;
+	
+	if(game.users.current.data.role != 4){
+		game.socket.emit('system.shimmeringreach', {type: "deleteDefenderMessage", dataset: dataset, messageId: messageId})
+		console.log("you're not a gm!");
+		console.log(dataset);
+	}
+	else {
+		console.log("you are a gm!");
+		dataset.gm = true;
+		gmDeleteDefenderMessage(dataset,messageId);
+	}
+	
+}
+
+export async function gmDeleteDefenderMessage(dataset,messageId){
+	////console.log(event);
+	////console.log(event.currentTarget.dataset);
+	////console.log($(event.currentTarget));
+		let message = game.messages.get(messageId);
+		
+		console.log(dataset);
+		console.log(messageId);
+		console.log(message);
 		
 		let defenders = [];
 		const old_defenders = message.getFlag("shimmeringreach","defenders");
+		console.log("dataset",dataset);
 		Object.entries(old_defenders).forEach(defender => {
-
+			console.log(defender[1]);
+			
+				////console.log(defender[1].hasOwnProperty('token_id'));
+			
 			if (defender[1].hasOwnProperty('token_id')){
 				if (defender[1].token_id != dataset.token_id){
 					defenders.push(defender[1]);
@@ -918,10 +958,7 @@ export async function deleteDefenderMessage(event){
 		await message.setFlag("shimmeringreach","defenders",new_defenders);
 		
 		await updateCombatContent(message);
-	}
-	else {
-		ui.notifications.warn("You do not have permission to delete this roll.");
-	}
+	
 }
 
 export async function rerollChatCard(event){
@@ -950,7 +987,7 @@ async function rerollCombatCard(event){
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let attacker = message.getFlag("shimmeringreach","attacker");
 	if (game.users.current.data.role != 4){
-		if (!(game.users.current.data.character == dataset.actor_id)){
+		if (!(game.actors.get(dataset.actor_id).permission == 3)){
 			ui.notifications.warn("You do not have permission to reroll this actor.");
 			return
 		}
