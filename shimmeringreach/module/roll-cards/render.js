@@ -59,21 +59,16 @@ export async function customAttackDialog(event,actor,options) {
 			if(confirmed) {
 				options.dvMod = parseInt(html.find('[name=dvMod]')[0].value);
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
-				let overload = parseInt(html.find('[name=overload]')[0].value);
-				let overload_soak = parseInt(html.find('[name=overload_soak]')[0].value);
-				let overload_explode = html.find('[name=chk-explode-soak]')[0].checked;
+				let overload = parseInt(html.find('[name=overload]').length > 0 ? html.find('[name=overload]')[0].value : 0);
+				let overload_soak = parseInt(html.find('[name=overload_soak]').length > 0 ? html.find('[name=overload_soak]')[0].value : 0);
+				let overload_explode = html.find('[name=chk-explode-soak]')[0] ? html.find('[name=chk-explode-soak]')[0].checked : false;
 				if (overload > 0){
 					renderOverload(actor,overload,overload_soak, overload_explode);
 				}
 				
-				if(html.find('[name=chk-wounds]')[0].checked)
-				{
-					options.wounds = true;
-				}
-				if(html.find('[name=chk-explode]')[0].checked)
-				{
-					options.explode = true;
-				}
+				options.wounds = html.find('[name=chk-wounds]')[0].checked;
+				options.explode = html.find('[name=chk-explode]')[0].checked;
+				
 				renderAttackChatData(event,actor,options);
 			}
 		}
@@ -306,8 +301,13 @@ export async function customSoakDialog(event) {
 		},
 		close: html =>{			
 			if(confirmed) {
-				options.hp = parseInt(document.getElementById("red2").innerHTML);
-				options.stam = parseInt(document.getElementById("green2").innerHTML);
+				let redbar = document.getElementById("red2").innerHTML;
+				let greenbar = document.getElementById("green2").innerHTML;
+				options.hp = parseInt(redbar ? redbar : 0);
+				options.stam = parseInt(greenbar ? greenbar : 0);
+				
+				console.log(options.hp,options.stam);
+				
 				actor.update({"data.health.value" : actor_info.hp.value - options.hp});
 				actor.update({"data.stamina.value" : actor_info.stam.value - options.stam});
 			}
@@ -406,7 +406,7 @@ export async function simpleSoak(event) {
 			reswound: actor.data.data.wound_penalty.resilient_wounds
 		}
 		
-		let stamdmg = Math.max(0,Math.min(actor_info.armor.value,actor_info.stam.value-1));
+		let stamdmg = Math.max(0,Math.min(actor_info.dv,Math.min(actor_info.armor.value,actor_info.stam.value-1)));
 		let hpdmg = dataset.dv - stamdmg;
 		
 		if (hpdmg >= actor_info.hp.value && actor_info.armor.value >= actor_info.stam.value && actor_info.stam.value > 0){
