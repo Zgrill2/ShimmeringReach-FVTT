@@ -1,7 +1,7 @@
 <div
     class="shimmeringreach roll-card"
 	
->	<div class="block" data-attacker="true" data-token_id="{{attacker.token_id}}" data-actor_id="{{attacker.actor._id}}">
+>	<div class="block" data-attacker="true" data-token_id="{{attacker.token_id}}" data-actor_id="{{attacker.actor.id}}">
 	<div class="row">
 	  <div class="column-left">
 			<div class="roll-card-header">
@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	{{#each defenders as |defender|}}
-	<div class="block" data-token_id="{{defender.token_id}}" data-actor_id="{{defender.actor._id}}" data-dv="{{defender.damage}}">
+	<div class="block" data-token_id="{{defender.token_id}}" data-actor_id="{{defender.actor.id}}" data-dv="{{defender.damage}}">
 		<div class="row">
 			<div class="column-left">
 				<div class="roll-card-header">
@@ -86,7 +86,7 @@
 					<div class="net-hits-block" title="Net Hits">{{defender.net_hits}}</div>
 					<div class="incoming-damage-block" title="Incoming Damage">{{defender.damage}}</div>
 					{{/if}}
-					<div class="fas fa-times spacer-40 delete-defender" width="40" height="40" data-token-id="{{defender.token_id}}" data-actor-id="{{defender.actor._id}}"></div>
+					<div class="fas fa-times spacer-40 delete-defender" width="40" height="40" data-token-id="{{defender.token_id}}" data-actor-id="{{defender.actor.id}}"></div>
 				</div>
 			</div>
 			

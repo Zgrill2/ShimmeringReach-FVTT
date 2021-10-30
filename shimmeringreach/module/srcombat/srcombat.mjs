@@ -50,7 +50,7 @@ export class SRCombat extends Combat {
   let firstInit = -10;
   for ( let [i, t] of this.turns.entries() ) {
 
-	await this.updateCombatant({_id: t._id, order: i, initiative: t.initiative + firstInit}, {});
+	await this.updateCombatant({_id: t.id, order: i, initiative: t.initiative + firstInit}, {});
 	if (i == 0){
 		firstInit = 0;
 	}
@@ -77,7 +77,7 @@ export class SRCombat extends Combat {
         if ( t.actor?.effects.find(e => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId ) ) continue;
         next = i;
 
-		this.setInitiative(t._id, t.initiative -10);
+		this.setInitiative(t.id, t.initiative -10);
         break;
       }
 		if (!hasinit)
@@ -135,7 +135,7 @@ export class SRCombat extends Combat {
 	
 	async resetAll() {
     const updates = this.data.combatants.map(c => { return {
-      _id: c._id,
+      _id: c.id,
       initiative: null,
 	  order: 0
     }});

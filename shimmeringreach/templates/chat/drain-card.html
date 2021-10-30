@@ -1,9 +1,9 @@
 <div
     class="shimmeringreach drain-roll-card"
-	
+
 >	<div class="block" data-actor_id="{{actor._id}}" data-token_id="{{token_id}}" data-drain="{{overload_applied}}">
 	<div class="row">
-			
+
 				<div class="column-left">
 					<div class="roll-card-header">
 						<img src="{{actor.img}}" class="entity-selectable" title="{{actor.name}}" width="40" height="40"/>
@@ -18,14 +18,14 @@
 						<div class="skill-title">Drain</div>
 					</div>
 				</div>-->
-			
+
 	</div>
-	
+
 	<div class="roll dice-roll-content">
 		    {{#each diceroll.terms as |term|}}
             {{#each term.results as |results|}}
 			{{#if results.success}}
-			
+
 			<div class="dice-roll-box-green">{{results.result}}</div>
 			{{else}}
 				{{#if results.failure}}
@@ -36,15 +36,15 @@
 			{{/if}}
 			{{/each}}
 			{{/each}}
-			
-			
+
+
 		</div>
-		
+
 		<div class="roll dice-roll-content">
 		    {{#each reroll.terms as |term|}}
             {{#each term.results as |results|}}
 			{{#if results.success}}
-			
+
 			<div class="dice-roll-box-green">{{results.result}}</div>
 			{{else}}
 				{{#if results.failure}}
@@ -57,7 +57,7 @@
 			{{/each}}
 		</div>
 	</div>
-	
-	
-	
-</div>
+
+
+
+</div> 

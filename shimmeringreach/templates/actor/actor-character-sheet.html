@@ -281,13 +281,13 @@
                     <a class="item-control item-create" title="Create item" data-type="weapon"><i class="fas fa-plus"></i>New</a>
                   </div>
                 </li>
-            {{#each actor.weapons as |item id|}}
+            {{#each actor.items as |item id|}}
                 <li class="item item-header flexrow" data-item-id="{{item.id}}">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
                     <div class="item-name">{{item.name}}</div>
-					<div class="column"><div class="dv-block-small" title="DV">{{item.data.dv}}</div></div>
-					<div class="column"><div class="dice-target-block attack-message" data-weapon="{{item.id}}" data-roll="{{item.data.dicepool}}" data-label="{{item.name}} Attack" data-applywounds="true" style="font-size:1em">{{numberFormat item.data.dicepool decimals=0 sign=false}}</div></div>
-					<div class="column"><input type="checkbox" class="checkbox group-toggle"  name="item.data.active" data-weapon="{{item.id}}" {{checked item.data.active}}></div>
+					<div class="column"><div class="dv-block-small" title="DV">{{item.data.data.dv}}</div></div>
+					<div class="column"><div class="dice-target-block attack-message" data-weapon="{{item.id}}" data-roll="{{item.data.data.dicepool}}" data-label="{{item.name}} Attack" data-applywounds="true" style="font-size:1em">{{numberFormat item.data.data.dicepool decimals=0 sign=false}}</div></div>
+					<div class="column"><input type="checkbox" class="checkbox group-toggle"  name="item.data.active" data-weapon="{{item.id}}" {{checked item.data.data.active}}></div>
 					<div class="item-controls">
                         <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
@@ -312,7 +312,7 @@
                 <li class="item flexrow" data-item-id="{{item.id}}">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
                     <h4 class="item-name">{{item.name}}</h4>
-                    <input type="checkbox" class="checkbox buff-toggle"  name="item.data.active" data-buff="{{item.id}}" {{checked item.data.active}}></h4>
+                    <input type="checkbox" class="checkbox buff-toggle"  name="item.data.active" data-buff="{{item.id}}" {{checked item.data.data.active}}></h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
