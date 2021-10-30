@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
@@ -17,15 +17,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 10px 0;
-  padding: 0;
-}
-
-.grid-2col-tight {
-  display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0px;
-  margin: 0px 0;
   padding: 0;
 }
 
@@ -79,6 +70,94 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
+.grid-start-2 {
+  grid-column-start: 2;
+}
+
+.grid-start-3 {
+  grid-column-start: 3;
+}
+
+.grid-start-4 {
+  grid-column-start: 4;
+}
+
+.grid-start-5 {
+  grid-column-start: 5;
+}
+
+.grid-start-6 {
+  grid-column-start: 6;
+}
+
+.grid-start-7 {
+  grid-column-start: 7;
+}
+
+.grid-start-8 {
+  grid-column-start: 8;
+}
+
+.grid-start-9 {
+  grid-column-start: 9;
+}
+
+.grid-start-10 {
+  grid-column-start: 10;
+}
+
+.grid-start-11 {
+  grid-column-start: 11;
+}
+
+.grid-start-12 {
+  grid-column-start: 12;
+}
+
+.grid-span-2 {
+  grid-column-end: span 2;
+}
+
+.grid-span-3 {
+  grid-column-end: span 3;
+}
+
+.grid-span-4 {
+  grid-column-end: span 4;
+}
+
+.grid-span-5 {
+  grid-column-end: span 5;
+}
+
+.grid-span-6 {
+  grid-column-end: span 6;
+}
+
+.grid-span-7 {
+  grid-column-end: span 7;
+}
+
+.grid-span-8 {
+  grid-column-end: span 8;
+}
+
+.grid-span-9 {
+  grid-column-end: span 9;
+}
+
+.grid-span-10 {
+  grid-column-end: span 10;
+}
+
+.grid-span-11 {
+  grid-column-end: span 11;
+}
+
+.grid-span-12 {
+  grid-column-end: span 12;
+}
+
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
@@ -89,8 +168,6 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
-  padding: 5px;
-  border: 1px solid #999;
 }
 
 .flex-group-left {
@@ -107,20 +184,297 @@
   text-align: right;
 }
 
-.flex-center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
+.flexshrink {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
 }
 
 .flex-between {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.flexlarge {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.align-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.align-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.align-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Styles limited to shimmeringreach sheets */
+.shimmeringreach {
+  /* ----------------------------------------- */
+  /*  Items Lists                              */
+  /* ----------------------------------------- */
+  /* Example style for ShimmeringReach (can be removed if not needed) */
+}
+
+.shimmeringreach .item-form {
+  font-family: "Roboto", sans-serif;
+}
+
+.shimmeringreach .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.shimmeringreach .sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.shimmeringreach .sheet-header .header-fields {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.shimmeringreach .sheet-header h1.charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.shimmeringreach .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.shimmeringreach .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.shimmeringreach .sheet-body,
+.shimmeringreach .sheet-body .tab,
+.shimmeringreach .sheet-body .tab .editor {
+  height: 100%;
+}
+
+.shimmeringreach .tox .tox-editor-container {
+  background: #fff;
+}
+
+.shimmeringreach .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.shimmeringreach .resource-label {
+  font-weight: bold;
+}
+
+.shimmeringreach .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.shimmeringreach .items-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+
+.shimmeringreach .items-header .item-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shimmeringreach .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+
+.shimmeringreach .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.shimmeringreach .items-list .item-name {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shimmeringreach .items-list .item-name h3, .shimmeringreach .items-list .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.shimmeringreach .items-list .item-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.shimmeringreach .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+
+.shimmeringreach .items-list .item {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+
+.shimmeringreach .items-list .item:last-child {
+  border-bottom: none;
+}
+
+.shimmeringreach .items-list .item .item-name {
+  color: #191813;
+}
+
+.shimmeringreach .items-list .item .item-name .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30px;
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+
+.shimmeringreach .items-list .item-prop {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+
+.shimmeringreach .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.shimmeringreach .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+
+.shimmeringreach .items-list .items-header .item-name {
+  padding-left: 5px;
+  text-align: left;
+}
+
+.shimmeringreach .item-formula {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  padding: 0 8px;
+}
+
+.shimmeringreach .effects .item .effect-source,
+.shimmeringreach .effects .item .effect-duration,
+.shimmeringreach .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+
+.shimmeringreach .effects .item .effect-controls {
+  border: none;
+}
+
+
+/* Our Custom Non-boilerplate CSS */
+/** this content should be moved to its own file(s) post migration **/
+
+.dicepool:first-letter {
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.skill-group {
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 0;
 }
 
 
@@ -177,33 +531,33 @@
 /*dice for chat card*/
 
 .roll-card-header {
-            display: flex;
-            flex-flow: row wrap;
-            padding: 0.0em 0.0em;
-            justify-content: center;
-            font-size: 24px;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.0em 0.0em;
+  justify-content: center;
+  font-size: 24px;
 }
 
 .dice-roll-content {
-            padding: 0.0em 0.0em;
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-			display: none;
+  padding: 0.0em 0.0em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  display: none;
 }
 
 
 
 
 .defense-block {
-                background-size: 36px 36px;
-                font-size: 20px;
-                font-weight: bold;
-                text-align: center;
-                width: 36px;
-                line-height: 36px;
-				filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
-				border-style: none;
+  background-size: 36px 36px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 36px;
+  line-height: 36px;
+  filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
+  border-style: none;
 	
 }
 
@@ -509,158 +863,3 @@
 	font-weight: bold;
 	font-size: 16;
 }
-
-
-
-
-
-
-
-
-
-
-
-/* Styles limited to boilerplate sheets */
-.shimmeringreach .item-form {
-  font-family: "Roboto", sans-serif;
-}
-
-.shimmeringreach .sheet-header {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 210px;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
-
-.shimmeringreach .sheet-header .profile-img {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 100px;
-  flex: 0 0 100px;
-  height: 100px;
-  margin-right: 10px;
-}
-
-.shimmeringreach .sheet-header .header-fields {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.shimmeringreach .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px;
-  margin: 5px 0;
-  border-bottom: 0;
-}
-
-.shimmeringreach .sheet-header h1.charname input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.shimmeringreach .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
-
-.shimmeringreach .sheet-body,
-.shimmeringreach .sheet-body .tab,
-.shimmeringreach .sheet-body .tab .editor {
-  height: 100%;
-}
-
-.shimmeringreach .tox .tox-editor-container {
-  background: #fff;
-}
-
-.shimmeringreach .tox .tox-edit-area {
-  padding: 0 8px;
-}
-
-.shimmeringreach .resource-label {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.shimmeringreach .tabs {
-  height: 40px;
-  border-top: 1px solid #AAA;
-  border-bottom: 1px solid #AAA;
-}
-
-.shimmeringreach .tabs .item {
-  line-height: 40px;
-  font-weight: bold;
-}
-
-.shimmeringreach .tabs .item.active {
-  text-decoration: underline;
-  text-shadow: none;
-}
-
-.shimmeringreach .items-list {
-  list-style: none;
-  margin: 0px 0;
-  padding: 0;
-  overflow-y: auto;
-
-}
-
-.shimmeringreach .items-list .item-header {
-  font-weight: bold;
-}
-
-.shimmeringreach .items-list .item {
-  height: 30px;
-  line-height: 24px;
-  padding: 3px 0;
-  border-bottom: 1px solid #BBB;
-}
-
-.shimmeringreach .items-list .item .item-image {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 24px;
-  flex: 0 0 24px;
-  margin-right: 5px;
-}
-
-.shimmeringreach .items-list .item img {
-  display: block;
-}
-
-.shimmeringreach .items-list .item-name {
-  margin: 0;
-}
-
-.shimmeringreach .items-list .item-controls {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 86px;
-  flex: 0 0 86px;
-  text-align: right;
-}
-
-.dicepool:first-letter {
-  font-weight: bold;
-  font-size: 100%;
-}
-
-.skill-group {
-  border-style: solid;
-  border-width: 1px;
-  margin: 0 0;
-}
-
