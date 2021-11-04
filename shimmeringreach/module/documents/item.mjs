@@ -33,13 +33,13 @@ export class ShimmeringReachItem extends Item {
     const data = itemData.data;
     const flags = itemData.flags.shimmeringreach || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
+    // Make separate methods for each Item type (weapon, buff, knowledge, etc.) to keep
     // things organized.
     if (itemData.type == "feature") {
       this._prepareFeatureData(this.parent.data, itemData);
     }
     else if (itemData.type == "weapon") {
-      console.log("skip")
+      // We do not prepare weapon data here because it was already prepared as part of setting up Actor
       //this._prepareWeaponData(this.parent.data, itemData);
     }
     //this._prepareWeaponData(itemData);
@@ -79,13 +79,20 @@ export class ShimmeringReachItem extends Item {
 		return (false);
 	}
 
-  _prepareWeaponData(actorData, itemData) {
-    //console.log("LOGGING IDATA")
-	  itemData.data.dv = itemData.data.power + actorData.data.abilities.str.value;
-    //console.log("actor data", actorData.data.skills.weapon_skill);
-    //console.log("actorData.data.skills.weapon_skill.dicepool", actorData.data.skills.weapon_skill.dicepool);
-    //console.log(actorData.data.abilities.str.value);
-	  itemData.data.dicepool = itemData.data.reach + actorData.data.skills.weapon_skill.dicepool;
+  _prepareDerivedWeaponData(actorData, itemData) {
+    if (itemData.type == 'weapon') {
+	    itemData.data.dv = itemData.data.power + actorData.data.abilities[itemData.data.attr].value;
+	    itemData.data.dicepool = itemData.data.reach + actorData.data.skills[itemData.data.skill].dicepool;
+      return;
+    }
+    if (itemData.type == 'skill') {
+      // Instead we should just default to only having INT and LOG selectable
+      if (itemData.data.attr == 'none') {
+        itemData.data.dicepool = itemData.data.rank;
+        return;
+      }
+      itemData.data.dicepool = itemData.data.rank + actorData.data.abilities[itemData.data.attr].value
+    }
   }
 
   /**

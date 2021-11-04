@@ -17,6 +17,8 @@ import { SRCombat } from "./srcombat/srcombat.mjs";
 // Import renders
 import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain} from './roll-cards/render.js';
 
+import { measureDistances } from "./canvas/canvas.js";
+
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */

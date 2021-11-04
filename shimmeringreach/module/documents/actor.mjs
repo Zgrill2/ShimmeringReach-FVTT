@@ -11,7 +11,8 @@ export class ShimmeringReachActor extends Actor {
     // prepareBaseData(), prepareEmbeddedDocuments() (including active effects),
     // prepareDerivedData().
     super.prepareData();
-    this.items.forEach(i => i._prepareWeaponData(this.data, i.data))
+    this.items.forEach(i => i._prepareDerivedWeaponData(this.data, i.data)) // This data is calculated post actor setup
+    this._prepareBlockParryData(this.data); // Finally these defense values are calculated
   }
 
   /** @override */
@@ -101,28 +102,7 @@ export class ShimmeringReachActor extends Actor {
         }
     }
 
-    // weapons
-    if (data.equipped_weapon != undefined){
-      data.equipped_weapon.dicepool = data.equipped_weapon.reach + data.skills.weapon_skill.dicepool;
-    }
-
     const item_set = actorData.items;
-    
-    Object.entries(item_set).forEach(weapon => {
-      if (weapon[1].type == 'weapon') {
-        if (weapon[1].data.attr != "none") {
-          weapon[1].data.dv = weapon[1].data.power + data.abilities[weapon[1].data.attr].value;
-        }
-        else {
-          weapon[1].data.dv = weapon[1].data.power;
-        }
-        weapon[1].data.dicepool = weapon[1].data.reach + data.skills.weapon_skill.dicepool;
-        if (weapon[1].data.active) {
-          data.defenses.block.active += shield_bonuses[weapon[1].data.shield];
-          data.defenses.parry.active += weapon[1].data.reach;
-        }
-      }
-    });
 
     Object.entries(item_set).forEach(knowskill => {
       if (knowskill[1].type == 'skill') {        
@@ -135,6 +115,50 @@ export class ShimmeringReachActor extends Actor {
 
   }
 
+  /**
+   * Prepares block/parry pools after weapons are setup (technically this could happen after weapons are setup but before weapon derived data is set up)
+   * @param actorData Actor data document
+   */
+  _prepareBlockParryData(actorData) {
+    // Make modifications to data here. For example:
+    const data = actorData.data;
+    const shield_bonuses = [0,1,4,5,7];
+
+    //let weapon = this._getEquippedWeapon(actorData.items);
+    //let weapon = this._getEquippedWeapon(actorData.items);
+    let weapon;
+    actorData.items.forEach((item) => {
+      if (item.data.type == 'weapon') {
+        if (item.data.data.active) {
+          weapon = item;
+        }
+      }
+    });
+
+    if(weapon && weapon.data.data.skill == 'weapon_skill') {
+      data.defenses.block.active += shield_bonuses[weapon.data.data.shield]
+      data.defenses.parry.active += weapon.data.data.reach
+      if (weapon.data.data.shield == 1) {
+        weapon.data.data.dicepool -= 2
+      }
+    }
+
+  }
+
+  /**
+   * Inefficient search for equipped weapon
+   * Should just cache the equipped weapon so we do not have to iterate through all items
+   * @param items actorData.items
+   */
+  _getEquippedWeapon(items) {
+    items.forEach((item) => {
+      if (item.data.type == 'weapon') {
+        if (item.data.data.active) {
+          return item;
+        }
+      }
+    });
+  }
 
   /**
    * Prepare NPC type specific data.

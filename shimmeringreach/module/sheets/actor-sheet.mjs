@@ -335,8 +335,6 @@ export class ShimmeringReachActorSheet extends ActorSheet {
 
   // is this async for performance reasons?
 	async updateWeapons(weapons) {
-		let i = 0;
-
     this.actor.updateEmbeddedDocuments("Item", weapons)
     /*
 		weapons.forEach(weapon => {
