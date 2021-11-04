@@ -508,7 +508,7 @@ export async function simpleSoak(event) {
 	
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
-	
+	console.log(dataset)
 	console.log(actor)
 	if (actor.permission == 3) {
 		
@@ -743,21 +743,21 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	Object.assign(defenders, old_defenders);
 	
 	Object.entries(defender_list).forEach(actor => {
-		//console.log(actor);
 		
 		let present = false;
-		////console.log(old_defenders);
 		Object.entries(old_defenders).forEach(old_actor => {
-			////console.log(old_actor);
-			////console.log(actor);
-			if (actor[1].token && actor[1].token.data.id == old_actor[1].token_id){
-				//Found token, skipping
+
+			// If Token already rolled, don't roll
+			if (actor[1].token && actor[1].token.id == old_actor[1].token_id) {
+				console.log("skip")
 				present = true;
 			}
-			else if (!(old_actor[1].token_id) && actor[1].data.id == old_actor[1].actor.id){
-				//Found actor, skipping
+			// Else If Actor already rolled, don't roll
+			else if (!(old_actor[1].token_id) && actor[1].id == old_actor[1].actor.id) {
 				present = true;
-			}
+			};
+			// Necessary to check both actor and token for unlinked token handling (i.e. orc actor sheet with 10 tokens on map)
+			// token_id attribute is added to the old_actor[1] object below
 		});
 		
 		if (!present){
@@ -783,7 +783,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 			////console.log("this is what diceroll looks like",diceroll);
 			
 			if(actor[1].token){
-				defenderOptions.token_id = actor[1].token.data.id;
+				defenderOptions.token_id = actor[1].token.id;
 			}
 			defenders.push(defenderOptions);
 		}
