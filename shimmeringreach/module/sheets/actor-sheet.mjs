@@ -305,7 +305,7 @@ export class ShimmeringReachActorSheet extends ActorSheet {
     let a = [];
     weapons.forEach(weapon => {
       if (weapon.data.type === 'weapon') {
-        if(weapon.id == id) { // raises ._id deprecated warning but .id resolves as undefined
+        if(weapon.id == id) {
           console.log("toggle weapon state")
           const newdata = { 
             _id: weapon.id, 

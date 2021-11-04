@@ -471,11 +471,11 @@ async function renderOverload(actor, overload, overload_soak, overload_explode){
 	}
 
 	if(actor.token){
-		content.token_id = actor.token.data._id;
+		content.token_id = actor.token.id;
 	}
 
 	let chatData = {
-		user: game.user._id,
+		user: game.user.id,
 		content: await renderTemplate(template,content),
 		flags:{ "shimmeringreach": content}
 	}
