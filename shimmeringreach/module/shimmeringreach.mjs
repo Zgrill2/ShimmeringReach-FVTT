@@ -1,6 +1,7 @@
 // Import document classes.
 import { ShimmeringReachActor } from "./documents/actor.mjs";
 import { ShimmeringReachItem } from "./documents/item.mjs";
+import { SRCombatant } from "./srcombat/srcombatant.mjs";
 // Import sheet classes.
 import { ShimmeringReachActorSheet } from "./sheets/actor-sheet.mjs";
 import { ShimmeringReachItemSheet } from "./sheets/item-sheet.mjs";
@@ -18,6 +19,7 @@ import { SRCombat } from "./srcombat/srcombat.mjs";
 import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain} from './roll-cards/render.js';
 
 import { measureDistances } from "./canvas/canvas.js";
+
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -58,14 +60,18 @@ console.log(phrase)
    * Set an initiative formula for the system
    * @type {String}
    */
+   
+   //    formula: "@initiative.dice d6 + @abilities.rea.value",
   CONFIG.Combat.initiative = {
-    formula: "@initiative.dice d6 + @abilities.rea.value",
+	formula: "(@initiative.dice)d6 + @abilities.rea.value",
     decimals: 2
   };
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = ShimmeringReachActor;
   CONFIG.Item.documentClass = ShimmeringReachItem;
+  CONFIG.Combat.documentClass = SRCombat;
+  CONFIG.Combatant.documentClass = SRCombatant;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);

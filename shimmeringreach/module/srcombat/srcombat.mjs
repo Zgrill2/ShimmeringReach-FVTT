@@ -12,8 +12,9 @@ export class SRCombat extends Combat {
     const ia = Number.isNumeric(a.initiative) ? a.initiative : -9999;
     const ib = Number.isNumeric(b.initiative) ? b.initiative : -9999;
     let ci = ib - ia;
-	let at = a.actor._data.data;
-	let bt = b.actor._data.data;
+	
+	let at = a.actor.data.data;
+	let bt = b.actor.data.data;
 	
 	/* Sort by turn order.
 	First pass through on new round all turn orders are identical, bypassing this part.
@@ -49,8 +50,10 @@ export class SRCombat extends Combat {
   { 
   let firstInit = -10;
   for ( let [i, t] of this.turns.entries() ) {
-
-	await this.updateCombatant({_id: t.id, order: i, initiative: t.initiative + firstInit}, {});
+	if(!t.order){
+		//t.data.({order: i});
+	}
+	t.data.update({order: i, initiative: t.initiative + firstInit});
 	if (i == 0){
 		firstInit = 0;
 	}
@@ -132,41 +135,18 @@ export class SRCombat extends Combat {
 	
 	
   }
-	
-	async resetAll() {
-    const updates = this.data.combatants.map(c => { return {
-      _id: c.id,
-      initiative: null,
-	  order: 0
-    }});
-    await this.updateEmbeddedEntity("Combatant", updates);
-    return this.update({turn: 0});
+
+
+	 async resetAll() {
+    for ( let c of this.combatants ) {
+      c.data.update({initiative: null});
+	  c.data.update({order: 0});
+    }
+    return this.update({combatants: this.combatants.toJSON()}, {diff: false});
   }
 
-	_prepareCombatant(c, scene, players, settings={}) {
 
-    // Populate data about the combatant
-    c.token = scene.getEmbeddedEntity("Token", c.tokenId);
-    c.actor = c.token ? Actor.fromToken(new Token(c.token, scene)) : null;
-    c.name = c.name || c.token?.name || c.actor?.name || game.i18n.localize("COMBAT.UnknownCombatant");
 
-    // Permissions and visibility
-    c.permission = c.actor?.permission ?? 0;
-    c.players = c.actor ? players.filter(u => c.actor.hasPerm(u, "OWNER")) : [];
-    c.owner = game.user.isGM || (c.actor ? c.actor.owner : false);
-    c.resource = c.actor ? getProperty(c.actor.data.data, settings.resource) : null;
-
-    // Combatant thumbnail image
-    c.img = c.img ?? c.token?.img ?? c.actor?.img ?? CONST.DEFAULT_TOKEN;
-
-    // Set state information
-    c.initiative = Number.isNumeric(c.initiative) ? Number(c.initiative) : null;
-    c.visible = c.owner || !c.hidden;
-	c.order = Number.isNumeric(c.order) ? Number(c.order) : null;
-    return c;
-  }
-	
-	
 	
 	
 	
