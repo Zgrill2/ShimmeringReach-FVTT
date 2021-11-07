@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/shimmeringreach/templates/actor/parts/actor-features.html",
-    "systems/shimmeringreach/templates/actor/parts/actor-items.html",
-    "systems/shimmeringreach/templates/actor/parts/actor-spells.html",
-    "systems/shimmeringreach/templates/actor/parts/actor-effects.html",
+    "systems/shimmeringreach/templates/actor/actor-features.html",
+    //"systems/shimmeringreach/templates/actor/actor-items.html",
+    //"systems/shimmeringreach/templates/actor/actor-spells.html",
+    //"systems/shimmeringreach/templates/actor/actor-effects.html",
   ]);
 };
