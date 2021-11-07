@@ -48,17 +48,19 @@ export class SRCombat extends Combat {
   
   async assignOrder()
   { 
-  let firstInit = -10;
+  console.log("assign order");
+  let firstdude = {};
   for ( let [i, t] of this.turns.entries() ) {
-	if(!t.order){
-		//t.data.({order: i});
+	console.log("init:",t.initiative);
+	await t.setFlag("shimmeringreach","order",i);
+	if (i==0){
+		firstdude = t;
 	}
-	t.data.update({order: i, initiative: t.initiative + firstInit});
-	if (i == 0){
-		firstInit = 0;
-	}
+	
+	
   }
-	return null;
+	firstdude.data.update({initiative: firstdude.initiative - 10});
+	return;
   }
   
   
@@ -126,23 +128,101 @@ export class SRCombat extends Combat {
 
 	await this.resetAll();
 	await this.rollAll();
+	console.log("roll all");
 	await this.assignOrder();
 	// not triggering correctly. Is this because it's an async call?
 
 	
 	return this.update({round: this.round+1, turn: turn}, {advanceTime});
 	
+  }
+  
+/// for troubleshooting
+ async rollAll(options) {
+	 
+    const ids = this.combatants.reduce((ids, c) => {
+      if ( c.isOwner && !c.initiative) ids.push(c.id);
+      return ids;
+    }, []);
+	console.log(ids);
+    return this.rollInitiative(ids, options);
+  }
+
+/// for troubleshooting
+ async rollInitiative(ids, {formula=null, updateTurn=false, messageOptions={}}={}) {
+
+    // Structure input data
+    ids = typeof ids === "string" ? [ids] : ids;
+    const currentId = this.combatant.id;
+    const rollMode = messageOptions.rollMode || game.settings.get("core", "rollMode");
+
+    // Iterate over Combatants, performing an initiative roll for each
+    const updates = [];
+    const messages = [];
+    for ( let [i, id] of ids.entries() ) {
+
+      // Get Combatant data (non-strictly)
+      const combatant = this.combatants.get(id);
+      if ( !combatant?.isOwner ) return results;
+
+      // Produce an initiative roll for the Combatant
+      const roll = combatant.getInitiativeRoll(formula);
+      updates.push({_id: id, initiative: roll.total});
+	  
+      // Construct chat message data
+      let messageData = foundry.utils.mergeObject({
+        speaker: {
+          scene: this.scene.id,
+          actor: combatant.actor?.id,
+          token: combatant.token?.id,
+          alias: combatant.name
+        },
+        flavor: game.i18n.format("COMBAT.RollsInitiative", {name: combatant.name}),
+        flags: {"core.initiativeRoll": true}
+      }, messageOptions);
+      const chatData = await roll.toMessage(messageData, {
+        create: false,
+        rollMode: combatant.hidden && (rollMode === "roll") ? "gmroll" : rollMode
+      });
+
+      // Play 1 sound for the whole rolled set
+      if ( i > 0 ) chatData.sound = null;
+      messages.push(chatData);
+    }
+    if ( !updates.length ) return this;
+
+    // Update multiple combatants
+	console.log(updates);
+	Object.entries(this.combatants.map(x => x)).forEach( x => {
+		console.log(x[1].initiative);
+	});
+    await this.updateEmbeddedDocuments("Combatant", updates);
 	
 	
+	Object.entries(this.combatants.map(x => x)).forEach( x => {
+		console.log(x[1].initiative);
+	});
+
+    // Ensure the turn order remains with the same combatant
+    if ( updateTurn ) {
+      await this.update({turn: this.turns.findIndex(t => t.id === currentId)});
+    }
+
+    // Create multiple chat messages
+    await ChatMessage.implementation.create(messages);
+    return this;
   }
 
 
+
 	 async resetAll() {
+		 console.log("resetAll");
     for ( let c of this.combatants ) {
-      c.data.update({initiative: null});
-	  c.data.update({order: 0});
+      await c.data.update({initiative: null});
+	  await c.setFlag("shimmeringreach","order",0);
     }
-    return this.update({combatants: this.combatants.toJSON()}, {diff: false});
+	//return this.update({combatants: this.combatants.toJSON()}, {diff: false});
+	return;
   }
 
 
