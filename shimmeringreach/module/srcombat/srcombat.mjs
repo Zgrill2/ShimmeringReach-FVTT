@@ -46,73 +46,64 @@ export class SRCombat extends Combat {
     return a.tokenId - b.tokenId;
   }
   
-  async assignOrder()
-  { 
-  console.log("assign order");
-  let firstdude = {};
-  for ( let [i, t] of this.turns.entries() ) {
-	console.log("init:",t.initiative);
-	await t.setFlag("shimmeringreach","order",i);
-	if (i==0){
-		firstdude = t;
-	}
-	
-	
-  }
-	firstdude.data.update({initiative: firstdude.initiative - 10});
-	return;
+  async assignOrder() { 
+    let firstdude = {};
+    for ( let [i, t] of this.turns.entries() ) {
+      await t.setFlag("shimmeringreach","order",i);
+      if (i == 0) {
+        firstdude = t;
+      };
+    };
+
+    let updates = [{_id: firstdude.id, initiative: firstdude.initiative - 10}]
+    await this.updateEmbeddedDocuments("Combatant", updates);
+    //await firstdude.data.update({initiative: firstdude.initiative - 10});
+    return;
   }
   
   
-  
-	
 	/** @override */
 	async nextTurn() {
     let turn = this.turn;
 
     // Determine the next turn number
     let next = null;
-	let hasinit = false;
-	do {
+	  let hasinit = false;
+  	do {
       for ( let [i, t] of this.turns.entries() ) {
-		if ( t.defeated ) continue; //if defeated don't get a turn
-		if ( t.initiative <= 0 ) continue; //if 0 init no turn
-		hasinit = true; //someone alive has init left, do not go to next round
+		    if ( t.defeated ) continue; //if defeated don't get a turn
+		    if ( t.initiative <= 0 ) continue; //if 0 init no turn
+		    hasinit = true; //someone alive has init left, do not go to next round
         if ( i <= turn ) continue; //if you've already had a turn, no turn
         if ( t.actor?.effects.find(e => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId ) ) continue;
         next = i;
-
-		this.setInitiative(t.id, t.initiative -10);
+		    await this.setInitiative(t.id, t.initiative - 10);
         break;
-      }
-		if (!hasinit)
-		{
-			next = -1; //case for next round
-		}
-		else
-		{
-			turn = -1; //wrap back around
-		}
-		
+      };
+		  if (!hasinit) {
+			  next = -1; //case for next round
+		  }
+		  else {
+			  turn = -1; //wrap back around
+		  };
 	} while (next === null) ;
     // Maybe advance to the next round
     let round = this.round;
     if ( (this.round === 0) || (hasinit === false) ) {
-      return this.nextRound();
+      return await this.nextRound();
     }
 
     // Update the encounter
     const advanceTime = CONFIG.time.turnTime;
 	
-    this.update({round: round, turn: next}, {advanceTime});
-//	game.combat.rollAll();
+    await this.update({round: round, turn: next}, {advanceTime});
+    //	game.combat.rollAll();
   }
 	
 	
 	/**  @override  */
 	async nextRound() {
-	
-	let turn = 0;
+    let turn = 0;
     if ( this.settings.skipDefeated ) {
       turn = this.turns.findIndex(t => {
         return !(t.defeated ||
@@ -126,31 +117,28 @@ export class SRCombat extends Combat {
     let advanceTime = Math.max(this.turns.length - this.data.turn, 1) * CONFIG.time.turnTime;
     advanceTime += CONFIG.time.roundTime;
 
-	await this.resetAll();
-	await this.rollAll();
-	console.log("roll all");
-	await this.assignOrder();
-	// not triggering correctly. Is this because it's an async call?
+    await this.resetAll();
+    await this.rollAll();
+    await this.assignOrder();
+    // not triggering correctly. Is this because it's an async call?
 
-	
-	return this.update({round: this.round+1, turn: turn}, {advanceTime});
-	
+    await this.update({round: this.round+1, turn: turn}, {advanceTime});
+    return;
   }
   
 /// for troubleshooting
  async rollAll(options) {
-	 
     const ids = this.combatants.reduce((ids, c) => {
       if ( c.isOwner && !c.initiative) ids.push(c.id);
       return ids;
     }, []);
-	console.log(ids);
-    return this.rollInitiative(ids, options);
+    
+    return await this.rollInitiative(ids, options);
   }
+
 
 /// for troubleshooting
  async rollInitiative(ids, {formula=null, updateTurn=false, messageOptions={}}={}) {
-
     // Structure input data
     ids = typeof ids === "string" ? [ids] : ids;
     const currentId = this.combatant.id;
@@ -160,14 +148,14 @@ export class SRCombat extends Combat {
     const updates = [];
     const messages = [];
     for ( let [i, id] of ids.entries() ) {
-
+    
       // Get Combatant data (non-strictly)
       const combatant = this.combatants.get(id);
       if ( !combatant?.isOwner ) return results;
-
       // Produce an initiative roll for the Combatant
-      const roll = combatant.getInitiativeRoll(formula);
-      updates.push({_id: id, initiative: roll.total});
+      const roll = await combatant.getInitiativeRoll(formula);
+      var total_roll = roll.total
+      updates.push({_id: id, initiative: total_roll});
 	  
       // Construct chat message data
       let messageData = foundry.utils.mergeObject({
@@ -190,18 +178,7 @@ export class SRCombat extends Combat {
       messages.push(chatData);
     }
     if ( !updates.length ) return this;
-
-    // Update multiple combatants
-	console.log(updates);
-	Object.entries(this.combatants.map(x => x)).forEach( x => {
-		console.log(x[1].initiative);
-	});
-    await this.updateEmbeddedDocuments("Combatant", updates);
-	
-	
-	Object.entries(this.combatants.map(x => x)).forEach( x => {
-		console.log(x[1].initiative);
-	});
+  await this.updateEmbeddedDocuments("Combatant", updates);
 
     // Ensure the turn order remains with the same combatant
     if ( updateTurn ) {
@@ -213,21 +190,14 @@ export class SRCombat extends Combat {
     return this;
   }
 
-
-
-	 async resetAll() {
-		 console.log("resetAll");
+  async resetAll() {
+    let updates = []
     for ( let c of this.combatants ) {
-      await c.data.update({initiative: null});
-	  await c.setFlag("shimmeringreach","order",0);
-    }
-	//return this.update({combatants: this.combatants.toJSON()}, {diff: false});
-	return;
+      updates.push({_id: c.id, initiative: null})
+      await c.setFlag("shimmeringreach", "order", 0);
+    };
+    await this.updateEmbeddedDocuments("Combatant", updates);
+    return;
   }
 
-
-
-	
-	
-	
 }
