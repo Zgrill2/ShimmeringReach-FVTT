@@ -90,13 +90,14 @@ export class SRCombat extends Combat {
     // Maybe advance to the next round
     let round = this.round;
     if ( (this.round === 0) || (hasinit === false) ) {
-      return await this.nextRound();
+      this.nextRound();
+      return;
     }
 
     // Update the encounter
     const advanceTime = CONFIG.time.turnTime;
 	
-    await this.update({round: round, turn: next}, {advanceTime});
+    this.update({round: round, turn: next}, {advanceTime});
     //	game.combat.rollAll();
   }
 	
@@ -120,25 +121,25 @@ export class SRCombat extends Combat {
     await this.resetAll();
     await this.rollAll();
     await this.assignOrder();
-    // not triggering correctly. Is this because it's an async call?
 
-    await this.update({round: this.round+1, turn: turn}, {advanceTime});
-    return;
+    this.update({round: this.round+1, turn: turn}, {advanceTime});
   }
   
-/// for troubleshooting
- async rollAll(options) {
+  
+  /**  @override  */
+  async rollAll(options) {
     const ids = this.combatants.reduce((ids, c) => {
       if ( c.isOwner && !c.initiative) ids.push(c.id);
       return ids;
     }, []);
     
-    return await this.rollInitiative(ids, options);
+    await this.rollInitiative(ids, options);
+    return;
   }
 
-
-/// for troubleshooting
- async rollInitiative(ids, {formula=null, updateTurn=false, messageOptions={}}={}) {
+  
+  /**  @override  */
+  async rollInitiative(ids, {formula=null, updateTurn=false, messageOptions={}}={}) {
     // Structure input data
     ids = typeof ids === "string" ? [ids] : ids;
     const currentId = this.combatant.id;
@@ -153,7 +154,7 @@ export class SRCombat extends Combat {
       const combatant = this.combatants.get(id);
       if ( !combatant?.isOwner ) return results;
       // Produce an initiative roll for the Combatant
-      const roll = await combatant.getInitiativeRoll(formula);
+      const roll = combatant.getInitiativeRoll(formula);
       var total_roll = roll.total
       updates.push({_id: id, initiative: total_roll});
 	  
@@ -178,7 +179,7 @@ export class SRCombat extends Combat {
       messages.push(chatData);
     }
     if ( !updates.length ) return this;
-  await this.updateEmbeddedDocuments("Combatant", updates);
+    await this.updateEmbeddedDocuments("Combatant", updates);
 
     // Ensure the turn order remains with the same combatant
     if ( updateTurn ) {
@@ -186,10 +187,11 @@ export class SRCombat extends Combat {
     }
 
     // Create multiple chat messages
-    await ChatMessage.implementation.create(messages);
+    ChatMessage.implementation.create(messages);
     return this;
   }
 
+  /**  @override  */
   async resetAll() {
     let updates = []
     for ( let c of this.combatants ) {
