@@ -4,10 +4,14 @@ async function handleSocket(data){
 
 	
 	if (data.type == "addDefenseMessages" && game.users.current.data.role == 4){
-		gmAddDefenseMessages(data.dataset,data.actors,data.messageId,data.options)
+	//console.log(data);
+		gmAddDefenseMessages(data.dataset,data.actors,data.messageId,data.options);
 	}
 	if (data.type == "rerollCombatCard" && game.users.current.data.role == 4){
-		gmRerollCombatCard(data.dataset,data.messageId)
+		gmRerollCombatCard(data.dataset,data.messageId);
+	}
+	if (data.type == "deleteDefenderMessage" && game.users.current.data.role == 4){
+		gmDeleteDefenderMessage(data.dataset,data.messageId);
 	}
 }
 
@@ -66,7 +70,7 @@ export async function customAttackDialog(event,actor,options) {
 				if (overload > 0){
 					renderOverload(actor,overload,overload_soak, overload_explode);
 				}
-				console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
+			//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
 				options.wounds = html.find('[name=chk-wounds]')[0].checked;
 				options.explode = html.find('[name=chk-explode]')[0].checked;
 				
@@ -140,7 +144,6 @@ export async function customDefenseDialog(event,options) {
 }
 
 export async function customSoakDialog(event) {
-	console.log("dicks")
 
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
 	
@@ -434,7 +437,7 @@ export async function simpleDrain(event) {
 		let newmp = Math.max(0,mp-dv);
 		let newhp = hp - Math.max(0,dv-mp);
 
-		console.log(dv,hp,mp,newmp,newhp);
+	//console.log(dv,hp,mp,newmp,newhp);
 
 
 		actor.update({"data.health.value" : newhp});
@@ -486,7 +489,7 @@ async function renderOverload(actor, overload, overload_soak, overload_explode){
 }
 
 export async function simpleSoak(event) {
-	console.log("dicks2")
+
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
 		
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
@@ -508,8 +511,8 @@ export async function simpleSoak(event) {
 	
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
-	console.log(dataset)
-	console.log(actor)
+//console.log(dataset)
+//console.log(actor)
 	if (actor.permission == 3) {
 		
 		
@@ -541,12 +544,12 @@ export async function simpleSoak(event) {
 function findWeaponByID(stringID, actor) {
 	
 	let weapon = "";
-	console.log(actor)
+//console.log(actor)
 	Object.entries(actor.data.items).forEach(weapn => {
 		////console.log(weapn);
 		////console.log(stringID);
-		console.log("WEAP")
-		console.log(weapn)
+	//console.log("WEAP")
+	//console.log(weapn)
 		if (stringID == weapn[1].id){
 			////console.log("bloop");
 			weapon = weapn[1];
@@ -584,7 +587,7 @@ function getSelectedActors() {
 
 
 export async function renderAttackChatData(event, actor, options) {
-	console.log("dicks3")
+
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
 	let weapon_id = event.currentTarget.dataset.weapon;
 	let weapon = actor.data.items.get(weapon_id)//findWeaponByID(weapon_id, actor);
@@ -622,7 +625,7 @@ export async function renderAttackChatData(event, actor, options) {
 }
 
 export async function renderSkillChatData(event, actor, options){
-	console.log('super dicks')
+
 		const template = "systems/shimmeringreach/templates/chat/skill-card.html";
 
 		////console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
@@ -683,7 +686,7 @@ export async function addDefenseMessages(event,options){
 	let actors = {};
 	
 	if(game.users.current.data.role != 4){
-		actors = game.users.current.data.character;
+		actors = [game.users.current.data.character];
 		//console.log(actors);
 		game.socket.emit('system.shimmeringreach', {type: "addDefenseMessages", dataset: dataset, actors: actors, messageId: messageId, options})
 		//console.log("you're not a gm!");
@@ -706,17 +709,19 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	let tokens = {...canvas.tokens.controlled};
 	*/
 	////console.log(event.currentTarget.src);
-	
+//console.log("dataset",dataset,"actors",actors,"messageId",messageId,"options",options);
 	//let spl =  "/modules" + target.src.split("modules")[1];
-	let defender_list = {};
+	let defender_list = [];
 	if (dataset.gm){
 		defender_list = actors;
 	}
 	else{
-		defender_list =  game.actors.map(x => x).filter(actor => {
-				return actor.data.id == actors;
-			});
+		for ( let d of actors ){
+		//console.log(d);
+			defender_list.push = game.actors.get(d);
+		}
 	}
+//console.log(defender_list);
 	
 	let message = game.messages.get(messageId);
 	
@@ -749,7 +754,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 
 			// If Token already rolled, don't roll
 			if (actor[1].token && actor[1].token.id == old_actor[1].token_id) {
-				console.log("skip")
+			//console.log("skip")
 				present = true;
 			}
 			// Else If Actor already rolled, don't roll
@@ -907,7 +912,7 @@ async function updateCombatantFlags(message) {
 }
 
 export function toggleDicerollDisplay(event){
-	console.log('dicks?')
+
 	
 		let targets = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content');
 		//console.log("trgt",$(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content'));
@@ -927,20 +932,40 @@ export function toggleDicerollDisplay(event){
 }
 
 export async function deleteDefenderMessage(event){
+	
+	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let messageId = target.closest('[data-message-id]').dataset.messageId;
+	
+	if(game.users.current.data.role != 4){
+		game.socket.emit('system.shimmeringreach', {type: "deleteDefenderMessage", dataset: dataset, messageId: messageId})
+	//console.log("you're not a gm!");
+	//console.log(dataset);
+	}
+	else {
+	//console.log("you are a gm!");
+		dataset.gm = true;
+		gmDeleteDefenderMessage(dataset,messageId);
+	}
+	
+}
+
+
+async function gmDeleteDefenderMessage(dataset,messageId){
 	////console.log(event);
 	////console.log(event.currentTarget.dataset);
 	////console.log($(event.currentTarget));
-	if(game.users.current.data.role == 4){
-		let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
-		let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
+		let message = game.messages.get(messageId);
 		
-		////console.log(message);
+		//console.log(dataset);
+		//console.log(messageId);
+		//console.log(message);
 		
 		let defenders = [];
 		const old_defenders = message.getFlag("shimmeringreach","defenders");
-		////console.log("dataset",dataset);
+	//console.log("dataset",dataset);
 		Object.entries(old_defenders).forEach(defender => {
-			////console.log(defender[1]);
+			//console.log(defender[1]);
 			
 				////console.log(defender[1].hasOwnProperty('token_id'));
 			
@@ -950,7 +975,7 @@ export async function deleteDefenderMessage(event){
 				}
 			}
 			else {
-				if (defender[1].actor.id != dataset.actor_id){
+				if (defender[1].actor._id != dataset.actor_id){
 					defenders.push(defender[1]);
 				}
 			}
@@ -975,10 +1000,7 @@ export async function deleteDefenderMessage(event){
 		await message.setFlag("shimmeringreach","defenders",new_defenders);
 		
 		await updateCombatContent(message);
-	}
-	else {
-		ui.notifications.warn("You do not have permission to delete this roll.");
-	}
+	
 }
 
 export async function rerollChatCard(event){
@@ -1081,7 +1103,7 @@ async function gmRerollCombatCard(dataset,messageId){
 		Object.entries(defenders).forEach(async function (defender) {
 				
 				
-			if ((defender[1].token_id == null && defender[1].actor.id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
+			if ((defender[1].token_id == null && defender[1].actor._id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
 					
 				if (!defender[1].hasOwnProperty('reroll')){
 					////console.log('rerolling defender');

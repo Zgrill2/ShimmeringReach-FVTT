@@ -79,8 +79,10 @@ console.log(phrase)
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("shimmeringreach", ShimmeringReachItemSheet, { makeDefault: true });
 
+  registerRenderSocket();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
+  
 });
 
 /* -------------------------------------------- */
