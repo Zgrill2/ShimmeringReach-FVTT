@@ -9,9 +9,9 @@ export class SRCombat extends Combat {
   
   /** @override */
 	_sortCombatants(a, b) {
-    const ia = Number.isNumeric(a.initiative) ? a.initiative : -9999;
-    const ib = Number.isNumeric(b.initiative) ? b.initiative : -9999;
-    let ci = ib - ia;
+    const oa = Number.isNumeric(a.order) ? a.order : -9999;
+    const ob = Number.isNumeric(b.order) ? b.order : -9999;
+    let ord = ob - oa;
 	
 	let at = a.actor.data.data;
 	let bt = b.actor.data.data;
@@ -20,10 +20,7 @@ export class SRCombat extends Combat {
 	First pass through on new round all turn orders are identical, bypassing this part.
 	Immediately afterwards the results of the sort are locked by writing them to turn order.
 	*/
-	let ord = a.order - b.order;
 	if (ord !== 0 ) return ord;
-	// sort by init
-    if ( ci !== 0 ) return ci;
 		
 	// tiebreak by REA. Returns positive if B is bigger
 	
@@ -46,10 +43,9 @@ export class SRCombat extends Combat {
     return a.tokenId - b.tokenId;
   }
   
-  async assignOrder() { 
+  async firstTurn() { 
     let firstdude = {};
     for ( let [i, t] of this.turns.entries() ) {
-      await t.setFlag("shimmeringreach","order",i);
       if (i == 0) {
         firstdude = t;
       };
@@ -57,7 +53,6 @@ export class SRCombat extends Combat {
 
     let updates = [{_id: firstdude.id, initiative: firstdude.initiative - 10}]
     await this.updateEmbeddedDocuments("Combatant", updates);
-    //await firstdude.data.update({initiative: firstdude.initiative - 10});
     return;
   }
   
@@ -120,7 +115,7 @@ export class SRCombat extends Combat {
 
     await this.resetAll();
     await this.rollAll();
-    await this.assignOrder();
+    await this.firstTurn();  
 
     this.update({round: this.round+1, turn: turn}, {advanceTime});
   }
@@ -157,7 +152,7 @@ export class SRCombat extends Combat {
       const roll = combatant.getInitiativeRoll(formula);
       var total_roll = roll.total
       updates.push({_id: id, initiative: total_roll});
-	  
+      await combatant.setFlag("shimmeringreach", "order", (total_roll + combatant.actor.data.data.initiative.bias));
       // Construct chat message data
       let messageData = foundry.utils.mergeObject({
         speaker: {

@@ -56,7 +56,7 @@ export class ShimmeringReachActor extends Actor {
 	  data.skills.perceive_magic.attr = data.skills.spellcasting.attr;
 
     // bars - health, stamina, mana
-    data.health.max += data.abilities.bod.value;
+	  data.health.max += data.abilities.bod.value;
 	  data.mana.max += data.abilities[data.skills.spellcasting.attr].value;
 	  data.stamina.max += data.abilities.wil.value;
 
@@ -64,21 +64,25 @@ export class ShimmeringReachActor extends Actor {
 	  data.drainres.value = data.abilities.wil.value * 2;
     
     // soak
-    for (let [key, soak] of Object.entries(data.soaks)) {
-      for (var i = 0; i < soak.attr.length; i++)
-      {
-        soak.value += data.abilities[soak.attr[i]].value * soak.weights[i];
-      }
-      soak.value = Math.ceil(soak.value);
-    }
+	  data.soaks.armor.value = data.abilities.bod.value + Math.ceil(0.5 * (data.abilities.log.value));
+	  data.soaks.physical.value = data.abilities.str.value + Math.ceil(0.5 * (data.abilities.agi.value));
+	  data.soaks.mental.value = data.abilities.wil.value + Math.ceil(0.5 * (data.abilities.cha.value));
 
     //defense
-    for (let [key, def] of Object.entries(data.defenses)) {
-      for (var i = 0; i < def.attr.length; i++) {
-        def.passive += data.abilities[def.attr[i]].value;
-      }
-      def.active = def.passive + data.skills[def.skill].value + Math.min(data.skills[def.skill].value,Math.ceil(data.tradition.rank.value / 2));
-	  }
+      data.defenses.dodge.passive = data.abilities.rea.value + data.abilities.int.value;
+	  data.defenses.dodge.active = data.defenses.dodge.passive + data.skills.dodge.value + Math.min(data.skills.dodge.value,Math.ceil(data.tradition.rank.value / 2));
+	  
+      data.defenses.block.passive = data.defenses.dodge.passive;
+	  data.defenses.block.active = data.defenses.block.passive + data.skills.weapon_skill.value + Math.min(data.skills.weapon_skill.value,Math.ceil(data.tradition.rank.value / 2));
+	  
+      data.defenses.parry.passive = data.defenses.dodge.passive;
+	  data.defenses.parry.active = data.defenses.parry.passive + data.skills.weapon_skill.value + Math.min(data.skills.weapon_skill.value,Math.ceil(data.tradition.rank.value / 2));
+	  
+      data.defenses.mental.passive = data.abilities.wil.value + data.abilities.cha.value;
+	  data.defenses.mental.active = data.defenses.mental.passive + data.skills.perserverence.value + Math.min(data.skills.perserverence.value,Math.ceil(data.tradition.rank.value / 2));
+	  
+      data.defenses.physical.passive = data.abilities.bod.value + data.abilities.agi.value;
+	  data.defenses.physical.active = data.defenses.physical.passive + data.skills.perserverence.value + Math.min(data.skills.perserverence.value,Math.ceil(data.tradition.rank.value / 2));
 
     //Updating skills
     for (let [key, skill_group] of Object.entries(data.skill_groups)) {

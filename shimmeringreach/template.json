@@ -74,20 +74,14 @@
 	  "soaks": {
         "armor": {
           "value": 0,
-		  "attr": ["str","bod","log"],
-		  "weights": [0.5,1,0.5],
 		  "name": "Armor Soak"
         },
 		"physical": {
           "value": 0,
-		  "attr": ["agi","str","bod"],
-		  "weights": [0.5,1,0.5],
 		  "name": "Physical Soak"
         },
 		"mental": {
           "value": 0,
-		  "attr": ["log","wil","cha"],
-		  "weights": [0.5,1,0.5],
 		  "name": "Mental Soak"
         }
       },
@@ -96,7 +90,6 @@
           "passive": 0,
           "active": 0,
 		  "allowpassive": true,
-		  "attr": ["rea","int"],
 		  "skill": "dodge",
 		  "name": "Dodge"
         },
@@ -104,7 +97,6 @@
           "passive": 0,
           "active": 0,
 		  "allowpassive": false,
-		  "attr": ["rea","int"],
 		  "skill": "weapon_skill",
 		  "name": "Block"
         },
@@ -112,7 +104,6 @@
           "passive": 0,
           "active": 0,
 		  "allowpassive": false,
-		  "attr": ["rea","int"],
 		  "skill": "weapon_skill",
 		  "name": "Parry"
         },
@@ -120,7 +111,6 @@
           "passive": 0,
           "active": 0,
 		  "allowpassive": true,
-		  "attr": ["wil","cha"],
 		  "skill": "perserverence",
 		  "name": "Mental Resist"
         },
@@ -128,7 +118,6 @@
           "passive": 0,
           "active": 0,
 		  "allowpassive": true,
-		  "attr": ["bod","agi"],
 		  "skill": "perserverence",
 		  "name": "Physical Resist"
         }
@@ -320,7 +309,8 @@
         }
       },
 	  "initiative": {
-		"dice": 1
+		"dice": 1,
+		"bias": 0
 	  },
 	  "wound_penalty": {
 		"value": 0,
@@ -363,12 +353,12 @@
     },
 	"weapon": {
       "templates": ["base"],
-	  "reach": 1,
-	  "power": 6,
+	  "reach": 0,
+	  "power": 0,
 	  "handedness": 0,
 	  "shield": 0,
 	  "dicepool": 0,
-	  "dv": 6,
+	  "dv": 0,
 	  "active": false,
 	  "attr": "str",
 	  "skill": "weapon_skill",
