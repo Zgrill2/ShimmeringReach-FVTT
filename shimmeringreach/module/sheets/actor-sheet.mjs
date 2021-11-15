@@ -253,22 +253,23 @@ export class ShimmeringReachActorSheet extends ActorSheet {
   /**  Render Custom Chat Messages  **/  
   _skillRoll(event) {
 		event.preventDefault();
-		
+		let dataset = event.currentTarget.dataset;
 		if (!event.shiftKey){
-			renderSkillChatData(event,this.actor,{});
+			renderSkillChatData(dataset,this.actor,{});
 		}
 		else {
-			customSkillDialog(event,this.actor,{});
+			customSkillDialog(dataset,this.actor,{});
 		}
 	}
 
   _attackMessage(event) {
-	  event.preventDefault();
+		event.preventDefault();
+		let dataset = event.currentTarget.dataset;
 		if (!event.shiftKey){
-			renderAttackChatData(event, this.actor, {});
+			renderAttackChatData(dataset, this.actor, {});
 		}
 		else {
-			customAttackDialog(event, this.actor,{});
+			customAttackDialog(dataset, this.actor,{});
 		}
 	}
 

@@ -268,8 +268,26 @@
 			</div>
 
 		  
-		  
-		  
+		  <div>
+		  {{#if data.edit_stats.enable}}
+			<ol class="items-list">
+				<li class="item item-header flexrow">
+					<div class="item-name">Language</div>
+					
+				</li>
+				{{#each actor.items as |item id|}}
+					{{#ifEquals item.data.type "language"}}
+						<li class="item item-header flexrow" data-item-id="{{item.id}}">
+							<div class="item-name">{{item.name}}</div>
+							<div class="item-controls">
+								<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+							</div>
+						</li>
+					{{/ifEquals}}
+				{{/each}}
+			</ol>
+			{{/if}}
+		  </div>
 		  
 		  
 		  <ol class="items-list">

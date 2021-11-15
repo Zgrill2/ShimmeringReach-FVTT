@@ -323,7 +323,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "weapon", "stats","skill"],
+    "types": ["item", "feature", "spell", "weapon", "stats","skill","language"],
     "templates": {
       "base": {
         "description": ""
@@ -373,6 +373,8 @@
     "spell": {
       "templates": ["base"],
       "spellLevel": 1
-    }
+    },
+	"language": {
+	}
   }
 }

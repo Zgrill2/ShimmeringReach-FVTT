@@ -116,6 +116,11 @@ export class ShimmeringReachActor extends Actor {
         }
       }
     });
+	
+	//Wound Penalties
+	data.wound_penalty.value = Math.ceil(Math.floor((data.health.max - data.health.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.stamina.max - data.stamina.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.mana.max - data.mana.value)/(data.wound_penalty.resilient_wounds+6))-data.wound_penalty.ignore_wounds,0);
+	
+	
 
   }
 

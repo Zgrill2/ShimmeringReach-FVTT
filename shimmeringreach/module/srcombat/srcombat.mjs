@@ -196,5 +196,14 @@ export class SRCombat extends Combat {
     await this.updateEmbeddedDocuments("Combatant", updates);
     return;
   }
+  
+  async startCombat() {
+	await this.resetAll();
+    await this.rollAll();
+    await this.firstTurn();  
+
+    return this.update({round: 1, turn: 0});
+  }
+  
 
 }

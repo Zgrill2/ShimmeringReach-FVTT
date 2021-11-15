@@ -14,11 +14,10 @@ export class RollDP extends Roll {
     constructor(formula =0, actor = -1, explode = false, applyWounds = false) {
     //    console.log("initializing dicepool roller$$$");
         
-
-		if (applyWounds){
+		if (applyWounds == true){
 			formula -= actor.wound_penalty.value;
 		}
-		formula = formula.toString();
+		formula = Math.max(0,formula).toString();
 		formula += "d6";
 		if (explode){
 			formula += "x=6";
