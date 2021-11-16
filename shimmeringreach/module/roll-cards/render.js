@@ -27,13 +27,13 @@ export async function testEmit(){
 	//console.log(a);
 }
 
-export async function customAttackDialog(event,actor,options) {
+export async function customAttackDialog(dataset,actor,options) {
 	const template = "systems/shimmeringreach/templates/dialog/attack-dialog.html";
 	
 	
 	//console.log(options);
-	let weapon_id = event.currentTarget.dataset.weapon;
-	let weapon = actor.data.items.get(weapon_id);//findWeaponByID(weapon_id, actor);
+	let weapon_id = dataset.weapon;
+	let weapon = actor.data.items.get(weapon_id);
 	
 	let localOptions = {
 		weapon: weapon,
@@ -75,7 +75,7 @@ export async function customAttackDialog(event,actor,options) {
 				options.explode = html.find('[name=chk-explode]')[0].checked;
 				
 				//console.log(options);
-				renderAttackChatData(event,actor,options);
+				renderAttackChatData(dataset,actor,options);
 			}
 		}
 	},
@@ -350,20 +350,17 @@ export async function customSoakDialog(event) {
 	
 }
 
-export async function customSkillDialog(event,actor,options) {
+export async function customSkillDialog(dataset,actor,options) {
 	const template = "systems/shimmeringreach/templates/dialog/skill-dialog.html";
 	
-	
-	
-		
 	let title = "";
 	
-	if (event.currentTarget.dataset.itemskill){
-		title = "Custom " + event.currentTarget.dataset.label + " Roll";	
+	if (dataset.itemskill){
+		title = "Custom " + dataset.label + " Roll";	
 	}
 
 	else {
-		title = "Custom " + actor.data.data.skills[event.currentTarget.dataset.label].name + " Roll";
+		title = "Custom " + actor.data.data.skills[dataset.label].name + " Roll";
 	}
 	
 	let confirmed = false;
@@ -391,17 +388,12 @@ export async function customSkillDialog(event,actor,options) {
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
 				////console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
-				if(html.find('[name=chk-wounds]')[0].checked)
-				{
-					options.wounds = true;
-				}
-				if(html.find('[name=chk-explode]')[0].checked)
-				{
-					options.explode = true;
-				}
+				
+				options.wounds = html.find('[name=chk-wounds]')[0].checked;
+				options.explode = html.find('[name=chk-explode]')[0].checked;
 				
 				////console.log(options);
-				renderSkillChatData(event,actor,options);
+				renderSkillChatData(dataset,actor,options);
 			}
 		}
 	},
@@ -541,25 +533,6 @@ export async function simpleSoak(event) {
 			
 }
 
-function findWeaponByID(stringID, actor) {
-	
-	let weapon = "";
-//console.log(actor)
-	Object.entries(actor.data.items).forEach(weapn => {
-		////console.log(weapn);
-		////console.log(stringID);
-	//console.log("WEAP")
-	//console.log(weapn)
-		if (stringID == weapn[1].id){
-			////console.log("bloop");
-			weapon = weapn[1];
-			////console.log(weapn[1]);
-		}
-	});
-	////console.log(weapon);
-	return weapon;
-}
-
 function getSelectedActors() {
 	let actor_list = [];
 		
@@ -585,15 +558,14 @@ function getSelectedActors() {
 		return actor_list;
 }
 
-
-export async function renderAttackChatData(event, actor, options) {
+export async function renderAttackChatData(dataset, actor, options) {
 
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
-	let weapon_id = event.currentTarget.dataset.weapon;
-	let weapon = actor.data.items.get(weapon_id)//findWeaponByID(weapon_id, actor);
+	let weapon_id = dataset.weapon;
+	let weapon = actor.data.items.get(weapon_id);
 
 	let newdp = (weapon.data.data.dicepool + (options.dicepoolMod ? options.dicepoolMod : 0))
-	let diceroll = new RollDP(newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true))
+	let diceroll = new RollDP(newdp, actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
 	await diceroll.evaluate({async: true});
 	
 	let q = diceroll.terms[0].results;
@@ -624,31 +596,35 @@ export async function renderAttackChatData(event, actor, options) {
 	//console.log("msg", msg);
 }
 
-export async function renderSkillChatData(event, actor, options){
-
+export async function renderSkillChatData(dataset, actor, options){
+		/*
+		Expects dataset to contain:
+			dataset.label
+			dataset.itemskill is OPTIONAL but signifies that this is an item skill and should be rolled accordingly
+		*/
+	
 		const template = "systems/shimmeringreach/templates/chat/skill-card.html";
 
-		////console.log(actor.data.data.skills[event.currentTarget.dataset.label].dicepool);
-		////console.log(event.currentTarget.dataset);
 		
 		let newdp = 0;
 		let displayname = "";
 		let skillname = "";
 		
-		if (event.currentTarget.dataset.itemskill){
+		if (dataset.itemskill){
 			
-			newdp = (parseInt(event.currentTarget.dataset.dicepool) + (options.dicepoolMod ? options.dicepoolMod : 0));
-			displayname = event.currentTarget.dataset.label;
-			//console.log(newdp);
+			newdp = (parseInt(dataset.dicepool) + (options.dicepoolMod ? options.dicepoolMod : 0));
+			displayname = dataset.label;
 			skillname = $(displayname).replaceAll(' ', '_');
 		}
 		else {
-			newdp = (actor.data.data.skills[event.currentTarget.dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0));
-			displayname = actor.data.data.skills[event.currentTarget.dataset.label].name;
-			skillname = event.currentTarget.dataset.label;
+			newdp = (actor.data.data.skills[dataset.label].dicepool + (options.dicepoolMod ? options.dicepoolMod : 0));
+			displayname = actor.data.data.skills[dataset.label].name;
+			skillname = dataset.label;
 		}
 		
-		let diceroll = new game.shimmeringreach.RollDP( newdp, actor.data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true))
+		
+		let diceroll = new game.shimmeringreach.RollDP( newdp, actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
+		
 		await diceroll.evaluate({async: true});
 		
 		let q = diceroll.terms[0].results;
@@ -658,7 +634,7 @@ export async function renderSkillChatData(event, actor, options){
 		////console.log("actor",options.actor);
 		let content = {
 			actor: actor.data,
-			skillname: event.currentTarget.dataset.label,
+			skillname: dataset.label,
 			displayname: displayname,
 			diceroll: diceroll,
 			dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
@@ -769,7 +745,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 			
 			let defenseDP = actor[1].data.data.defenses[dataset.defense][dataset.state];
 			
-			let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode ? options.explode : false), (options.wounds ? options.wounds : true)).evaluate();
+			let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate();
 			
 			let q = diceroll.terms[0].results;
 			q.sort((a, b) => {
@@ -826,7 +802,6 @@ async function updateCombatContent(message){
 		}
 	message.update({"content": await renderTemplate(template,combatInfo)});
 }
-
 
 async function updateCombatantFlags(message) {
 	////console.log("UCF message",message);
@@ -949,7 +924,6 @@ export async function deleteDefenderMessage(event){
 	}
 	
 }
-
 
 async function gmDeleteDefenderMessage(dataset,messageId){
 	////console.log(event);
@@ -1153,8 +1127,6 @@ async function gmRerollCombatCard(dataset,messageId){
 	//await updateCombatContent(message);
 	////console.log(message);
 }
-
-
 
 async function rerollSkillCard(event){
 	const template = "systems/shimmeringreach/templates/chat/skill-card.html";
