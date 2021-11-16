@@ -2,7 +2,7 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class SRItemSheet extends ItemSheet {
+export class ShimmeringReachItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
@@ -29,8 +29,24 @@ export class SRItemSheet extends ItemSheet {
 
   /** @override */
   getData() {
-    const data = super.getData();
-    return data;
+    // Retrieve base data structure.
+    const context = super.getData();
+
+    // Use a safe clone of the item data for further operations.
+    const itemData = context.item.data;
+
+    // Retrieve the roll data for TinyMCE editors.
+    context.rollData = {};
+    let actor = this.object?.parent ?? null;
+    if (actor) {
+      context.rollData = actor.getRollData();
+    }
+
+    // Add the actor's data to context.data for easier access, as well as flags.
+    context.data = itemData.data;
+    context.flags = itemData.flags;
+
+    return context;
   }
 
   /* -------------------------------------------- */
@@ -45,13 +61,13 @@ export class SRItemSheet extends ItemSheet {
   }
 
   /* -------------------------------------------- */
-
+  
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
 
     // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
+    if (!this.isEditable) return;
 
     // Roll handlers, click handlers, etc. would go here.
   }

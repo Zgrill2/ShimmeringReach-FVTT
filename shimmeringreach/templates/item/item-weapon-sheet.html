@@ -8,14 +8,14 @@
                 <label class="resource-label">Power</label>
                   <input type="text" name="data.power" value="{{data.power}}" data-dtype="Number"/>
               </div>
-			  
-			 {{#ifEquals data.skill "weapon_skill"}}
-			  
+
+              {{#ifEquals data.skill "weapon_skill"}}
+
               <div class="resource">
                 <label class="resource-label">Reach</label>
                   <input type="text" name="data.reach" value="{{data.reach}}" data-dtype="Number"/>
               </div>
-			  
+
 			  <div class="resource">
                   <label for="data.handedness" class="resource-label">Size</label>
                   <div class="resource-content flexrow flex-center flex-between">
@@ -28,6 +28,7 @@
 						</select>
                   </div>
               </div>
+			  
 			  <div class="resource">
                   <label for="data.Shield" class="resource-label">Shield</label>
                   <div class="resource-content flexrow flex-center flex-between">
@@ -44,7 +45,7 @@
                   </div>
               </div>
 			  
-			  {{/ifEquals}}
+              {{/ifEquals}}
 				
 			  
 			  <div class="resource">
@@ -91,12 +92,6 @@
                   </div>
               </div>
 			  
-			  <div class="resource">
-                  <label for="data.active" class="resource-label">Equipped?</label>
-					<input type="checkbox" class="checkbox"  name="data.active" {{checked data.active}}></h4>
-                  </div>
-			  
-			  </div>
             </div>
         </div>
     </header>
