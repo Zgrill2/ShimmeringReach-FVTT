@@ -363,7 +363,7 @@
     },
 	"weapon": {
       "templates": ["base"],
-	  "reach": 1,
+	  "reach": 0,
 	  "power": 6,
 	  "handedness": 0,
 	  "shield": 0,
