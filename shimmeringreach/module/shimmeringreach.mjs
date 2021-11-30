@@ -16,7 +16,7 @@ import { RollDP } from "./dice-roller/roll.mjs"
 import { SRCombat } from "./srcombat/srcombat.mjs";
 
 // Import renders
-import {deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain} from './roll-cards/render.js';
+import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog} from './roll-cards/render.js';
 
 import { measureDistances } from "./canvas/canvas.js";
 
@@ -31,18 +31,32 @@ Hooks.once('init', async function() {
 /* ---- Welcome to Shimmering Reach ---- */
 
 	var phrase = `Loading Shimmering Reach System                                                       
-  _____  __     _                                    _                  ____                      __   
- / ___/ / /_   (_)____ ___   ____ ___   ___   _____ (_)____   ____ _   / __ \\ ___   ____ _ _____ / /_  
- \\__ \\ / __ \\ / // __ '__ \\ / __ '__ \\ / _ \\ / ___// // __ \\ / __  /  / /_/ // _ \\ / __ '// ___// __ \\ 
-___/ // / / // // / / / / // / / / / //  __// /   / // / / // /_/ /  / _, _//  __// /_/ // /__ / / / / 
+   _____  __     _                                    _                  ____                      __   
+  / ___/ / /_   (_)____ ___   ____ ___   ___   _____ (_)____   ____ _   / __ \\ ___   ____ _ _____ / /_  
+  \\__ \\ / __ \\ / // __ '__ \\ / __ '__ \\ / _ \\ / ___// // __ \\ / __  /  / /_/ // _ \\ / __ '// ___// __ \\ 
+ ___/ // / / // // / / / / // / / / / //  __// /   / // / / // /_/ /  / _, _//  __// /_/ // /__ / / / / 
 /____//_/ /_//_//_/ /_/ /_//_/ /_/ /_/ \\___//_/   /_//_/ /_/ \\__, /  /_/ |_| \\___/ \\__,_/ \\___//_/ /_/  
-                                                           /____/                                      
+                                                            /____/                                      
  `;
 
 /* ----------------------------------------------- */
 
 console.log(phrase)
+	
+	
+	
+	let rollMacro = {"rollWeaponMacro": rollWeaponMacro};
 
+	let languages = {
+		"common": "common",
+		"dwarvish": "dwarvish",
+		"elvish": "elvish",
+		"daemonic": "daemonic",
+		"draconic": "draconic",
+		"seivan": "seivan",
+		"gexian": "gexian",
+		"mawu": "mawu"
+	}
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.shimmeringreach = {
@@ -50,11 +64,14 @@ console.log(phrase)
     ShimmeringReachItem,
     RollDP,
     SRCombat,
-    rollItemMacro
+    rollMacro
   };
 
+
+  
   // Add custom constants for configuration.
   CONFIG.SHIMMERINGREACH = SHIMMERINGREACH;
+  CONFIG.SHIMMERINGREACH.languages = languages;
 
   /**
    * Set an initiative formula for the system
@@ -67,11 +84,16 @@ console.log(phrase)
     decimals: 2
   };
 
+
+
+
   // Define custom Document classes
   CONFIG.Actor.documentClass = ShimmeringReachActor;
   CONFIG.Item.documentClass = ShimmeringReachItem;
   CONFIG.Combat.documentClass = SRCombat;
   CONFIG.Combatant.documentClass = SRCombatant;
+
+
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
@@ -189,6 +211,46 @@ Hooks.on("init", function() {
 	});
 });
 
+Hooks.on("polyglot.init", (LanguageProvider) => {
+    class ShimmeringReachLanguageProvider extends LanguageProvider {
+        get originalAlphabets() {
+            return {
+                "common": "130% Thorass",
+                "dwarvish": "220% ElderFuthark",
+                "elvish": "150% Tengwar",
+				"daemonic": "230% Infernal",
+				"draconic": "170% Iokharic",
+				"seivan": "120% Barazhad",
+				"gexian": "120% Qijomi",
+				"mawu": "120% JungleSlang"
+            };
+        }
+        get originalTongues() {
+            return {
+                "_default": "common",
+                "common": "common",
+                "dwarvish": "dwarvish",
+                "elvish": "elvish",
+				"daemonic": "daemonic",
+				"draconic": "draconic",
+				"seivan": "seivan",
+				"gexian": "gexian",
+				"mawu": "mawu"
+			};
+        }
+        getUserLanguages(actor) {
+            let known_languages = new Set();
+            let literate_languages = new Set();
+			console.log(actor.data.items);
+			known_languages.add("common");
+            for (let [i,lang] of actor.data.items.entries()){
+                if(lang.type == "language") known_languages.add(lang.name);
+			}
+            return [known_languages, literate_languages];
+        }
+    }
+    polyglot.registerSystem("shimmeringreach", ShimmeringReachLanguageProvider);
+})
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
@@ -202,24 +264,27 @@ Hooks.on("init", function() {
  * @returns {Promise}
  */
 async function createItemMacro(data, slot) {
-  if (data.type !== "Item") return;
-  if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
-  const item = data.data;
-
-  // Create the macro command
-  const command = `game.shimmeringreach.rollItemMacro("${item.name}");`;
-  let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-  if (!macro) {
-    macro = await Macro.create({
-      name: item.name,
-      type: "script",
-      img: item.img,
-      command: command,
-      flags: { "shimmeringreach.itemMacro": true }
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
+	if (data.type !== "Item") return;
+	if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
+	const item = data.data;
+	// Create the macro command
+	if (item.type == "weapon"){
+		const command = `game.shimmeringreach.rollMacro.rollWeaponMacro("${item._id}");`;
+		
+		let macro = game.macros.contents.find(m => (m.name === item.name) && (m.command === command));
+		if (!macro) {
+			macro = await Macro.create({
+				name: item.name,
+				type: "script",
+				img: item.img,
+				command: command,
+				flags: { "shimmeringreach.itemMacro": true }
+			});
+		game.user.assignHotbarMacro(macro, slot);
+		}
+	}
+	
+	return false;
 }
 
 /**
@@ -238,4 +303,25 @@ function rollItemMacro(itemName) {
 
   // Trigger the item roll
   return item.roll();
+}
+
+function rollWeaponMacro(itemId) {
+	const speaker = ChatMessage.getSpeaker();
+	let actor;
+	if (speaker.token) actor = game.actors.tokens[speaker.token];
+	if (!actor) actor = game.actors.get(speaker.actor);
+	const item = actor ? actor.items.get(itemId) : null;
+	if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item with ID ${itemId}`);
+
+	let dataset = {
+		"weapon": item.id	
+	}
+
+	if (event.shiftKey){
+		customAttackDialog(dataset,actor,{});
+	}
+	else {
+		renderAttackChatData(dataset,actor,{});
+	}
+
 }
