@@ -81,7 +81,11 @@ export class ShimmeringReachItem extends Item {
 
   _prepareDerivedWeaponData(actorData, itemData) {
     if (itemData.type == 'weapon') {
-	    itemData.data.dv = itemData.data.power + actorData.data.abilities[itemData.data.attr].value;
+	    itemData.data.dv = itemData.data.power;
+		if(actorData.data.abilities[itemData.data.attr]){
+			itemData.data.dv += actorData.data.abilities[itemData.data.attr].value;
+		}
+		
 	    itemData.data.dicepool = itemData.data.reach + actorData.data.skills[itemData.data.skill].dicepool;
       return;
     }
