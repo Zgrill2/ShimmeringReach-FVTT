@@ -16,7 +16,7 @@ import { RollDP } from "./dice-roller/roll.mjs"
 import { SRCombat } from "./srcombat/srcombat.mjs";
 
 // Import renders
-import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog} from './roll-cards/render.js';
+import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage} from './roll-cards/render.js';
 
 import { measureDistances } from "./canvas/canvas.js";
 
@@ -64,7 +64,9 @@ console.log(phrase)
     ShimmeringReachItem,
     RollDP,
     SRCombat,
-    rollMacro
+    rollMacro,
+	renderDvChatData,
+	customDvDialog
   };
 
 
@@ -209,6 +211,11 @@ Hooks.on("init", function() {
 		event.preventDefault();
 		simpleDrain(event);
 	});
+	
+	$(document).on('click','.dvsoak', (event) => {
+		event.preventDefault();
+		addSoakMessage(event);
+	});
 });
 
 Hooks.on("polyglot.init", (LanguageProvider) => {
@@ -241,7 +248,7 @@ Hooks.on("polyglot.init", (LanguageProvider) => {
         getUserLanguages(actor) {
             let known_languages = new Set();
             let literate_languages = new Set();
-			console.log(actor.data.items);
+			//console.log(actor.data.items);
 			known_languages.add("common");
             for (let [i,lang] of actor.data.items.entries()){
                 if(lang.type == "language") known_languages.add(lang.name);
