@@ -16,7 +16,7 @@ import { RollDP } from "./dice-roller/roll.mjs"
 import { SRCombat } from "./srcombat/srcombat.mjs";
 
 // Import renders
-import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage} from './roll-cards/render.js';
+import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage,undoDamageApply} from './roll-cards/render.js';
 
 import { measureDistances } from "./canvas/canvas.js";
 
@@ -215,6 +215,14 @@ Hooks.on("init", function() {
 	$(document).on('click','.dvsoak', (event) => {
 		event.preventDefault();
 		addSoakMessage(event);
+	});
+	
+	$(document).on('click','.undo-damage-block', (event) => {
+		event.preventDefault();
+		
+		if (event.shiftKey){
+			undoDamageApply(event);
+		}
 	});
 });
 

@@ -14,9 +14,18 @@ async function handleSocket(data){
 	if (data.type == "deleteDefenderMessage" && game.users.current.data.role == 4){
 		gmDeleteDefenderMessage(data.dataset,data.messageId);
 	}
-	if (data.type == "addSoakMessage" && game.users.current.data.role == 5){
+	if (data.type == "addSoakMessage" && game.users.current.data.role == 4){
 		gmAddSoakMessage(data.dataset,data.messageId);
 	}
+	if (data.type == "confirmDamageApply" && game.users.current.data.role == 4){
+		gmConfirmDamageApply(data.dataset,data.messageId,data.dmgSet);
+	}
+	if (data.type == "undoDamageApply" && game.users.current.data.role == 4){
+		gmUndoDamageApply(data.dataset,data.messageId);
+	}
+
+
+	
 }
 
 export function registerRenderSocket(){
@@ -147,14 +156,106 @@ export async function customDefenseDialog(event,options) {
 	
 }
 
+async function confirmDamageApply(event,dmgSet){
+	
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let messageId = event.currentTarget.closest('[data-message-id]').dataset.messageId;
+	
+	let message = game.messages.get(messageId);
+	
+	let defenders = message.getFlag("shimmeringreach","defenders");
+	if (game.users.current.data.role != 4){
+		game.socket.emit('system.shimmeringreach', {type: "confirmDamageApply", dataset: dataset, messageId: messageId, dmgSet: dmgSet})
+	}
+	else {
+		gmConfirmDamageApply(dataset,messageId,dmgSet);
+	}
+	
+	
+}
+
+async function gmConfirmDamageApply(dataset,messageId,dmgSet){
+	
+	
+	let message = game.messages.get(messageId);
+	
+	let defenders = message.getFlag("shimmeringreach","defenders");
+	
+	Object.entries(defenders).forEach(async function (defender) {
+		if ((defender[1].token_id == null && defender[1].actor._id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
+			defender[1].dmgSet = dmgSet;	
+		}
+	});
+		
+	await message.setFlag("shimmeringreach","defenders",null);
+	
+	await message.setFlag("shimmeringreach","defenders",defenders);
+		
+	await updateRollcardFlags(message);	
+		
+}
+
+export async function undoDamageApply(event){
+	
+	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
+	let messageId = event.currentTarget.closest('[data-message-id]').dataset.messageId;
+	
+	let message = game.messages.get(messageId);
+	
+	let defenders = message.getFlag("shimmeringreach","defenders");
+	if (game.users.current.data.role != 4){
+		game.socket.emit('system.shimmeringreach', {type: "undoDamageApply", dataset: dataset, messageId: messageId})
+	}
+	else {
+		gmUndoDamageApply(dataset,messageId);
+	}
+}
+
+async function gmUndoDamageApply(dataset,messageId){
+	
+	let message = game.messages.get(messageId);
+	
+	let defenders = message.getFlag("shimmeringreach","defenders");
+	
+	Object.entries(defenders).forEach(async function (defender) {
+		if ((defender[1].token_id == null && defender[1].actor._id == dataset.actor_id) || (defender[1].token_id == dataset.token_id)){
+			let actor = {};
+			if (dataset.token_id == ""){
+				actor = game.actors.get(dataset.actor_id);
+			}
+			else {
+				actor = game.actors.tokens[dataset.token_id];
+			}
+			console.log(actor);
+	
+		
+			actor.update({"data.health.value" : actor.data.data.health.value + defender[1].dmgSet.hp,"data.stamina.value" : actor.data.data.stamina.value + defender[1].dmgSet.stam});
+			
+			
+			
+			delete defender[1].dmgSet;
+			console.log(defender[1]);
+		}
+	});
+	
+	
+	
+	
+	
+	await message.setFlag("shimmeringreach","defenders",null);
+	
+	await message.setFlag("shimmeringreach","defenders",defenders);
+		
+	await updateRollcardFlags(message);	
+
+}
+
+
 export async function customSoakDialog(event) {
 
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
 	
 	let dataset = $(event.currentTarget).parentsUntil('.block').parent()[0].dataset;
-	//console.log("dataset",dataset);
-	
-	//console.log(event);
 	let actor = {};
 	
 	if (dataset.token_id == ""){
@@ -163,6 +264,9 @@ export async function customSoakDialog(event) {
 	else {
 		actor = game.actors.tokens[dataset.token_id];
 	}
+	
+	
+	
 	let actor_info = {
 		dv: dataset.dv,
 		armor: actor.data.data.abilities.bod,
@@ -174,23 +278,16 @@ export async function customSoakDialog(event) {
 	let options = {};
 	let stammiss = (actor_info.stam.max - actor_info.stam.value)%(6+actor_info.reswound);
 	let hpmiss = (actor_info.hp.max - actor_info.hp.value)%(6+actor_info.reswound);
-	//console.log("stuff",stammiss,hpmiss);
 	let optimalhp = 0;
 	let optimalwounds = 99;
 	let currwound = 0;
 	for (let i = parseInt(actor_info.dv); i>= Math.max(0,dataset.dv - Math.min(actor_info.armor.value, actor_info.stam.value-1)); i--){
-		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound))
-		//console.log("currwound",i,currwound);
+		currwound = Math.floor((i + hpmiss)/(6+actor_info.reswound)) + Math.floor((actor_info.dv - i + stammiss)/(6+actor_info.reswound));
 		if (currwound <= optimalwounds){
 			optimalwounds = currwound;
 			optimalhp = i;
 		}
 	}
-	/*
-	//console.log("optimal hp",optimalhp);
-	//console.log("ainfo",actor_info.armor);
-	//console.log("dv",parseInt(dataset.dv));
-	//console.log("min",parseInt(dataset.dv) - actor_info.armor.value);*/
 	
 	let slide = {
 		max: dataset.dv,
@@ -339,13 +436,15 @@ export async function customSoakDialog(event) {
 				let greenbar = document.getElementById("green2").innerHTML;
 				options.hp = parseInt(redbar ? redbar : 0);
 				options.stam = parseInt(greenbar ? greenbar : 0);
-				//console.log(options);
-				//console.log(actor);
-				actor.update({"data.health.value" : actor_info.hp.value - options.hp});
-				actor.update({"data.stamina.value" : actor_info.stam.value - options.stam});
-				//console.log(actor_info.hp.value - options.hp);
-				//console.log(actor_info.stam.value - options.stam);
-				//console.log(actor);
+				actor.update({"data.health.value" : actor_info.hp.value - options.hp,"data.stamina.value" : actor_info.stam.value - options.stam});
+				
+				let dmgSet = {
+					hp: options.hp,
+					stam: options.stam
+				}
+				confirmDamageApply(event,dmgSet);
+				
+				
 			}
 		}
 	},
@@ -436,8 +535,7 @@ export async function simpleDrain(event) {
 	//console.log(dv,hp,mp,newmp,newhp);
 
 
-		actor.update({"data.health.value" : newhp});
-		actor.update({"data.mana.value" : newmp});
+		await actor.update({"data.health.value" : newhp, "data.mana.value" : newmp});
 	}
 	else {
 		ui.notifications.warn("You do not have permission to soak for this actor.");
@@ -523,8 +621,14 @@ export async function simpleSoak(event) {
 		}
 		
 		
-		actor.update({"data.health.value" : actor_info.hp.value - hpdmg});
-		actor.update({"data.stamina.value" : actor_info.stam.value - stamdmg});
+		
+		let dmgSet = {
+			hp: hpdmg,
+			stam: stamdmg
+		}
+		confirmDamageApply(event,dmgSet);
+		
+		await actor.update({"data.health.value" : actor_info.hp.value - hpdmg,"data.stamina.value" : actor_info.stam.value - stamdmg});
 	}
 	else {
 		ui.notifications.warn("You do not have permission to soak for this actor.");
@@ -593,7 +697,7 @@ export async function renderAttackChatData(dataset, actor, options) {
 		content: await renderTemplate(template, combatInfo),
 		flags:{ "shimmeringreach": combatInfo}
 	}
-	
+	console.log(combatInfo);
 	let msg = ChatMessage.create(chatData);
 	//console.log("msg", msg);
 }
@@ -812,11 +916,12 @@ async function updateRollcardFlags(message) {
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let combatInfo = {};
 	let template = "";
+	console.log(attacker);
 	switch(attacker.type){
 		case "combat_card": 
 		
 			template = "systems/shimmeringreach/templates/chat/attack-card.html";
-			let display_dv = attacker.weapon.data.dv + attacker.dvMod;
+			let display_dv = attacker.weapon.data.power + attacker.dvMod + (attacker.actor.data.abilities[attacker.weapon.data.attr] ? attacker.actor.data.abilities[attacker.weapon.data.attr].value : 0);
 			let display_hits = attacker.diceroll.total + (attacker.reroll ? attacker.reroll.total : 0); //Future proofing for when abilities can add free hits
 
 			attacker.display_dv = display_dv;
@@ -894,7 +999,7 @@ async function updateRollcardFlags(message) {
 			console.log("Error: Unhandled chat card type");
 		return;
 	}
-	
+	console.log(combatInfo);
 	await message.update({"content": await renderTemplate(attacker.template,combatInfo)});
 }
 
