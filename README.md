@@ -8,7 +8,7 @@ A [Foundry](https://foundryvtt.com/) Virtual Tabletop implementation of the Shim
 * Initiative gets rolled and combatants are sorted each round
 
 ## What is coming?
-* Togglable custom caracter buffs/debuffs that modify raw numeral values like defenses, soaks, and skills
+* Togglable custom character buffs/debuffs that modify raw numeral values like defenses, soaks, and skills
 
 ## Future Plans
 * Ability data will be populatable in character sheets
