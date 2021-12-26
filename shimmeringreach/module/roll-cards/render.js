@@ -828,8 +828,11 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	}
 	
 	Object.assign(defenders, old_defenders);
-	
-	Object.entries(defender_list).forEach(actor => {
+
+
+       // await defender_list.reduce(async (memo, actor) => {
+	    Object.entries(defender_list).forEach(actor => {
+	    
 		console.log(actor[1]);
 		let present = false;
 		Object.entries(old_defenders).forEach(old_actor => {
@@ -851,14 +854,23 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		if (!present){
 			console.log(actor);
 			let defenseDP = actor[1].data.data.defenses[dataset.defense][dataset.state];
-			
-			let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate();
+
+
+		    
+		//let diceroll = new game.shimmeringreach.RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
+		
+		//await diceroll.evaluate({async: true});
+		
+
+
+		    
+		    let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
+		    console.log(diceroll);
 			
 			let q = diceroll.terms[0].results;
 			q.sort((a, b) => {
 				return (b.result - a.result);
 			});
-			console.log("test",dataset.icon);
 			let defenderOptions = {
 				actor: actor[1].data,
 				defense_type: dataset.defense,
@@ -866,7 +878,8 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
 				diceroll: diceroll,
 				icon: dataset.icon,
-				hue: hue
+			        hue: hue,
+			        percentile: diceroll.percentileText 
 			};
 			////console.log("this is what diceroll looks like",diceroll);
 			
@@ -890,8 +903,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		
 	});
 	
-	console.log(new_defenders);
-	////console.log("new defenders",new_defenders);
+	console.log("new defenders",new_defenders);
 	
 	await message.setFlag("shimmeringreach","defenders",new_defenders);
 	
@@ -999,7 +1011,8 @@ async function updateRollcardFlags(message) {
 			console.log("Error: Unhandled chat card type");
 		return;
 	}
-	console.log(combatInfo);
+    console.log(combatInfo);
+    console.log(combatInfo);
 	await message.update({"content": await renderTemplate(attacker.template,combatInfo)});
 }
 
@@ -1334,9 +1347,6 @@ export async function customDvDialog(){
 	
 	let title = "Custom no defense DV";	
 	
-
-	
-	
 	let confirmed = false;
 	let d = new Dialog({
 		title: title,
@@ -1382,6 +1392,65 @@ export async function customDvDialog(){
 	d.render(true);
 	
 }
+
+
+
+export async function customMultiskillDialog(){
+    const template = "systems/shimmeringreach/templates/dialog/multiskill-dialog.html";
+/*
+
+	let title = "Custom Multiskill";	
+	
+	let confirmed = false;
+	let d = new Dialog({
+		title: title,
+		content: await renderTemplate(template,{}),
+		buttons: {
+		rollbutton: {
+		icon: '<i class="fas fa-check"></i>',
+		label: "Create",
+		callback: () => confirmed = true
+		},
+		abortbutton: {
+		icon: '<i class="fas fa-times"></i>',
+		label: "Cancel",
+		callback: () => confirmed = false
+		}
+		},
+		default: "abortbutton",
+		//render: html => console.log("Register interactivity in the rendered dialog"),
+		close: html =>{
+
+			
+			if(confirmed) {
+				let title = html.find('[name=displayname]')[0].value;
+				let dv = parseInt(html.find('[name=dvMod]').length > 0 ? html.find('[name=dvMod]')[0].value : 0);
+			        let soakType = $('input[type=radio]:checked').val();
+			        let blind =  html.find('[name=chk-blind]')[0].checked;
+				
+				console.log(title);
+				console.log(dv);
+				let dataset = {
+					
+					title: title,
+					dv: dv,
+				    soakType: soakType,
+				    blind: blind
+				};
+				
+				
+				
+				renderMultiskillChatData(dataset,{},{});
+			}
+		}
+	},
+	{width: 300});
+	d.render(true);*/
+    
+}
+
+
+
 
 export async function renderDvChatData(dataset, actor, options){
 	const template = "systems/shimmeringreach/templates/chat/nodef-attack-card.html";

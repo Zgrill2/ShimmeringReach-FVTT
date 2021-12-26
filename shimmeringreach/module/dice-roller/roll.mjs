@@ -35,8 +35,52 @@ export class RollDP extends Roll {
 		if (applyWounds){
 			this.dicepool -= actor.wound_penalty.value;
 		}
-
+		this._percentile = undefined;
+		this._percentileText = "";
+		
     }
+
+
+  _evaluateTotal() {
+    const expression = this.terms.map(t => t.total).join(" ");
+    const total = Roll.safeEval(expression);
+    if ( !Number.isNumeric(total) ) {
+      throw new Error(game.i18n.format("DICE.ErrorNonNumeric", {formula: this.formula}));
+    }
+
+	this.getPercentile(total);
+
+    return total;
+  }
+
+	get percentile()
+	{
+	return this._percentile;
+}
+
+	get percentileText(){
+	return this._percentileText;
+}
+
+
+	getPercentile(total){
+	//n!/(r!*(n - r)!)
+		let percentile = 0;
+	
+		for (let i = 0; i <= total; i++){
+			percentile += (this.factorial(this.dicepool) / (this.factorial(i) * this.factorial(this.dicepool - i)) * (2**(this.dicepool - i)) / (3**(this.dicepool)));
+		}
+		this._percentile = percentile;
+		this._percentileText = parseFloat(percentile*100).toFixed(2)+"%"
+
+	}	
+
+	factorial (n) {
+		if (n == 0 || n == 1){
+			return 1;
+		}
+		return this.factorial(n-1) * n;
+	}
 
     roll() {
         //const result = super.roll(this.formula);
@@ -47,6 +91,9 @@ export class RollDP extends Roll {
        let r = new Roll(this._formula)
         //console.log(formula);
         //console.log(r);
+
+	//this._percentile = this.getPercentile()
+	console.log(r);
         return r;
 		//super();
     }
