@@ -18,8 +18,12 @@ import { SRCombat } from "./srcombat/srcombat.mjs";
 // Import renders
 import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage,undoDamageApply} from './roll-cards/render.js';
 
+// Import measurement calculations
 import { measureDistances } from "./canvas/canvas.js";
 
+
+// Import settings
+import { registerSystemSettings } from "./settings.js";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -103,6 +107,7 @@ console.log(phrase)
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("shimmeringreach", ShimmeringReachItemSheet, { makeDefault: true });
 
+  registerSystemSettings();
   registerRenderSocket();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
@@ -209,7 +214,17 @@ Hooks.on("init", function() {
   
 	$(document).on('click','.incoming-drain-block', (event) => {
 		event.preventDefault();
-		simpleDrain(event);
+		//simpleDrain(event);
+		let value = new Promise((resolve) => {
+		  new FilePicker({
+			type: "sound",
+			current: "",
+			callback: function (imagePath) {
+			console.log(imagePath);
+			},
+		  }).browse("");
+		});
+		console.log(value);
 	});
 	
 	$(document).on('click','.dvsoak', (event) => {

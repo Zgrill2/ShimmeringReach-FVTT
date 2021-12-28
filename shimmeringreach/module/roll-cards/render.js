@@ -783,6 +783,9 @@ export async function addDefenseMessages(event,options){
 }
 
 async function gmAddDefenseMessages(dataset,actors,messageId,options){
+	
+	let sound_folder = game.settings.get("shimmeringreach","miss_sfx_directory");
+	console.log(sound_folder);
 	/*
 	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
 	let dataset = target.dataset 
@@ -811,13 +814,16 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	if (dataset.state == "passive"){
 		hue = -50
 	}
+	
 	else{
 		hue = 150
 	}
 	
+	let sounds = [];
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
 	//console.log(message);
 	let old_defenders = (message.getFlag("shimmeringreach","defenders") ? message.getFlag("shimmeringreach","defenders") : {});
+	let attacker = message.getFlag("shimmeringreach","attacker");
 		
 	let defenders = [];
 	
@@ -887,6 +893,31 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				defenderOptions.token_id = actor[1].token.id;
 			}
 			defenders.push(defenderOptions);
+			
+			if (attacker.display_hits > diceroll.result){
+				sounds.push(attacker.weapon.data.sound);
+			}
+			else {
+				console.log(dataset.defense);
+				switch(dataset.defense){
+					case("dodge"):
+						sounds.push(sound_folder + "/miss-sfx.mp3");
+					break;
+					case("block"):
+						sounds.push(sound_folder + "/block-sfx.mp3");
+					break;
+					case("parry"):
+						sounds.push(sound_folder + "/parry-sfx.mp3");
+					break;
+					case("physical"):
+						sounds.push(sound_folder + "/physical-sfx.mp3");
+					break;
+					case("mental"):
+						sounds.push(sound_folder + "/mental-sfx.mp3");
+					break;
+				}
+			}
+			
 		}
 	});
 	
@@ -909,8 +940,12 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	
 	await updateRollcardFlags(message);
 	
-	//await updateCombatContent(options.message);
-	////console.log(options.message);
+	for (let i = 0; i < sounds.length; i++){
+		setTimeout(() => { AudioHelper.play({src: sounds[i], volume: 0.8, autoplay: true, loop: false}, true)}, 500*i);
+		
+		
+	}
+	
 }
 
 async function updateCombatContent(message){
