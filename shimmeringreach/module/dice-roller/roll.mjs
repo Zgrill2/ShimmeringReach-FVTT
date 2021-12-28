@@ -79,7 +79,12 @@ export class RollDP extends Roll {
 		if (n == 0 || n == 1){
 			return 1;
 		}
-		return this.factorial(n-1) * n;
+		let val = 1;
+		for (let i = 2; i <= n; i++){
+			val *= i;
+		}
+		
+		return val;
 	}
 
     roll() {

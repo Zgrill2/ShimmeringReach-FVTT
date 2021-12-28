@@ -214,17 +214,7 @@ Hooks.on("init", function() {
   
 	$(document).on('click','.incoming-drain-block', (event) => {
 		event.preventDefault();
-		//simpleDrain(event);
-		let value = new Promise((resolve) => {
-		  new FilePicker({
-			type: "sound",
-			current: "",
-			callback: function (imagePath) {
-			console.log(imagePath);
-			},
-		  }).browse("");
-		});
-		console.log(value);
+		simpleDrain(event);
 	});
 	
 	$(document).on('click','.dvsoak', (event) => {
@@ -239,6 +229,32 @@ Hooks.on("init", function() {
 			undoDamageApply(event);
 		}
 	});
+});
+
+Hooks.on("renderChatMessage", (event, html, messageData) => {
+	Object.entries($(html).find('.delete-defender')).forEach(target => {
+		if (target[0] != "length" && target[0] != "prevObject"){
+			if (game.actors.get(target[1].dataset.actorId).permission != 3){
+				target[1].style.display = "none";
+			}
+		}
+	});
+	if (messageData.message.blind){
+		Object.entries($(html).find('.blind-gm')).forEach(target => {
+			if (target[0] != "length" && target[0] != "prevObject" && !(game.users.current.isGM)){
+					target[1].style.display = "none";
+			}
+		});
+
+		Object.entries($(html).find('.blind-player')).forEach(target => {
+			if (target[0] != "length" && target[0] != "prevObject" && game.users.current.isGM){
+					target[1].style.display = "none";
+			}
+		});
+	}
+	
+	
+	
 });
 
 Hooks.on("polyglot.init", (LanguageProvider) => {

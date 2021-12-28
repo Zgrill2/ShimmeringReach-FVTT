@@ -254,11 +254,15 @@ export class ShimmeringReachActorSheet extends ActorSheet {
   _skillRoll(event) {
 		event.preventDefault();
 		let dataset = event.currentTarget.dataset;
+		
+		let options = {
+			blind: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			renderSkillChatData(dataset,this.actor,{});
+			renderSkillChatData(dataset,this.actor,options);
 		}
 		else {
-			customSkillDialog(dataset,this.actor,{});
+			customSkillDialog(dataset,this.actor,options);
 		}
 	}
 
