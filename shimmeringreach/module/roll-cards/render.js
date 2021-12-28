@@ -1240,23 +1240,19 @@ async function gmRerollCombatCard(dataset,messageId){
 	let i = 0;
 	if(dataset.hasOwnProperty('attacker')){
 		if (!attacker.hasOwnProperty('reroll')){
-			let dicepool = attacker.diceroll.terms[0].number - attacker.diceroll.total;
+			console.log(attacker.diceroll);
+			let dicepool = attacker.diceroll.terms[0].number - attacker.diceroll._total;
 			let reroll = new RollDP( dicepool, attacker.actor, false, false).evaluate();
+			
+			console.log("test1",dicepool,reroll);
 			
 			let q = reroll.terms[0].results;
 				q.sort((a, b) => {
 				return (b.result - a.result);
 			});
 			
-			const fullreroll = {
-				class: "RollDP",
-				dice: [],
-				formula: reroll._formula,
-				total: reroll._total,
-				results: reroll.results,
-				terms: [{...reroll.terms[0]}]
-			};
-			
+			const fullreroll = {...reroll};
+			console.log("fullreroll",fullreroll);
 			await message.update({"flags.shimmeringreach.attacker.reroll": fullreroll});
 		}
 		else {
