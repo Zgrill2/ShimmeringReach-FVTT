@@ -248,17 +248,10 @@ async function gmUndoDamageApply(dataset,messageId){
 		
 			actor.update({"data.health.value" : actor.data.data.health.value + defender[1].dmgSet.hp,"data.stamina.value" : actor.data.data.stamina.value + defender[1].dmgSet.stam});
 			
-			
-			
 			delete defender[1].dmgSet;
 			console.log(defender[1]);
 		}
 	});
-	
-	
-	
-	
-	
 	await message.setFlag("shimmeringreach","defenders",null);
 	
 	await message.setFlag("shimmeringreach","defenders",defenders);

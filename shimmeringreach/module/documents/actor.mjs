@@ -11,14 +11,17 @@ export class ShimmeringReachActor extends Actor {
     // prepareBaseData(), prepareEmbeddedDocuments() (including active effects),
     // prepareDerivedData().
     super.prepareData();
-    this.items.forEach(i => i._prepareDerivedWeaponData(this.data, i.data)) // This data is calculated post actor setup
-    this._prepareBlockParryData(this.data); // Finally these defense values are calculated
   }
 
   /** @override */
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
+    const actorData = this.data;
+    const data = actorData.data;
+    const flags = actorData.flags.shimmeringreach || {};
+    this._prepareCharacterData(actorData);
+    this._prepareNpcData(actorData);
   }
 
   /**
@@ -31,14 +34,8 @@ export class ShimmeringReachActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
-    const flags = actorData.flags.shimmeringreach || {};
-
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
-    // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this.items.forEach(i => i._prepareDerivedWeaponData(this.data, i.data)) // This data is calculated post actor setup
+    this._prepareBlockParryData(this.data); // Finally these defense values are calculated
   }
 
   /**
@@ -56,9 +53,9 @@ export class ShimmeringReachActor extends Actor {
 	  data.skills.perceive_magic.attr = data.skills.spellcasting.attr;
 
     // bars - health, stamina, mana
-	  data.health.max += data.abilities.bod.value;
-	  data.mana.max += data.abilities[data.skills.spellcasting.attr].value;
-	  data.stamina.max += data.abilities.wil.value;
+	  data.health.max = data.abilities.bod.value + 16;
+	  data.mana.max = data.abilities[data.skills.spellcasting.attr].value + 16;
+	  data.stamina.max = data.abilities.wil.value + 16;
 
     //drain soak
 	  data.drainres.value = data.abilities.wil.value * 2;
@@ -201,7 +198,8 @@ export class ShimmeringReachActor extends Actor {
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
-    if (data.abilities) {
+    /*
+	if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {
         data[k] = foundry.utils.deepClone(v);
       }
@@ -210,7 +208,7 @@ export class ShimmeringReachActor extends Actor {
     // Add level for easier access, or fall back to 0.
     if (data.attributes.level) {
       data.lvl = data.attributes.level.value ?? 0;
-    }
+    }*/
   }
 
   /**
@@ -221,5 +219,36 @@ export class ShimmeringReachActor extends Actor {
 
     // Process additional NPC data here.
   }
+  
+  
+  
+    applyActiveEffects() {
+    const overrides = {};
+
+    // Organize non-disabled effects by their application priority
+    const changes = this.effects.reduce((changes, e) => {
+      if ( e.data.disabled ) return changes;
+      return changes.concat(e.data.changes.map(c => {
+        c = foundry.utils.duplicate(c);
+        c.effect = e;
+        c.priority = c.priority ?? (c.mode * 10);
+        return c;
+      }));
+    }, []);
+    changes.sort((a, b) => a.priority - b.priority);
+
+    // Apply all changes
+    for ( let change of changes ) {
+		console.log("applying",this,change);
+      const result = change.effect.apply(this, change);
+	  console.log("result",result);
+      if ( result !== null ) overrides[change.key] = result;
+    }
+
+    // Expand the set of final overrides
+    this.overrides = foundry.utils.expandObject(overrides);
+  }
+
+
 
 }
