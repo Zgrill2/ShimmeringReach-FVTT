@@ -823,6 +823,8 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 			defender_list.push = game.actors.get(d);
 		}
 	}
+	
+	console.log("Defender",defender_list);
 //console.log(defender_list);
 	
 	let message = game.messages.get(messageId);
@@ -854,19 +856,19 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 
 
        // await defender_list.reduce(async (memo, actor) => {
-	    Object.entries(defender_list).forEach(actor => {
-	    
-		console.log(actor[1]);
+	
+	for (let actor of defender_list){
+		console.log(actor);
 		let present = false;
 		Object.entries(old_defenders).forEach(old_actor => {
 			console.log(old_actor[1]);
 			// If Token already rolled, don't roll
-			if (actor[1].parent && actor[1].parent.id == old_actor[1].token_id) {
+			if (actor.parent && actor.parent.id == old_actor[1].token_id) {
 			console.log("skip")
 				present = true;
 			}
 			// Else If Actor already rolled, don't roll
-			else if (!(old_actor[1].token_id) && actor[1].id == old_actor[1].actor._id) {
+			else if (!(old_actor[1].token_id) && actor.id == old_actor[1].actor._id) {
 			console.log("skip2")
 				present = true;
 			};
@@ -876,7 +878,35 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		
 		if (!present){
 			console.log(actor);
-			let defenseDP = actor[1].data.data.defenses[dataset.defense][dataset.state];
+			
+
+			
+			let defenseDP = actor.data.data.defenses[dataset.defense][dataset.state];
+			
+			if (dataset.state == "active"){
+				let found = false;
+				for (let e of actor.data.effects){
+					if ((e.data.label == "Total Defense" || (e.data.label == "Active " + dataset.defense) && !(options.total_defense))){
+						found = true;
+					}
+					console.log(e.name, "Active " + dataset.defense);
+				}
+				
+				if (!(found)){
+					
+					
+					
+					
+					await actor.createEmbeddedDocuments("ActiveEffect", [{
+					label: options.total_defense ? "Total Defense" : "Active " + dataset.defense,
+					icon: options.total_defense ? "modules/game-icons-net/whitetransparent/white-tower.svg": dataset.icon,
+					tint: "#00FFFF",
+					origin: actor.uuid,
+					"duration.rounds":  1,
+					disabled: false
+				  }]);
+				}
+			}
 
 
 		    
@@ -887,7 +917,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 
 
 		    
-		    let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
+		    let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
 		    console.log(diceroll);
 			
 			let q = diceroll.terms[0].results;
@@ -895,7 +925,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				return (b.result - a.result);
 			});
 			let defenderOptions = {
-				actor: actor[1].data,
+				actor: actor.data,
 				defense_type: dataset.defense,
 				defense_state: dataset.state,
 				dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
@@ -906,8 +936,8 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 			};
 			////console.log("this is what diceroll looks like",diceroll);
 			
-			if(actor[1].isToken){
-				defenderOptions.token_id = actor[1].token.id;
+			if(actor.isToken){
+				defenderOptions.token_id = actor.token.id;
 			}
 			defenders.push(defenderOptions);
 			
@@ -936,7 +966,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 			}
 			
 		}
-	});
+	}
 	
 	let new_defenders = {};
 	

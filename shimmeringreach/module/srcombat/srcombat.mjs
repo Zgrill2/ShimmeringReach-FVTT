@@ -222,7 +222,8 @@ export class SRCombat extends Combat {
 				console.log(e);
 				console.log(e.duration.remaining);
 				if (e.duration.remaining < 1.1 && e.duration.type != "none"){
-					e.delete();
+					console.log("deleted");
+					await e.delete();
 				}
 			}
 	  }

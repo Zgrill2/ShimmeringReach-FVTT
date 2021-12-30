@@ -186,22 +186,28 @@ Hooks.on("init", function() {
 	$(document).on('click','.defense-block', (event) => {
 		
 		event.preventDefault();
+		let options = {
+			total_defense: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			addDefenseMessages(event, {});
+			addDefenseMessages(event, options);
 		}
 		else {
-			customDefenseDialog(event,{});
+			customDefenseDialog(event,options);
 		}
 		
 	});
 	
 	$(document).on('click','.defense-block-active', (event) => {
 		event.preventDefault();
+		let options = {
+			total_defense: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			addDefenseMessages(event, {});
+			addDefenseMessages(event, options);
 		}
 		else {
-			customDefenseDialog(event,{});
+			customDefenseDialog(event,options);
 		}
 	});
 	
