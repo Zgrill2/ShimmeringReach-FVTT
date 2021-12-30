@@ -154,14 +154,11 @@ export async function customDefenseDialog(event,options) {
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
 				
 				//console.log('wounds',html.find('[name=chk-wounds]')[0].checked);
-				if(html.find('[name=chk-wounds]')[0].checked)
-				{
-					options.wounds = true;
-				}
-				if(html.find('[name=chk-explode]')[0].checked)
-				{
-					options.explode = true;
-				}
+				
+				options.wounds = html.find('[name=chk-wounds]')[0].checked;
+				options.explode = html.find('[name=chk-explode]')[0].checked;
+				options.total_defense = html.find('[name=chk-total_defense]')[0].checked;
+				
 				
 				//console.log(options);
 				addDefenseMessages(event,options);
@@ -878,7 +875,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		
 		if (!present){
 			console.log(actor);
-			
+			let roll = true;
 
 			
 			let defenseDP = actor.data.data.defenses[dataset.defense][dataset.state];
@@ -895,16 +892,33 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				if (!(found)){
 					
 					
+					for (let c of game.combats.active.combatants){
+						if (c.token.id == actor.token.id){
+							let initcost = options.total_defense ? 10 : 5;
+							
+							if (c.initiative <=0){
+								roll = false;
+								console.log("not enough init");
+							}
+							else {
+								c.update({initiative: c.initiative - initcost});
+								
+								await actor.createEmbeddedDocuments("ActiveEffect", [{
+								label: options.total_defense ? "Total Defense" : "Active " + dataset.defense,
+								icon: options.total_defense ? "modules/game-icons-net/whitetransparent/white-tower.svg": dataset.icon,
+								tint: "#00FFFF",
+								origin: actor.uuid,
+								"duration.rounds":  1,
+								disabled: false
+								}]);
+							}
+						}
+					}
 					
 					
-					await actor.createEmbeddedDocuments("ActiveEffect", [{
-					label: options.total_defense ? "Total Defense" : "Active " + dataset.defense,
-					icon: options.total_defense ? "modules/game-icons-net/whitetransparent/white-tower.svg": dataset.icon,
-					tint: "#00FFFF",
-					origin: actor.uuid,
-					"duration.rounds":  1,
-					disabled: false
-				  }]);
+					
+					console.log(game.combats.active.combatants);
+					
 				}
 			}
 
@@ -916,55 +930,55 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		
 
 
-		    
-		    let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
-		    console.log(diceroll);
-			
-			let q = diceroll.terms[0].results;
-			q.sort((a, b) => {
-				return (b.result - a.result);
-			});
-			let defenderOptions = {
-				actor: actor.data,
-				defense_type: dataset.defense,
-				defense_state: dataset.state,
-				dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
-				diceroll: diceroll,
-				icon: dataset.icon,
-			        hue: hue,
-			        percentile: diceroll.percentileText 
-			};
-			////console.log("this is what diceroll looks like",diceroll);
-			
-			if(actor.isToken){
-				defenderOptions.token_id = actor.token.id;
-			}
-			defenders.push(defenderOptions);
-			
-			if (attacker.display_hits > diceroll.result){
-				sounds.push(attacker.weapon.data.sound);
-			}
-			else {
-				console.log(dataset.defense);
-				switch(dataset.defense){
-					case("dodge"):
-						sounds.push(sound_folder + "/miss-sfx.mp3");
-					break;
-					case("block"):
-						sounds.push(sound_folder + "/block-sfx.mp3");
-					break;
-					case("parry"):
-						sounds.push(sound_folder + "/parry-sfx.mp3");
-					break;
-					case("physical"):
-						sounds.push(sound_folder + "/physical-sfx.mp3");
-					break;
-					case("mental"):
-						sounds.push(sound_folder + "/mental-sfx.mp3");
-					break;
+		    if (roll){
+				let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
+				console.log(diceroll);
+				
+				let q = diceroll.terms[0].results;
+				q.sort((a, b) => {
+					return (b.result - a.result);
+				});
+				let defenderOptions = {
+					actor: actor.data,
+					defense_type: dataset.defense,
+					defense_state: dataset.state,
+					dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
+					diceroll: diceroll,
+					icon: dataset.icon,
+						hue: hue,
+						percentile: diceroll.percentileText 
+				};
+				////console.log("this is what diceroll looks like",diceroll);
+				
+				if(actor.isToken){
+					defenderOptions.token_id = actor.token.id;
+				}
+				defenders.push(defenderOptions);
+				
+				if (attacker.display_hits > diceroll.result){
+					sounds.push(attacker.weapon.data.sound);
+				}
+				else {
+					console.log(dataset.defense);
+					switch(dataset.defense){
+						case("dodge"):
+							sounds.push(sound_folder + "/miss-sfx.mp3");
+						break;
+						case("block"):
+							sounds.push(sound_folder + "/block-sfx.mp3");
+						break;
+						case("parry"):
+							sounds.push(sound_folder + "/parry-sfx.mp3");
+						break;
+						case("physical"):
+							sounds.push(sound_folder + "/physical-sfx.mp3");
+						break;
+						case("mental"):
+							sounds.push(sound_folder + "/mental-sfx.mp3");
+						break;
+					}
 				}
 			}
-			
 		}
 	}
 	
