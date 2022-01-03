@@ -57,7 +57,7 @@ export class ShimmeringReachActorSheet extends ActorSheet {
 
     // Prepare active effects
     context.effects = prepareActiveEffectCategories(this.actor.effects);
-
+	console.log(context);
     return context;
   }
 
@@ -70,9 +70,11 @@ export class ShimmeringReachActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
+	//// Currently buggy, doesn't write to abilities group
+	/*
     for (let [k, v] of Object.entries(context.data.abilities)) {
       v.label = game.i18n.localize(CONFIG.SHIMMERINGREACH.abilities[k]) ?? k;
-    }
+    }*/
   }
 
   /**
@@ -88,19 +90,7 @@ export class ShimmeringReachActorSheet extends ActorSheet {
     const features = [];
     const weapons = [];
     const known_skills = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
-    };
-
+	const spells = [[]];
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
@@ -254,11 +244,15 @@ export class ShimmeringReachActorSheet extends ActorSheet {
   _skillRoll(event) {
 		event.preventDefault();
 		let dataset = event.currentTarget.dataset;
+		
+		let options = {
+			blind: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			renderSkillChatData(dataset,this.actor,{});
+			renderSkillChatData(dataset,this.actor,options);
 		}
 		else {
-			customSkillDialog(dataset,this.actor,{});
+			customSkillDialog(dataset,this.actor,options);
 		}
 	}
 

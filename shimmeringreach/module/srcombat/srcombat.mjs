@@ -112,7 +112,9 @@ export class SRCombat extends Combat {
     }
     let advanceTime = Math.max(this.turns.length - this.data.turn, 1) * CONFIG.time.turnTime;
     advanceTime += CONFIG.time.roundTime;
-
+	
+	await this.timeoutBuffs();
+	
     await this.resetAll();
     await this.rollAll();
     await this.firstTurn();  
@@ -203,6 +205,28 @@ export class SRCombat extends Combat {
     await this.firstTurn();  
 
     return this.update({round: 1, turn: 0});
+  }
+  
+  async timeoutBuffs(){
+	  
+	  for (let c of this.combatants) {
+			let actor = {};
+			if (game.actors.tokens[c.token.id] !== undefined){
+				actor = game.actors.tokens[c.token.id]
+			}
+			else {
+				actor = c._actor;
+			}
+			
+			for (let e of actor.data.effects){
+				console.log(e);
+				console.log(e.duration.remaining);
+				if (e.duration.remaining < 1.1 && e.duration.type != "none"){
+					console.log("deleted");
+					await e.delete();
+				}
+			}
+	  }
   }
   
 

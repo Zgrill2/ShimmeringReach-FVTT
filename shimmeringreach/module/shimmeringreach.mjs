@@ -16,10 +16,14 @@ import { RollDP } from "./dice-roller/roll.mjs"
 import { SRCombat } from "./srcombat/srcombat.mjs";
 
 // Import renders
-import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog} from './roll-cards/render.js';
+import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage,undoDamageApply} from './roll-cards/render.js';
 
+// Import measurement calculations
 import { measureDistances } from "./canvas/canvas.js";
 
+
+// Import settings
+import { registerSystemSettings } from "./settings.js";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -64,7 +68,9 @@ console.log(phrase)
     ShimmeringReachItem,
     RollDP,
     SRCombat,
-    rollMacro
+    rollMacro,
+	renderDvChatData,
+	customDvDialog
   };
 
 
@@ -101,6 +107,7 @@ console.log(phrase)
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("shimmeringreach", ShimmeringReachItemSheet, { makeDefault: true });
 
+  registerSystemSettings();
   registerRenderSocket();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
@@ -131,6 +138,9 @@ Handlebars.registerHelper('isInSkillGroup', function(skill_group_members, skill_
   return skill_group_members.includes(skill_name);
 });
 
+Handlebars.registerHelper("checkedNot", function (condition) {
+    return (condition) ? "" : "checked";
+});
   
 Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
@@ -176,22 +186,28 @@ Hooks.on("init", function() {
 	$(document).on('click','.defense-block', (event) => {
 		
 		event.preventDefault();
+		let options = {
+			total_defense: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			addDefenseMessages(event, {});
+			addDefenseMessages(event, options);
 		}
 		else {
-			customDefenseDialog(event,{});
+			customDefenseDialog(event,options);
 		}
 		
 	});
 	
 	$(document).on('click','.defense-block-active', (event) => {
 		event.preventDefault();
+		let options = {
+			total_defense: event.ctrlKey
+		}
 		if (!event.shiftKey){
-			addDefenseMessages(event, {});
+			addDefenseMessages(event, options);
 		}
 		else {
-			customDefenseDialog(event,{});
+			customDefenseDialog(event,options);
 		}
 	});
 	
@@ -209,6 +225,45 @@ Hooks.on("init", function() {
 		event.preventDefault();
 		simpleDrain(event);
 	});
+	
+	$(document).on('click','.dvsoak', (event) => {
+		event.preventDefault();
+		addSoakMessage(event);
+	});
+	
+	$(document).on('click','.undo-damage-block', (event) => {
+		event.preventDefault();
+		
+		if (event.shiftKey){
+			undoDamageApply(event);
+		}
+	});
+});
+
+Hooks.on("renderChatMessage", (event, html, messageData) => {
+	Object.entries($(html).find('.delete-defender')).forEach(target => {
+		if (target[0] != "length" && target[0] != "prevObject"){
+			if (game.actors.get(target[1].dataset.actorId).permission != 3){
+				target[1].style.display = "none";
+			}
+		}
+	});
+	if (messageData.message.blind){
+		Object.entries($(html).find('.blind-gm')).forEach(target => {
+			if (target[0] != "length" && target[0] != "prevObject" && !(game.users.current.isGM)){
+					target[1].style.display = "none";
+			}
+		});
+
+		Object.entries($(html).find('.blind-player')).forEach(target => {
+			if (target[0] != "length" && target[0] != "prevObject" && game.users.current.isGM){
+					target[1].style.display = "none";
+			}
+		});
+	}
+	
+	
+	
 });
 
 Hooks.on("polyglot.init", (LanguageProvider) => {
@@ -241,7 +296,7 @@ Hooks.on("polyglot.init", (LanguageProvider) => {
         getUserLanguages(actor) {
             let known_languages = new Set();
             let literate_languages = new Set();
-			console.log(actor.data.items);
+			//console.log(actor.data.items);
 			known_languages.add("common");
             for (let [i,lang] of actor.data.items.entries()){
                 if(lang.type == "language") known_languages.add(lang.name);

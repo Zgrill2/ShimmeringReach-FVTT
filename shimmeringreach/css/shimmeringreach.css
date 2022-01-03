@@ -556,9 +556,19 @@
   text-align: center;
   width: 36px;
   line-height: 36px;
-  filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
-  border-style: none;
-	
+  filter:brightness(55%)sepia(0.5) hue-rotate(-50deg);
+  border-style: none;	
+}
+
+.36-red-block{
+  background-size: 36px 36px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 36px;
+  line-height: 36px;
+  filter:brightness(55%)sepia(0.5) hue-rotate(-50deg);
+  border-style: none;	
 }
 
 .roll-button:hover, .roill-button:focus{
@@ -574,7 +584,7 @@
                 text-align: center;
                 width: 36px;
                 line-height: 36px;
-				filter:brightness(50%)sepia(0.5) hue-rotate(150deg);
+				filter:brightness(55%)sepia(0.5) hue-rotate(150deg);
 				border-style: none;
 }
 
@@ -585,7 +595,7 @@
                 text-align: center;
                 width: 36px;
                 line-height: 36px;
-				filter:brightness(50%)sepia(0.5) hue-rotate(-50deg);
+				filter:brightness(55%)sepia(0.5) hue-rotate(-50deg);
 				border-style: none;
 	
 }
@@ -597,7 +607,7 @@
                 text-align: center;
                 width: 36px;
                 line-height: 36px;
-				filter:brightness(50%)sepia(0.5) hue-rotate(150deg);
+				filter:brightness(55%)sepia(0.5) hue-rotate(150deg);
 				border-style: none;
 	
 }
@@ -642,6 +652,19 @@
 	
 }
 
+.dv-onlysoak-block {
+				background-image: url(/icons/svg/combat.svg);
+                background-size: 40px 40px;
+				font-size: 24px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 42px;
+                line-height: 40px;
+				filter:brightness(60%)sepia(0.5) hue-rotate(150deg);
+	
+}
+
 .hits-block {
 				background-image: url(/icons/svg/target.svg);
                 background-size: 40px 40px;
@@ -653,6 +676,16 @@
                 line-height: 40px;
 				filter:brightness(60%)sepia(0.5) hue-rotate(150deg);
 
+}
+
+.empty-block {
+				background-size: 40px 40px;
+				font-size: 24px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
 }
 
 
@@ -704,7 +737,18 @@
                 width: 40px;
                 line-height: 40px;
 				filter:brightness(60%)sepia(0.5) hue-rotate(-50deg);
+}
 
+.undo-damage-block {
+				background-image: url(/modules/game-icons-net/whitetransparent/cancel.svg);
+                background-size: 40px 40px;
+				font-size: 20px;
+				padding: 0.0em 0.0em;
+                font-weight: bold;
+                text-align: center;
+                width: 40px;
+                line-height: 40px;
+				filter:brightness(60%)sepia(0.5) hue-rotate(-50deg);
 }
 
 .incoming-drain-block {
