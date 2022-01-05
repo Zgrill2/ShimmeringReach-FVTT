@@ -893,7 +893,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 					
 					
 					for (let c of game.combats.active.combatants){
-						if (c.token.id == actor.token.id){
+						if (c.token.id == (actor.token == null ? actor.id : actor.token.id)){
 							let initcost = options.total_defense ? 10 : 5;
 							
 							if (c.initiative <=0){
