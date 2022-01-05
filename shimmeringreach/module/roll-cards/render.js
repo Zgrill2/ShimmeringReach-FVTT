@@ -817,7 +817,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	else{
 		for ( let d of actors ){
 		//console.log(d);
-			defender_list.push = game.actors.get(d);
+			defender_list.push( game.actors.get(d));
 		}
 	}
 	
@@ -893,7 +893,8 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 					
 					
 					for (let c of game.combats.active.combatants){
-						if (c.token.id == (actor.token == null ? actor.id : actor.token.id)){
+							console.log(c,actor.token,actor.id,actor.token);
+						if ((c.token.id == (actor.token == null ? null : actor.token.id)) || c.actor.id == actor.id){
 							let initcost = options.total_defense ? 10 : 5;
 							
 							if (c.initiative <=0){
@@ -1002,7 +1003,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	await updateRollcardFlags(message);
 	
 	for (let i = 0; i < sounds.length; i++){
-		setTimeout(() => { AudioHelper.play({src: sounds[i], volume: 0.8, autoplay: true, loop: false}, true)}, 500*i);
+		setTimeout(() => { if(sounds[i] != null){AudioHelper.play({src: sounds[i], volume: 0.8, autoplay: true, loop: false}, true)}}, 500*i);
 		
 		
 	}
