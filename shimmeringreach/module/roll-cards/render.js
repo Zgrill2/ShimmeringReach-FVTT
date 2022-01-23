@@ -541,42 +541,34 @@ export async function multiSkillDialog(){
 		},
 		default: "abortbutton",
 		//render: html => console.log("Register interactivity in the rendered dialog"),
-		close: html =>{
+		close: async html =>{
 
 			//console.log("This always is logged no matter which option is chosen")
-			/*
-			console.log(html);
-			console.log($(html));*/
+			
 			if(confirmed) {
 				
 				let defenders = [];
 				
-				//let select = document.getElementById('challenged_skill');
-				//let skillname = select.options[select.selectedIndex].value;
+				let skillname = html.find('[id=challenged_skill]')[0].value;
+				let displayname = actors[0].data.data.skills[skillname].name;
+				console.log(html.find('[id=challenged_skill]'));
 				
-				//let skillname = html.find['name=challenged_skill'];
+				let blind = $('input[type=radio]:checked').val() != "visible";
 				
-				console.log(html);
-				/*
-				console.log($('input[type=radio]'));
-				console.log($('input[type=radio]:checked'));
-				let blind = $('input[type=radio]:checked').val() != "visible";*/
-				//console.log($(html).find['name=chk-wounds']);
 				
-				/*
-				let q = html.find['id=wounds'];
-				console.log(q);
-				let wounds = html.find['name=chk-wounds'][0].checked;
-				let explode = html.find['name=chk-explode'][0].checked;
-				*/
-				if (html.find['name=chk-preroll'][0].checked){
+				let wounds = html.find('[id=wounds]')[0].checked;
+				let explode = html.find('[id=explode]')[0].checked;
+				
+				if (html.find('[id=preroll]')[0].checked){
 					for (let actor of actors){
 						let search = "[name=roll_" + actor.name +"]";
 						console.log(search,html.find(search)[0].checked);
-						/*
+						
 						if(html.find(search)[0].checked){
+							console.log("bloop");
+							let skillDP = actor.data.data.skills[skillname].dicepool;
+							let diceroll = new RollDP( skillDP , actor.data.data, explode, wounds).evaluate({async:false});
 							
-							let diceroll = new RollDP( defenseDP , actor.data.data, explode, wounds).evaluate({async:false});
 							let defenderOptions = {
 								actor: actor.data,
 								skillname: skillname,
@@ -586,22 +578,28 @@ export async function multiSkillDialog(){
 								blind: blind
 							}
 							defenders.push(defenderOptions);
-						}*/
+						}
 					}
 				}
-				/*
-				let multiSkillInfo = {
-					attacker: {},
-					defenders: defenders
+				
+				let attacker = {
+					displayname: displayname
 				}
 				
+				
+				let multiSkillInfo = {
+					attacker: attacker,
+					defenders: defenders
+				}
+				console.log(multiSkillInfo);
+				let template2 = "systems/shimmeringreach/templates/chat/multi-skill-card.html";
 				let chatData = {
 					user: game.user.id,
-					content: renderTemplate(template, multiSkillInfo),
+					content: await renderTemplate(template2, multiSkillInfo),
 					flags:{ "shimmeringreach": multiSkillInfo}
 				}
 				console.log(multiSkillInfo);
-				let msg = ChatMessage.create(chatData);*/
+				let msg = ChatMessage.create(chatData);
 			}
 		}
 	},

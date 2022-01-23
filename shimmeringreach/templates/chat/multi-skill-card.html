@@ -6,13 +6,13 @@
 		<div class="row">
 				
 				
-				<div class="column-left">
-					<div class="roll-card-header">
-						{{#if attacker.actor.name}}
-						<img src="{{attacker.actor.img}}" class="entity-selectable" title="{{attacker.actor.name}}" width="40" height="40"/>
-						{{/if}}
+				{{#if attacker.actor.name}}
+					<div class="column-left">
+						<div class="roll-card-header">
+							<img src="{{attacker.actor.img}}" class="entity-selectable" title="{{attacker.actor.name}}" width="40" height="40"/>
+						</div>
 					</div>
-				</div>
+				{{/if}}
 				<div class="column-right">
 					<div class="roll-card-header">
 						<div class="skill-title">{{attacker.displayname}}</div>
@@ -27,6 +27,7 @@
 	
 	
 
+	<div class="grid grid-2col">
 	{{#each defenders as |defender|}}	
 		<div class="block">
 			<div class="row">
@@ -79,6 +80,6 @@
 			</div>
 		</div>
 	{{/each}}
-	
+	</div>
 	
 </div>

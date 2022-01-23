@@ -47,7 +47,13 @@ export class RollDP extends Roll {
     if ( !Number.isNumeric(total) ) {
       throw new Error(game.i18n.format("DICE.ErrorNonNumeric", {formula: this.formula}));
     }
-
+	
+	let q = this.terms[0].results;
+	q.sort((a, b) => {
+		return (b.result - a.result);
+	});
+	
+	
 	this.getPercentile(total);
 
     return total;
