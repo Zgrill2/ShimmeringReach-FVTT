@@ -568,11 +568,11 @@ export async function multiSkillDialog(){
 							console.log("bloop");
 							let skillDP = actor.data.data.skills[skillname].dicepool;
 							let diceroll = new RollDP( skillDP , actor.data.data, explode, wounds).evaluate({async:false});
-							
+							console.log(diceroll);
 							let defenderOptions = {
 								actor: actor.data,
 								skillname: skillname,
-								diceroll: diceroll,
+								diceroll: {...diceroll},
 								dicepoolMod: 0,
 								display_hits: diceroll._total,
 								blind: blind
@@ -583,7 +583,9 @@ export async function multiSkillDialog(){
 				}
 				
 				let attacker = {
-					displayname: displayname
+					displayname: displayname,
+					type: "multiskill_card",
+					template: "systems/shimmeringreach/templates/chat/multi-skill-card.html"
 				}
 				
 				
@@ -599,7 +601,8 @@ export async function multiSkillDialog(){
 					flags:{ "shimmeringreach": multiSkillInfo}
 				}
 				console.log(multiSkillInfo);
-				let msg = ChatMessage.create(chatData);
+				let msg = await ChatMessage.create(chatData);
+				console.log(msg);
 			}
 		}
 	},
@@ -660,10 +663,6 @@ async function renderOverload(actor, overload, overload_soak, overload_explode){
 
 	let diceroll = new RollDP( newdp, actor.data.data, overload_explode, true).evaluate();
 
-	let q = diceroll.terms[0].results;
-	q.sort((a, b) => {
-		return (b.result - a.result);
-	});
 	////console.log("actor",options.actor);
 	let content = {
 		actor: actor.data,
@@ -779,10 +778,6 @@ export async function renderAttackChatData(dataset, actor, options) {
 	let diceroll = new RollDP(newdp, actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
 	await diceroll.evaluate({async: true});
 	
-	let q = diceroll.terms[0].results;
-	q.sort((a, b) => {
-		return (b.result - a.result);
-	});
 	let attacker_info = {
 		actor: actor.data,
 		weapon: weapon,
@@ -839,10 +834,6 @@ export async function renderSkillChatData(dataset, actor, options){
 		
 		await diceroll.evaluate({async: true});
 		
-		let q = diceroll.terms[0].results;
-		q.sort((a, b) => {
-			return (b.result - a.result);
-		});
 		////console.log("actor",options.actor);
 		let content = {
 			actor: actor.data,
@@ -1016,10 +1007,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
 				console.log(diceroll);
 				
-				let q = diceroll.terms[0].results;
-				q.sort((a, b) => {
-					return (b.result - a.result);
-				});
 				let defenderOptions = {
 					actor: actor.data,
 					defense_type: dataset.defense,
@@ -1105,21 +1092,24 @@ async function updateRollcardFlags(message) {
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let combatInfo = {};
 	let template = "";
-	console.log(attacker);
+	let d_display_hits = 0;
+	let display_hits = 0;
+	
+	let defender_holder = [];
+	let new_defenders = {};
+	//console.log(attacker);
 	switch(attacker.type){
-		case "combat_card": 
+		case "combat_card":
 		
 			template = "systems/shimmeringreach/templates/chat/attack-card.html";
 			let display_dv = attacker.weapon.data.power + attacker.dvMod + (attacker.actor.data.abilities[attacker.weapon.data.attr] ? attacker.actor.data.abilities[attacker.weapon.data.attr].value : 0);
 			console.log(attacker.diceroll);
-			let display_hits = attacker.diceroll._total + (attacker.reroll ? attacker.reroll._total : 0); //Future proofing for when abilities can add free hits
+			display_hits = attacker.diceroll._total + (attacker.reroll ? attacker.reroll._total : 0); //Future proofing for when abilities can add free hits
 			console.log("test",display_dv,display_hits);
 			attacker.display_dv = display_dv;
 			attacker.display_hits = display_hits;
 			
 			
-			let defender_holder = [];
-			let new_defenders = {};
 			
 			if (defenders != undefined){
 				
@@ -1127,7 +1117,8 @@ async function updateRollcardFlags(message) {
 				
 				Object.entries(defenders).forEach(defender => {
 					
-					const d_display_hits = defender[1].diceroll._total + (defender[1].reroll ? defender[1].reroll.total : 0); //Future proofing for when abilities can add free hits
+					console.log(defender);
+					d_display_hits = defender[1].diceroll._total + (defender[1].reroll ? defender[1].reroll._total : 0); //Future proofing for when abilities can add free hits
 					defender[1].display_hits = d_display_hits;
 					
 					if ( display_hits > d_display_hits) {
@@ -1185,18 +1176,65 @@ async function updateRollcardFlags(message) {
 		
 		
 		break;
+	
+	case "multiskill_card":
+		template = "systems/shimmeringreach/templates/chat/multi-skill-card.html"
+		
+		
+			display_hits = attacker.diceroll ? (attacker.diceroll._total + (attacker.reroll ? attacker.reroll._total : 0)) : 0; //Future proofing for when abilities can add free hits
+			attacker.display_hits = display_hits;
+			
+						
+			if (defenders != undefined){
+				
+				let i = 0;
+				
+				Object.entries(defenders).forEach(defender => {
+					console.log(defender);
+					d_display_hits = defender[1].diceroll._total + (defender[1].reroll ? defender[1].reroll._total : 0); //Future proofing for when abilities can add free hits
+					defender[1].display_hits = d_display_hits;
+					
+					defender[1].avoided = display_hits > d_display_hits
+					defender[1].net_hits = display_hits - d_display_hits;
+					
+					defender_holder.push(defender[1]);
+				});
+				
+				Object.entries(defender_holder).forEach(defender => {
+					let q = i + "";
+					new_defenders[q] = defender[1];
+					i++;
+				});
+				////console.log("latest new defenders",new_defenders);
+				await message.setFlag("shimmeringreach","defenders",null);
+				await message.setFlag("shimmeringreach","defenders",new_defenders);
+			}
+			
+			
+			
+			message.setFlag("shimmeringreach","attacker", attacker);
+		
+		combatInfo = 
+			{
+				attacker: attacker,
+				defenders: defenders
+			}
+		break;
+	
 	default:
 			console.log("Error: Unhandled chat card type");
 		return;
 	}
-    console.log(combatInfo);
+    //console.log(combatInfo);
+	
+					
 	await message.update({"content": await renderTemplate(attacker.template,combatInfo)});
+	
 }
 
 export function toggleDicerollDisplay(event){
 	
 	let message = getMessageFromEvent(event);
-	console.log(message);
 	if (!(message.data.blind && !(game.users.current.isGM))){
 		let targets = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content');
 		
@@ -1210,7 +1248,6 @@ export function toggleDicerollDisplay(event){
 				}
 			}
 		});
-		//console.log(game.users);
 	}
 }
 
@@ -1351,8 +1388,6 @@ async function gmRerollCombatCard(dataset,messageId){
 	let defenders = message.getFlag("shimmeringreach","defenders");
 	let attacker = message.getFlag("shimmeringreach","attacker");
 	
-	
-	
 	////console.log(dataset);
 	let new_defenders = [];
 	let i = 0;
@@ -1364,10 +1399,6 @@ async function gmRerollCombatCard(dataset,messageId){
 			
 			console.log("test1",dicepool,reroll);
 			
-			let q = reroll.terms[0].results;
-				q.sort((a, b) => {
-				return (b.result - a.result);
-			});
 			
 			const fullreroll = {...reroll};
 			console.log("fullreroll",fullreroll);
@@ -1385,26 +1416,24 @@ async function gmRerollCombatCard(dataset,messageId){
 					
 				if (!defender[1].hasOwnProperty('reroll')){
 					////console.log('rerolling defender');
-					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total
-					
-					//////console.log(defender);
+					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total ;
+					console.log(dicepool);
+					console.log(defender);
 					//////console.log(dicepool);
 					
 					let reroll = new RollDP( dicepool, defender[1].actor, false, false).evaluate();
-					
-					let q = reroll.terms[0].results;
-						q.sort((a, b) => {
-						return (b.result - a.result);
-					});
-					
+					console.log(reroll);
+					let fullreroll = {...reroll};
+					/*
 					let fullreroll = {
 						class: "RollDP",
 						dice: [],
 						formula: reroll._formula,
 						total: reroll._total,
-						results: reroll.results,
+						results: reroll.results ? reroll.results : reroll.result,
 						terms: [{...reroll.terms[0]}]
-					};
+					};*/
+					console.log(fullreroll);
 					defender[1].reroll= fullreroll;
 					
 					let str = "data.flags.shimmeringreach.defenders." + i + ".reroll";
@@ -1428,6 +1457,7 @@ async function gmRerollCombatCard(dataset,messageId){
 		
 	}
 	await updateRollcardFlags(message);
+	
 	//await updateCombatContent(message);
 	////console.log(message);
 }
@@ -1443,11 +1473,6 @@ async function rerollSkillCard(event){
 	if (!old_content.hasOwnProperty('reroll')){
 		let dicepool = old_content.diceroll.terms[0].number - old_content.diceroll.total;
 		let reroll = new RollDP( dicepool, old_content.actor, false, false).evaluate();
-
-		let q = reroll.terms[0].results;
-			q.sort((a, b) => {
-			return (b.result - a.result);
-		});
 
 		const fullreroll = {
 			class: "RollDP",
@@ -1486,11 +1511,6 @@ async function rerollDrainCard(event){
 	if (!old_content.hasOwnProperty('reroll')){
 		let dicepool = old_content.diceroll.terms[0].number - old_content.diceroll.total;
 		let reroll = new RollDP( dicepool, old_content.actor, false, false).evaluate();
-		
-		let q = reroll.terms[0].results;
-			q.sort((a, b) => {
-			return (b.result - a.result);
-		});
 		
 		const fullreroll = {
 			class: "RollDP",

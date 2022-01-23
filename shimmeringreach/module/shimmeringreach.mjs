@@ -194,8 +194,7 @@ Hooks.on("init", function() {
 			addDefenseMessages(event, options);
 		}
 		else {
-			//customDefenseDialog(event,options);
-			multiSkillDialog();
+			customDefenseDialog(event,options);
 		}
 		
 	});
