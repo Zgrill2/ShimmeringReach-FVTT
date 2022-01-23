@@ -66,11 +66,10 @@ export class SRCombat extends Combat {
 	  let hasinit = false;
   	do {
       for ( let [i, t] of this.turns.entries() ) {
-		    if ( t.defeated ) continue; //if defeated don't get a turn
-		    if ( t.initiative <= 0 ) continue; //if 0 init no turn
-		    hasinit = true; //someone alive has init left, do not go to next round
-        if ( i <= turn ) continue; //if you've already had a turn, no turn
         if ( t.actor?.effects.find(e => e.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId ) ) continue;
+		if ( t.initiative <= 0 ) continue; //if 0 init no turn
+		hasinit = true; //someone alive has init left, do not go to next round
+        if ( i <= turn ) continue; //if you've already had a turn, no turn
         next = i;
 		    await this.setInitiative(t.id, t.initiative - 10);
         break;

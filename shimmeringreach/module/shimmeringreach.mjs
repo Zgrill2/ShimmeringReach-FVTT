@@ -16,7 +16,7 @@ import { RollDP } from "./dice-roller/roll.mjs"
 import { SRCombat } from "./srcombat/srcombat.mjs";
 
 // Import renders
-import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage,undoDamageApply} from './roll-cards/render.js';
+import {customAttackDialog,renderAttackChatData,deleteDefenderMessage,toggleDicerollDisplay,rerollChatCard,addDefenseMessages,customDefenseDialog,customSoakDialog,simpleSoak, registerRenderSocket, testEmit, simpleDrain,renderSkillChatData,customSkillDialog,renderDvChatData, customDvDialog, addSoakMessage,undoDamageApply,multiSkillDialog} from './roll-cards/render.js';
 
 // Import measurement calculations
 import { measureDistances } from "./canvas/canvas.js";
@@ -70,7 +70,8 @@ console.log(phrase)
     SRCombat,
     rollMacro,
 	renderDvChatData,
-	customDvDialog
+	customDvDialog,
+	multiSkillDialog
   };
 
 

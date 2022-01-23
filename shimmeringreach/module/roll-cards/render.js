@@ -90,7 +90,7 @@ export async function customAttackDialog(dataset,actor,options) {
 		close: html =>{
 
 			//console.log("This always is logged no matter which option is chosen")
-			
+			console.log(html);
 			if(confirmed) {
 				options.dvMod = parseInt(html.find('[name=dvMod]')[0].value);
 				options.dicepoolMod = parseInt(html.find('[name=dicepoolMod]')[0].value);
@@ -512,6 +512,109 @@ export async function customSkillDialog(dataset,actor,options) {
 	
 }
 
+export async function multiSkillDialog(){
+	let actors = [];
+	for (let player of game.users.players){
+		actors.push(player.character);
+	}
+	
+	
+	
+    const template = "systems/shimmeringreach/templates/dialog/multiskill-dialog.html";
+	
+	
+	let confirmed = false;
+	let d = new Dialog({
+		title: "Multi Skill Prompt",
+		content: await renderTemplate(template,{"actors": actors,"adude": actors[0]}),
+		buttons: {
+		rollbutton: {
+		icon: '<i class="fas fa-check"></i>',
+		label: "Create",
+		callback: () => confirmed = true
+		},
+		abortbutton: {
+		icon: '<i class="fas fa-times"></i>',
+		label: "Cancel",
+		callback: () => confirmed = false
+		}
+		},
+		default: "abortbutton",
+		//render: html => console.log("Register interactivity in the rendered dialog"),
+		close: html =>{
+
+			//console.log("This always is logged no matter which option is chosen")
+			/*
+			console.log(html);
+			console.log($(html));*/
+			if(confirmed) {
+				
+				let defenders = [];
+				
+				//let select = document.getElementById('challenged_skill');
+				//let skillname = select.options[select.selectedIndex].value;
+				
+				//let skillname = html.find['name=challenged_skill'];
+				
+				console.log(html);
+				/*
+				console.log($('input[type=radio]'));
+				console.log($('input[type=radio]:checked'));
+				let blind = $('input[type=radio]:checked').val() != "visible";*/
+				//console.log($(html).find['name=chk-wounds']);
+				
+				/*
+				let q = html.find['id=wounds'];
+				console.log(q);
+				let wounds = html.find['name=chk-wounds'][0].checked;
+				let explode = html.find['name=chk-explode'][0].checked;
+				*/
+				if (html.find['name=chk-preroll'][0].checked){
+					for (let actor of actors){
+						let search = "[name=roll_" + actor.name +"]";
+						console.log(search,html.find(search)[0].checked);
+						/*
+						if(html.find(search)[0].checked){
+							
+							let diceroll = new RollDP( defenseDP , actor.data.data, explode, wounds).evaluate({async:false});
+							let defenderOptions = {
+								actor: actor.data,
+								skillname: skillname,
+								diceroll: diceroll,
+								dicepoolMod: 0,
+								display_hits: diceroll._total,
+								blind: blind
+							}
+							defenders.push(defenderOptions);
+						}*/
+					}
+				}
+				/*
+				let multiSkillInfo = {
+					attacker: {},
+					defenders: defenders
+				}
+				
+				let chatData = {
+					user: game.user.id,
+					content: renderTemplate(template, multiSkillInfo),
+					flags:{ "shimmeringreach": multiSkillInfo}
+				}
+				console.log(multiSkillInfo);
+				let msg = ChatMessage.create(chatData);*/
+			}
+		}
+	},
+	{width: 300});
+	d.render(true);
+	
+	
+	
+	
+	
+	
+}
+
 export async function simpleDrain(event) {
 
 	const template = "systems/shimmeringreach/templates/dialog/soak-dialog.html";
@@ -682,7 +785,6 @@ export async function renderAttackChatData(dataset, actor, options) {
 	q.sort((a, b) => {
 		return (b.result - a.result);
 	});
-	////console.log("actor",options.actor);
 	let attacker_info = {
 		actor: actor.data,
 		weapon: weapon,
@@ -699,8 +801,6 @@ export async function renderAttackChatData(dataset, actor, options) {
 		attacker: attacker_info
 	}
 	
-	
-	console.log(combatInfo);
 	let chatData = {
 		user: game.user.id,
 		content: await renderTemplate(template, combatInfo),
@@ -708,7 +808,6 @@ export async function renderAttackChatData(dataset, actor, options) {
 	}
 	console.log(combatInfo);
 	let msg = ChatMessage.create(chatData);
-	//console.log("msg", msg);
 }
 
 export async function renderSkillChatData(dataset, actor, options){
@@ -800,29 +899,17 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	
 	let sound_folder = game.settings.get("shimmeringreach","miss_sfx_directory");
 	console.log(sound_folder);
-	/*
-	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
-	let dataset = target.dataset 
-	let message = game.messages.get(target.closest('[data-message-id]').dataset.messageId);
-	let defender_list = getSelectedActors();
-	let tokens = {...canvas.tokens.controlled};
-	*/
-	////console.log(event.currentTarget.src);
-//console.log("dataset",dataset,"actors",actors,"messageId",messageId,"options",options);
-	//let spl =  "/modules" + target.src.split("modules")[1];
+	
 	let defender_list = [];
 	if (dataset.gm){
 		defender_list = actors;
 	}
 	else{
 		for ( let d of actors ){
-		//console.log(d);
 			defender_list.push( game.actors.get(d));
 		}
 	}
 	
-	console.log("Defender",defender_list);
-//console.log(defender_list);
 	
 	let message = game.messages.get(messageId);
 	
@@ -837,7 +924,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	
 	let sounds = [];
 	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
-	//console.log(message);
+	
 	let old_defenders = (message.getFlag("shimmeringreach","defenders") ? message.getFlag("shimmeringreach","defenders") : {});
 	let attacker = message.getFlag("shimmeringreach","attacker");
 		
@@ -852,7 +939,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	Object.assign(defenders, old_defenders);
 
 
-       // await defender_list.reduce(async (memo, actor) => {
 	
 	for (let actor of defender_list){
 		console.log(actor);
@@ -894,7 +980,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 					
 					for (let c of game.combats.active.combatants){
 							console.log(c,actor.token,actor.id,actor.token);
-						if ((c.token.id == (actor.token == null ? null : actor.token.id)) || c.actor.id == actor.id){
+						if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && c.token.id == null)){
 							let initcost = options.total_defense ? 10 : 5;
 							
 							if (c.initiative <=0){
@@ -925,9 +1011,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 
 
 		    
-		//let diceroll = new game.shimmeringreach.RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor[1].data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
-		
-		//await diceroll.evaluate({async: true});
 		
 
 
@@ -949,7 +1032,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 						hue: hue,
 						percentile: diceroll.percentileText 
 				};
-				////console.log("this is what diceroll looks like",diceroll);
 				
 				if(actor.isToken){
 					defenderOptions.token_id = actor.token.id;
@@ -1485,60 +1567,6 @@ export async function customDvDialog(){
 	{width: 300});
 	d.render(true);
 	
-}
-
-export async function customMultiskillDialog(){
-    const template = "systems/shimmeringreach/templates/dialog/multiskill-dialog.html";
-/*
-
-	let title = "Custom Multiskill";	
-	
-	let confirmed = false;
-	let d = new Dialog({
-		title: title,
-		content: await renderTemplate(template,{}),
-		buttons: {
-		rollbutton: {
-		icon: '<i class="fas fa-check"></i>',
-		label: "Create",
-		callback: () => confirmed = true
-		},
-		abortbutton: {
-		icon: '<i class="fas fa-times"></i>',
-		label: "Cancel",
-		callback: () => confirmed = false
-		}
-		},
-		default: "abortbutton",
-		//render: html => console.log("Register interactivity in the rendered dialog"),
-		close: html =>{
-
-			
-			if(confirmed) {
-				let title = html.find('[name=displayname]')[0].value;
-				let dv = parseInt(html.find('[name=dvMod]').length > 0 ? html.find('[name=dvMod]')[0].value : 0);
-			        let soakType = $('input[type=radio]:checked').val();
-			        let blind =  html.find('[name=chk-blind]')[0].checked;
-				
-				console.log(title);
-				console.log(dv);
-				let dataset = {
-					
-					title: title,
-					dv: dv,
-				    soakType: soakType,
-				    blind: blind
-				};
-				
-				
-				
-				renderMultiskillChatData(dataset,{},{});
-			}
-		}
-	},
-	{width: 300});
-	d.render(true);*/
-    
 }
 
 export async function renderDvChatData(dataset, actor, options){

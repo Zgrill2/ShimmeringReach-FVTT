@@ -57,7 +57,7 @@ export class ShimmeringReachActorSheet extends ActorSheet {
 
     // Prepare active effects
     context.effects = prepareActiveEffectCategories(this.actor.effects);
-	console.log(context);
+	//console.log(context);
     return context;
   }
 
