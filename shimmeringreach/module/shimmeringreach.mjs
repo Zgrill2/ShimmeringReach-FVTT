@@ -185,7 +185,6 @@ Hooks.on("init", function() {
 	});
 	
 	$(document).on('click','.defense-block', (event) => {
-		
 		event.preventDefault();
 		let options = {
 			total_defense: event.ctrlKey
@@ -196,7 +195,6 @@ Hooks.on("init", function() {
 		else {
 			customDefenseDialog(event,options);
 		}
-		
 	});
 	
 	$(document).on('click','.defense-block-active', (event) => {
@@ -210,6 +208,12 @@ Hooks.on("init", function() {
 		else {
 			customDefenseDialog(event,options);
 		}
+	});
+	$(document).on('click','.multiskill-roll', (event) => {
+		event.preventDefault();
+		let options = {
+		}
+		addDefenseMessages(event, options);
 	});
 	
 	$(document).on('click','.incoming-damage-block', (event) => {
@@ -249,7 +253,8 @@ Hooks.on("renderChatMessage", (event, html, messageData) => {
 			}
 		}
 	});
-	if (messageData.message.blind){
+	console.log(messageData);
+	if (messageData.message.blind || messageData.message.flags.shimmeringreach.attacker.blind){
 		Object.entries($(html).find('.blind-gm')).forEach(target => {
 			if (target[0] != "length" && target[0] != "prevObject" && !(game.users.current.isGM)){
 					target[1].style.display = "none";

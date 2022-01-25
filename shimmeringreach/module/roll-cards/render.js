@@ -571,11 +571,9 @@ export async function multiSkillDialog(){
 							console.log(diceroll);
 							let defenderOptions = {
 								actor: actor.data,
-								skillname: skillname,
 								diceroll: {...diceroll},
 								dicepoolMod: 0,
-								display_hits: diceroll._total,
-								blind: blind
+								display_hits: diceroll._total
 							}
 							defenders.push(defenderOptions);
 						}
@@ -585,7 +583,9 @@ export async function multiSkillDialog(){
 				let attacker = {
 					displayname: displayname,
 					type: "multiskill_card",
-					template: "systems/shimmeringreach/templates/chat/multi-skill-card.html"
+					template: "systems/shimmeringreach/templates/chat/multi-skill-card.html",
+					skillname: skillname,
+					blind: blind
 				}
 				
 				
@@ -600,6 +600,12 @@ export async function multiSkillDialog(){
 					content: await renderTemplate(template2, multiSkillInfo),
 					flags:{ "shimmeringreach": multiSkillInfo}
 				}
+				
+				if ($('input[type=radio]:checked').val() == "secret"){
+					chatData.blind = true;
+					chatData.whisper = getAllGMs();
+				}
+				
 				console.log(multiSkillInfo);
 				let msg = await ChatMessage.create(chatData);
 				console.log(msg);
@@ -863,8 +869,7 @@ export async function addDefenseMessages(event,options){
 	
 	let target = event.currentTarget ? event.currentTarget : event.delegateTarget;
 	let dataset = target.dataset;
-	let spl =  "/modules" + target.src.split("modules")[1];
-	dataset.icon = spl;
+	dataset.icon =  target.src ? "/modules" + target.src.split("modules")[1] : "";
 	let messageId = target.closest('[data-message-id]').dataset.messageId;
 	//let message = game.messages.get(target.closest('[data-message-id]').dataset.messageId);
 	let actors = {};
@@ -902,18 +907,10 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	
 	let message = game.messages.get(messageId);
 	
-	let hue = 0;
-	if (dataset.state == "passive"){
-		hue = -50
-	}
 	
-	else{
-		hue = 150
-	}
 	
 	let sounds = [];
-	const template = "systems/shimmeringreach/templates/chat/attack-card.html";
-	
+	let template = "";
 	let old_defenders = (message.getFlag("shimmeringreach","defenders") ? message.getFlag("shimmeringreach","defenders") : {});
 	let attacker = message.getFlag("shimmeringreach","attacker");
 		
@@ -926,130 +923,188 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	}
 	
 	Object.assign(defenders, old_defenders);
-
-
+	console.log(dataset.type);
 	
-	for (let actor of defender_list){
-		console.log(actor);
-		let present = false;
-		Object.entries(old_defenders).forEach(old_actor => {
-			console.log(old_actor[1]);
-			// If Token already rolled, don't roll
-			if (actor.parent && actor.parent.id == old_actor[1].token_id) {
-			console.log("skip")
-				present = true;
-			}
-			// Else If Actor already rolled, don't roll
-			else if (!(old_actor[1].token_id) && actor.id == old_actor[1].actor._id) {
-			console.log("skip2")
-				present = true;
-			};
-			// Necessary to check both actor and token for unlinked token handling (i.e. orc actor sheet with 10 tokens on map)
-			// token_id attribute is added to the old_actor[1] object below
-		});
+	switch(dataset.type){
 		
-		if (!present){
-			console.log(actor);
-			let roll = true;
-
-			
-			let defenseDP = actor.data.data.defenses[dataset.defense][dataset.state];
-			
-			if (dataset.state == "active"){
-				let found = false;
-				for (let e of actor.data.effects){
-					if ((e.data.label == "Total Defense" || (e.data.label == "Active " + dataset.defense) && !(options.total_defense))){
-						found = true;
+		case "attack-card":
+			template = "systems/shimmeringreach/templates/chat/attack-card.html";
+			let hue = 0;
+			if (dataset.state == "passive"){
+				hue = -50
+			}
+			else{
+				hue = 150
+			}
+			for (let actor of defender_list){
+				console.log(actor);
+				let present = false;
+				Object.entries(old_defenders).forEach(old_actor => {
+					console.log(old_actor[1]);
+					// If Token already rolled, don't roll
+					if (actor.parent && actor.parent.id == old_actor[1].token_id) {
+					console.log("skip")
+						present = true;
 					}
-					console.log(e.name, "Active " + dataset.defense);
-				}
+					// Else If Actor already rolled, don't roll
+					else if (!(old_actor[1].token_id) && actor.id == old_actor[1].actor._id) {
+					console.log("skip2")
+						present = true;
+					};
+					// Necessary to check both actor and token for unlinked token handling (i.e. orc actor sheet with 10 tokens on map)
+					// token_id attribute is added to the old_actor[1] object below
+				});
 				
-				if (!(found)){
+				if (!present){
+					console.log(actor);
+					let roll = true;
+
 					
+					let defenseDP = actor.data.data.defenses[dataset.defense][dataset.state];
 					
-					for (let c of game.combats.active.combatants){
-							console.log(c,actor.token,actor.id,actor.token);
-						if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && c.token.id == null)){
-							let initcost = options.total_defense ? 10 : 5;
-							
-							if (c.initiative <=0){
-								roll = false;
-								console.log("not enough init");
+					if (dataset.state == "active"){
+						let found = false;
+						for (let e of actor.data.effects){
+							if ((e.data.label == "Total Defense" || (e.data.label == "Active " + dataset.defense) && !(options.total_defense))){
+								found = true;
 							}
-							else {
-								c.update({initiative: c.initiative - initcost});
-								
-								await actor.createEmbeddedDocuments("ActiveEffect", [{
-								label: options.total_defense ? "Total Defense" : "Active " + dataset.defense,
-								icon: options.total_defense ? "modules/game-icons-net/whitetransparent/white-tower.svg": dataset.icon,
-								tint: "#00FFFF",
-								origin: actor.uuid,
-								"duration.rounds":  1,
-								disabled: false
-								}]);
+							console.log(e.name, "Active " + dataset.defense);
+						}
+						
+						if (!(found)){
+							
+							
+							for (let c of game.combats.active.combatants){
+									console.log(c,actor.token,actor.id,actor.token);
+								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && c.token.id == null)){
+									let initcost = options.total_defense ? 10 : 5;
+									
+									if (c.initiative <=0){
+										roll = false;
+										console.log("not enough init");
+									}
+									else {
+										c.update({initiative: c.initiative - initcost});
+										
+										await actor.createEmbeddedDocuments("ActiveEffect", [{
+										label: options.total_defense ? "Total Defense" : "Active " + dataset.defense,
+										icon: options.total_defense ? "modules/game-icons-net/whitetransparent/white-tower.svg": dataset.icon,
+										tint: "#00FFFF",
+										origin: actor.uuid,
+										"duration.rounds":  1,
+										disabled: false
+										}]);
+									}
+								}
+							}
+							
+							
+							
+							console.log(game.combats.active.combatants);
+							
+						}
+					}
+
+					if (roll){
+						let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
+						console.log(diceroll);
+						
+						let defenderOptions = {
+							actor: actor.data,
+							defense_type: dataset.defense,
+							defense_state: dataset.state,
+							dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
+							diceroll: {...diceroll},
+							icon: dataset.icon,
+								hue: hue,
+								percentile: diceroll.percentileText 
+						};
+						
+						if(actor.isToken){
+							defenderOptions.token_id = actor.token.id;
+						}
+						defenders.push(defenderOptions);
+						
+						if (attacker.display_hits > diceroll.result){
+							sounds.push(attacker.weapon.data.sound);
+						}
+						else {
+							console.log(dataset.defense);
+							switch(dataset.defense){
+								case("dodge"):
+									sounds.push(sound_folder + "/miss-sfx.mp3");
+								break;
+								case("block"):
+									sounds.push(sound_folder + "/block-sfx.mp3");
+								break;
+								case("parry"):
+									sounds.push(sound_folder + "/parry-sfx.mp3");
+								break;
+								case("physical"):
+									sounds.push(sound_folder + "/physical-sfx.mp3");
+								break;
+								case("mental"):
+									sounds.push(sound_folder + "/mental-sfx.mp3");
+								break;
 							}
 						}
 					}
-					
-					
-					
-					console.log(game.combats.active.combatants);
-					
 				}
 			}
-
-
-		    
+		break;
 		
+		case "multiskill-card":
+		template = "systems/shimmeringreach/templates/chat/multi-skill-card.html";
+			for (let actor of defender_list){
+				console.log(actor);
+				let present = false;
+				Object.entries(old_defenders).forEach(old_actor => {
+					console.log(old_actor[1]);
+					// If Token already rolled, don't roll
+					if (actor.parent && actor.parent.id == old_actor[1].token_id) {
+					console.log("skip")
+						present = true;
+					}
+					// Else If Actor already rolled, don't roll
+					else if (!(old_actor[1].token_id) && actor.id == old_actor[1].actor._id) {
+					console.log("skip2")
+						present = true;
+					};
+					// Necessary to check both actor and token for unlinked token handling (i.e. orc actor sheet with 10 tokens on map)
+					// token_id attribute is added to the old_actor[1] object below
+				});
+				
+				if (!present){
+					console.log(actor);
+					let roll = true;
 
-
-		    if (roll){
-				let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
-				console.log(diceroll);
-				
-				let defenderOptions = {
-					actor: actor.data,
-					defense_type: dataset.defense,
-					defense_state: dataset.state,
-					dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
-					diceroll: diceroll,
-					icon: dataset.icon,
-						hue: hue,
-						percentile: diceroll.percentileText 
-				};
-				
-				if(actor.isToken){
-					defenderOptions.token_id = actor.token.id;
-				}
-				defenders.push(defenderOptions);
-				
-				if (attacker.display_hits > diceroll.result){
-					sounds.push(attacker.weapon.data.sound);
-				}
-				else {
-					console.log(dataset.defense);
-					switch(dataset.defense){
-						case("dodge"):
-							sounds.push(sound_folder + "/miss-sfx.mp3");
-						break;
-						case("block"):
-							sounds.push(sound_folder + "/block-sfx.mp3");
-						break;
-						case("parry"):
-							sounds.push(sound_folder + "/parry-sfx.mp3");
-						break;
-						case("physical"):
-							sounds.push(sound_folder + "/physical-sfx.mp3");
-						break;
-						case("mental"):
-							sounds.push(sound_folder + "/mental-sfx.mp3");
-						break;
+					let skillDP = actor.data.data.skills[dataset.skillname].dicepool;
+					
+					if (roll){
+						let diceroll = new RollDP( skillDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
+						console.log(diceroll);
+																		
+						let defenderOptions = {
+							actor: actor.data,
+							diceroll: {...diceroll},
+							dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
+							display_hits: diceroll._total,
+							blind: attacker.blind
+						}
+						
+						if(actor.isToken){
+							defenderOptions.token_id = actor.token.id;
+						}
+						defenders.push(defenderOptions);
 					}
 				}
 			}
-		}
+			
+		
+		
+		
+		break;
 	}
-	
 	let new_defenders = {};
 	
 	let i = 0;
@@ -1235,7 +1290,7 @@ async function updateRollcardFlags(message) {
 export function toggleDicerollDisplay(event){
 	
 	let message = getMessageFromEvent(event);
-	if (!(message.data.blind && !(game.users.current.isGM))){
+	if (!((message.data.blind || message.data.flags.shimmeringreach.attacker.blind) && !(game.users.current.isGM))){
 		let targets = $(event.currentTarget).parentsUntil('.block').parent().find('.dice-roll-content');
 		
 		Object.entries(targets).forEach(target => {

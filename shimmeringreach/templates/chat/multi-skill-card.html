@@ -15,7 +15,7 @@
 				{{/if}}
 				<div class="column-right">
 					<div class="roll-card-header">
-						<div class="skill-title">{{attacker.displayname}}</div>
+						<div class="skill-title multiskill-roll" data-type="multiskill-card" data-skillname="{{attacker.skillname}}">{{attacker.displayname}}</div>
 					</div>
 				</div>
 		</div>
@@ -35,7 +35,7 @@
 				<div class="column-left">
 					<div class="roll-card-header">
 						<img src="{{defender.actor.img}}" class="entity-selectable" title="{{defender.actor.name}}" width="40" height="40"/>
-						{{#if blind}}
+						{{#if ../attacker.blind}}
 						<div class="hits-block blind-player">?</div>
 						{{/if}}
 						<div class="hits-block blind-gm" title="Hits&#10;{{diceroll._percentileText}}">{{defender.display_hits}}</div>
