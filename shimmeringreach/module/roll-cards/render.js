@@ -818,13 +818,12 @@ export async function renderSkillChatData(dataset, actor, options){
 	
 		const template = "systems/shimmeringreach/templates/chat/skill-card.html";
 
-		console.log(getAllGMs());
+		//console.log(getAllGMs());
 		let newdp = 0;
 		let displayname = "";
 		let skillname = "";
 		
 		if (dataset.itemskill){
-			
 			newdp = (parseInt(dataset.dicepool) + (options.dicepoolMod ? options.dicepoolMod : 0));
 			displayname = dataset.label;
 			skillname = $(displayname).replaceAll(' ', '_');
@@ -836,19 +835,31 @@ export async function renderSkillChatData(dataset, actor, options){
 		}
 		
 		
-		let diceroll = new game.shimmeringreach.RollDP( newdp, actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
+		let first_diceroll = new game.shimmeringreach.RollDP( newdp, actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true))
 		
-		await diceroll.evaluate({async: true});
+		await first_diceroll.evaluate({async: true});
 		
+		
+		let diceroll = {...first_diceroll};
 		////console.log("actor",options.actor);
-		let content = {
+		let defender = {
 			actor: actor.data,
-			skillname: dataset.label,
-			displayname: displayname,
 			diceroll: diceroll,
 			dicepoolMod: (options.dicepoolMod ? options.dicepoolMod : 0),
-			display_hits: diceroll._total,
-			blind: options.blind
+			display_hits: diceroll._total
+		}
+		
+		let attacker = {
+			displayname: displayname,
+			type: "skill_card",
+			template: template,
+			blind: options.blind,
+			skillname: dataset.label
+		};
+		
+		let content = {
+			attacker: attacker,
+			defenders: [defender]
 		}
 
 		let chatData = {
@@ -975,10 +986,10 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 							
 							
 							for (let c of game.combats.active.combatants){
-									console.log(c,actor.token,actor.id,actor.token);
-								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && c.token.id == null)){
+									console.log(c,actor.token,actor.id,actor.token,c.actor.id,c.token.id);
+								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id /*&& c.token.id == null*/)){
 									let initcost = options.total_defense ? 10 : 5;
-									
+									console.log("applying status");
 									if (c.initiative <=0){
 										roll = false;
 										console.log("not enough init");
@@ -1231,7 +1242,7 @@ async function updateRollcardFlags(message) {
 		
 		
 		break;
-	
+	case "skill_card":
 	case "multiskill_card":
 		template = "systems/shimmeringreach/templates/chat/multi-skill-card.html"
 		
@@ -1382,7 +1393,9 @@ export async function rerollChatCard(event){
 	let message = game.messages.get(event.currentTarget.closest('[data-message-id]').dataset.messageId);
 	
 	if(message.getFlag("shimmeringreach","attacker")){
+		console.log("combat card");
 		rerollCombatCard(event);
+		
 	}
 	else if(message.getFlag("shimmeringreach","skillname")){
 		rerollSkillCard(event);
@@ -1471,7 +1484,8 @@ async function gmRerollCombatCard(dataset,messageId){
 					
 				if (!defender[1].hasOwnProperty('reroll')){
 					////console.log('rerolling defender');
-					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total ;
+					console.log(defender);
+					let dicepool = defender[1].diceroll.terms[0].number - defender[1].diceroll._total;
 					console.log(dicepool);
 					console.log(defender);
 					//////console.log(dicepool);
