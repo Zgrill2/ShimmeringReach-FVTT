@@ -1463,7 +1463,7 @@ async function gmRerollCombatCard(dataset,messageId){
 		if (!attacker.hasOwnProperty('reroll')){
 			console.log(attacker.diceroll);
 			let dicepool = attacker.diceroll.terms[0].number - attacker.diceroll._total;
-			let reroll = new RollDP( dicepool, attacker.actor, false, false).evaluate();
+			let reroll = await new RollDP( dicepool, attacker.actor, false, false).evaluate();
 			
 			console.log("test1",dicepool,reroll);
 			
@@ -1490,7 +1490,7 @@ async function gmRerollCombatCard(dataset,messageId){
 					console.log(defender);
 					//////console.log(dicepool);
 					
-					let reroll = new RollDP( dicepool, defender[1].actor, false, false).evaluate();
+					let reroll = await new RollDP( dicepool, defender[1].actor, false, false).evaluate();
 					console.log(reroll);
 					let fullreroll = {...reroll};
 					/*
