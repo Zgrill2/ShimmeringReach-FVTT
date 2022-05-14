@@ -253,7 +253,6 @@ Hooks.on("renderChatMessage", (event, html, messageData) => {
 			}
 		}
 	});
-	console.log(messageData);
 	if ( messageData.message.flags.shimmeringreach &&( messageData.message.blind || messageData.message.flags.shimmeringreach.attacker.blind)){
 		Object.entries($(html).find('.blind-gm')).forEach(target => {
 			if (target[0] != "length" && target[0] != "prevObject" && !(game.users.current.isGM)){

@@ -88,7 +88,7 @@
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
           
-		  <div class="resources grid grid-5col">
+		  <div class="resources grid grid-6col">
 		  
 			{{#if data.edit_stats.enable}}
 			<div class="resource flex-group-center">
@@ -120,6 +120,20 @@
 							<option value="int">INT</option>
 							<option value="log">LOG</option>
 							<option value="cha">CHA</option>
+							{{/select}}
+						</select>
+						
+				</div>
+			</div>
+			
+			<div class="resource flex-group-center">
+                  <label for="data.tradition.pc.value" class="resource-label">Type</label>
+				  
+                  <div class="resource-content flexrow flex-center flex-between">
+						<select class="display" name="data.tradition.pc.value">
+							{{#select data.tradition.pc.value}}
+							<option value="true">PC</option>
+							<option value="false">Mook</option>
 							{{/select}}
 						</select>
 						

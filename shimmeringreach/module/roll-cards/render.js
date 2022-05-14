@@ -987,7 +987,7 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 							
 							for (let c of game.combats.active.combatants){
 									console.log(c,actor.token,actor.id,actor.token,c.actor.id,c.token.id);
-								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id /*&& c.token.id == null*/)){
+								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && !(c.token.id))){
 									let initcost = options.total_defense ? 10 : 5;
 									console.log("applying status");
 									if (c.initiative <=0){

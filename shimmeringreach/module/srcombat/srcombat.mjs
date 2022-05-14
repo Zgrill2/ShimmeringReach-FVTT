@@ -135,39 +135,43 @@ export class SRCombat extends Combat {
 
   
   /**  @override  */
-  async rollInitiative(ids, {formula=null, updateTurn=false, messageOptions={}}={}) {
+  
+  async rollInitiative(ids, {formula=null, updateTurn=true, messageOptions={}}={}) {
+
     // Structure input data
     ids = typeof ids === "string" ? [ids] : ids;
-    const currentId = this.combatant.id;
+    const currentId = this.combatant?.id;
     const rollMode = messageOptions.rollMode || game.settings.get("core", "rollMode");
 
     // Iterate over Combatants, performing an initiative roll for each
     const updates = [];
     const messages = [];
     for ( let [i, id] of ids.entries() ) {
-    
+
       // Get Combatant data (non-strictly)
       const combatant = this.combatants.get(id);
       if ( !combatant?.isOwner ) return results;
+
       // Produce an initiative roll for the Combatant
       const roll = combatant.getInitiativeRoll(formula);
-      var total_roll = roll.total
-      updates.push({_id: id, initiative: total_roll});
-      await combatant.setFlag("shimmeringreach", "order", (total_roll + combatant.actor.data.data.initiative.bias));
+      await roll.evaluate({async: true});
+      updates.push({_id: id, initiative: roll.total});
+	  await combatant.setFlag("shimmeringreach", "order", (roll.total + combatant.actor.data.data.initiative.bias));
+      
+
       // Construct chat message data
       let messageData = foundry.utils.mergeObject({
-        speaker: {
-          scene: this.scene.id,
-          actor: combatant.actor?.id,
-          token: combatant.token?.id,
+        speaker: ChatMessage.getSpeaker({
+          actor: combatant.actor,
+          token: combatant.token,
           alias: combatant.name
-        },
+        }),
         flavor: game.i18n.format("COMBAT.RollsInitiative", {name: combatant.name}),
         flags: {"core.initiativeRoll": true}
       }, messageOptions);
       const chatData = await roll.toMessage(messageData, {
         create: false,
-        rollMode: combatant.hidden && (rollMode === "roll") ? "gmroll" : rollMode
+        rollMode: combatant.hidden && (["roll", "publicroll"].includes(rollMode)) ? "gmroll" : rollMode
       });
 
       // Play 1 sound for the whole rolled set
@@ -175,17 +179,20 @@ export class SRCombat extends Combat {
       messages.push(chatData);
     }
     if ( !updates.length ) return this;
+
+    // Update multiple combatants
     await this.updateEmbeddedDocuments("Combatant", updates);
 
     // Ensure the turn order remains with the same combatant
-    if ( updateTurn ) {
+    if ( updateTurn && currentId ) {
       await this.update({turn: this.turns.findIndex(t => t.id === currentId)});
     }
 
     // Create multiple chat messages
-    ChatMessage.implementation.create(messages);
+    await ChatMessage.implementation.create(messages);
     return this;
   }
+
 
   /**  @override  */
   async resetAll() {

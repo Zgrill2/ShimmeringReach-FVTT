@@ -22,6 +22,12 @@ export class ShimmeringReachActor extends Actor {
     const flags = actorData.flags.shimmeringreach || {};
     this._prepareCharacterData(actorData);
     this._prepareNpcData(actorData);
+	
+	
+	/// Fixing gymnastics issue, discontinue in a few patches
+		this.update({"data.skills.gymnastics.name" : "Gymnastics"});
+		
+	
   }
 
   /**
@@ -52,10 +58,14 @@ export class ShimmeringReachActor extends Actor {
     //assigning cast stat to perceive magic
 	  data.skills.perceive_magic.attr = data.skills.spellcasting.attr;
 
+
+
     // bars - health, stamina, mana
 	  data.health.max = data.abilities.bod.value + 16;
-	  data.mana.max = data.abilities[data.skills.spellcasting.attr].value + 16;
-	  data.stamina.max = data.abilities.wil.value + 16;
+	  data.mana.max = data.tradition.pc.value == "true" ? data.abilities[data.skills.spellcasting.attr].value + 16 : 0;
+	  data.stamina.max = data.tradition.pc.value == "true" ? data.abilities.wil.value + 16 : 0;
+
+
 
     //drain soak
 	  data.drainres.value = data.abilities.wil.value * 2;
@@ -115,7 +125,7 @@ export class ShimmeringReachActor extends Actor {
     });
 	
 	//Wound Penalties
-	data.wound_penalty.value = Math.ceil(Math.floor((data.health.max - data.health.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.stamina.max - data.stamina.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.mana.max - data.mana.value)/(data.wound_penalty.resilient_wounds+6))-data.wound_penalty.ignore_wounds,0);
+	data.wound_penalty.value = Math.max(Math.ceil(Math.floor((data.health.max - data.health.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.stamina.max - data.stamina.value)/(data.wound_penalty.resilient_wounds+6)) +  Math.floor((data.mana.max - data.mana.value)/(data.wound_penalty.resilient_wounds+6))-data.wound_penalty.ignore_wounds,0),0);
 	
 	
 

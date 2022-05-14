@@ -31,6 +31,9 @@
 	  "tradition": {
         "rank": {
           "value": 1
+        },
+		"pc": {
+          "value": true
         }
       },
 	  "luck": {
