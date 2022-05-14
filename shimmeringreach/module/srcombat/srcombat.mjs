@@ -118,7 +118,7 @@ export class SRCombat extends Combat {
     await this.rollAll();
     await this.firstTurn();  
 
-    this.update({round: this.round+1, turn: turn}, {advanceTime});
+    return this.update({round: this.round+1, turn: turn}, {advanceTime});
   }
   
   
@@ -213,27 +213,26 @@ export class SRCombat extends Combat {
     return this.update({round: 1, turn: 0});
   }
   
+  
   async timeoutBuffs(){
-	  
+	  console.log(this);
 	  for (let c of this.combatants) {
 			let actor = {};
 			if (game.actors.tokens[c.token.id] !== undefined){
 				actor = game.actors.tokens[c.token.id]
 			}
 			else {
-				actor = c._actor;
+				actor = c.actor;
 			}
-			
 			for (let e of actor.data.effects){
 				console.log(e);
 				console.log(e.duration.remaining);
 				if (e.duration.remaining < 1.1 && e.duration.type != "none"){
-					console.log("deleted");
-					await e.delete();
+					await e.update({"disabled" : true});
 				}
 			}
 	  }
   }
-  
+
 
 }

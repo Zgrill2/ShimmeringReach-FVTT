@@ -903,7 +903,6 @@ export async function addDefenseMessages(event,options){
 async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	
 	let sound_folder = game.settings.get("shimmeringreach","miss_sfx_directory");
-	console.log(sound_folder);
 	
 	let defender_list = [];
 	if (dataset.gm){
@@ -934,7 +933,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 	}
 	
 	Object.assign(defenders, old_defenders);
-	console.log(dataset.type);
 	
 	switch(dataset.type){
 		
@@ -948,18 +946,15 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				hue = 150
 			}
 			for (let actor of defender_list){
-				console.log(actor);
 				let present = false;
 				Object.entries(old_defenders).forEach(old_actor => {
 					console.log(old_actor[1]);
 					// If Token already rolled, don't roll
 					if (actor.parent && actor.parent.id == old_actor[1].token_id) {
-					console.log("skip")
 						present = true;
 					}
 					// Else If Actor already rolled, don't roll
 					else if (!(old_actor[1].token_id) && actor.id == old_actor[1].actor._id) {
-					console.log("skip2")
 						present = true;
 					};
 					// Necessary to check both actor and token for unlinked token handling (i.e. orc actor sheet with 10 tokens on map)
@@ -967,7 +962,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				});
 				
 				if (!present){
-					console.log(actor);
 					let roll = true;
 
 					
@@ -975,21 +969,38 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 					
 					if (dataset.state == "active"){
 						let found = false;
+						
 						for (let e of actor.data.effects){
 							if ((e.data.label == "Total Defense" || (e.data.label == "Active " + dataset.defense) && !(options.total_defense))){
+								if (e.data.disabled){
+									for (let c of game.combats.active.combatants){
+										console.log(c,actor.token,actor.id,actor.token,c.actor.id,c.token.id);
+										
+										if ((c.token.id == actor.token?.id) || (c.actor.id == actor.id && !(c.token.id))){
+											let initcost = options.total_defense ? 10 : 5;
+											console.log("applying status");
+											if (c.initiative <=0){
+												roll = false;
+												console.log("not enough init");
+											}
+											else {
+												c.update({initiative: c.initiative - initcost});
+												e.update({"disabled" : false});
+											}
+										}
+									}
+								}
 								found = true;
 							}
-							console.log(e.name, "Active " + dataset.defense);
 						}
 						
 						if (!(found)){
-							
-							
 							for (let c of game.combats.active.combatants){
-									console.log(c,actor.token,actor.id,actor.token,c.actor.id,c.token.id);
-								if ((c.token.id == (actor.token == null ? false : actor.token.id)) || (c.actor.id == actor.id && !(c.token.id))){
+									//console.log(c,actor.token,actor.id,actor.token,c.actor.id,c.token.id);
+									
+								if ((c.token.id == actor.token?.id) || (c.actor.id == actor.id && !(c.token.id))){
 									let initcost = options.total_defense ? 10 : 5;
-									console.log("applying status");
+									//console.log("applying status");
 									if (c.initiative <=0){
 										roll = false;
 										console.log("not enough init");
@@ -1008,17 +1019,13 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 									}
 								}
 							}
-							
-							
-							
-							console.log(game.combats.active.combatants);
-							
 						}
+						
+						
 					}
 
 					if (roll){
 						let diceroll = new RollDP( defenseDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
-						console.log(diceroll);
 						
 						let defenderOptions = {
 							actor: actor.data,
@@ -1040,7 +1047,6 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 							sounds.push(attacker.weapon.data.sound);
 						}
 						else {
-							console.log(dataset.defense);
 							switch(dataset.defense){
 								case("dodge"):
 									sounds.push(sound_folder + "/miss-sfx.mp3");
@@ -1067,10 +1073,8 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 		case "multiskill-card":
 		template = "systems/shimmeringreach/templates/chat/multi-skill-card.html";
 			for (let actor of defender_list){
-				console.log(actor);
 				let present = false;
 				Object.entries(old_defenders).forEach(old_actor => {
-					console.log(old_actor[1]);
 					// If Token already rolled, don't roll
 					if (actor.parent && actor.parent.id == old_actor[1].token_id) {
 					console.log("skip")
@@ -1086,14 +1090,12 @@ async function gmAddDefenseMessages(dataset,actors,messageId,options){
 				});
 				
 				if (!present){
-					console.log(actor);
 					let roll = true;
 
 					let skillDP = actor.data.data.skills[dataset.skillname].dicepool;
 					
 					if (roll){
 						let diceroll = new RollDP( skillDP + (options.dicepoolMod ? options.dicepoolMod : 0), actor.data.data, (options.explode != undefined ? options.explode : false), (options.wounds != undefined ? options.wounds : true)).evaluate({async:false});
-						console.log(diceroll);
 																		
 						let defenderOptions = {
 							actor: actor.data,
