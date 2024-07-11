@@ -1,3 +1,4 @@
+# Deprecated and Archived. Please see [SRFantasy-FoundryVTT]()
 # ShimmeringReach-FVTT
 A [Foundry](https://foundryvtt.com/) Virtual Tabletop implementation of the Shimmering Reach Tabletop system
 
